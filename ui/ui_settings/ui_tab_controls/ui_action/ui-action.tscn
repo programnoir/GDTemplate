@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://beotxjcr3u2v7"]
+
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_action/ui-action.gd" id="1_e2r0c"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_action/signals/c-signals-ui-action.gd" id="2_bunxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0sol"]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0, 0, 0, 1)
+
+[node name="UIAction" type="VBoxContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.053
+offset_bottom = 5.38
+grow_horizontal = 2
+size_flags_vertical = 3
+script = ExtResource("1_e2r0c")
+
+[node name="cSig" type="Node" parent="."]
+script = ExtResource("2_bunxc")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_s0sol")
+
+[node name="Panel" type="Panel" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBCActionName" type="HBoxContainer" parent="PanelContainer/Panel"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/Panel/HBCActionName"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.02
+
+[node name="UILabelActionName" type="Label" parent="PanelContainer/Panel/HBCActionName"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Action"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="UIButtonAddBind" type="Button" parent="PanelContainer/Panel/HBCActionName"]
+layout_mode = 2
+text = "  +  "
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/Panel/HBCActionName"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.02
+
+[node name="VBCBinds" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[connection signal="focus_entered" from="PanelContainer/Panel/HBCActionName/UIButtonAddBind" to="cSig" method="_on_ui_button_add_bind_focus_entered"]
+[connection signal="pressed" from="PanelContainer/Panel/HBCActionName/UIButtonAddBind" to="cSig" method="_on_ui_button_add_bind_pressed"]

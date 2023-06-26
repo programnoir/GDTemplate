@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://r853d87kh8r6"]
+
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_action/ui_bind/ui-bind.gd" id="1_yvy74"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_action/ui_bind/signals/c-signals-ui-bind.gd" id="2_t75vs"]
+
+[node name="UIBind" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_yvy74")
+
+[node name="cSig" type="Node" parent="."]
+script = ExtResource("2_t75vs")
+
+[node name="VSeparator" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.03
+
+[node name="UILabelBindName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="UIButtonRemoveBind" type="Button" parent="."]
+layout_mode = 2
+text = "  -  "
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.03
+
+[connection signal="focus_entered" from="UIButtonRemoveBind" to="cSig" method="_on_ui_button_remove_bind_focus_entered"]
+[connection signal="pressed" from="UIButtonRemoveBind" to="cSig" method="_on_ui_button_remove_bind_pressed"]

@@ -1,0 +1,39 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dfvqiouqbidqx"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_b58eh"]
+resource_name = "Limiter"
+ceiling_db = -3.0
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_b3a3n"]
+resource_name = "Limiter"
+ceiling_db = -3.0
+
+[resource]
+bus/1/name = &"Premaster"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"Music"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Premaster"
+bus/3/name = &"SFX"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Premaster"
+bus/3/effect/0/effect = SubResource("AudioEffectLimiter_b58eh")
+bus/3/effect/0/enabled = true
+bus/4/name = &"Voice"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Premaster"
+bus/4/effect/0/effect = SubResource("AudioEffectLimiter_b3a3n")
+bus/4/effect/0/enabled = true

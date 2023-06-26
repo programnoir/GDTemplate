@@ -1,0 +1,581 @@
+[gd_scene load_steps=17 format=3 uid="uid://de7nvpg7iu21g"]
+
+[ext_resource type="Script" path="res://ui/ui_settings/ui-settings.gd" id="1_0ug5q"]
+[ext_resource type="Script" path="res://ui/ui_settings/signals/c-signals-ui-settings.gd" id="2_jggfv"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_button_tab/ui-button-tab.gd" id="3_5sqn5"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui-tab-controls.gd" id="3_ncl1e"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_accessibility/ui-tab-accessibility.gd" id="4_lud5g"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_popup_set_bind/ui-popup-set-bind.gd" id="4_o3deg"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_accessibility/signals/c-signals-ui-tab-accessibility.gd" id="5_8ym7r"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/signals/c-signals-ui-tab-controls.gd" id="7_loca8"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_popup_create_profile/signals/c-signals-ui-popup-create-profile.gd" id="8_ou2ul"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_popup_create_profile/ui-popup-create-profile.gd" id="8_u1l81"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_popup_set_bind/signals/c-signals-ui-popup-set-bind.gd" id="9_4t0lm"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_video/signals/c-signals-ui-tab-video.gd" id="9_bxrqn"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_video/ui-tab-video.gd" id="9_e6u1s"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_audio/signals/c-signals-ui-tab-accessibility.gd" id="9_pttoo"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_hslider_volume/ui-hslider-volume.gd" id="10_wtmlu"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_audio/ui-tab-audio.gd" id="14_q8qr7"]
+
+[node name="UISettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ug5q")
+
+[node name="cSig" type="Node" parent="."]
+script = ExtResource("2_jggfv")
+
+[node name="VBCSettings" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.044
+anchor_right = 0.975
+anchor_bottom = 0.952
+offset_top = 0.239998
+offset_bottom = -0.0800171
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBCTabs" type="HBoxContainer" parent="VBCSettings"]
+clip_contents = true
+layout_mode = 2
+
+[node name="HBCClip" type="HBoxContainer" parent="VBCSettings/HBCTabs"]
+clip_contents = true
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="UIButtonAccessibility" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+layout_mode = 2
+focus_neighbor_right = NodePath("../UIButtonControls")
+text = "ui_tab_accessibility"
+script = ExtResource("3_5sqn5")
+tab = NodePath("../../../ColorRect/VBCAccessibility")
+
+[node name="UIButtonControls" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+layout_mode = 2
+focus_neighbor_left = NodePath("../UIButtonAccessibility")
+focus_neighbor_right = NodePath("../UIButtonGameplay")
+focus_neighbor_bottom = NodePath("../../../ColorRect/VBCControls/CCProfiles/GCProfiles/UIButtonNewProfile")
+text = "ui_tab_controls"
+script = ExtResource("3_5sqn5")
+tab = NodePath("../../../ColorRect/VBCControls")
+
+[node name="UIButtonGameplay" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+layout_mode = 2
+focus_neighbor_left = NodePath("../UIButtonControls")
+focus_neighbor_right = NodePath("../UIButtonVideo")
+text = "ui_tab_gameplay"
+script = ExtResource("3_5sqn5")
+tab = NodePath("../../../ColorRect/VBCGameplay")
+
+[node name="UIButtonVideo" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+layout_mode = 2
+focus_neighbor_left = NodePath("../UIButtonGameplay")
+focus_neighbor_right = NodePath("../UIButtonAudio")
+text = "ui_tab_video"
+script = ExtResource("3_5sqn5")
+tab = NodePath("../../../ColorRect/VBCVideo")
+
+[node name="UIButtonAudio" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+layout_mode = 2
+focus_neighbor_left = NodePath("../UIButtonVideo")
+focus_neighbor_right = NodePath("../../UIButtonCloseSettings")
+text = "ui_tab_audio"
+script = ExtResource("3_5sqn5")
+tab = NodePath("../../../ColorRect/VBCAudio")
+
+[node name="VSeparator" type="VSeparator" parent="VBCSettings/HBCTabs"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UIButtonCloseSettings" type="Button" parent="VBCSettings/HBCTabs"]
+layout_mode = 2
+text = "  X  "
+
+[node name="ColorRect" type="ColorRect" parent="VBCSettings"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.0980392, 0.0980392, 0.0980392, 0.882353)
+
+[node name="VBCAccessibility" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_lud5g")
+
+[node name="cSig" type="Node" parent="VBCSettings/ColorRect/VBCAccessibility"]
+script = ExtResource("5_8ym7r")
+
+[node name="HSeparator4" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBCLanguages" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCAccessibility"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages"]
+layout_mode = 2
+text = "ui_label_language"
+
+[node name="UIOptionButtonLanguage" type="OptionButton" parent="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator2" type="VSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="VBCControls" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ncl1e")
+
+[node name="cSig" type="Node" parent="VBCSettings/ColorRect/VBCControls"]
+script = ExtResource("7_loca8")
+
+[node name="HSeparator3" type="HSeparator" parent="VBCSettings/ColorRect/VBCControls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CCProfiles" type="CenterContainer" parent="VBCSettings/ColorRect/VBCControls"]
+layout_mode = 2
+
+[node name="GCProfiles" type="GridContainer" parent="VBCSettings/ColorRect/VBCControls/CCProfiles"]
+layout_mode = 2
+columns = 2
+
+[node name="UIButtonNewProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles"]
+layout_mode = 2
+tooltip_text = "Creates a new profile based on the default control settings."
+focus_neighbor_right = NodePath("../UIButtonSaveProfile")
+focus_next = NodePath("../UIButtonSaveProfile")
+text = "ui_create_profile"
+
+[node name="UIButtonSaveProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles"]
+layout_mode = 2
+tooltip_text = "Profile will be overwritten with the changes applied to this profile."
+focus_neighbor_left = NodePath("../UIButtonNewProfile")
+focus_neighbor_right = NodePath("../UIButtonResetProfile")
+focus_next = NodePath("../UIButtonResetProfile")
+focus_previous = NodePath("../UIButtonNewProfile")
+disabled = true
+text = "ui_save_to_profile"
+
+[node name="UIButtonResetProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles"]
+layout_mode = 2
+tooltip_text = "Cancels all changes. List of binds for profile are reloaded for the selected profile."
+focus_neighbor_left = NodePath("../UIButtonSaveProfile")
+focus_neighbor_right = NodePath("../UIButtonDeleteProfile")
+focus_next = NodePath("../UIButtonDeleteProfile")
+focus_previous = NodePath("../UIButtonSaveProfile")
+disabled = true
+text = "ui_revert_changes"
+
+[node name="UIButtonDeleteProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles"]
+layout_mode = 2
+tooltip_text = "Deletes the actively selected profile and selects the default profile, instead."
+focus_neighbor_left = NodePath("../UIButtonResetProfile")
+focus_previous = NodePath("../UIButtonResetProfile")
+disabled = true
+text = "ui_delete_profile"
+
+[node name="UIOptionButtonProfile" type="OptionButton" parent="VBCSettings/ColorRect/VBCControls"]
+layout_mode = 2
+item_count = 1
+selected = 0
+popup/item_0/text = "default"
+popup/item_0/id = 0
+
+[node name="UISCActions" type="ScrollContainer" parent="VBCSettings/ColorRect/VBCControls"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+scroll_deadzone = 100
+
+[node name="VBCActions" type="VBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UISCActions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UIPopupCreateProfile" type="PopupPanel" parent="VBCSettings/ColorRect/VBCControls"]
+initial_position = 1
+title = "Create Profile"
+size = Vector2i(400, 250)
+always_on_top = true
+max_size = Vector2i(400, 250)
+script = ExtResource("8_u1l81")
+
+[node name="cSig" type="Node" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile"]
+script = ExtResource("8_ou2ul")
+
+[node name="VBCCreateProfile" type="VBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 396.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile"]
+layout_mode = 2
+text = "Create Input Profile"
+horizontal_alignment = 1
+
+[node name="UILineEditProfileName" type="LineEdit" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../HBCCreateProfile/UIButtonCreateProfile")
+focus_next = NodePath("../HBCCreateProfile/UIButtonCreateProfile")
+focus_previous = NodePath("../HBCCreateProfile/UIButtonCancelCreateProfile")
+placeholder_text = "Name..."
+
+[node name="HBCCreateProfile" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile"]
+layout_mode = 2
+alignment = 1
+
+[node name="UIButtonCreateProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile/HBCCreateProfile"]
+layout_mode = 2
+text = "Create Profile"
+
+[node name="UIButtonCancelCreateProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile/HBCCreateProfile"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="UIPopupSetBind" type="PopupPanel" parent="VBCSettings/ColorRect/VBCControls"]
+initial_position = 1
+title = "Add Bind"
+size = Vector2i(400, 250)
+always_on_top = true
+max_size = Vector2i(400, 250)
+script = ExtResource("4_o3deg")
+
+[node name="cSig" type="Node" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind"]
+script = ExtResource("9_4t0lm")
+
+[node name="VBCNewBind" type="VBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 396.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind"]
+layout_mode = 2
+text = "Add Bind"
+horizontal_alignment = 1
+
+[node name="UILabelActionName" type="Label" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind"]
+layout_mode = 2
+text = "Action Name"
+horizontal_alignment = 1
+
+[node name="UILabelBindName" type="LineEdit" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind"]
+layout_mode = 2
+placeholder_text = "Listening for input..."
+
+[node name="HBCBindOptions" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind"]
+layout_mode = 2
+
+[node name="UIButtonSetBind" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Set"
+
+[node name="UIButtonRetryBind" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Retry"
+
+[node name="UIButtonCancelBind" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="UIPopupDeleteConfirm" type="PopupPanel" parent="VBCSettings/ColorRect/VBCControls"]
+initial_position = 1
+title = "Create Profile"
+size = Vector2i(400, 250)
+always_on_top = true
+max_size = Vector2i(400, 250)
+
+[node name="cSig" type="Node" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm"]
+
+[node name="VBCNewProfile" type="VBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 396.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile"]
+layout_mode = 2
+text = "Delete Profile?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile"]
+layout_mode = 2
+alignment = 1
+
+[node name="UIButtonDeleteProfile2" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../UIButtonCancelDelete")
+focus_next = NodePath("../UIButtonCancelDelete")
+focus_previous = NodePath("../UIButtonCancelDelete")
+text = "Delete"
+
+[node name="VSeparator" type="VSeparator" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="UIButtonCancelDelete" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="VBCGameplay" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBCVideo" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_e6u1s")
+initial_window_scale = 2
+initial_game_scale = 2
+
+[node name="cSig" type="Node" parent="VBCSettings/ColorRect/VBCVideo"]
+script = ExtResource("9_bxrqn")
+
+[node name="HSeparator2" type="HSeparator" parent="VBCSettings/ColorRect/VBCVideo"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="UICheckButtonFullscreen" type="CheckButton" parent="VBCSettings/ColorRect/VBCVideo"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ui_label_fullscreen"
+
+[node name="HBCWindowScale" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCVideo"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ui_label_window_scale"
+
+[node name="UIButtonWindowScaleDown" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
+layout_mode = 2
+text = " - "
+
+[node name="UILabelWindowScale" type="Label" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
+layout_mode = 2
+
+[node name="UIButtonWindowScaleUp" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
+layout_mode = 2
+text = " + "
+
+[node name="VSeparator2" type="VSeparator" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="HBCGameScale" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCVideo"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ui_label_game_scale"
+
+[node name="UIButtonReduceScale" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
+layout_mode = 2
+text = " - "
+
+[node name="UILabelGameScale" type="Label" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
+layout_mode = 2
+
+[node name="UIButtonIncreaseScale" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
+layout_mode = 2
+text = " + "
+
+[node name="VSeparator2" type="VSeparator" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="VBCAudio" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_q8qr7")
+
+[node name="cSig" type="Node" parent="VBCSettings/ColorRect/VBCAudio"]
+script = ExtResource("9_pttoo")
+
+[node name="HSeparator" type="HSeparator" parent="VBCSettings/ColorRect/VBCAudio"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBCAudio" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCAudio"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="GridVolume" type="GridContainer" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume"]
+layout_mode = 2
+text = "ui_label_vol_main"
+
+[node name="UIHSliderVolumeMain" type="HSlider" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("10_wtmlu")
+
+[node name="Label2" type="Label" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume"]
+layout_mode = 2
+text = "ui_label_vol_music"
+
+[node name="UIHSliderVolumeMusic" type="HSlider" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("10_wtmlu")
+bus_id = 2
+
+[node name="Label3" type="Label" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume"]
+layout_mode = 2
+text = "ui_label_vol_sfx"
+
+[node name="UIHSliderVolumeSFX" type="HSlider" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("10_wtmlu")
+bus_id = 3
+
+[node name="Label4" type="Label" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume"]
+layout_mode = 2
+text = "ui_label_vol_vox"
+
+[node name="UIHSliderVolumeVoice" type="HSlider" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("10_wtmlu")
+bus_id = 4
+
+[node name="VSeparator2" type="VSeparator" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/UIButtonAccessibility" to="VBCSettings/HBCTabs/HBCClip/UIButtonAccessibility" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/UIButtonControls" to="VBCSettings/HBCTabs/HBCClip/UIButtonControls" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/UIButtonGameplay" to="VBCSettings/HBCTabs/HBCClip/UIButtonGameplay" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/UIButtonVideo" to="VBCSettings/HBCTabs/HBCClip/UIButtonVideo" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/UIButtonAudio" to="VBCSettings/HBCTabs/HBCClip/UIButtonAudio" method="_on_focus_entered"]
+[connection signal="pressed" from="VBCSettings/HBCTabs/UIButtonCloseSettings" to="cSig" method="_on_ui_button_close_settings_pressed"]
+[connection signal="item_selected" from="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages/UIOptionButtonLanguage" to="VBCSettings/ColorRect/VBCAccessibility/cSig" method="_on_ui_option_button_language_item_selected"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/UIButtonNewProfile" to="VBCSettings/ColorRect/VBCControls/cSig" method="_on_ui_button_new_profile_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/UIButtonSaveProfile" to="VBCSettings/ColorRect/VBCControls/cSig" method="_on_ui_button_save_profile_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/UIButtonResetProfile" to="VBCSettings/ColorRect/VBCControls/cSig" method="_on_ui_button_reset_profile_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/UIButtonDeleteProfile" to="VBCSettings/ColorRect/VBCControls/cSig" method="_on_ui_button_delete_profile_pressed"]
+[connection signal="item_selected" from="VBCSettings/ColorRect/VBCControls/UIOptionButtonProfile" to="VBCSettings/ColorRect/VBCControls/cSig" method="_on_ui_option_button_profile_item_selected"]
+[connection signal="about_to_popup" from="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile" to="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/cSig" method="_on_ui_popup_create_profile_about_to_popup"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile/HBCCreateProfile/UIButtonCreateProfile" to="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/cSig" method="_on_ui_button_create_profile_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile/HBCCreateProfile/UIButtonCancelCreateProfile" to="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/cSig" method="_on_ui_button_cancel_create_profile_pressed"]
+[connection signal="about_to_popup" from="VBCSettings/ColorRect/VBCControls/UIPopupSetBind" to="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/cSig" method="_on_ui_popup_set_bind_about_to_popup"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions/UIButtonSetBind" to="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/cSig" method="_on_ui_button_set_bind_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions/UIButtonRetryBind" to="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/cSig" method="_on_ui_button_retry_bind_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions/UIButtonCancelBind" to="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/cSig" method="_on_ui_button_cancel_bind_pressed"]
+[connection signal="toggled" from="VBCSettings/ColorRect/VBCVideo/UICheckButtonFullscreen" to="VBCSettings/ColorRect/VBCVideo/cSig" method="_on_ui_check_button_fullscreen_toggled"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCWindowScale/UIButtonWindowScaleDown" to="VBCSettings/ColorRect/VBCVideo/cSig" method="_on_ui_button_window_scale_down_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCWindowScale/UIButtonWindowScaleUp" to="VBCSettings/ColorRect/VBCVideo/cSig" method="_on_ui_button_window_scale_up_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCGameScale/UIButtonReduceScale" to="VBCSettings/ColorRect/VBCVideo/cSig" method="_on_ui_button_reduce_scale_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCGameScale/UIButtonIncreaseScale" to="VBCSettings/ColorRect/VBCVideo/cSig" method="_on_ui_button_increase_scale_pressed"]
+[connection signal="value_changed" from="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume/UIHSliderVolumeMain" to="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume/UIHSliderVolumeMain" method="_on_value_changed"]
+[connection signal="value_changed" from="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume/UIHSliderVolumeMusic" to="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume/UIHSliderVolumeMusic" method="_on_value_changed"]
+[connection signal="value_changed" from="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume/UIHSliderVolumeSFX" to="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume/UIHSliderVolumeSFX" method="_on_value_changed"]
+[connection signal="value_changed" from="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume/UIHSliderVolumeVoice" to="VBCSettings/ColorRect/VBCAudio/HBCAudio/GridVolume/UIHSliderVolumeVoice" method="_on_value_changed"]
