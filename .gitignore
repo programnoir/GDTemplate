@@ -8,6 +8,7 @@ export_presets.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
+*.csv.import
 
 # Mono-specific ignores
 .mono/
