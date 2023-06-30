@@ -1,13 +1,13 @@
 extends Node
 
-func _on_ui_button_remove_bind_pressed() -> void:
-	owner.nUIButtonRemoveBind.find_prev_valid_focus().grab_focus()
+func _on_button_remove_bind_pressed() -> void:
+	owner.nButtonRemoveBind.find_prev_valid_focus().grab_focus()
 	owner.destroy()
 
 
-func _on_ui_button_remove_bind_focus_entered():
+func _on_button_remove_bind_focus_entered():
 	owner.emit_signal( "focus_entered",
-			owner.position.y + owner.nUIButtonRemoveBind.size.y / 2  )
+			owner.position.y + owner.nButtonRemoveBind.size.y / 2  )
 
 
 func remove_signals() -> void:

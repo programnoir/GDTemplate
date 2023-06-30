@@ -1,11 +1,11 @@
 extends VBoxContainer
 class_name UIAction
 
-@onready var cSig: Node = get_node( "cSig" )
-@onready var nUILabelActionName: Label = get_node(
-		"PanelContainer/Panel/HBCActionName/UILabelActionName" )
-@onready var nUIButtonAddBind: Button = get_node(
-		"PanelContainer/Panel/HBCActionName/UIButtonAddBind" )
+@onready var nSignals: Node = get_node( "Signals" )
+@onready var nLabelActionName: Label = get_node(
+		"PanelContainer/Panel/HBCActionName/LabelActionName" )
+@onready var nButtonAddBind: Button = get_node(
+		"PanelContainer/Panel/HBCActionName/ButtonAddBind" )
 @onready var nVBCBinds: VBoxContainer = get_node( "VBCBinds" )
 
 signal adding_bind
@@ -22,11 +22,11 @@ func set_action_name( new_name: String ) -> void:
 
 
 func set_display_name( new_name: String ) -> void:
-	nUILabelActionName.text = new_name
+	nLabelActionName.text = new_name
 
 
 func reassign_focus() -> void:
-	nUIButtonAddBind.grab_focus()
+	nButtonAddBind.grab_focus()
 
 
 func add_bind( new_bind: Control, bind_event: InputEvent ) -> void:
@@ -35,14 +35,14 @@ func add_bind( new_bind: Control, bind_event: InputEvent ) -> void:
 	new_bind.set_action_name( get_action_name() )
 	new_bind.set_bind_name( bind_name )
 	new_bind.set_input_event( bind_event )
-	new_bind.focus_entered.connect( Callable( cSig,
-				"_on_ui_button_bind_focus_entered" ) )
+	new_bind.focus_entered.connect( Callable( nSignals,
+				"_on_button_bind_focus_entered" ) )
 
 
 func _ready() -> void:
 	for bind in nVBCBinds.get_children():
-		bind.focus_entered.connect( Callable( cSig,
-				"_on_ui_button_bind_focus_entered" ) )
+		bind.focus_entered.connect( Callable( nSignals,
+				"_on_button_bind_focus_entered" ) )
 
 
 func destroy() -> void:

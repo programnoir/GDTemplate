@@ -1,16 +1,16 @@
 extends Node
 
 
-func _on_ui_button_add_bind_pressed() -> void:
+func _on_button_add_bind_pressed() -> void:
 	owner.emit_signal( "adding_bind", owner )
 
 
-func _on_ui_button_add_bind_focus_entered() -> void:
+func _on_button_add_bind_focus_entered() -> void:
 	owner.emit_signal( "focus_entered",
-		owner.position.y + owner.nUIButtonAddBind.size.y / 2 )
+		owner.position.y + owner.nButtonAddBind.size.y / 2 )
 
 
-func _on_ui_button_bind_focus_entered( this_position_y: int ) -> void:
+func _on_button_bind_focus_entered( this_position_y: int ) -> void:
 	var total: int = owner.position.y + this_position_y
 	owner.emit_signal( "focus_entered", total )
 

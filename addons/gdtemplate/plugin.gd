@@ -3,13 +3,15 @@ extends EditorPlugin
 
 #	Array containing steps for loading assets into a game.
 const autoload_order: Array = [
-	'UserSettings',
-	'ScreenFade'
+	'GlobalActionIgnoreList',
+	'GlobalUserSettings',
+	'GlobalUIScreenFade'
 ]
 
 const autoload_list: Dictionary = {
-	'UserSettings': 'res://addons/gdtemplate/autoload/user-settings.gd',
-	'ScreenFade': "res://addons/gdtemplate/ui/ui-screenfade.tscn"
+	'GlobalActionIgnoreList': 'res://addons/gdtemplate/autoload/global-action-ignore-list.gd',
+	'GlobalUserSettings': 'res://addons/gdtemplate/autoload/global-user-settings.gd',
+	'GlobalUIScreenFade': "res://addons/gdtemplate/ui/global-ui-screenfade.tscn"
 }
 
 func _get_plugin_name():

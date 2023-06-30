@@ -6,5 +6,5 @@ class_name HSliderVolume
 
 
 func _on_value_changed( new_value: float ) -> void:
-	UserSettings.set_bus_volume( bus_id, new_value )
-	UserSettings.save_settings()
+	GlobalUserSettings.set_bus_volume( bus_id, new_value )
+	GlobalUserSettings.save_settings()

@@ -1,13 +1,14 @@
 extends Control
 
-@onready var cSig: Node = $cSig
-@onready var nUIButtonNew: Button = get_node(
-		"Panel/CenterContainer/VBoxContainer/UIButtonNew" )
-@onready var nUIButtonSettings: Button = get_node(
-		"Panel/CenterContainer/VBoxContainer/UIButtonSettings" )
-
 @export_file var room_game_start: String = ""
 
+@onready var nSignals: Node = get_node( "Signals" )
+@onready var nButtonNew: Button = get_node(
+		"Panel/CenterContainer/VBoxContainer/ButtonNew" )
+@onready var nButtonSettings: Button = get_node(
+		"Panel/CenterContainer/VBoxContainer/ButtonSettings" )
+
+#	Defines which button to grab focus when we open this menu.
 var focus_button: Button
 
 signal menu_new_game
@@ -22,14 +23,13 @@ func menu_focus() -> void:
 
 
 func retranslate() -> void:
-	#	Buttons are not necessary!
-	#nUIButtonNew.text = tr( "ui_new_game" )
 	pass
 
 
 func _ready() -> void:
-	focus_button = nUIButtonNew
+	focus_button = nButtonNew
 	retranslate()
+
 
 func destroy() -> void:
 	pass
