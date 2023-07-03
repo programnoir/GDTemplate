@@ -95,6 +95,7 @@ func load_settings() -> bool:
 func get_current_language() -> String:
 	if( accessibility.has( "current_language" ) == false ):
 		return ""
+	#	End defensive return: Language not found.
 	return accessibility[ "current_language" ]
 
 
@@ -114,11 +115,11 @@ func set_new_language( language_code: String ) -> void:
 
 func get_current_input_profile() -> int:
 	if( input_profiles[ "profile_names" ].is_empty() ):
-		print( "No profiles. Setting to default." )
 		return 0
+	#	End defensive return: No profiles found, setting to default.
 	if( input_profiles[ "current_profile" ] == "default" ):
-		print( "Default profile selected" )
 		return 0
+	#	End defensive return: Default profile selected.
 	return input_profiles[ "profile_names" ].find(
 				input_profiles[ "current_profile" ] ) + 1
 
@@ -142,8 +143,8 @@ func save_changes_to_profile(
 
 func select_input_profile( profile_name: String ) -> bool:
 	if( input_profiles[ "profile_names" ].has( profile_name ) == false ):
-		print( "Unable to find profile" )
 		return false
+		#	End defensive return: Profile not found.
 	input_profiles[ "current_profile" ] = profile_name
 	save_settings()
 	return true

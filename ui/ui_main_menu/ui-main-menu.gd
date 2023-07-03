@@ -19,6 +19,7 @@ var focus_button: Button
 func menu_focus() -> void:
 	if( focus_button == null ):
 		return
+	#	End defensive return: Focus button not set.
 	focus_button.grab_focus()
 
 

@@ -19,8 +19,10 @@ func _on_focus_entered() -> void:
 	if( n_VBCTab == null ):
 		print( "No tab for this ButtonTab. This ButtonTab = %s", text )
 		return
+	#	End defensive return: ButtonTab content not set.
 	elif( n_VBCTab.visible == true ):
 		return
+	#	End defensive return: ButtonTab already selected.
 	var buttons: Array = get_tree().get_nodes_in_group(
 				"GroupSettingsTabButtons" )
 	for button in buttons:

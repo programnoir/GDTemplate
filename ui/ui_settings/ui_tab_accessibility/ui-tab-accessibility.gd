@@ -21,6 +21,7 @@ func update_from_load() -> void:
 	var current_language: String = GlobalUserSettings.get_current_language()
 	if( current_language == "" ):
 		return
+	#	End defensive return: Currentl language not set/is default.
 	var languages: Array = GlobalUserSettings.get_language_codes()
 	var language_index: int = languages.find( current_language )
 	nOptionButtonLanguages.select( language_index )
