@@ -1,21 +1,22 @@
 extends PopupPanel
 
-@onready var nUILineEditProfileName = get_node(
-		"VBCCreateProfile/UILineEditProfileName" )
+@onready var nLineEditProfileName = get_node(
+		"VBCCreateProfile/LineEditProfileName" )
 
 
 func create_input_profile() -> void:
-	if( nUILineEditProfileName.text == "" ):
+	if( nLineEditProfileName.text == "" ):
 		return
-	if( nUILineEditProfileName.text == "default" ):
-		#	Nice try.
+	#	End defensive return: No profile name specified.
+	if( nLineEditProfileName.text == "default" ):
 		return
+	#	End defensive return: Don't set it to default.
 	if(
-		UserSettings.input_profiles[ "profile_names" ].has(
-			nUILineEditProfileName.text )
+		GlobalUserSettings.input_profiles[ "profile_names" ].has(
+			nLineEditProfileName.text )
 	):
 		return
-	#	Should probably make a popup window stating that they can't set that name.
+	#	End defensive return: Already exists. TODO: Add error message.
 	visible = false
-	owner.nUITabControls.create_input_profile( nUILineEditProfileName.text )
-	nUILineEditProfileName.clear()
+	owner.nTabControls.create_input_profile( nLineEditProfileName.text )
+	nLineEditProfileName.clear()

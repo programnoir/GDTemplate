@@ -34,6 +34,7 @@ var view: Viewport = get_viewport()
 #	Resolution stats
 var monitor_size: Vector2i = Vector2i.ZERO
 var monitor_aspect_ratio: float = 0.0
+#	Specify the smallest possible window size in your project settings.
 var base_game_resolution: Vector2i = Vector2i(
 		ProjectSettings.get_setting( "display/window/size/viewport_width" ), 
 		ProjectSettings.get_setting( "display/window/size/viewport_height" )
@@ -41,23 +42,20 @@ var base_game_resolution: Vector2i = Vector2i(
 var game_resolution: Vector2i = base_game_resolution
 var max_scale: float = 1.0
 
-#	These days, 1366x768 is rare. 1920x1080 is today's default.
-#	4K and 8K resolutions are largely a multiple of 1080p, so a scaling
-#	System makes the most sense.
 
 """
 	Saving/Loading Functions
 """
 
+
 func save_settings() -> void:
-	print( "Saving settings" )
 	var new_save: = GameSettings.new()
 	new_save.accessibility = accessibility.duplicate( true )
 	new_save.input_profiles = input_profiles.duplicate( true )
 	new_save.gameplay_options = gameplay_options.duplicate( true )
 	new_save.video = video.duplicate( true )
 	new_save.audio = audio.duplicate( true )
-	#
+	#	Adding options to file.
 	var dirtext: String = "user://"
 	var dir := DirAccess.open( dirtext )
 	if( dir.dir_exists( CONFIG_DIR ) == false ):
@@ -67,66 +65,61 @@ func save_settings() -> void:
 	var new_load: Resource = ResourceLoader.load(
 			dirtext + CONFIG_DIR + CONFIG_FILE_NAME + CONFIG_EXTENSION,
 			'Resource', 1 )
-	if( new_load != null ):
-		print( "Save successful" )
-	else:
-		print( "Failure?" )
 
 
 func load_settings() -> bool:
 	var dirtext: String = "user://"
-	#	File does not exist
 	if( ResourceLoader.exists( dirtext + CONFIG_DIR + CONFIG_FILE_NAME + \
 			CONFIG_EXTENSION ) == false ):
 		print( "Settings save file not found." )
 		return false
+	#	End defensive return: File does not exist
 	var new_load: Resource = ResourceLoader.load(
 			dirtext + CONFIG_DIR + CONFIG_FILE_NAME + CONFIG_EXTENSION,
 			'Resource', 1 )
 	accessibility.clear()
+	#	Copying loaded data to our settings vars.
 	accessibility = new_load.accessibility.duplicate( true )
 	input_profiles = new_load.input_profiles.duplicate( true )
 	gameplay_options = new_load.gameplay_options.duplicate( true )
 	video = new_load.video.duplicate( true )
 	audio = new_load.audio.duplicate( true )
-	#	And now we can assign this data to the game.
 	return true
 
+
 """
-	Settings-specific functions
+	Accessibility & Language
 """
+
 
 func get_current_language() -> String:
 	if( accessibility.has( "current_language" ) == false ):
 		return ""
+	#	End defensive return: Language not found.
 	return accessibility[ "current_language" ]
+
 
 func get_language_codes() -> Array:
 	return languages.values()
 
-#	Changing the language of the game.
+
 func set_new_language( language_code: String ) -> void:
 	accessibility[ "current_language" ] = language_code
 	TranslationServer.set_locale( language_code )
 
-#	Managing input profile data
 
-func save_changes_to_profile(
-		array_index: int,
-		input_data: Dictionary
-) -> void:
-	input_profiles[ "profiles" ][ array_index - 1 ].clear()
-	input_profiles[ "profiles" ][ array_index - 1 ] = input_data.duplicate( true )
-	save_settings()
+"""
+	Keybind Input Profile
+"""
 
 
 func get_current_input_profile() -> int:
 	if( input_profiles[ "profile_names" ].is_empty() ):
-		print( "No profiles. Setting to default." )
 		return 0
+	#	End defensive return: No profiles found, setting to default.
 	if( input_profiles[ "current_profile" ] == "default" ):
-		print( "Default profile selected" )
 		return 0
+	#	End defensive return: Default profile selected.
 	return input_profiles[ "profile_names" ].find(
 				input_profiles[ "current_profile" ] ) + 1
 
@@ -139,10 +132,19 @@ func get_input_profile( array_index: int ) -> Dictionary:
 	return input_profiles[ "profiles" ][ array_index - 1 ]
 
 
+func save_changes_to_profile(
+		array_index: int,
+		input_data: Dictionary
+) -> void:
+	input_profiles[ "profiles" ][ array_index - 1 ].clear()
+	input_profiles[ "profiles" ][ array_index - 1 ] = input_data.duplicate( true )
+	save_settings()
+
+
 func select_input_profile( profile_name: String ) -> bool:
 	if( input_profiles[ "profile_names" ].has( profile_name ) == false ):
-		print( "Unable to find profile" )
 		return false
+		#	End defensive return: Profile not found.
 	input_profiles[ "current_profile" ] = profile_name
 	save_settings()
 	return true
@@ -161,31 +163,39 @@ func delete_input_profile( array_index: int ) -> void:
 	save_settings()
 
 
-#	Changing the audio level.
+"""
+	Audio Controls
+"""
+
+
 func set_bus_volume( bus_id: int, new_value: float ) -> void:
 	AudioServer.set_bus_volume_db( bus_id, -80.0 * ( 1.0 - new_value ) )
 	audio[ bus_id ] = new_value
 
 
+"""
+	Video Settings
+"""
+
 func get_window_scale() -> int:
 	return video[ "window_scale" ]
+
 
 func get_game_scale() -> int:
 	return video[ "game_scale" ]
 
+
 func is_fullscreen() -> bool:
 	return video[ "fullscreen" ]
+
 
 func get_display_info() -> void:
 	main_window = get_window()
 	current_screen = DisplayServer.window_get_current_screen(
 			DisplayServer.MAIN_WINDOW_ID )
 	view = get_viewport()
-	#	Now for the actual stats.
-	#old: ScreenResolution = OS.get_screen_size(OS.current_screen)
 	monitor_size = DisplayServer.screen_get_size( current_screen )
 	monitor_aspect_ratio = float( monitor_size.x ) / float( monitor_size.y )
-	#old: WindowResolution = OS.window_size
 	max_scale = ceil(
 			float( monitor_size.y ) / float( base_game_resolution.y ) )
 

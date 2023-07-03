@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8v780lp8gkjr"]
+[gd_scene load_steps=5 format=3 uid="uid://ctmwayo7g5w8g"]
 
 [ext_resource type="Script" path="res://rooms/room_main/room-main.gd" id="1_n6a48"]
-[ext_resource type="PackedScene" uid="uid://7w4xl4svj77j" path="res://ui/ui_main_menu/ui-main-menu.tscn" id="2_oy47r"]
-[ext_resource type="Script" path="res://rooms/room_main/signals/c-signals-main.gd" id="2_wwop3"]
-[ext_resource type="PackedScene" uid="uid://de7nvpg7iu21g" path="res://ui/ui_settings/ui-settings.tscn" id="4_m88mf"]
+[ext_resource type="Script" path="res://rooms/room_main/signals/signals-main.gd" id="2_83eiw"]
+[ext_resource type="PackedScene" uid="uid://hotuxjgb4abp" path="res://ui/ui_main_menu/ui-main-menu.tscn" id="2_oy47r"]
+[ext_resource type="PackedScene" uid="uid://deud0wahw6k4q" path="res://ui/ui_settings/ui-settings.tscn" id="4_m88mf"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -14,8 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n6a48")
 
-[node name="cSig" type="Node" parent="."]
-script = ExtResource("2_wwop3")
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_83eiw")
 
 [node name="Game" type="Node" parent="."]
 

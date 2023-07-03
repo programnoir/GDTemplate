@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://7w4xl4svj77j"]
+[gd_scene load_steps=3 format=3 uid="uid://hotuxjgb4abp"]
 
 [ext_resource type="Script" path="res://ui/ui_main_menu/ui-main-menu.gd" id="1_jee1g"]
-[ext_resource type="Script" path="res://ui/ui_main_menu/signals/c-signals-main-menu.gd" id="2_m7p80"]
+[ext_resource type="Script" path="res://ui/ui_main_menu/signals/signals-main-menu.gd" id="2_xae32"]
 
 [node name="UIMainMenu" type="Control"]
 layout_mode = 3
@@ -12,8 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jee1g")
 
-[node name="cSig" type="Node" parent="."]
-script = ExtResource("2_m7p80")
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_xae32")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -40,7 +40,7 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
 layout_mode = 2
 
-[node name="UILabelGameName" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="LabelGameName" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Game Name"
 horizontal_alignment = 1
@@ -49,37 +49,37 @@ vertical_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="UIButtonNew" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="ButtonNew" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../UIButtonLoad")
-focus_next = NodePath("../UIButtonLoad")
-focus_previous = NodePath("../UIButtonQuit")
+focus_neighbor_bottom = NodePath("../ButtonLoad")
+focus_next = NodePath("../ButtonLoad")
+focus_previous = NodePath("../ButtonQuit")
 text = "ui_new_game"
 
-[node name="UIButtonLoad" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="ButtonLoad" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../UIButtonNew")
-focus_neighbor_bottom = NodePath("../UIButtonSettings")
-focus_next = NodePath("../UIButtonSettings")
-focus_previous = NodePath("../UIButtonNew")
+focus_neighbor_top = NodePath("../ButtonNew")
+focus_neighbor_bottom = NodePath("../ButtonSettings")
+focus_next = NodePath("../ButtonSettings")
+focus_previous = NodePath("../ButtonNew")
 text = "ui_load_game"
 
-[node name="UIButtonSettings" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="ButtonSettings" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../UIButtonLoad")
-focus_neighbor_bottom = NodePath("../UIButtonQuit")
-focus_next = NodePath("../UIButtonQuit")
-focus_previous = NodePath("../UIButtonLoad")
+focus_neighbor_top = NodePath("../ButtonLoad")
+focus_neighbor_bottom = NodePath("../ButtonQuit")
+focus_next = NodePath("../ButtonQuit")
+focus_previous = NodePath("../ButtonLoad")
 text = "ui_settings"
 
-[node name="UIButtonQuit" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../UIButtonSettings")
-focus_next = NodePath("../UIButtonNew")
-focus_previous = NodePath("../UIButtonSettings")
+focus_neighbor_top = NodePath("../ButtonSettings")
+focus_next = NodePath("../ButtonNew")
+focus_previous = NodePath("../ButtonSettings")
 text = "ui_quit"
 
-[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/UIButtonNew" to="cSig" method="_on_ui_button_new_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/UIButtonSettings" to="cSig" method="_on_ui_button_settings_pressed"]
-[connection signal="visibility_changed" from="Panel/CenterContainer/VBoxContainer/UIButtonSettings" to="cSig" method="_on_ui_button_settings_visibility_changed"]
-[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/UIButtonQuit" to="cSig" method="_on_ui_button_quit_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/ButtonNew" to="Signals" method="_on_button_new_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/ButtonSettings" to="Signals" method="_on_button_settings_pressed"]
+[connection signal="visibility_changed" from="Panel/CenterContainer/VBoxContainer/ButtonSettings" to="Signals" method="_on_button_settings_visibility_changed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/ButtonQuit" to="Signals" method="_on_button_quit_pressed"]

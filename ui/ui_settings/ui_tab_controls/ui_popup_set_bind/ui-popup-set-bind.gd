@@ -1,10 +1,11 @@
 extends PopupPanel
 
-@onready var cSig: Node = $cSig
-@onready var nUILabelActionName: Label = $VBCNewBind/UILabelActionName
-@onready var nUILineEditBindName: LineEdit = $VBCNewBind/UILabelBindName
-@onready var nUIButtonSetBind: Button = get_node(
-		"VBCNewBind/HBCBindOptions/UIButtonSetBind" )
+@onready var nSignals: Node = get_node( "Signals" )
+@onready var nLabelActionName: Label = get_node( "VBCNewBind/LabelActionName" )
+@onready var nLineEditBindName: LineEdit = get_node(
+		"VBCNewBind/LineEditBindName" )
+@onready var nButtonSetBind: Button = get_node(
+		"VBCNewBind/HBCBindOptions/ButtonSetBind" )
 
 var awaiting_input: bool = false
 
@@ -15,23 +16,23 @@ var current_event: InputEvent
 
 
 func set_event( event: InputEvent ) -> void:
-	nUIButtonSetBind.disabled = false
+	nButtonSetBind.disabled = false
 	current_event = event
-	nUILineEditBindName.text = current_event.as_text()
-	nUIButtonSetBind.grab_focus()
+	nLineEditBindName.text = current_event.as_text()
+	nButtonSetBind.grab_focus()
 
 
 func read_new_bind_input( action: UIAction ) -> void:
-	nUIButtonSetBind.disabled = true
+	nButtonSetBind.disabled = true
 	current_action = action
-	nUILabelActionName.text = current_action.get_action_name()
-	nUILineEditBindName.grab_focus()
-	nUILineEditBindName.text = "Listening for input..."
+	nLabelActionName.text = current_action.get_action_name()
+	nLineEditBindName.grab_focus()
+	nLineEditBindName.text = "Listening for input..."
 	current_event = null
-	cSig.set_process_input( true )
+	nSignals.set_process_input( true )
 	awaiting_input = true
 
 
 func send_new_action_bind( action: UIAction, event: InputEvent ) -> void:
-	owner.nUITabControls.set_new_action_bind( action, event )
+	owner.nTabControls.set_new_action_bind( action, event )
 	visible = false

@@ -1,23 +1,24 @@
 extends Control
 
-@onready var cSig: Node = $cSig
-@onready var nUIButtonControls: Button = get_node(
-		"VBCSettings/HBCTabs/HBCClip/UIButtonControls" )
-@onready var nUITabControls: VBoxContainer = get_node(
-		"VBCSettings/ColorRect/VBCControls" )
-@onready var nUITabAccessibility: VBoxContainer = get_node(
-		"VBCSettings/ColorRect/VBCAccessibility" )
-@onready var nUITabVideo: VBoxContainer = get_node(
-		"VBCSettings/ColorRect/VBCVideo" )
-@onready var nUITabAudio: VBoxContainer = get_node(
-		"VBCSettings/ColorRect/VBCAudio" )
-
-var focus_button: Button
-var current_tab: int = 0
-var loaded_settings: bool = false
-
 signal menu_settings_closed
 signal new_language
+
+@onready var nSignals: Node = get_node( "Signals" )
+@onready var nButtonControls: Button = get_node(
+		"VBCSettings/HBCTabs/HBCClip/ButtonControls" )
+@onready var nTabControls: VBoxContainer = get_node(
+		"VBCSettings/ColorRect/VBCControls" )
+@onready var nTabAccessibility: VBoxContainer = get_node(
+		"VBCSettings/ColorRect/VBCAccessibility" )
+@onready var nTabVideo: VBoxContainer = get_node(
+		"VBCSettings/ColorRect/VBCVideo" )
+@onready var nTabAudio: VBoxContainer = get_node(
+		"VBCSettings/ColorRect/VBCAudio" )
+
+#	Which button to receive focus.
+var focus_button: Button
+#	Set to true if settings have been configured before.
+var loaded_settings: bool = false
 
 
 func menu_focus() -> void:
@@ -25,25 +26,23 @@ func menu_focus() -> void:
 
 
 func _enter_tree() -> void:
-	loaded_settings = UserSettings.load_settings()
+	loaded_settings = GlobalUserSettings.load_settings()
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	focus_button = nUIButtonControls
-	#	Load settings once called. We'll add a first-time setup menu as well.
+	focus_button = nButtonControls
 	if( loaded_settings ):
 		#	Load from settings.
-		nUITabAccessibility.update_from_load()
-		nUITabControls.update_from_load()
-		nUITabVideo.update_from_load()
-		nUITabAudio.update_from_load()
+		nTabAccessibility.update_from_load()
+		nTabControls.update_from_load()
+		nTabVideo.update_from_load()
+		nTabAudio.update_from_load()
 	else:
-		nUITabVideo.initialize_video_settings()
-		nUITabControls.populate_action_list()
+		nTabVideo.initialize_video_settings()
+		nTabControls.populate_action_list()
 
 
 func destroy() -> void:
-	nUITabControls.destroy()
+	nTabControls.destroy()
 	if( is_queued_for_deletion() == false ):
 		queue_free()

@@ -1,26 +1,26 @@
 extends VBoxContainer
 
-@onready var nUIHSliderVolumeMain: HSliderVolume = get_node(
-	"HBCAudio/GridVolume/UIHSliderVolumeMain" )
-@onready var nUIHSliderVolumeMusic: HSliderVolume = get_node(
-	"HBCAudio/GridVolume/UIHSliderVolumeMusic" )
-@onready var nUIHSliderVolumeSFX: HSliderVolume = get_node(
-	"HBCAudio/GridVolume/UIHSliderVolumeSFX" )
-@onready var nUIHSliderVolumeVoice: HSliderVolume = get_node(
-	"HBCAudio/GridVolume/UIHSliderVolumeVoice" )
+@onready var nHSliderVolumeMain: HSliderVolume = get_node(
+	"HBCAudio/GCVolume/HSliderVolumeMain" )
+@onready var nHSliderVolumeMusic: HSliderVolume = get_node(
+	"HBCAudio/GCVolume/HSliderVolumeMusic" )
+@onready var nHSliderVolumeSFX: HSliderVolume = get_node(
+	"HBCAudio/GCVolume/HSliderVolumeSFX" )
+@onready var nHSliderVolumeVoice: HSliderVolume = get_node(
+	"HBCAudio/GCVolume/HSliderVolumeVoice" )
 
 var audio_sliders: Array = []
 
 
 func update_from_load() -> void:
 	for i in audio_sliders.size():
-		var bus_id = audio_sliders[ i ].bus_id
-		if( UserSettings.audio.has( bus_id ) ):
-			audio_sliders[ i ].value = UserSettings.audio[ bus_id ]
+		var bus_id: int = audio_sliders[ i ].BUS_ID
+		if( GlobalUserSettings.audio.has( bus_id ) ):
+			audio_sliders[ i ].value = GlobalUserSettings.audio[ bus_id ]
 
 
 func _ready() -> void:
-	audio_sliders.append( nUIHSliderVolumeMain )
-	audio_sliders.append( nUIHSliderVolumeMusic )
-	audio_sliders.append( nUIHSliderVolumeSFX )
-	audio_sliders.append( nUIHSliderVolumeVoice )
+	audio_sliders.append( nHSliderVolumeMain )
+	audio_sliders.append( nHSliderVolumeMusic )
+	audio_sliders.append( nHSliderVolumeSFX )
+	audio_sliders.append( nHSliderVolumeVoice )

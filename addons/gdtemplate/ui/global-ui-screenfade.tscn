@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bldcmnpb7n3t5"]
+
+[ext_resource type="Script" path="res://addons/gdtemplate/ui/global-ui-screenfade.gd" id="1_k6evf"]
+
+[node name="GlobalUIScreenFade" type="CanvasLayer"]
+layer = 120
+visible = false
+script = ExtResource("1_k6evf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

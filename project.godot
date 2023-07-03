@@ -20,9 +20,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ActionIgnoreList="*res://data/resources/res-action-ignore-list.gd"
-UserSettings="*res://addons/gdtemplate/autoload/user-settings.gd"
-ScreenFade="*res://addons/gdtemplate/ui/ui-screenfade.tscn"
+GlobalActionIgnoreList="*res://addons/gdtemplate/autoload/global-action-ignore-list.gd"
+GlobalUserSettings="*res://addons/gdtemplate/autoload/global-user-settings.gd"
+GlobalUIScreenFade="*res://addons/gdtemplate/ui/global-ui-screenfade.tscn"
 
 [display]
 
