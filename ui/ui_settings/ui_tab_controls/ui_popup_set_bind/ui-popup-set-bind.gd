@@ -1,8 +1,9 @@
 extends PopupPanel
 
 @onready var nSignals: Node = get_node( "Signals" )
-@onready var nLabelActionName: Label = $VBCNewBind/LabelActionName
-@onready var nLineEditBindName: LineEdit = $VBCNewBind/LineEditBindName
+@onready var nLabelActionName: Label = get_node( "VBCNewBind/LabelActionName" )
+@onready var nLineEditBindName: LineEdit = get_node(
+		"VBCNewBind/LineEditBindName" )
 @onready var nButtonSetBind: Button = get_node(
 		"VBCNewBind/HBCBindOptions/ButtonSetBind" )
 

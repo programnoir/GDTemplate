@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-@onready var nSignals = get_node( "Signals" )
-@onready var nOptionButtonLanguages = get_node(
+@onready var nSignals: Node = get_node( "Signals" )
+@onready var nOptionButtonLanguages: OptionButton = get_node(
 		"HBCLanguages/OptionButtonLanguage" )
 
 
