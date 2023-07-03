@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://beotxjcr3u2v7"]
+[gd_scene load_steps=4 format=3 uid="uid://bwm5qc6c4axlx"]
 
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_action/ui-action.gd" id="1_e2r0c"]
-[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_action/signals/c-signals-ui-action.gd" id="2_bunxc"]
+[ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_action/signals/signals-ui-action.gd" id="2_wr0iv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0sol"]
 content_margin_top = 20.0
@@ -17,8 +17,8 @@ grow_horizontal = 2
 size_flags_vertical = 3
 script = ExtResource("1_e2r0c")
 
-[node name="cSig" type="Node" parent="."]
-script = ExtResource("2_bunxc")
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_wr0iv")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -44,14 +44,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.02
 
-[node name="UILabelActionName" type="Label" parent="PanelContainer/Panel/HBCActionName"]
+[node name="LabelActionName" type="Label" parent="PanelContainer/Panel/HBCActionName"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Action"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="UIButtonAddBind" type="Button" parent="PanelContainer/Panel/HBCActionName"]
+[node name="ButtonAddBind" type="Button" parent="PanelContainer/Panel/HBCActionName"]
 layout_mode = 2
 text = "  +  "
 
@@ -64,5 +64,5 @@ size_flags_stretch_ratio = 0.02
 [node name="VBCBinds" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[connection signal="focus_entered" from="PanelContainer/Panel/HBCActionName/UIButtonAddBind" to="cSig" method="_on_ui_button_add_bind_focus_entered"]
-[connection signal="pressed" from="PanelContainer/Panel/HBCActionName/UIButtonAddBind" to="cSig" method="_on_ui_button_add_bind_pressed"]
+[connection signal="focus_entered" from="PanelContainer/Panel/HBCActionName/ButtonAddBind" to="Signals" method="_on_button_add_bind_focus_entered"]
+[connection signal="pressed" from="PanelContainer/Panel/HBCActionName/ButtonAddBind" to="Signals" method="_on_button_add_bind_pressed"]
