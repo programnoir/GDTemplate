@@ -4,7 +4,7 @@ signal fade_complete
 
 @onready var nColorRect: ColorRect = get_node( "ColorRect" )
 
-enum { IDLE, BLACK, OUT, IN }
+enum { IDLE, BLACK, FADE_OUT, FADE_IN }
 
 var state: int = IDLE : set = set_state
 var percent: float = 0 : set = set_percent
@@ -12,10 +12,10 @@ var percent: float = 0 : set = set_percent
 
 func _on_tween_finished() -> void:
 	match state:
-		IN:
-			state = IDLE
-		OUT:
+		FADE_OUT:
 			state = BLACK
+		FADE_IN:
+			state = IDLE
 	visible = false
 	emit_signal( "fade_complete" )
 
@@ -25,22 +25,22 @@ func set_percent( value: float ) -> void:
 	nColorRect.modulate.a = percent
 
 
-func set_state( value: int )->void:
-	state = value
+func set_state( value: int ) -> void:
 	var tween = get_tree().create_tween()
+	state = value
 	match state:
-		OUT:
+		FADE_OUT:
 			#	Fading to black
 			tween.tween_property( self, "percent", 0.0, 0.5 )
 			tween.play()
-		IN:
+		FADE_IN:
 			#	Fading from black
 			tween.tween_property( self, "percent", 1.0, 0.5 )
 			tween.play()
 	visible = true
 	await tween.finished
 	tween.kill()
-	self._on_tween_finished()
+	_on_tween_finished()
 
 
 func _ready() -> void:

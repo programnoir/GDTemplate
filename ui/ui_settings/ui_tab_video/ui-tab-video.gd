@@ -24,8 +24,8 @@ func set_window_scale( new_scale: int ) -> void:
 		nCheckButtonFullScreen.button_pressed = true
 	else:
 		nCheckButtonFullScreen.button_pressed = false
+	#	Update information to player.
 	nLabelWindowScale.text = String.num( new_scale )
-	#	Need to update info on this end, as well.
 	nLabelGameScale.text = String.num( GlobalUserSettings.get_game_scale() )
 
 
@@ -41,9 +41,9 @@ func update_from_load() -> void:
 	GlobalUserSettings.set_window_scale( GlobalUserSettings.get_window_scale() )
 	toggle_fullscreen( temp_fullscreen )
 	GlobalUserSettings.set_game_scale( temp_game_scale )
+	#	Update information to player.
 	nLabelWindowScale.text = String.num( GlobalUserSettings.get_window_scale() )
 	nLabelGameScale.text = String.num( GlobalUserSettings.get_game_scale() )
-	#	Handle fullscreen
 
 
 func initialize_video_settings() -> void:

@@ -31,7 +31,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	focus_button = nButtonControls
-	#	Load settings once called. We'll add a first-time setup menu as well.
 	if( loaded_settings ):
 		#	Load from settings.
 		nTabAccessibility.update_from_load()

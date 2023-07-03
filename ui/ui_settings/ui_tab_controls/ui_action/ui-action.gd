@@ -10,16 +10,15 @@ signal adding_bind
 		"PanelContainer/Panel/HBCActionName/ButtonAddBind" )
 @onready var nVBCBinds: VBoxContainer = get_node( "VBCBinds" )
 
-#	Action's name
-var this_name: String = ""
+var action_name: String = ""
 
 
 func get_action_name() -> String:
-	return this_name
+	return action_name
 
 
 func set_action_name( new_name: String ) -> void:
-	this_name = new_name
+	action_name = new_name
 
 
 func set_display_name( new_name: String ) -> void:

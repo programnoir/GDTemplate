@@ -53,45 +53,45 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 
-[node name="ButtonAccessibility" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonAccessibility" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_right = NodePath("../ButtonControls")
 text = "ui_tab_accessibility"
 script = ExtResource("3_5sqn5")
-tab = NodePath("../../../ColorRect/VBCAccessibility")
+n_VBCTab = NodePath("../../../ColorRect/VBCAccessibility")
 
-[node name="ButtonControls" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonControls" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonAccessibility")
 focus_neighbor_right = NodePath("../ButtonGameplay")
 focus_neighbor_bottom = NodePath("../../../ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonNewProfile")
 text = "ui_tab_controls"
 script = ExtResource("3_5sqn5")
-tab = NodePath("../../../ColorRect/VBCControls")
+n_VBCTab = NodePath("../../../ColorRect/VBCControls")
 
-[node name="ButtonGameplay" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonGameplay" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonControls")
 focus_neighbor_right = NodePath("../ButtonVideo")
 text = "ui_tab_gameplay"
 script = ExtResource("3_5sqn5")
-tab = NodePath("../../../ColorRect/VBCGameplay")
+n_VBCTab = NodePath("../../../ColorRect/VBCGameplay")
 
-[node name="ButtonVideo" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonVideo" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonGameplay")
 focus_neighbor_right = NodePath("../ButtonAudio")
 text = "ui_tab_video"
 script = ExtResource("3_5sqn5")
-tab = NodePath("../../../ColorRect/VBCVideo")
+n_VBCTab = NodePath("../../../ColorRect/VBCVideo")
 
-[node name="ButtonAudio" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("tab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonAudio" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonVideo")
 focus_neighbor_right = NodePath("../../ButtonCloseSettings")
 text = "ui_tab_audio"
 script = ExtResource("3_5sqn5")
-tab = NodePath("../../../ColorRect/VBCAudio")
+n_VBCTab = NodePath("../../../ColorRect/VBCAudio")
 
 [node name="VSeparator" type="VSeparator" parent="VBCSettings/HBCTabs"]
 modulate = Color(1, 1, 1, 0)

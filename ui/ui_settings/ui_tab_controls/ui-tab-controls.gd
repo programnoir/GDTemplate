@@ -43,7 +43,6 @@ func set_new_action_bind( action: UIAction, bind: InputEvent ) -> void:
 			Callable( nSignals, "_on_removed_bind" ) )
 	selected_action.reassign_focus()
 	InputMap.action_add_event( action_name, bind )
-	#	Do not save here.
 
 
 func scroll_to_focused_node( node_position_y: int ) -> void:
@@ -77,7 +76,7 @@ func clear_action_list() -> void:
 
 func repopulate_action_list() -> void:
 	clear_action_list()
-		#	Use the default_profile dictionary to set the input map.
+	#	Use the default_profile dictionary to set the input map.
 	for action_name in default_profile.keys():
 		var new_action: Control = p_UIAction.instantiate()
 		nVBCActions.add_child( new_action )
@@ -99,11 +98,9 @@ func repopulate_action_list() -> void:
 					Callable( nSignals, "_on_removed_bind" ) )
 
 
-#	Not sure if this is needed.
+#	First-time setup - loading default profile.
 func populate_action_list() -> void:
-	#	This is for first-time setup.
 	current_profile.clear()
-	#	needs to be fixed - I never used selected_profile, it's always 0.
 	current_profile = default_profile.duplicate( true )
 	repopulate_action_list()
 
@@ -114,13 +111,11 @@ func select_input_profile( index: int ) -> void:
 		current_profile = default_profile.duplicate( true )
 	else:
 		var profile_name: String = nOptionButtonProfile.get_item_text( index )
-		#	If there IS a profile
 		if( GlobalUserSettings.select_input_profile( profile_name ) == true ):
 			current_profile.clear()
 			current_profile = GlobalUserSettings.get_input_profile(
 					index ).duplicate( true )
 	repopulate_action_list()
-	#GlobalUserSettings.set_current_input_profile( profi )
 
 
 func repopulate_profiles() -> void:
@@ -128,7 +123,6 @@ func repopulate_profiles() -> void:
 	nOptionButtonProfile.add_item( "default" )
 	for profile_name in GlobalUserSettings.get_input_profile_names():
 		nOptionButtonProfile.add_item( profile_name )
-	#	TODO: look up saved profiles and set to the selected one.
 
 
 func save_changes_to_profile() -> void:
@@ -150,20 +144,19 @@ func update_profile_buttons() -> void:
 func create_input_profile( profile_name: String ) -> void:
 	#	First, add duplicate of *current* data to GlobalUserSettings
 	GlobalUserSettings.add_input_profile( profile_name, current_profile )
-	#	Next, add option to profile dropdown and select it.
+	#	Next, add option to profile dropdown, select it, and save.
 	nOptionButtonProfile.add_item( profile_name )
 	nOptionButtonProfile.select( nOptionButtonProfile.item_count - 1 )
 	nOptionButtonProfile.grab_focus()
 	update_profile_buttons()
-	#	Finally, save GlobalUserSettings
 	GlobalUserSettings.save_settings()
 
 
 func delete_current_profile() -> void:
 	var current_profile_id = nOptionButtonProfile.selected
 	if( current_profile_id == 0 ):
-		#	Wat. How did you get here?
 		return
+	#	End defensive return: Cannot delete default profile.
 	GlobalUserSettings.delete_input_profile( current_profile_id - 1 )
 	nOptionButtonProfile.select( 0 )
 	select_input_profile( 0 )
@@ -181,15 +174,13 @@ func update_from_load() -> void:
 
 func _ready() -> void:
 	var actions: Array = InputMap.get_actions()
-	#	Currently we're just loading by default.
+	#	Currently we're just loading actions by default.
 	for action in actions:
 		if( GlobalActionIgnoreList.hide_list.has( action ) ):
 			continue
 		else:
 			default_profile[ action ] = InputMap.action_get_events(
 					action ).duplicate( true )
-	#	Next, we load in the alternative profiles
-	#	After that, we assign the profile according to GlobalUserSettings.
 
 
 func destroy() -> void:

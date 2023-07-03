@@ -1,10 +1,9 @@
 extends Node
 
-#	Responds to changing the control scheme profile
+
 func _on_option_button_profile_item_selected( index: int ) -> void:
 	owner.nTabControls.update_profile_buttons()
 	owner.nTabControls.select_input_profile( index )
-
 
 
 func _on_button_new_profile_pressed() -> void:

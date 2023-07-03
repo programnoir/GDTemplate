@@ -7,15 +7,16 @@ extends PopupPanel
 func create_input_profile() -> void:
 	if( nLineEditProfileName.text == "" ):
 		return
+	#	End defensive return: No profile name specified.
 	if( nLineEditProfileName.text == "default" ):
-		#	Nice try.
 		return
+	#	End defensive return: Don't set it to default.
 	if(
 		GlobalUserSettings.input_profiles[ "profile_names" ].has(
 			nLineEditProfileName.text )
 	):
 		return
-	#	Should probably make a popup window stating that they can't set that name.
+	#	End defensive return: Already exists. TODO: Add error message.
 	visible = false
 	owner.nTabControls.create_input_profile( nLineEditProfileName.text )
 	nLineEditProfileName.clear()

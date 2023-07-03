@@ -1,7 +1,14 @@
 extends HSlider
 class_name HSliderVolume
+## A specialized volume slider that is associated with audio busses.
+"""
+Notes:
+	No notes.
+Debug Info:
+	No debug info.
+"""
 
-#	By default, set the bus ID to the Premaster.
+##	Selects which bus to assign the volume slider to. Default is Premaster.
 @export_enum( "Premaster:1", "Music:2", "SFX:3", "Voice:4" ) var BUS_ID: int = 1
 
 

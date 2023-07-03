@@ -13,10 +13,10 @@ func _on_scene_change( new_scene: String ) -> void:
 		content.destroy()
 	GlobalUIScreenFade.set_state( GlobalUIScreenFade.IN )
 	await GlobalUIScreenFade.fade_complete
-	#	This needs to be converted into a loading screen.
+	#	TODO: Convert to loading screen.
 	owner.nGame.add_child( load( new_scene ).instantiate() )
 	owner.nUI.visible = false
-	GlobalUIScreenFade.set_state( GlobalUIScreenFade.OUT )
+	GlobalUIScreenFade.set_state( GlobalUIScreenFade.FADE_OUT )
 
 
 func _on_menu_new_game( first_room: String ) -> void:
@@ -31,13 +31,11 @@ func _on_menu_settings( previous_menu: Control ) -> void:
 
 func _on_menu_settings_closed() -> void:
 	owner.nUISettings.visible = false
-	#	Make the previous menu visible again.
 	owner.previous_menu.visible = true
 
 
-#	New language chosen from settings menu, save.
+#	New language chosen from settings menu.
 func _on_new_language( language_code: String ) -> void:
-	print( "Setting language ", language_code )
 	GlobalUserSettings.set_new_language( language_code )
 	GlobalUserSettings.save_settings()
 

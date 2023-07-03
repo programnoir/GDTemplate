@@ -5,7 +5,6 @@ func _on_button_new_pressed():
 	owner.emit_signal( "menu_new_game", owner.room_game_start )
 
 
-#	Opens the settings menu.
 func _on_button_settings_pressed() -> void:
 	owner.focus_button = owner.nButtonSettings
 	owner.visible = false

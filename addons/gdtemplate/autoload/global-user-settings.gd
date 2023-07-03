@@ -49,14 +49,13 @@ var max_scale: float = 1.0
 
 
 func save_settings() -> void:
-	print( "Saving settings" )
 	var new_save: = GameSettings.new()
 	new_save.accessibility = accessibility.duplicate( true )
 	new_save.input_profiles = input_profiles.duplicate( true )
 	new_save.gameplay_options = gameplay_options.duplicate( true )
 	new_save.video = video.duplicate( true )
 	new_save.audio = audio.duplicate( true )
-	#
+	#	Adding options to file.
 	var dirtext: String = "user://"
 	var dir := DirAccess.open( dirtext )
 	if( dir.dir_exists( CONFIG_DIR ) == false ):
@@ -66,29 +65,25 @@ func save_settings() -> void:
 	var new_load: Resource = ResourceLoader.load(
 			dirtext + CONFIG_DIR + CONFIG_FILE_NAME + CONFIG_EXTENSION,
 			'Resource', 1 )
-	if( new_load != null ):
-		print( "Save successful" )
-	else:
-		print( "Failure?" )
 
 
 func load_settings() -> bool:
 	var dirtext: String = "user://"
-	#	File does not exist
 	if( ResourceLoader.exists( dirtext + CONFIG_DIR + CONFIG_FILE_NAME + \
 			CONFIG_EXTENSION ) == false ):
 		print( "Settings save file not found." )
 		return false
+	#	End defensive return: File does not exist
 	var new_load: Resource = ResourceLoader.load(
 			dirtext + CONFIG_DIR + CONFIG_FILE_NAME + CONFIG_EXTENSION,
 			'Resource', 1 )
 	accessibility.clear()
+	#	Copying loaded data to our settings vars.
 	accessibility = new_load.accessibility.duplicate( true )
 	input_profiles = new_load.input_profiles.duplicate( true )
 	gameplay_options = new_load.gameplay_options.duplicate( true )
 	video = new_load.video.duplicate( true )
 	audio = new_load.audio.duplicate( true )
-	#	And now we can assign this data to the game.
 	return true
 
 
@@ -96,7 +91,7 @@ func load_settings() -> bool:
 	Accessibility & Language
 """
 
-#	Changing the language of the game.
+
 func get_current_language() -> String:
 	if( accessibility.has( "current_language" ) == false ):
 		return ""
@@ -198,11 +193,8 @@ func get_display_info() -> void:
 	current_screen = DisplayServer.window_get_current_screen(
 			DisplayServer.MAIN_WINDOW_ID )
 	view = get_viewport()
-	#	Now for the actual stats.
-	#old: ScreenResolution = OS.get_screen_size(OS.current_screen)
 	monitor_size = DisplayServer.screen_get_size( current_screen )
 	monitor_aspect_ratio = float( monitor_size.x ) / float( monitor_size.y )
-	#old: WindowResolution = OS.window_size
 	max_scale = ceil(
 			float( monitor_size.y ) / float( base_game_resolution.y ) )
 

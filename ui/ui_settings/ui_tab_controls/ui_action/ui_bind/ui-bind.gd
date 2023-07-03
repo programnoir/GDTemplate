@@ -6,7 +6,6 @@ signal removed_bind
 @onready var nLabelBindName: Label = get_node( "LabelBindName" )
 @onready var nButtonRemoveBind: Button = get_node( "ButtonRemoveBind" )
 
-#	Debug? Remove later possibly. Unless I forgot during the refactor.
 var action: String
 var event: InputEvent
 
@@ -24,8 +23,6 @@ func set_input_event( new_event: InputEvent ) -> void:
 
 
 func destroy() -> void:
-	#	Erase the event this bind is represented by.
-	#InputMap.action_erase_event( action, event )
 	emit_signal( "removed_bind", action, event )
 	nSignals.remove_signals()
 	if( is_queued_for_deletion() == false ):

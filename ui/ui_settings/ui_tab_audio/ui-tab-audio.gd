@@ -14,7 +14,7 @@ var audio_sliders: Array = []
 
 func update_from_load() -> void:
 	for i in audio_sliders.size():
-		var bus_id = audio_sliders[ i ].bus_id
+		var bus_id = audio_sliders[ i ].BUS_ID
 		if( GlobalUserSettings.audio.has( bus_id ) ):
 			audio_sliders[ i ].value = GlobalUserSettings.audio[ bus_id ]
 
