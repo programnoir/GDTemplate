@@ -1,8 +1,6 @@
 extends Node
 
-#	Here you can specify which unhidden built-in controls you want to rename.
-#	Not quite sure if I like this current setup, would need to replace with
-#	 translations later on, wouldn't I?
+#	Rename unhidden built-in action names here.
 var rename_list: Dictionary = {
 	"ui_up": "Up",
 	"ui_down": "Down",

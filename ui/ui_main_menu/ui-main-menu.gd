@@ -1,6 +1,8 @@
 extends Control
 
-@export_file var room_game_start: String = ""
+signal menu_new_game
+signal menu_settings
+signal menu_quit
 
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nButtonNew: Button = get_node(
@@ -8,12 +10,10 @@ extends Control
 @onready var nButtonSettings: Button = get_node(
 		"Panel/CenterContainer/VBoxContainer/ButtonSettings" )
 
+@export_file var room_game_start: String = ""
+
 #	Defines which button to grab focus when we open this menu.
 var focus_button: Button
-
-signal menu_new_game
-signal menu_settings
-signal menu_quit
 
 
 func menu_focus() -> void:

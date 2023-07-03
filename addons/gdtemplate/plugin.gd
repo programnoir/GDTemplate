@@ -2,16 +2,19 @@
 extends EditorPlugin
 
 #	Array containing steps for loading assets into a game.
-const autoload_order: Array = [
+const AUTOLOAD_ORDER: Array = [
 	'GlobalActionIgnoreList',
 	'GlobalUserSettings',
 	'GlobalUIScreenFade'
 ]
 
-const autoload_list: Dictionary = {
-	'GlobalActionIgnoreList': 'res://addons/gdtemplate/autoload/global-action-ignore-list.gd',
-	'GlobalUserSettings': 'res://addons/gdtemplate/autoload/global-user-settings.gd',
-	'GlobalUIScreenFade': "res://addons/gdtemplate/ui/global-ui-screenfade.tscn"
+const AUTOLOAD_LIST: Dictionary = {
+	'GlobalActionIgnoreList': 'res://addons/gdtemplate/autoload/' + 
+			'global-action-ignore-list.gd',
+	'GlobalUserSettings': 'res://addons/gdtemplate/autoload/' + 
+			'global-user-settings.gd',
+	'GlobalUIScreenFade': 'res://addons/gdtemplate/ui/' +
+			'global-ui-screenfade.tscn'
 }
 
 func _get_plugin_name():
@@ -19,11 +22,10 @@ func _get_plugin_name():
 
 
 func _enter_tree():
-	for key in autoload_order:
-		add_autoload_singleton( key, autoload_list[ key ] )
+	for key in AUTOLOAD_ORDER:
+		add_autoload_singleton( key, AUTOLOAD_LIST[ key ] )
 
 
 func _exit_tree():
-	var keys: Array = autoload_list.keys()
-	for key in keys:
+	for key in AUTOLOAD_LIST.keys():
 		remove_autoload_singleton( key )

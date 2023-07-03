@@ -2,9 +2,9 @@ extends CanvasLayer
 
 signal fade_complete
 
-enum { IDLE, BLACK, OUT, IN }
-
 @onready var nColorRect: ColorRect = get_node( "ColorRect" )
+
+enum { IDLE, BLACK, OUT, IN }
 
 var state: int = IDLE : set = set_state
 var percent: float = 0 : set = set_percent
