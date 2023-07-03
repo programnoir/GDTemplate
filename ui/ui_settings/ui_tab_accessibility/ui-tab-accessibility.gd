@@ -6,8 +6,8 @@ extends VBoxContainer
 
 
 func set_language( index: int ) -> void:
-	index = max( index, 0 )
-	var full_name: String = nOptionButtonLanguages.get_item_text( index )
+	var full_name: String = nOptionButtonLanguages.get_item_text(
+			max( index, 0 ) )
 	owner.emit_signal( "new_language", GlobalUserSettings.languages[ full_name ] )
 
 

@@ -36,8 +36,8 @@ var selected_action: UIAction = null
 
 func set_new_action_bind( action: UIAction, bind: InputEvent ) -> void:
 	var action_name: String = action.get_action_name()
-	current_profile[ action_name ].append( bind )
 	var new_bind: Control = p_UIBind.instantiate()
+	current_profile[ action_name ].append( bind )
 	action.add_bind( new_bind, bind )
 	new_bind.removed_bind.connect( 
 			Callable( nSignals, "_on_removed_bind" ) )
@@ -46,12 +46,10 @@ func set_new_action_bind( action: UIAction, bind: InputEvent ) -> void:
 
 
 func scroll_to_focused_node( node_position_y: int ) -> void:
-	@warning_ignore("narrowing_conversion")
-	var scrollwindow_height: int = nSCActions.size.y
-	@warning_ignore("narrowing_conversion")
-	var scrollcontent_height: int = nVBCActions.size.y
-	@warning_ignore("integer_division")
-	var focused_y: int = node_position_y - ( scrollwindow_height / 2 )
+	var scrollwindow_height: int = nSCActions.size.y as int
+	var scrollcontent_height: int = nVBCActions.size.y as int
+	@warning_ignore( "integer_division" )
+	var focused_y: int = node_position_y - ( scrollwindow_height / 2 ) as int 
 	focused_y = clamp( focused_y, 0,
 			scrollcontent_height - scrollwindow_height )
 	nSCActions.set_v_scroll( focused_y )
@@ -165,8 +163,8 @@ func delete_current_profile() -> void:
 
 
 func update_from_load() -> void:
-	repopulate_profiles()
 	var profile_index: int = GlobalUserSettings.get_current_input_profile()
+	repopulate_profiles()
 	select_input_profile( profile_index )
 	nOptionButtonProfile.selected = profile_index
 	repopulate_action_list()

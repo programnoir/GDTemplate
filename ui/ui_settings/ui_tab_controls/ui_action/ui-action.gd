@@ -30,8 +30,8 @@ func reassign_focus() -> void:
 
 
 func add_bind( new_bind: Control, bind_event: InputEvent ) -> void:
-	add_child( new_bind )
 	var bind_name: String = bind_event.as_text()
+	add_child( new_bind )
 	new_bind.set_action_name( get_action_name() )
 	new_bind.set_bind_name( bind_name )
 	new_bind.set_input_event( bind_event )
