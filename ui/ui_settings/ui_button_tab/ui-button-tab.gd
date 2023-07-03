@@ -3,6 +3,7 @@ class_name ButtonTab
 
 @export var tab: VBoxContainer = null
 
+
 func _on_focus_entered() -> void:
 	if( tab == null ):
 		print( "No tab for this ButtonTab. This ButtonTab = %s", text )

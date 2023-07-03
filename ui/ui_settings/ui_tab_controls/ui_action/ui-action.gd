@@ -1,6 +1,8 @@
 extends VBoxContainer
 class_name UIAction
 
+signal adding_bind
+
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nLabelActionName: Label = get_node(
 		"PanelContainer/Panel/HBCActionName/LabelActionName" )
@@ -8,10 +10,9 @@ class_name UIAction
 		"PanelContainer/Panel/HBCActionName/ButtonAddBind" )
 @onready var nVBCBinds: VBoxContainer = get_node( "VBCBinds" )
 
-signal adding_bind
-
 #	Action's name
 var this_name: String = ""
+
 
 func get_action_name() -> String:
 	return this_name

@@ -241,8 +241,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 246.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -291,8 +291,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 246.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -470,7 +470,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 script = ExtResource("10_wtmlu")
-bus_id = 2
+BUS_ID = 2
 
 [node name="Label3" type="Label" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume"]
 layout_mode = 2
@@ -483,7 +483,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 script = ExtResource("10_wtmlu")
-bus_id = 3
+BUS_ID = 3
 
 [node name="Label4" type="Label" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume"]
 layout_mode = 2
@@ -496,7 +496,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 script = ExtResource("10_wtmlu")
-bus_id = 4
+BUS_ID = 4
 
 [node name="VSeparator2" type="VSeparator" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio"]
 modulate = Color(1, 1, 1, 0)

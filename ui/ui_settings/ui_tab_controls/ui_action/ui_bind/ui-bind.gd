@@ -1,14 +1,12 @@
 extends HBoxContainer
 
+signal removed_bind
+
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nLabelBindName: Label = get_node( "LabelBindName" )
 @onready var nButtonRemoveBind: Button = get_node( "ButtonRemoveBind" )
 
-signal removed_bind
-
 #	Debug? Remove later possibly. Unless I forgot during the refactor.
-var this_name: String = ""
-
 var action: String
 var event: InputEvent
 
@@ -19,7 +17,6 @@ func set_action_name( new_name: String ) -> void:
 
 func set_bind_name( new_name: String ) -> void:
 	nLabelBindName.text = new_name
-	this_name = new_name
 
 
 func set_input_event( new_event: InputEvent ) -> void:

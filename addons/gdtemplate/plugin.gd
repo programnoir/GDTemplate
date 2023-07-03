@@ -17,6 +17,7 @@ const AUTOLOAD_LIST: Dictionary = {
 			'global-ui-screenfade.tscn'
 }
 
+
 func _get_plugin_name():
 	return "GDTemplate"
 

@@ -34,6 +34,7 @@ var view: Viewport = get_viewport()
 #	Resolution stats
 var monitor_size: Vector2i = Vector2i.ZERO
 var monitor_aspect_ratio: float = 0.0
+#	Specify the smallest possible window size in your project settings.
 var base_game_resolution: Vector2i = Vector2i(
 		ProjectSettings.get_setting( "display/window/size/viewport_width" ), 
 		ProjectSettings.get_setting( "display/window/size/viewport_height" )
@@ -41,13 +42,11 @@ var base_game_resolution: Vector2i = Vector2i(
 var game_resolution: Vector2i = base_game_resolution
 var max_scale: float = 1.0
 
-#	These days, 1366x768 is rare. 1920x1080 is today's default.
-#	4K and 8K resolutions are largely a multiple of 1080p, so a scaling
-#	System makes the most sense.
 
 """
 	Saving/Loading Functions
 """
+
 
 func save_settings() -> void:
 	print( "Saving settings" )
@@ -92,32 +91,30 @@ func load_settings() -> bool:
 	#	And now we can assign this data to the game.
 	return true
 
+
 """
-	Settings-specific functions
+	Accessibility & Language
 """
 
+#	Changing the language of the game.
 func get_current_language() -> String:
 	if( accessibility.has( "current_language" ) == false ):
 		return ""
 	return accessibility[ "current_language" ]
 
+
 func get_language_codes() -> Array:
 	return languages.values()
 
-#	Changing the language of the game.
+
 func set_new_language( language_code: String ) -> void:
 	accessibility[ "current_language" ] = language_code
 	TranslationServer.set_locale( language_code )
 
-#	Managing input profile data
 
-func save_changes_to_profile(
-		array_index: int,
-		input_data: Dictionary
-) -> void:
-	input_profiles[ "profiles" ][ array_index - 1 ].clear()
-	input_profiles[ "profiles" ][ array_index - 1 ] = input_data.duplicate( true )
-	save_settings()
+"""
+	Keybind Input Profile
+"""
 
 
 func get_current_input_profile() -> int:
@@ -137,6 +134,15 @@ func get_input_profile_names() -> Array:
 
 func get_input_profile( array_index: int ) -> Dictionary:
 	return input_profiles[ "profiles" ][ array_index - 1 ]
+
+
+func save_changes_to_profile(
+		array_index: int,
+		input_data: Dictionary
+) -> void:
+	input_profiles[ "profiles" ][ array_index - 1 ].clear()
+	input_profiles[ "profiles" ][ array_index - 1 ] = input_data.duplicate( true )
+	save_settings()
 
 
 func select_input_profile( profile_name: String ) -> bool:
@@ -161,20 +167,31 @@ func delete_input_profile( array_index: int ) -> void:
 	save_settings()
 
 
-#	Changing the audio level.
+"""
+	Audio Controls
+"""
+
+
 func set_bus_volume( bus_id: int, new_value: float ) -> void:
 	AudioServer.set_bus_volume_db( bus_id, -80.0 * ( 1.0 - new_value ) )
 	audio[ bus_id ] = new_value
 
 
+"""
+	Video Settings
+"""
+
 func get_window_scale() -> int:
 	return video[ "window_scale" ]
+
 
 func get_game_scale() -> int:
 	return video[ "game_scale" ]
 
+
 func is_fullscreen() -> bool:
 	return video[ "fullscreen" ]
+
 
 func get_display_info() -> void:
 	main_window = get_window()
