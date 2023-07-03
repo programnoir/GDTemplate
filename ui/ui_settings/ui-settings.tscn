@@ -241,8 +241,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -291,8 +291,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -328,55 +328,6 @@ text = "Retry"
 [node name="ButtonCancelBind" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Cancel"
-
-[node name="UIPopupDeleteConfirm" type="PopupPanel" parent="VBCSettings/ColorRect/VBCControls"]
-initial_position = 1
-title = "Create Profile"
-size = Vector2i(400, 250)
-always_on_top = true
-max_size = Vector2i(400, 250)
-
-[node name="cSig" type="Node" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm"]
-
-[node name="VBCNewProfile" type="VBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile"]
-layout_mode = 2
-text = "Delete Profile?"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile"]
-layout_mode = 2
-alignment = 1
-
-[node name="ButtonDeleteProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile/HBoxContainer"]
-layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../ButtonCancelDelete")
-focus_next = NodePath("../ButtonCancelDelete")
-focus_previous = NodePath("../ButtonCancelDelete")
-text = "Delete"
-
-[node name="VSeparator" type="VSeparator" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile/HBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_constants/separation = 30
-
-[node name="ButtonCancelDelete" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupDeleteConfirm/VBCNewProfile/HBoxContainer"]
-layout_mode = 2
 text = "Cancel"
 
 [node name="VBCGameplay" type="VBoxContainer" parent="VBCSettings/ColorRect"]
