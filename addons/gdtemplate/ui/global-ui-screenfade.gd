@@ -25,19 +25,17 @@ func set_percent( value: float ) -> void:
 	nColorRect.modulate.a = percent
 
 
-func set_state( value: int ) -> void:
-	var tween = get_tree().create_tween()
-	state = value
-	match state:
-		FADE_OUT:
-			#	Fading to black
-			tween.tween_property( self, "percent", 0.0, 0.5 )
-			tween.play()
-		FADE_IN:
-			#	Fading from black
-			tween.tween_property( self, "percent", 1.0, 0.5 )
-			tween.play()
+func set_state( new_value: int ) -> void:
+	var tween: Tween
+	var final_opacity_value: float = 0.0
+	state = new_value
 	visible = true
+	if( state == FADE_OUT ):
+		final_opacity_value = 1.0
+	#	Create new tween.
+	tween = get_tree().create_tween()
+	tween.tween_property( self, "percent", final_opacity_value, 0.5 )
+	tween.play()
 	await tween.finished
 	tween.kill()
 	_on_tween_finished()

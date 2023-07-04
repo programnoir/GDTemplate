@@ -11,12 +11,12 @@ func _on_scene_change( new_scene: String ) -> void:
 	var game_contents: Array = owner.nGame.get_children()
 	for content in game_contents:
 		content.destroy()
-	GlobalUIScreenFade.set_state( GlobalUIScreenFade.FADE_IN )
+	GlobalUIScreenFade.set_state( GlobalUIScreenFade.FADE_OUT )
 	await GlobalUIScreenFade.fade_complete
 	#	TODO: Convert to loading screen.
 	owner.nGame.add_child( load( new_scene ).instantiate() )
 	owner.nUI.visible = false
-	GlobalUIScreenFade.set_state( GlobalUIScreenFade.FADE_OUT )
+	GlobalUIScreenFade.set_state( GlobalUIScreenFade.FADE_IN )
 
 
 func _on_menu_new_game( first_room: String ) -> void:
