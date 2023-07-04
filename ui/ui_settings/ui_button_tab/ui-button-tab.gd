@@ -26,7 +26,7 @@ func _on_focus_entered() -> void:
 	var buttons: Array = get_tree().get_nodes_in_group(
 				"GroupSettingsTabButtons" )
 	for button in buttons:
-		button.tab.visible = false
+		button.n_VBCTab.visible = false
 	n_VBCTab.visible = true
 
 
