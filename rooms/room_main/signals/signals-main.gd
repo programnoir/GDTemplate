@@ -11,7 +11,7 @@ func _on_scene_change( new_scene: String ) -> void:
 	var game_contents: Array = owner.nGame.get_children()
 	for content in game_contents:
 		content.destroy()
-	GlobalUIScreenFade.set_state( GlobalUIScreenFade.IN )
+	GlobalUIScreenFade.set_state( GlobalUIScreenFade.FADE_IN )
 	await GlobalUIScreenFade.fade_complete
 	#	TODO: Convert to loading screen.
 	owner.nGame.add_child( load( new_scene ).instantiate() )
