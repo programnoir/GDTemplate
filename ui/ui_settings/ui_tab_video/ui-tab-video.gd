@@ -25,7 +25,7 @@ func set_window_scale( new_scale: int ) -> void:
 	else:
 		nCheckButtonFullScreen.button_pressed = false
 	#	Update information to player.
-	nLabelWindowScale.text = String.num( new_scale )
+	nLabelWindowScale.text = String.num( GlobalUserSettings.get_window_scale() )
 	nLabelGameScale.text = String.num( GlobalUserSettings.get_game_scale() )
 
 
