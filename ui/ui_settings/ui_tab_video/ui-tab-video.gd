@@ -8,10 +8,6 @@ extends VBoxContainer
 @onready var nLabelGameScale: Label = get_node(
 		"HBCGameScale/LabelGameScale" )
 
-@export var initial_fullscreen: bool = false
-@export var initial_window_scale: int = 1
-@export var initial_game_scale: int = 1
-
 
 func set_game_scale( new_scale: int ) -> void:
 	GlobalUserSettings.set_game_scale( new_scale )
@@ -44,16 +40,6 @@ func update_from_load() -> void:
 	#	Update information to player.
 	nLabelWindowScale.text = String.num( GlobalUserSettings.get_window_scale() )
 	nLabelGameScale.text = String.num( GlobalUserSettings.get_game_scale() )
-
-
-func initialize_video_settings() -> void:
-	print( "Initializing video" )
-	GlobalUserSettings.video[ "fullscreen" ] = initial_fullscreen
-	GlobalUserSettings.video[ "window_scale" ] = initial_window_scale
-	GlobalUserSettings.video[ "game_scale" ] = initial_window_scale
-	set_window_scale( initial_window_scale )
-	toggle_fullscreen( initial_fullscreen )
-	set_game_scale( initial_game_scale )
 
 
 func _ready() -> void:

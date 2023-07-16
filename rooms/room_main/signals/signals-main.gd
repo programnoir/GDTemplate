@@ -7,6 +7,19 @@ func _notification( what ) -> void:
 		owner.destroy()
 
 
+func disconnect_first_setup_signals() -> void:
+	owner.nUIFirstSetup.completed_first_setup.disconnect(
+			Callable( self, "_on_completed_first_setup" ) )
+	owner.nUIFirstSetup.new_language.disconnect(
+			Callable( self, "_on_new_language" ) )
+
+
+func _on_completed_first_setup() -> void:
+	disconnect_first_setup_signals()
+	owner.nUIFirstSetup.destroy()
+	owner.add_main_menus()
+
+
 func _on_scene_change( new_scene: String ) -> void:
 	var game_contents: Array = owner.nGame.get_children()
 	for content in game_contents:

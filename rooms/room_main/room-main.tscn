@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctmwayo7g5w8g"]
+[gd_scene load_steps=3 format=3 uid="uid://ctmwayo7g5w8g"]
 
 [ext_resource type="Script" path="res://rooms/room_main/room-main.gd" id="1_n6a48"]
 [ext_resource type="Script" path="res://rooms/room_main/signals/signals-main.gd" id="2_83eiw"]
-[ext_resource type="PackedScene" uid="uid://hotuxjgb4abp" path="res://ui/ui_main_menu/ui-main-menu.tscn" id="2_oy47r"]
-[ext_resource type="PackedScene" uid="uid://deud0wahw6k4q" path="res://ui/ui_settings/ui-settings.tscn" id="4_m88mf"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -26,11 +24,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="UIMainMenu" parent="UI" instance=ExtResource("2_oy47r")]
-layout_mode = 1
-room_game_start = "res://rooms/room_debug/room-debug.tscn"
-
-[node name="UISettings" parent="UI" instance=ExtResource("4_m88mf")]
-visible = false
-layout_mode = 1

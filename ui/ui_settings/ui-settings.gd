@@ -38,7 +38,6 @@ func _ready() -> void:
 		nTabVideo.update_from_load()
 		nTabAudio.update_from_load()
 	else:
-		nTabVideo.initialize_video_settings()
 		nTabControls.populate_action_list()
 
 
