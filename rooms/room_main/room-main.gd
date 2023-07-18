@@ -3,14 +3,12 @@ extends Control
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nGame: Node = get_node( "Game" )
 @onready var nUI: Control = get_node( "UI" )
-#@onready var nUIMainMenu: Control = nUI.get_node( "UIMainMenu" )
-#@onready var nUISettings: Control = nUI.get_node( "UISettings" )
 
-var pUIFirstSetup: PackedScene = preload(
+var p_UIFirstSetup: PackedScene = preload(
 		"res://ui/ui_first_setup/ui-first-setup.tscn" )
-var pUIMainMenu: PackedScene = preload(
+var p_UIMainMenu: PackedScene = preload(
 		"res://ui/ui_main_menu/ui-main-menu.tscn" )
-var pUISettings: PackedScene = preload(
+var p_UISettings: PackedScene = preload(
 		"res://ui/ui_settings/ui-settings.tscn" )
 
 var nUIFirstSetup: Control = null
@@ -27,32 +25,20 @@ func _enter_tree() -> void:
 
 
 func add_main_menus() -> void:
-	nUIMainMenu = pUIMainMenu.instantiate()
-	nUISettings = pUISettings.instantiate()
+	nUIMainMenu = p_UIMainMenu.instantiate()
+	nUISettings = p_UISettings.instantiate()
 	nUI.add_child( nUIMainMenu )
 	nUI.add_child( nUISettings )
-	#	Enable if developing for mobile.
-	#get_tree().set_auto_accept_quit( false )
 	nUIMainMenu.visible = true
 	nUISettings.visible = false
-	#	New Game
-	nUIMainMenu.menu_new_game.connect(
-			Callable( nSignals, "_on_menu_new_game" ) )
-	#	Continue Game
-	#	Settings
-	nUIMainMenu.menu_settings.connect(
-			Callable( nSignals, "_on_menu_settings" ) )
-	nUISettings.new_language.connect(
-			Callable( nSignals, "_on_new_language" ) )
-	nUISettings.menu_settings_closed.connect(
-			Callable( nSignals, "_on_menu_settings_closed" ) )
-	#	Quit
-	nUIMainMenu.menu_quit.connect( Callable( nSignals, "_on_menu_quit" ) )
+	nSignals.connect_main_menu_signals()
+	nSignals.connect_settings_signals()
 	nUIMainMenu.menu_focus()
-	print( nUIMainMenu )
 
 
 func _ready() -> void:
+	#	Enable if developing for mobile.
+	#get_tree().set_auto_accept_quit( false )
 	#	Need to know if we've configured settings before.
 	#	Config files will be located in:
 	#	%AppData%\Roaming\Godot\app_userdata\GDTemplate
@@ -60,12 +46,9 @@ func _ready() -> void:
 		GlobalUserSettings.set_first_time_setup( false )
 	#	If we couldn't find the loaded files or if you saw the menu already:
 	if( GlobalUserSettings.first_time_setup == false ):
-		nUIFirstSetup = pUIFirstSetup.instantiate()
+		nUIFirstSetup = p_UIFirstSetup.instantiate()
 		nUI.add_child( nUIFirstSetup )
-		nUIFirstSetup.new_language.connect(
-				Callable( nSignals, "_on_new_language" ) )
-		nUIFirstSetup.completed_first_setup.connect(
-				Callable( nSignals, "_on_completed_first_setup" ) )
+		nSignals.connect_first_setup_signals()
 	else:
 		add_main_menus()
 	#	Mainly have to do this just so that the language adjusts correctly.
@@ -76,20 +59,13 @@ func _ready() -> void:
 func destroy() -> void:
 	#	Should run all destroy functions that can be located in game.
 	if( nUIFirstSetup != null ):
-		nUIFirstSetup.disconnect_first_setup_signals()
+		nSignals.disconnect_first_setup_signals()
 		nUIFirstSetup.destroy()
 	if( nUIMainMenu != null ):
-		nUIMainMenu.menu_new_game.disconnect(
-				Callable( nSignals, "_on_menu_new_game" ) )
-		nUIMainMenu.menu_settings.disconnect( 
-				Callable( nSignals, "_on_menu_settings" ) )
-		nUIMainMenu.menu_quit.disconnect( Callable( nSignals, "_on_menu_quit" ) )
+		nSignals.disconnect_main_menu_signals()
 		nUIMainMenu.destroy()
 	if( nUISettings != null ):
-		nUISettings.new_language.disconnect(
-				Callable( nSignals, "_on_new_language" ) )
-		nUISettings.menu_settings_closed.disconnect(
-				Callable( nSignals, "_on_menu_settings_closed" ) )
+		nSignals.disconnect_settings_signals()
 		nUISettings.destroy()
 	#	Any awaits go here.
 	get_tree().quit( 0 )

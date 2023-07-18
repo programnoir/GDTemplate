@@ -5,7 +5,7 @@ signal completed_first_setup
 
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nVBCFirstSetup: VBoxContainer = get_node(
-			"Panel/SCFirstSetup/VBCFirstSetup" )
+		"Panel/SCFirstSetup/VBCFirstSetup" )
 @onready var nOptionButtonLanguages: OptionButton = nVBCFirstSetup.get_node(
 		"HBCLanguages/OptionButtonLanguage" )
 @onready var nCheckButtonFullScreen: CheckButton = nVBCFirstSetup.get_node(

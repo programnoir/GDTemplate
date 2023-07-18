@@ -3,8 +3,18 @@ extends Node
 const PREMASTER: int = 1
 
 
+"""
+	Accessibility
+"""
+
+
 func _on_option_button_language_item_selected( index: int ) -> void:
 	owner.set_language( index )
+
+
+"""
+	Audio
+"""
 
 
 func _on_check_button_mute_toggled( button_pressed: bool ) -> void:
@@ -12,6 +22,11 @@ func _on_check_button_mute_toggled( button_pressed: bool ) -> void:
 	var new_volume: float = 1.0 - float( button_pressed )
 	GlobalUserSettings.set_bus_volume( PREMASTER, 1.0 - new_volume )
 	GlobalUserSettings.save_settings()
+
+
+"""
+	Video
+"""
 
 
 func _on_check_button_fullscreen_toggled( button_pressed: bool ) -> void:
@@ -38,6 +53,11 @@ func _on_button_game_scale_down_pressed() -> void:
 func _on_button_game_scale_up_pressed() -> void:
 	owner.set_game_scale( GlobalUserSettings.get_game_scale() + 1 )
 	GlobalUserSettings.save_settings()
+
+
+"""
+	Confirm
+"""
 
 
 func _on_button_complete_setup_pressed() -> void:
