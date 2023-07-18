@@ -348,8 +348,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_e6u1s")
-initial_window_scale = 2
-initial_game_scale = 2
 
 [node name="Signals" type="Node" parent="VBCSettings/ColorRect/VBCVideo"]
 script = ExtResource("13_vlm2y")
@@ -403,14 +401,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "ui_label_game_scale"
 
-[node name="ButtonReduceScale" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
+[node name="ButtonGameScaleDown" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
 layout_mode = 2
 text = " - "
 
 [node name="LabelGameScale" type="Label" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
 layout_mode = 2
 
-[node name="ButtonIncreaseScale" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
+[node name="ButtonGameScaleUp" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
 layout_mode = 2
 text = " + "
 
@@ -524,8 +522,8 @@ layout_mode = 2
 [connection signal="toggled" from="VBCSettings/ColorRect/VBCVideo/CheckButtonFullscreen" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_check_button_fullscreen_toggled"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCWindowScale/ButtonWindowScaleDown" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_button_window_scale_down_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCWindowScale/ButtonWindowScaleUp" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_button_window_scale_up_pressed"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCGameScale/ButtonReduceScale" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_button_reduce_scale_pressed"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCGameScale/ButtonIncreaseScale" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_button_increase_scale_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCGameScale/ButtonGameScaleDown" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_button_game_scale_down_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCGameScale/ButtonGameScaleUp" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_button_game_scale_up_pressed"]
 [connection signal="value_changed" from="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume/HSliderVolumeMain" to="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume/HSliderVolumeMain" method="_on_value_changed"]
 [connection signal="value_changed" from="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume/HSliderVolumeMusic" to="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume/HSliderVolumeMusic" method="_on_value_changed"]
 [connection signal="value_changed" from="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume/HSliderVolumeSFX" to="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume/HSliderVolumeSFX" method="_on_value_changed"]

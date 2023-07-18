@@ -5,6 +5,7 @@ const CONFIG_FILE_NAME: String = "settings"
 const CONFIG_EXTENSION: String = ".tres"
 
 #	Save file information
+var first_time_setup: bool = false
 var accessibility: Dictionary = {
 	"current_language": "English"
 }
@@ -50,6 +51,7 @@ var max_scale: float = 1.0
 
 func save_settings() -> void:
 	var new_save: = GameSettings.new()
+	new_save.first_time_setup = first_time_setup
 	new_save.accessibility = accessibility.duplicate( true )
 	new_save.input_profiles = input_profiles.duplicate( true )
 	new_save.gameplay_options = gameplay_options.duplicate( true )
@@ -79,12 +81,20 @@ func load_settings() -> bool:
 			'Resource', 1 )
 	accessibility.clear()
 	#	Copying loaded data to our settings vars.
+	first_time_setup = new_load.first_time_setup
 	accessibility = new_load.accessibility.duplicate( true )
 	input_profiles = new_load.input_profiles.duplicate( true )
 	gameplay_options = new_load.gameplay_options.duplicate( true )
 	video = new_load.video.duplicate( true )
 	audio = new_load.audio.duplicate( true )
 	return true
+
+
+"""
+	First-Time Setup
+"""
+func set_first_time_setup( new_value: bool ) -> void:
+	first_time_setup = new_value
 
 
 """

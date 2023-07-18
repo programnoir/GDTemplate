@@ -17,11 +17,11 @@ func _on_button_window_scale_up_pressed() -> void:
 	GlobalUserSettings.save_settings()
 
 
-func _on_button_reduce_scale_pressed() -> void:
+func _on_button_game_scale_down_pressed() -> void:
 	owner.nTabVideo.set_game_scale( GlobalUserSettings.get_game_scale() - 1 )
 	GlobalUserSettings.save_settings()
 
 
-func _on_button_increase_scale_pressed() -> void:
+func _on_button_game_scale_up_pressed() -> void:
 	owner.nTabVideo.set_game_scale( GlobalUserSettings.get_game_scale() + 1 )
 	GlobalUserSettings.save_settings()
