@@ -2,10 +2,11 @@ extends Control
 
 signal menu_settings_closed
 signal new_language
+signal new_font
 
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nButtonControls: Button = get_node(
-		"VBCSettings/HBCTabs/HBCClip/ButtonControls" )
+		"VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" )
 @onready var nTabControls: VBoxContainer = get_node(
 		"VBCSettings/ColorRect/VBCControls" )
 @onready var nTabAccessibility: VBoxContainer = get_node(
@@ -38,6 +39,8 @@ func _ready() -> void:
 		nTabVideo.update_from_load()
 		nTabAudio.update_from_load()
 	else:
+		nTabAccessibility.populate_font_list()
+		nTabAccessibility.set_font( 0 )
 		nTabControls.populate_action_list()
 
 

@@ -38,6 +38,16 @@ func _on_menu_settings_closed() -> void:
 func _on_new_language( language_code: String ) -> void:
 	GlobalUserSettings.set_new_language( language_code )
 	GlobalUserSettings.save_settings()
+	print( "Emitting translation complete signal" )
+	owner.emit_signal( "translation_complete" )
+
+
+func _on_new_font( new_font: String ) -> void:
+	var filepath: String = GlobalFontList.get_font_filepath( new_font )
+	if( filepath != null ):
+		var loaded_font: Font = load( filepath )
+		for type in owner.theme.get_type_list():
+			owner.theme.set_font( "font", type, loaded_font )
 
 
 """
@@ -61,8 +71,12 @@ func connect_main_menu_signals() -> void:
 func connect_settings_signals() -> void:
 	owner.nUISettings.new_language.connect(
 			Callable( self, "_on_new_language" ) )
+	owner.nUISettings.new_font.connect(
+			Callable( self, "_on_new_font" ) )
 	owner.nUISettings.menu_settings_closed.connect(
 			Callable( self, "_on_menu_settings_closed" ) )
+	owner.translation_complete.connect(
+			Callable( owner.nUISettings.nSignals, "_on_translation_complete" ) )
 
 
 func disconnect_main_menu_signals() -> void:
@@ -74,8 +88,12 @@ func disconnect_main_menu_signals() -> void:
 
 
 func disconnect_settings_signals() -> void:
+	owner.translation_complete.disconnect(
+			Callable( owner.nUISettings.nSignals, "_on_translation_complete" ) )
 	owner.nUISettings.new_language.disconnect(
 				Callable( self, "_on_new_language" ) )
+	owner.nUISettings.new_font.disconnect(
+			Callable( self, "_on_new_font" ) )
 	owner.nUISettings.menu_settings_closed.disconnect(
 				Callable( self, "_on_menu_settings_closed" ) )
 

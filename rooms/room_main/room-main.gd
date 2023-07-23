@@ -1,5 +1,7 @@
 extends Control
 
+signal translation_complete
+
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nGame: Node = get_node( "Game" )
 @onready var nUI: Control = get_node( "UI" )

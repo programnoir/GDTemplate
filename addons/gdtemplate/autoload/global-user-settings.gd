@@ -7,7 +7,8 @@ const CONFIG_EXTENSION: String = ".tres"
 #	Save file information
 var first_time_setup: bool = false
 var accessibility: Dictionary = {
-	"current_language": "English"
+	"current_language": "English",
+	"current_font_index": 0
 }
 var input_profiles: Dictionary = {
 	"profiles": [],
@@ -116,6 +117,14 @@ func get_language_codes() -> Array:
 func set_new_language( language_code: String ) -> void:
 	accessibility[ "current_language" ] = language_code
 	TranslationServer.set_locale( language_code )
+
+
+func get_current_font_index() -> int:
+	return accessibility[ "current_font_index" ]
+
+
+func set_current_font_index( new_index: int ) -> void:
+	accessibility[ "current_font_index" ] = new_index
 
 
 """

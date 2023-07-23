@@ -33,74 +33,76 @@ script = ExtResource("2_5oke5")
 clip_contents = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.025
-anchor_top = 0.044
-anchor_right = 0.975
-anchor_bottom = 0.952
-offset_top = 0.239998
-offset_bottom = -0.0800171
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBCTabs" type="HBoxContainer" parent="VBCSettings"]
-clip_contents = true
 layout_mode = 2
 
-[node name="HBCClip" type="HBoxContainer" parent="VBCSettings/HBCTabs"]
+[node name="SCTabsWrap" type="ScrollContainer" parent="VBCSettings/HBCTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBCTabsClip" type="HBoxContainer" parent="VBCSettings/HBCTabs/SCTabsWrap"]
 clip_contents = true
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 
-[node name="ButtonAccessibility" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonAccessibility" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_right = NodePath("../ButtonControls")
 text = "ui_tab_accessibility"
 script = ExtResource("3_5sqn5")
-n_VBCTab = NodePath("../../../ColorRect/VBCAccessibility")
+n_VBCTab = NodePath("../../../../ColorRect/VBCAccessibility")
 
-[node name="ButtonControls" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonControls" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonAccessibility")
 focus_neighbor_right = NodePath("../ButtonGameplay")
-focus_neighbor_bottom = NodePath("../../../ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonNewProfile")
+focus_neighbor_bottom = NodePath("../../../../ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonNewProfile")
 text = "ui_tab_controls"
 script = ExtResource("3_5sqn5")
-n_VBCTab = NodePath("../../../ColorRect/VBCControls")
+n_VBCTab = NodePath("../../../../ColorRect/VBCControls")
 
-[node name="ButtonGameplay" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonGameplay" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonControls")
 focus_neighbor_right = NodePath("../ButtonVideo")
 text = "ui_tab_gameplay"
 script = ExtResource("3_5sqn5")
-n_VBCTab = NodePath("../../../ColorRect/VBCGameplay")
+n_VBCTab = NodePath("../../../../ColorRect/VBCGameplay")
 
-[node name="ButtonVideo" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonVideo" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonGameplay")
 focus_neighbor_right = NodePath("../ButtonAudio")
 text = "ui_tab_video"
 script = ExtResource("3_5sqn5")
-n_VBCTab = NodePath("../../../ColorRect/VBCVideo")
+n_VBCTab = NodePath("../../../../ColorRect/VBCVideo")
 
-[node name="ButtonAudio" type="Button" parent="VBCSettings/HBCTabs/HBCClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
+[node name="ButtonAudio" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonVideo")
-focus_neighbor_right = NodePath("../../ButtonCloseSettings")
+focus_neighbor_right = NodePath("../../../ButtonCloseSettings")
 text = "ui_tab_audio"
 script = ExtResource("3_5sqn5")
-n_VBCTab = NodePath("../../../ColorRect/VBCAudio")
+n_VBCTab = NodePath("../../../../ColorRect/VBCAudio")
 
 [node name="VSeparator" type="VSeparator" parent="VBCSettings/HBCTabs"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="ButtonCloseSettings" type="Button" parent="VBCSettings/HBCTabs"]
 layout_mode = 2
-text = "  X  "
+size_flags_stretch_ratio = 0.0
+text = "X"
 
 [node name="ColorRect" type="ColorRect" parent="VBCSettings"]
 layout_mode = 2
@@ -108,7 +110,6 @@ size_flags_vertical = 3
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.882353)
 
 [node name="VBCAccessibility" type="VBoxContainer" parent="VBCSettings/ColorRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,6 +144,37 @@ size_flags_horizontal = 3
 [node name="VSeparator2" type="VSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+
+[node name="HBCFonts" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCAccessibility"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+layout_mode = 2
+text = "Font"
+
+[node name="HSeparator2" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ButtonPrevFont" type="Button" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+layout_mode = 2
+text = "<"
+
+[node name="LabelCurrentFont" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Font"
+horizontal_alignment = 1
+
+[node name="ButtonNextFont" type="Button" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+layout_mode = 2
+text = ">"
 
 [node name="VBCControls" type="VBoxContainer" parent="VBCSettings/ColorRect"]
 visible = false
@@ -241,8 +273,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -291,8 +323,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -417,6 +449,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
 [node name="VBCAudio" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -500,13 +533,15 @@ BUS_ID = 4
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/ButtonAccessibility" to="VBCSettings/HBCTabs/HBCClip/ButtonAccessibility" method="_on_focus_entered"]
-[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/ButtonControls" to="VBCSettings/HBCTabs/HBCClip/ButtonControls" method="_on_focus_entered"]
-[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/ButtonGameplay" to="VBCSettings/HBCTabs/HBCClip/ButtonGameplay" method="_on_focus_entered"]
-[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/ButtonVideo" to="VBCSettings/HBCTabs/HBCClip/ButtonVideo" method="_on_focus_entered"]
-[connection signal="focus_entered" from="VBCSettings/HBCTabs/HBCClip/ButtonAudio" to="VBCSettings/HBCTabs/HBCClip/ButtonAudio" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonGameplay" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonGameplay" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo" method="_on_focus_entered"]
+[connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" method="_on_focus_entered"]
 [connection signal="pressed" from="VBCSettings/HBCTabs/ButtonCloseSettings" to="Signals" method="_on_button_close_settings_pressed"]
 [connection signal="item_selected" from="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages/OptionButtonLanguage" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_option_button_language_item_selected"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonPrevFont" to="Signals" method="_on_button_prev_font_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonNextFont" to="Signals" method="_on_button_next_font_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonNewProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_new_profile_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonSaveProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_save_profile_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonResetProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_reset_profile_pressed"]
