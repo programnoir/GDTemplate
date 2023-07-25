@@ -4,30 +4,22 @@ extends VBoxContainer
 @onready var nOptionButtonLanguages: OptionButton = get_node(
 		"HBCLanguages/OptionButtonLanguage" )
 @onready var nHBCFonts: HBoxContainer = get_node( "HBCFonts" )
-@onready var nButtonPrevFont: Button = nHBCFonts.get_node( "ButtonPrevFont" )
-@onready var nLabelCurrentFont: Label = nHBCFonts.get_node( "LabelCurrentFont" )
-@onready var nButtonNextFont: Button = nHBCFonts.get_node( "ButtonNextFont" )
-
-var font_array: Array = []
+@onready var nButtonCycleFont: ButtonCycle = nHBCFonts.get_node(
+		"ButtonCycleFont" )
 
 
 func set_font( font_index: int ) -> void:
-	#	Wrap index around array limits
-	if( font_index < 0 ):
-		font_index = max( 0, font_array.size() - 1 )
-	elif( font_index >= font_array.size() ):
-		font_index = 0
+	var font_array: Array = nButtonCycleFont.get_list()
 	GlobalUserSettings.set_current_font_index( font_index )
-	nLabelCurrentFont.text = font_array[ font_index ]
+	nButtonCycleFont.text = font_array[ font_index ]
 	GlobalUserSettings.save_settings()
 	GlobalTheme.set_font( font_array[ 
 			GlobalUserSettings.get_current_font_index() ] )
 
 
 func populate_font_list() -> void:
-	print( GlobalUserSettings.get_current_language() )
-	font_array = GlobalTheme.font_list[
-			GlobalUserSettings.get_current_language() ].keys()
+	nButtonCycleFont.set_list( GlobalTheme.font_list[
+			GlobalUserSettings.get_current_language() ].keys() )
 
 
 func set_language( index: int ) -> void:
@@ -38,6 +30,7 @@ func set_language( index: int ) -> void:
 	GlobalUserSettings.save_settings()
 	populate_font_list()
 	set_font( 0 )
+	owner.emit_signal( "new_language" )
 
 
 func populate_languages() -> void:
@@ -59,6 +52,7 @@ func update_from_load() -> void:
 	set_language( language_index )
 	#	I am having trouble finding a non-gross way of doing this.
 	set_font( current_font_index )
+	nButtonCycleFont.set_index_manual( current_font_index )
 
 
 func _ready() -> void:

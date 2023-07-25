@@ -24,6 +24,7 @@ var loaded_settings: bool = false
 
 func _enter_tree() -> void:
 	loaded_settings = GlobalUserSettings.load_settings()
+	GlobalUserSettings.set_first_time_setup( not loaded_settings )
 
 
 func add_main_menus() -> void:
@@ -45,10 +46,9 @@ func _ready() -> void:
 	#	Need to know if we've configured settings before.
 	#	Config files will be located in:
 	#	%AppData%\Roaming\Godot\app_userdata\GDTemplate
-	if( loaded_settings == false ):
-		GlobalUserSettings.set_first_time_setup( false )
 	#	If we couldn't find the loaded files or if you saw the menu already:
-	if( GlobalUserSettings.first_time_setup == false ):
+	if( GlobalUserSettings.first_time_setup == true ):
+		print( "Creating first time setup menu." )
 		nUIFirstSetup = p_UIFirstSetup.instantiate()
 		nUI.add_child( nUIFirstSetup )
 		nSignals.connect_first_setup_signals()

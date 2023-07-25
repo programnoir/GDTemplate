@@ -17,32 +17,20 @@ signal new_language
 
 #	Which button to receive focus.
 var focus_button: Button
-#	Set to true if settings have been configured before.
-var loaded_settings: bool = false
 
 
 func menu_focus() -> void:
 	focus_button.grab_focus()
 
 
-func _enter_tree() -> void:
-	loaded_settings = GlobalUserSettings.load_settings()
-
-
 func _ready() -> void:
 	GlobalTheme.new_fontlist.connect(
 			Callable( nSignals, "_on_new_fontlist" ) )
 	focus_button = nButtonControls
-	if( loaded_settings ):
-		#	Load from settings.
-		nTabAccessibility.update_from_load()
-		nTabControls.update_from_load()
-		nTabVideo.update_from_load()
-		nTabAudio.update_from_load()
-	else:
-		nTabAccessibility.populate_font_list()
-		nTabAccessibility.set_font( 0 )
-		nTabControls.populate_action_list()
+	nTabAccessibility.update_from_load()
+	nTabControls.update_from_load()
+	nTabVideo.update_from_load()
+	nTabAudio.update_from_load()
 
 
 func destroy() -> void:

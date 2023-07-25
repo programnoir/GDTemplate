@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://deud0wahw6k4q"]
+[gd_scene load_steps=18 format=3 uid="uid://c7obd534gd8vi"]
 
 [ext_resource type="Script" path="res://ui/ui_settings/ui-settings.gd" id="1_0ug5q"]
 [ext_resource type="Script" path="res://ui/ui_settings/signals/signals-ui-settings.gd" id="2_5oke5"]
-[ext_resource type="Script" path="res://ui/ui_settings/ui_button_tab/ui-button-tab.gd" id="3_5sqn5"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui-tab-controls.gd" id="3_ncl1e"]
+[ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_button_tab/ui-button-tab.gd" id="3_qv2l2"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_accessibility/ui-tab-accessibility.gd" id="4_lud5g"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_popup_set_bind/ui-popup-set-bind.gd" id="4_o3deg"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_accessibility/signals/signals-ui-tab-accessibility.gd" id="5_jtwqt"]
+[ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_button_cycle/ui-button-cycle.gd" id="6_hp1i3"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/signals/signals-ui-tab-controls.gd" id="7_0kov7"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_popup_create_profile/ui-popup-create-profile.gd" id="8_u1l81"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_video/ui-tab-video.gd" id="9_e6u1s"]
@@ -59,7 +60,7 @@ size_flags_stretch_ratio = 0.0
 layout_mode = 2
 focus_neighbor_right = NodePath("../ButtonControls")
 text = "ui_tab_accessibility"
-script = ExtResource("3_5sqn5")
+script = ExtResource("3_qv2l2")
 n_VBCTab = NodePath("../../../../ColorRect/VBCAccessibility")
 
 [node name="ButtonControls" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
@@ -68,7 +69,7 @@ focus_neighbor_left = NodePath("../ButtonAccessibility")
 focus_neighbor_right = NodePath("../ButtonGameplay")
 focus_neighbor_bottom = NodePath("../../../../ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonNewProfile")
 text = "ui_tab_controls"
-script = ExtResource("3_5sqn5")
+script = ExtResource("3_qv2l2")
 n_VBCTab = NodePath("../../../../ColorRect/VBCControls")
 
 [node name="ButtonGameplay" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
@@ -76,7 +77,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonControls")
 focus_neighbor_right = NodePath("../ButtonVideo")
 text = "ui_tab_gameplay"
-script = ExtResource("3_5sqn5")
+script = ExtResource("3_qv2l2")
 n_VBCTab = NodePath("../../../../ColorRect/VBCGameplay")
 
 [node name="ButtonVideo" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
@@ -84,7 +85,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonGameplay")
 focus_neighbor_right = NodePath("../ButtonAudio")
 text = "ui_tab_video"
-script = ExtResource("3_5sqn5")
+script = ExtResource("3_qv2l2")
 n_VBCTab = NodePath("../../../../ColorRect/VBCVideo")
 
 [node name="ButtonAudio" type="Button" parent="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip" node_paths=PackedStringArray("n_VBCTab") groups=["GroupSettingsTabButtons"]]
@@ -92,7 +93,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonVideo")
 focus_neighbor_right = NodePath("../../../ButtonCloseSettings")
 text = "ui_tab_audio"
-script = ExtResource("3_5sqn5")
+script = ExtResource("3_qv2l2")
 n_VBCTab = NodePath("../../../../ColorRect/VBCAudio")
 
 [node name="VSeparator" type="VSeparator" parent="VBCSettings/HBCTabs"]
@@ -155,26 +156,29 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
 layout_mode = 2
-text = "Font"
+text = "ui_label_font"
+
+[node name="Label2" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+layout_mode = 2
+text = "←"
+
+[node name="ButtonCycleFont" type="Button" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../HBCLanguages/OptionButtonLanguage")
+focus_neighbor_right = NodePath(".")
+focus_previous = NodePath("../../HBCLanguages/OptionButtonLanguage")
+script = ExtResource("6_hp1i3")
+
+[node name="Label3" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
+layout_mode = 2
+text = "→"
 
 [node name="HSeparator2" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
-
-[node name="ButtonPrevFont" type="Button" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
-layout_mode = 2
-text = "<"
-
-[node name="LabelCurrentFont" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Font"
-horizontal_alignment = 1
-
-[node name="ButtonNextFont" type="Button" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFonts"]
-layout_mode = 2
-text = ">"
 
 [node name="VBCControls" type="VBoxContainer" parent="VBCSettings/ColorRect"]
 visible = false
@@ -540,8 +544,7 @@ layout_mode = 2
 [connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" method="_on_focus_entered"]
 [connection signal="pressed" from="VBCSettings/HBCTabs/ButtonCloseSettings" to="Signals" method="_on_button_close_settings_pressed"]
 [connection signal="item_selected" from="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages/OptionButtonLanguage" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_option_button_language_item_selected"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonPrevFont" to="Signals" method="_on_button_prev_font_pressed"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonNextFont" to="Signals" method="_on_button_next_font_pressed"]
+[connection signal="new_index" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonCycleFont" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_cycle_font_new_index"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonNewProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_new_profile_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonSaveProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_save_profile_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonResetProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_reset_profile_pressed"]

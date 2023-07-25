@@ -8,6 +8,8 @@ signal completed_first_setup
 		"Panel/SCFirstSetup/VBCFirstSetup" )
 @onready var nOptionButtonLanguages: OptionButton = nVBCFirstSetup.get_node(
 		"HBCLanguages/OptionButtonLanguage" )
+@onready var nButtonCycleFont: ButtonCycle = nVBCFirstSetup.get_node(
+		"HBCFont/ButtonCycleFont" )
 @onready var nCheckButtonFullScreen: CheckButton = nVBCFirstSetup.get_node(
 		"CheckButtonFullscreen")
 @onready var nLabelWindowScale: Label = nVBCFirstSetup.get_node(
@@ -20,12 +22,28 @@ signal completed_first_setup
 @export var initial_game_scale: int = 1
 
 
+func set_font( font_index: int ) -> void:
+	var font_array: Array = nButtonCycleFont.get_list()
+	GlobalUserSettings.set_current_font_index( font_index )
+	nButtonCycleFont.text = font_array[ font_index ]
+	GlobalUserSettings.save_settings()
+	GlobalTheme.set_font( font_array[ 
+			GlobalUserSettings.get_current_font_index() ] )
+
+
+func populate_font_list() -> void:
+	nButtonCycleFont.set_list( GlobalTheme.font_list[
+			GlobalUserSettings.get_current_language() ].keys() )
+
+
 func set_language( index: int ) -> void:
 	var full_name: String = nOptionButtonLanguages.get_item_text(
 			max( index, 0 ) )
 	GlobalUserSettings.set_new_language( 
 			GlobalUserSettings.languages[ full_name ] )
 	GlobalUserSettings.save_settings()
+	populate_font_list()
+	set_font( 0 )
 	emit_signal( "new_language", GlobalUserSettings.languages[ full_name ] )
 
 
@@ -67,6 +85,7 @@ func initialize_video_settings() -> void:
 
 func _ready() -> void:
 	populate_languages()
+	populate_font_list()
 	GlobalUserSettings.get_display_info()
 	initialize_video_settings()
 	nOptionButtonLanguages.grab_focus()

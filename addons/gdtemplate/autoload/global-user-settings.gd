@@ -5,9 +5,9 @@ const CONFIG_FILE_NAME: String = "settings"
 const CONFIG_EXTENSION: String = ".tres"
 
 #	Save file information
-var first_time_setup: bool = false
+var first_time_setup: bool = true
 var accessibility: Dictionary = {
-	"current_language": "English",
+	"current_language": "en",
 	"current_font_index": 0
 }
 var input_profiles: Dictionary = {
@@ -76,6 +76,7 @@ func load_settings() -> bool:
 			CONFIG_EXTENSION ) == false ):
 		print( "Settings save file not found." )
 		return false
+	print( "Settings file was found." )
 	#	End defensive return: File does not exist
 	var new_load: Resource = ResourceLoader.load(
 			dirtext + CONFIG_DIR + CONFIG_FILE_NAME + CONFIG_EXTENSION,
