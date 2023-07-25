@@ -35,13 +35,13 @@ func add_main_menus() -> void:
 	nSignals.connect_settings_signals()
 	nUIMainMenu.visible = true
 	nUISettings.visible = false
-	nUISettings.send_font_signal()
 	nUIMainMenu.menu_focus()
 
 
 func _ready() -> void:
 	#	Enable if developing for mobile.
 	#get_tree().set_auto_accept_quit( false )
+	GlobalTheme.set_theme( theme )
 	#	Need to know if we've configured settings before.
 	#	Config files will be located in:
 	#	%AppData%\Roaming\Godot\app_userdata\GDTemplate

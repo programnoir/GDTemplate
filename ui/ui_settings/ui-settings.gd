@@ -2,7 +2,6 @@ extends Control
 
 signal menu_settings_closed
 signal new_language
-signal new_font
 
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nButtonControls: Button = get_node(
@@ -22,10 +21,6 @@ var focus_button: Button
 var loaded_settings: bool = false
 
 
-func send_font_signal() -> void:
-	nTabAccessibility.send_font_signal()
-
-
 func menu_focus() -> void:
 	focus_button.grab_focus()
 
@@ -35,7 +30,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	GlobalFontList.new_fontlist.connect(
+	GlobalTheme.new_fontlist.connect(
 			Callable( nSignals, "_on_new_fontlist" ) )
 	focus_button = nButtonControls
 	if( loaded_settings ):
@@ -51,7 +46,7 @@ func _ready() -> void:
 
 
 func destroy() -> void:
-	GlobalFontList.new_fontlist.disconnect(
+	GlobalTheme.new_fontlist.disconnect(
 			Callable( nSignals, "_on_new_fontlist" ) )
 	nTabControls.destroy()
 	if( is_queued_for_deletion() == false ):

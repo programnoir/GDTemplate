@@ -25,7 +25,7 @@ buses/default_bus_layout="res://data/resources/res-default-bus-layout.tres"
 [autoload]
 
 GlobalActionIgnoreList="*res://addons/gdtemplate/autoload/global-action-ignore-list.gd"
-GlobalFontList="*res://addons/gdtemplate/autoload/global-font-list.gd"
+GlobalTheme="*res://addons/gdtemplate/autoload/global-theme.gd"
 GlobalUserSettings="*res://addons/gdtemplate/autoload/global-user-settings.gd"
 GlobalUIScreenFade="*res://addons/gdtemplate/ui/global-ui-screenfade.tscn"
 

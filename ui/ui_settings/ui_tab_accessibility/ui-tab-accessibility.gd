@@ -11,11 +11,6 @@ extends VBoxContainer
 var font_array: Array = []
 
 
-func send_font_signal() -> void:
-	owner.emit_signal( "new_font", font_array[ 
-			GlobalUserSettings.get_current_font_index() ] )
-
-
 func set_font( font_index: int ) -> void:
 	#	Wrap index around array limits
 	if( font_index < 0 ):
@@ -25,18 +20,17 @@ func set_font( font_index: int ) -> void:
 	GlobalUserSettings.set_current_font_index( font_index )
 	nLabelCurrentFont.text = font_array[ font_index ]
 	GlobalUserSettings.save_settings()
-	send_font_signal()
+	GlobalTheme.set_font( font_array[ 
+			GlobalUserSettings.get_current_font_index() ] )
 
 
 func populate_font_list() -> void:
 	print( GlobalUserSettings.get_current_language() )
-	font_array = GlobalFontList.font_list[
+	font_array = GlobalTheme.font_list[
 			GlobalUserSettings.get_current_language() ].keys()
-	print( font_array )
 
 
 func set_language( index: int ) -> void:
-	print( "Setting Language" )
 	var full_name: String = nOptionButtonLanguages.get_item_text(
 			max( index, 0 ) )
 	GlobalUserSettings.set_new_language( 
