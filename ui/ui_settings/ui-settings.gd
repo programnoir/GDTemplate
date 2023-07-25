@@ -22,6 +22,10 @@ var focus_button: Button
 var loaded_settings: bool = false
 
 
+func send_font_signal() -> void:
+	nTabAccessibility.send_font_signal()
+
+
 func menu_focus() -> void:
 	focus_button.grab_focus()
 
@@ -31,6 +35,8 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	GlobalFontList.new_fontlist.connect(
+			Callable( nSignals, "_on_new_fontlist" ) )
 	focus_button = nButtonControls
 	if( loaded_settings ):
 		#	Load from settings.
@@ -45,6 +51,8 @@ func _ready() -> void:
 
 
 func destroy() -> void:
+	GlobalFontList.new_fontlist.disconnect(
+			Callable( nSignals, "_on_new_fontlist" ) )
 	nTabControls.destroy()
 	if( is_queued_for_deletion() == false ):
 		queue_free()

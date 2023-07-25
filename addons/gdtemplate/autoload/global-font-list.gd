@@ -1,5 +1,7 @@
 extends Node
 
+signal new_fontlist
+
 #	Needs to consistently match the language list in global user settings.
 var font_list: Dictionary = {
 	'en': {

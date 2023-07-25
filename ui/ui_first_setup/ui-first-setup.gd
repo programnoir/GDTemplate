@@ -23,6 +23,9 @@ signal completed_first_setup
 func set_language( index: int ) -> void:
 	var full_name: String = nOptionButtonLanguages.get_item_text(
 			max( index, 0 ) )
+	GlobalUserSettings.set_new_language( 
+			GlobalUserSettings.languages[ full_name ] )
+	GlobalUserSettings.save_settings()
 	emit_signal( "new_language", GlobalUserSettings.languages[ full_name ] )
 
 

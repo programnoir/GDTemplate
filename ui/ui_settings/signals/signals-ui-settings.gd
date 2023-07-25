@@ -27,7 +27,7 @@ func _on_button_next_font_pressed():
 			GlobalUserSettings.get_current_font_index() + 1 )
 
 
-func _on_translation_complete():
+func _on_new_fontlist():
 	owner.nTabAccessibility.populate_font_list()
 	owner.nTabAccessibility.set_font( 0 )
 	

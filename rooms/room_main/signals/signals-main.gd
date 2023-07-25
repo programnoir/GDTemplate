@@ -34,12 +34,13 @@ func _on_menu_settings_closed() -> void:
 	owner.previous_menu.visible = true
 
 
-#	New language chosen from settings menu.
+"""
+	This allows you to emit a signal that other nodes can use to perform a
+	manual translation, as opposed to the automatic Control nodes.
+"""
 func _on_new_language( language_code: String ) -> void:
-	GlobalUserSettings.set_new_language( language_code )
-	GlobalUserSettings.save_settings()
-	print( "Emitting translation complete signal" )
-	owner.emit_signal( "translation_complete" )
+	print( "Choosing new language", language_code )
+	pass
 
 
 func _on_new_font( new_font: String ) -> void:
@@ -75,8 +76,6 @@ func connect_settings_signals() -> void:
 			Callable( self, "_on_new_font" ) )
 	owner.nUISettings.menu_settings_closed.connect(
 			Callable( self, "_on_menu_settings_closed" ) )
-	owner.translation_complete.connect(
-			Callable( owner.nUISettings.nSignals, "_on_translation_complete" ) )
 
 
 func disconnect_main_menu_signals() -> void:
@@ -88,8 +87,6 @@ func disconnect_main_menu_signals() -> void:
 
 
 func disconnect_settings_signals() -> void:
-	owner.translation_complete.disconnect(
-			Callable( owner.nUISettings.nSignals, "_on_translation_complete" ) )
 	owner.nUISettings.new_language.disconnect(
 				Callable( self, "_on_new_language" ) )
 	owner.nUISettings.new_font.disconnect(

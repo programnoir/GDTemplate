@@ -31,10 +31,11 @@ func add_main_menus() -> void:
 	nUISettings = p_UISettings.instantiate()
 	nUI.add_child( nUIMainMenu )
 	nUI.add_child( nUISettings )
-	nUIMainMenu.visible = true
-	nUISettings.visible = false
 	nSignals.connect_main_menu_signals()
 	nSignals.connect_settings_signals()
+	nUIMainMenu.visible = true
+	nUISettings.visible = false
+	nUISettings.send_font_signal()
 	nUIMainMenu.menu_focus()
 
 
