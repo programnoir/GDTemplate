@@ -40,7 +40,8 @@ func set_language( index: int ) -> void:
 	GlobalUserSettings.save_settings()
 	populate_font_list()
 	set_font( 0 )
-	owner.emit_signal( "new_language" )
+	owner.emit_signal( "new_language",
+			GlobalUserSettings.languages[ full_name ] )
 
 
 func populate_languages() -> void:

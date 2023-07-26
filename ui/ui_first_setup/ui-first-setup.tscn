@@ -36,6 +36,7 @@ offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="VBCFirstSetup" type="VBoxContainer" parent="Panel/SCFirstSetup"]
