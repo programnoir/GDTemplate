@@ -3,9 +3,19 @@ extends VBoxContainer
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nOptionButtonLanguages: OptionButton = get_node(
 		"HBCLanguages/OptionButtonLanguage" )
-@onready var nHBCFonts: HBoxContainer = get_node( "HBCFonts" )
-@onready var nButtonCycleFont: ButtonCycle = nHBCFonts.get_node(
-		"ButtonCycleFont" )
+@onready var nButtonCycleFont: ButtonCycle = get_node(
+		"HBCFonts/ButtonCycleFont" )
+@onready var nLabelFontSize: Label = get_node(
+		"HBCFontSizes/LabelFontSize" )
+
+
+func set_font_size( new_size: int ) -> void:
+	var current_size: int = nLabelFontSize.text as int
+	current_size = max( 1, current_size + new_size )
+	GlobalUserSettings.set_current_font_size( current_size )
+	GlobalUserSettings.save_settings()
+	GlobalTheme.set_font_size( current_size )
+	nLabelFontSize.text = str( current_size )
 
 
 func set_font( font_index: int ) -> void:
@@ -53,6 +63,7 @@ func update_from_load() -> void:
 	#	I am having trouble finding a non-gross way of doing this.
 	set_font( current_font_index )
 	nButtonCycleFont.set_index_manual( current_font_index )
+	set_font_size( GlobalUserSettings.get_current_font_size() )
 
 
 func _ready() -> void:

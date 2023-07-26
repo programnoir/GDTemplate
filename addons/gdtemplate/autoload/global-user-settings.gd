@@ -8,7 +8,8 @@ const CONFIG_EXTENSION: String = ".tres"
 var first_time_setup: bool = true
 var accessibility: Dictionary = {
 	"current_language": "en",
-	"current_font_index": 0
+	"current_font_index": 0,
+	"current_font_size": 20
 }
 var input_profiles: Dictionary = {
 	"profiles": [],
@@ -126,6 +127,14 @@ func get_current_font_index() -> int:
 
 func set_current_font_index( new_index: int ) -> void:
 	accessibility[ "current_font_index" ] = new_index
+
+
+func get_current_font_size() -> int:
+	return accessibility[ "current_font_size" ]
+
+
+func set_current_font_size( new_size: int ) -> void:
+	accessibility[ "current_font_size" ] = new_size
 
 
 """

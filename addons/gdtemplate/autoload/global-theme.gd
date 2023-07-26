@@ -40,3 +40,8 @@ func set_font( new_font: String ) -> void:
 		var loaded_font: Font = load( filepath )
 		for type in theme.get_type_list():
 			theme.set_font( "font", type, loaded_font )
+
+
+func set_font_size( new_size: int ) -> void:
+	for type in theme.get_type_list():
+		theme.set_font_size( "font_size", type, new_size )

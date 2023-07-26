@@ -16,6 +16,8 @@ signal completed_first_setup
 		"HBCWindowScale/LabelWindowScale" )
 @onready var nLabelGameScale: Label = nVBCFirstSetup.get_node(
 		"HBCGameScale/LabelGameScale" )
+@onready var nLabelFontSize: Label = nVBCFirstSetup.get_node(
+		"HBCFontSize/LabelFontSize" )
 
 @export var initial_fullscreen: bool = false
 @export var initial_window_scale: int = 1
@@ -34,6 +36,15 @@ func set_font( font_index: int ) -> void:
 func populate_font_list() -> void:
 	nButtonCycleFont.set_list( GlobalTheme.font_list[
 			GlobalUserSettings.get_current_language() ].keys() )
+
+
+func set_font_size( new_size: int ) -> void:
+	var current_size: int = nLabelFontSize.text as int
+	current_size = max( 1, current_size + new_size )
+	GlobalUserSettings.set_current_font_size( current_size )
+	GlobalUserSettings.save_settings()
+	GlobalTheme.set_font_size( current_size )
+	nLabelFontSize.text = str( current_size )
 
 
 func set_language( index: int ) -> void:
@@ -86,6 +97,7 @@ func initialize_video_settings() -> void:
 func _ready() -> void:
 	populate_languages()
 	populate_font_list()
+	nLabelFontSize.text = str( GlobalUserSettings.get_current_font_size() )
 	GlobalUserSettings.get_display_info()
 	initialize_video_settings()
 	nOptionButtonLanguages.grab_focus()
