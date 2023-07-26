@@ -22,3 +22,4 @@ ui_label_vol_sfx,SFX,特撮
 ui_label_vol_vox,Vox,声
 ui_label_font,Font,フォント
 ui_label_font_size,Font Size,フォントサイズ 
+ui_label_start_muted,Start audio at 0% volume,最初は音声をミュートします
