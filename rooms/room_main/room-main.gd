@@ -43,6 +43,7 @@ func _ready() -> void:
 	#	Enable if developing for mobile.
 	#get_tree().set_auto_accept_quit( false )
 	GlobalTheme.set_theme( theme )
+	GlobalTheme.set_thread_arrays()
 	#	Need to know if we've configured settings before.
 	#	Config files will be located in:
 	#	%AppData%\Roaming\Godot\app_userdata\GDTemplate
