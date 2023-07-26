@@ -118,7 +118,7 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize"]
 layout_mode = 2
-text = "Font size"
+text = "ui_label_font_size"
 
 [node name="HSeparator5" type="HSeparator" parent="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize"]
 modulate = Color(1, 1, 1, 0)
@@ -162,7 +162,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../HBCVolumeSFX/HSliderVolumeSFX")
 focus_next = NodePath("../HBCVolumeSFX/HSliderVolumeSFX")
 focus_previous = NodePath("../HBCFontSize/ButtonFontSizeUp")
-text = "Start audio at 0% volume"
+text = "ui_label_start_muted"
 
 [node name="HBCVolumeSFX" type="HBoxContainer" parent="Panel/SCFirstSetup/VBCFirstSetup"]
 layout_mode = 2

@@ -192,7 +192,7 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes"]
 layout_mode = 2
-text = "Font size"
+text = "ui_label_font_size"
 
 [node name="HSeparator5" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes"]
 modulate = Color(1, 1, 1, 0)
