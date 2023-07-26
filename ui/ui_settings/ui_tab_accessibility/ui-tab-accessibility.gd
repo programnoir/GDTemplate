@@ -40,6 +40,7 @@ func set_language( index: int ) -> void:
 	GlobalUserSettings.save_settings()
 	populate_font_list()
 	set_font( 0 )
+	nButtonCycleFont.set_index_manual( 0 )
 	owner.emit_signal( "new_language",
 			GlobalUserSettings.languages[ full_name ] )
 
