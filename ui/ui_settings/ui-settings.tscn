@@ -67,7 +67,7 @@ n_VBCTab = NodePath("../../../../ColorRect/VBCAccessibility")
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonAccessibility")
 focus_neighbor_right = NodePath("../ButtonGameplay")
-focus_neighbor_bottom = NodePath("../../../../ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonNewProfile")
+focus_neighbor_bottom = NodePath("../../../../ColorRect/VBCControls/GCProfiles/ButtonNewProfile")
 text = "ui_tab_controls"
 script = ExtResource("3_qv2l2")
 n_VBCTab = NodePath("../../../../ColorRect/VBCControls")
@@ -111,6 +111,7 @@ size_flags_vertical = 3
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.882353)
 
 [node name="VBCAccessibility" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -229,7 +230,6 @@ layout_mode = 2
 theme_override_constants/separation = 6
 
 [node name="VBCControls" type="VBoxContainer" parent="VBCSettings/ColorRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,21 +246,19 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="CCProfiles" type="CenterContainer" parent="VBCSettings/ColorRect/VBCControls"]
+[node name="GCProfiles" type="GridContainer" parent="VBCSettings/ColorRect/VBCControls"]
 layout_mode = 2
-
-[node name="GCProfiles" type="GridContainer" parent="VBCSettings/ColorRect/VBCControls/CCProfiles"]
-layout_mode = 2
+size_flags_horizontal = 4
 columns = 2
 
-[node name="ButtonNewProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles"]
+[node name="ButtonNewProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/GCProfiles"]
 layout_mode = 2
 tooltip_text = "Creates a new profile based on the default control settings."
 focus_neighbor_right = NodePath("../ButtonSaveProfile")
 focus_next = NodePath("../ButtonSaveProfile")
 text = "ui_create_profile"
 
-[node name="ButtonSaveProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles"]
+[node name="ButtonSaveProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/GCProfiles"]
 layout_mode = 2
 tooltip_text = "Profile will be overwritten with the changes applied to this profile."
 focus_neighbor_left = NodePath("../ButtonNewProfile")
@@ -270,7 +268,7 @@ focus_previous = NodePath("../ButtonNewProfile")
 disabled = true
 text = "ui_save_to_profile"
 
-[node name="ButtonResetProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles"]
+[node name="ButtonResetProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/GCProfiles"]
 layout_mode = 2
 tooltip_text = "Cancels all changes. List of binds for profile are reloaded for the selected profile."
 focus_neighbor_left = NodePath("../ButtonSaveProfile")
@@ -280,7 +278,7 @@ focus_previous = NodePath("../ButtonSaveProfile")
 disabled = true
 text = "ui_revert_changes"
 
-[node name="ButtonDeleteProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles"]
+[node name="ButtonDeleteProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/GCProfiles"]
 layout_mode = 2
 tooltip_text = "Deletes the actively selected profile and selects the default profile, instead."
 focus_neighbor_left = NodePath("../ButtonResetProfile")
@@ -595,10 +593,10 @@ layout_mode = 2
 [connection signal="new_index" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonCycleFont" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_cycle_font_new_index"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes/ButtonFontSizeDown" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_font_size_down_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes/ButtonFontSizeUp" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_font_size_up_pressed"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonNewProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_new_profile_pressed"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonSaveProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_save_profile_pressed"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonResetProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_reset_profile_pressed"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/CCProfiles/GCProfiles/ButtonDeleteProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_delete_profile_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonNewProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_new_profile_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonSaveProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_save_profile_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonResetProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_reset_profile_pressed"]
+[connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonDeleteProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_delete_profile_pressed"]
 [connection signal="item_selected" from="VBCSettings/ColorRect/VBCControls/OptionButtonProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_option_button_profile_item_selected"]
 [connection signal="about_to_popup" from="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile" to="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/Signals" method="_on_ui_popup_create_profile_about_to_popup"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile/HBCCreateProfile/ButtonCreateProfile" to="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/Signals" method="_on_button_create_profile_pressed"]

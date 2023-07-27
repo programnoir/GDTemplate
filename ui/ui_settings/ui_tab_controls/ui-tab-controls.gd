@@ -6,7 +6,7 @@ extends VBoxContainer
 		"OptionButtonProfile" )
 #	Profile controls
 @onready var nGCProfiles: GridContainer = get_node(
-		"CCProfiles/GCProfiles" )
+		"GCProfiles" )
 @onready var nButtonNewProfile: Button = nGCProfiles.get_node(
 		"ButtonNewProfile" )
 @onready var nButtonSaveProfile: Button = nGCProfiles.get_node(

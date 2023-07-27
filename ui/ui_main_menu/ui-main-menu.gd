@@ -6,9 +6,9 @@ signal menu_quit
 
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nButtonNew: Button = get_node(
-		"Panel/CenterContainer/VBoxContainer/ButtonNew" )
+		"PanelContainer/VBoxContainer/ButtonNew" )
 @onready var nButtonSettings: Button = get_node(
-		"Panel/CenterContainer/VBoxContainer/ButtonSettings" )
+		"PanelContainer/VBoxContainer/ButtonSettings" )
 
 @export_file var room_game_start: String = ""
 

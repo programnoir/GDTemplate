@@ -19,5 +19,6 @@ func _on_button_close_settings_pressed() -> void:
 
 func _on_new_fontlist():
 	owner.nTabAccessibility.populate_font_list()
-	owner.nTabAccessibility.set_font( 0 )
+	owner.nTabAccessibility.set_font(
+			owner.nTabAccessibility.DEFAULT_FONT_INDEX )
 	

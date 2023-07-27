@@ -6,15 +6,20 @@ var theme: Theme
 var thread_font: Thread
 var thread_font_size: Thread
 
+#	Maximum font sizes according to Game Scale
+var maximum_font_sizes: Array = [ 26, 55, 82, 100 ]
+
 #	Needs to consistently match the language list in global user settings.
 var font_list: Dictionary = {
 	'en': {
-		'Atkinson Hyperlegible': 'res://assets/fonts/Atkinson-Hyperlegible-Regular-102.ttf',
-		'OpenDyslexic': 'res://assets/fonts/OpenDyslexic-Regular.otf'
+		'Atkinson Hyperlegible': [
+			'res://assets/fonts/Atkinson-Hyperlegible-Regular-102.ttf', 1.0 ],
+		'OpenDyslexic': [ 'res://assets/fonts/OpenDyslexic-Regular.otf', 0.85 ]
 	},
 	'JP': {
-		'Noto Sans JP': 'res://assets/fonts/NotoSansJP-Regular.ttf',
-		'モリサワのBIZ UDゴシックは': 'res://assets/fonts/BIZUDGothic-Regular.ttf'
+		'Noto Sans JP': [ 'res://assets/fonts/NotoSansJP-Regular.ttf', 0.95 ],
+		'モリサワのBIZ UDゴシックは': [
+			'res://assets/fonts/BIZUDGothic-Regular.ttf', 0.9 ]
 	}
 }
 
@@ -28,8 +33,9 @@ func get_font( font_name: String ) -> Font:
 			GlobalUserSettings.get_current_language() ]
 	if( fonts.has( font_name ) == false ):
 		return null
+	var font: Array = fonts[ font_name ]
 	#	End defensive return: No font found?
-	return load( fonts[ font_name ] )
+	return load( font[ 0 ] )
 
 
 func set_font_threaded( type: String, preloaded_font: Font ) -> void:
@@ -55,6 +61,15 @@ func set_font( new_font: String ) -> void:
 
 func set_font_size_threaded( type: String, new_size: int ) -> void:
 	theme.call_deferred( "set_font_size", "font_size", type, new_size )
+
+
+func get_adjusted_font_size( font_name: String ) -> int:
+	var fonts: Dictionary = font_list[
+			GlobalUserSettings.get_current_language() ]
+	var font: Array = fonts[ font_name ]
+	var adjusted_font_size: float = font[ 1 ] * (
+			GlobalUserSettings.get_current_font_size() as float )
+	return adjusted_font_size as int
 
 
 func set_font_size( new_size: int ) -> void:

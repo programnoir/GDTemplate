@@ -12,6 +12,7 @@ extends VBoxContainer
 func set_game_scale( new_scale: int ) -> void:
 	GlobalUserSettings.set_game_scale( new_scale )
 	nLabelGameScale.text = String.num( GlobalUserSettings.get_game_scale() )
+	owner.nTabAccessibility.set_font_size( 0 )
 
 
 func set_window_scale( new_scale: int ) -> void:

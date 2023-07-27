@@ -8,13 +8,22 @@ extends VBoxContainer
 @onready var nLabelFontSize: Label = get_node(
 		"HBCFontSizes/LabelFontSize" )
 
+const MINIMUM_FONT_SIZE: int = 8
+const DEFAULT_FONT_INDEX: int = 0
+
 
 func set_font_size( new_size: int ) -> void:
 	var current_size: int = nLabelFontSize.text as int
-	current_size = max( 1, current_size + new_size )
+	var adjusted_size: int = current_size
+	var maximum_font_size: int = GlobalTheme.maximum_font_sizes[
+			GlobalUserSettings.get_game_scale() - 1 ]
+	current_size = clamp( current_size + new_size, MINIMUM_FONT_SIZE,
+			maximum_font_size )
 	GlobalUserSettings.set_current_font_size( current_size )
 	GlobalUserSettings.save_settings()
-	GlobalTheme.set_font_size( current_size )
+	adjusted_size = GlobalTheme.get_adjusted_font_size(
+			nButtonCycleFont.text )
+	GlobalTheme.set_font_size( adjusted_size )
 	nLabelFontSize.text = str( current_size )
 
 
@@ -25,6 +34,10 @@ func set_font( font_index: int ) -> void:
 	GlobalUserSettings.save_settings()
 	GlobalTheme.set_font( font_array[ 
 			GlobalUserSettings.get_current_font_index() ] )
+	#	Adjusts the font size visually only.
+	var adjusted_size: int = GlobalTheme.get_adjusted_font_size(
+			nButtonCycleFont.text )
+	GlobalTheme.set_font_size( adjusted_size )
 
 
 func populate_font_list() -> void:
@@ -39,8 +52,8 @@ func set_language( index: int ) -> void:
 			GlobalUserSettings.languages[ full_name ] )
 	GlobalUserSettings.save_settings()
 	populate_font_list()
-	set_font( 0 )
-	nButtonCycleFont.set_index_manual( 0 )
+	set_font( DEFAULT_FONT_INDEX )
+	nButtonCycleFont.set_index_manual( DEFAULT_FONT_INDEX )
 	owner.emit_signal( "new_language",
 			GlobalUserSettings.languages[ full_name ] )
 

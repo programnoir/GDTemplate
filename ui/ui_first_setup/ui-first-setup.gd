@@ -23,6 +23,23 @@ signal completed_first_setup
 @export var initial_window_scale: int = 1
 @export var initial_game_scale: int = 1
 
+const MINIMUM_FONT_SIZE: int = 8
+
+
+func set_font_size( new_size: int ) -> void:
+	var current_size: int = nLabelFontSize.text as int
+	var adjusted_size: int = current_size
+	var maximum_font_size: int = GlobalTheme.maximum_font_sizes[
+			GlobalUserSettings.get_game_scale() - 1 ]
+	current_size = clamp( current_size + new_size, MINIMUM_FONT_SIZE,
+			maximum_font_size )
+	GlobalUserSettings.set_current_font_size( current_size )
+	GlobalUserSettings.save_settings()
+	adjusted_size = GlobalTheme.get_adjusted_font_size(
+			nButtonCycleFont.text )
+	GlobalTheme.set_font_size( adjusted_size )
+	nLabelFontSize.text = str( current_size )
+
 
 func set_font( font_index: int ) -> void:
 	var font_array: Array = nButtonCycleFont.get_list()
@@ -31,20 +48,15 @@ func set_font( font_index: int ) -> void:
 	GlobalUserSettings.save_settings()
 	GlobalTheme.set_font( font_array[ 
 			GlobalUserSettings.get_current_font_index() ] )
+	#	Adjusts the font size visually only.
+	var adjusted_size: int = GlobalTheme.get_adjusted_font_size(
+			nButtonCycleFont.text )
+	GlobalTheme.set_font_size( adjusted_size )
 
 
 func populate_font_list() -> void:
 	nButtonCycleFont.set_list( GlobalTheme.font_list[
 			GlobalUserSettings.get_current_language() ].keys() )
-
-
-func set_font_size( new_size: int ) -> void:
-	var current_size: int = nLabelFontSize.text as int
-	current_size = max( 1, current_size + new_size )
-	GlobalUserSettings.set_current_font_size( current_size )
-	GlobalUserSettings.save_settings()
-	GlobalTheme.set_font_size( current_size )
-	nLabelFontSize.text = str( current_size )
 
 
 func set_language( index: int ) -> void:
@@ -67,6 +79,8 @@ func populate_languages() -> void:
 func set_game_scale( new_scale: int ) -> void:
 	GlobalUserSettings.set_game_scale( new_scale )
 	nLabelGameScale.text = String.num( GlobalUserSettings.get_game_scale() )
+	#	Game scale impacts font size.
+	set_font_size( 0 )
 
 
 func set_window_scale( new_scale: int ) -> void:
