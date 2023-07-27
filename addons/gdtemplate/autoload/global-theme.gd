@@ -41,7 +41,6 @@ func set_font( new_font: String ) -> void:
 	if( preloaded_font == null ):
 		return
 	#	End defensive return: No filepath found.
-	var i: int = 0
 	for type in theme.get_type_list():
 		var timer: SceneTreeTimer
 		if( thread_font != null ):
@@ -51,7 +50,6 @@ func set_font( new_font: String ) -> void:
 		#	Retrieves the filepath to the new font.
 		thread_font.start( set_font_threaded.bind( 
 				type, preloaded_font ) )
-		i += 1
 		await timer.timeout
 
 
@@ -60,7 +58,6 @@ func set_font_size_threaded( type: String, new_size: int ) -> void:
 
 
 func set_font_size( new_size: int ) -> void:
-	var i: int = 0
 	for type in theme.get_type_list():
 		var timer: SceneTreeTimer
 		if( thread_font_size != null ):
@@ -69,7 +66,6 @@ func set_font_size( new_size: int ) -> void:
 		timer = get_tree().create_timer( 0.01 ) 
 		thread_font_size.start( set_font_size_threaded.bind(
 				type, new_size ) )
-		i += 1
 		await timer.timeout
 
 
