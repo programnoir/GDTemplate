@@ -39,7 +39,6 @@ func _on_menu_settings_closed() -> void:
 	manual translation, as opposed to the automatic Control nodes.
 """
 func _on_new_language( language_code: String ) -> void:
-	print( "Choosing new language", language_code )
 	pass
 
 

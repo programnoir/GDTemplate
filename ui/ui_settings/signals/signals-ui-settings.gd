@@ -17,7 +17,7 @@ func _on_button_close_settings_pressed() -> void:
 	owner.emit_signal( "menu_settings_closed" )
 
 
-func _on_new_fontlist():
+func _on_new_fontlist() -> void:
 	owner.nTabAccessibility.populate_font_list()
 	owner.nTabAccessibility.set_font(
 			owner.nTabAccessibility.DEFAULT_FONT_INDEX )

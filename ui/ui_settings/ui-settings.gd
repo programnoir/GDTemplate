@@ -4,8 +4,8 @@ signal menu_settings_closed
 signal new_language
 
 @onready var nSignals: Node = get_node( "Signals" )
-@onready var nButtonControls: Button = get_node(
-		"VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" )
+@onready var nButtonAccessibility: Button = get_node(
+		"VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" )
 @onready var nTabControls: VBoxContainer = get_node(
 		"VBCSettings/ColorRect/VBCControls" )
 @onready var nTabAccessibility: VBoxContainer = get_node(
@@ -25,7 +25,7 @@ func menu_focus() -> void:
 
 func _ready() -> void:
 	nSignals.connect_signals()
-	focus_button = nButtonControls
+	focus_button = nButtonAccessibility
 	nTabAccessibility.update_from_load()
 	nTabControls.update_from_load()
 	nTabVideo.update_from_load()

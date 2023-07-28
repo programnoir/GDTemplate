@@ -9,7 +9,7 @@ var thread_font_size: Thread
 #	Maximum font sizes according to Game Scale
 var maximum_font_sizes: Array = [ 26, 55, 82, 100 ]
 
-#	Needs to consistently match the language list in global user settings.
+#	Needs to consistently match the language codes in the translation sheet.
 var font_list: Dictionary = {
 	'en': {
 		'Atkinson Hyperlegible': [
