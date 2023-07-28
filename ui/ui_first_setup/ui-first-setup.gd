@@ -41,11 +41,11 @@ func set_font_size( new_size: int ) -> void:
 			nButtonCycleFont.text )
 	GlobalTheme.set_font_size( adjusted_size )
 	nSpinBoxFontSize.set_value_no_signal( new_size )
+	nSpinBoxLineEditFontSize.text = str( new_size )
 
 
 func toggle_font_size( button_pressed: bool ) -> void:
-	nSpinBoxFontSize.editable = button_pressed
-	if( nSpinBoxFontSize.editable == true ):
+	if( nSpinBoxFontSize.editable == false ):
 		nButtonToggleFontSize.focus_previous = \
 				nButtonToggleFontSize.get_path_to( nSpinBoxLineEditFontSize )
 		nButtonToggleFontSize.focus_neighbor_left = \
@@ -59,6 +59,7 @@ func toggle_font_size( button_pressed: bool ) -> void:
 				nButtonToggleFontSize.get_path_to( nButtonToggleFontSize )
 		nButtonToggleFontSize.text = tr( "ui_button_edit" )
 		set_font_size( nSpinBoxFontSize.value as int )
+	nSpinBoxFontSize.editable = button_pressed
 
 
 func set_font( font_index: int ) -> void:
