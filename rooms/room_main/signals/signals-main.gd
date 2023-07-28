@@ -34,10 +34,12 @@ func _on_menu_settings_closed() -> void:
 	owner.previous_menu.visible = true
 
 
-#	New language chosen from settings menu.
+"""
+	This allows you to emit a signal that other nodes can use to perform a
+	manual translation, as opposed to the automatic Control nodes.
+"""
 func _on_new_language( language_code: String ) -> void:
-	GlobalUserSettings.set_new_language( language_code )
-	GlobalUserSettings.save_settings()
+	pass
 
 
 """

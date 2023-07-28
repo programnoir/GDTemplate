@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c802x7na8wfbw"]
+
+[ext_resource type="FontFile" uid="uid://dewwc2li5whus" path="res://assets/fonts/Atkinson-Hyperlegible-Regular-102.ttf" id="1_fdd60"]
+
+[resource]
+default_font = ExtResource("1_fdd60")
+default_font_size = 20
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_fdd60")
+CheckBox/font_sizes/font_size = 20
+CheckBox/fonts/font = ExtResource("1_fdd60")
+CheckButton/font_sizes/font_size = 20
+CheckButton/fonts/font = ExtResource("1_fdd60")
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_fdd60")
+LineEdit/font_sizes/font_size = 20
+LineEdit/fonts/font = ExtResource("1_fdd60")
+LinkButton/font_sizes/font_size = 20
+LinkButton/fonts/font = ExtResource("1_fdd60")
+MenuBar/font_sizes/font_size = 20
+MenuBar/fonts/font = ExtResource("1_fdd60")
+MenuButton/font_sizes/font_size = 20
+MenuButton/fonts/font = ExtResource("1_fdd60")
+OptionButton/font_sizes/font_size = 20
+OptionButton/fonts/font = ExtResource("1_fdd60")
+PopupMenu/font_sizes/font_separator_size = 20
+PopupMenu/font_sizes/font_size = 20
+PopupMenu/fonts/font = ExtResource("1_fdd60")
+PopupMenu/fonts/font_separator = ExtResource("1_fdd60")
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/fonts/font = ExtResource("1_fdd60")
+TextEdit/font_sizes/font_size = 20
+TextEdit/fonts/font = ExtResource("1_fdd60")
+TooltipLabel/font_sizes/font_size = 20
+TooltipLabel/fonts/font = ExtResource("1_fdd60")
+Window/font_sizes/title_font_size = 20
+Window/fonts/title_font = ExtResource("1_fdd60")

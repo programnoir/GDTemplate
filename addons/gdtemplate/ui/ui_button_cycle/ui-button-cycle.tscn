@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://i4awy35ykync"]
+
+[ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_button_cycle/ui-button-cycle.gd" id="1_sm75r"]
+
+[node name="ButtonCycle" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+script = ExtResource("1_sm75r")

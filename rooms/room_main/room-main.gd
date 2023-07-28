@@ -1,5 +1,7 @@
 extends Control
 
+signal translation_complete
+
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nGame: Node = get_node( "Game" )
 @onready var nUI: Control = get_node( "UI" )
@@ -22,6 +24,7 @@ var loaded_settings: bool = false
 
 func _enter_tree() -> void:
 	loaded_settings = GlobalUserSettings.load_settings()
+	GlobalUserSettings.set_first_time_setup( not loaded_settings )
 
 
 func add_main_menus() -> void:
@@ -29,23 +32,23 @@ func add_main_menus() -> void:
 	nUISettings = p_UISettings.instantiate()
 	nUI.add_child( nUIMainMenu )
 	nUI.add_child( nUISettings )
-	nUIMainMenu.visible = true
-	nUISettings.visible = false
 	nSignals.connect_main_menu_signals()
 	nSignals.connect_settings_signals()
+	nUIMainMenu.visible = true
+	nUISettings.visible = false
 	nUIMainMenu.menu_focus()
 
 
 func _ready() -> void:
 	#	Enable if developing for mobile.
 	#get_tree().set_auto_accept_quit( false )
+	GlobalTheme.set_theme( theme )
 	#	Need to know if we've configured settings before.
 	#	Config files will be located in:
 	#	%AppData%\Roaming\Godot\app_userdata\GDTemplate
-	if( loaded_settings == false ):
-		GlobalUserSettings.set_first_time_setup( false )
 	#	If we couldn't find the loaded files or if you saw the menu already:
-	if( GlobalUserSettings.first_time_setup == false ):
+	if( GlobalUserSettings.first_time_setup == true ):
+		print( "Creating first time setup menu." )
 		nUIFirstSetup = p_UIFirstSetup.instantiate()
 		nUI.add_child( nUIFirstSetup )
 		nSignals.connect_first_setup_signals()

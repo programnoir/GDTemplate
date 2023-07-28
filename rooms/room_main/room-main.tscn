@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctmwayo7g5w8g"]
+[gd_scene load_steps=4 format=3 uid="uid://ctmwayo7g5w8g"]
 
 [ext_resource type="Script" path="res://rooms/room_main/room-main.gd" id="1_n6a48"]
 [ext_resource type="Script" path="res://rooms/room_main/signals/signals-main.gd" id="2_83eiw"]
+[ext_resource type="Theme" uid="uid://c802x7na8wfbw" path="res://data/resources/res-theme-default.tres" id="3_f8j2f"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_f8j2f")
 script = ExtResource("1_n6a48")
 
 [node name="Signals" type="Node" parent="."]
@@ -24,3 +26,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_f8j2f")

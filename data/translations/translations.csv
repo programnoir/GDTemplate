@@ -9,8 +9,8 @@ ui_tab_gameplay,Gameplay,ゲームプレイ
 ui_tab_video,Video,ビデオ
 ui_tab_audio,Audio,オーディオ
 ui_label_language,Language,言語
-ui_create_profile,Create New Profile,プロフィール作成
-ui_save_to_profile,Save Changes to Profile,変更内容を保存 
+ui_create_profile,New Profile,プロフィール作成
+ui_save_to_profile,Save Changes,変更内容を保存 
 ui_revert_changes,Revert Changes,変更を元に戻す
 ui_delete_profile,Delete Profile,プロフィールの削除
 ui_label_fullscreen,Fullscreen,全画面表示
@@ -20,3 +20,8 @@ ui_label_vol_main,Main,本編
 ui_label_vol_music,Music,音楽
 ui_label_vol_sfx,SFX,特撮
 ui_label_vol_vox,Vox,声
+ui_label_font,Font,フォント
+ui_label_font_size,Font Size,フォントサイズ 
+ui_label_start_muted,Start audio at 0% volume,最初は音声をミュートします
+ui_button_edit,Edit,変更 
+ui_button_confirm,Confirm,確認 

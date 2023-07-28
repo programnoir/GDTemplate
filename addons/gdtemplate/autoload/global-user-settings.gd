@@ -5,9 +5,11 @@ const CONFIG_FILE_NAME: String = "settings"
 const CONFIG_EXTENSION: String = ".tres"
 
 #	Save file information
-var first_time_setup: bool = false
+var first_time_setup: bool = true
 var accessibility: Dictionary = {
-	"current_language": "English"
+	"current_language": "en",
+	"current_font_index": 0,
+	"current_font_size": 20
 }
 var input_profiles: Dictionary = {
 	"profiles": [],
@@ -75,6 +77,7 @@ func load_settings() -> bool:
 			CONFIG_EXTENSION ) == false ):
 		print( "Settings save file not found." )
 		return false
+	print( "Settings file was found." )
 	#	End defensive return: File does not exist
 	var new_load: Resource = ResourceLoader.load(
 			dirtext + CONFIG_DIR + CONFIG_FILE_NAME + CONFIG_EXTENSION,
@@ -116,6 +119,22 @@ func get_language_codes() -> Array:
 func set_new_language( language_code: String ) -> void:
 	accessibility[ "current_language" ] = language_code
 	TranslationServer.set_locale( language_code )
+
+
+func get_current_font_index() -> int:
+	return accessibility[ "current_font_index" ]
+
+
+func set_current_font_index( new_index: int ) -> void:
+	accessibility[ "current_font_index" ] = new_index
+
+
+func get_current_font_size() -> int:
+	return accessibility[ "current_font_size" ]
+
+
+func set_current_font_size( new_size: int ) -> void:
+	accessibility[ "current_font_size" ] = new_size
 
 
 """

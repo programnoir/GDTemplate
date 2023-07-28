@@ -5,9 +5,9 @@ signal adding_bind
 
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nLabelActionName: Label = get_node(
-		"PanelContainer/Panel/HBCActionName/LabelActionName" )
+		"PanelContainer/VBoxContainer/HBCActionName/LabelActionName" )
 @onready var nButtonAddBind: Button = get_node(
-		"PanelContainer/Panel/HBCActionName/ButtonAddBind" )
+		"PanelContainer/VBoxContainer/HBCActionName/ButtonAddBind" )
 @onready var nVBCBinds: VBoxContainer = get_node( "VBCBinds" )
 
 var action_name: String = ""
