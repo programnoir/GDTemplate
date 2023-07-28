@@ -16,8 +16,12 @@ signal completed_first_setup
 		"HBCWindowScale/LabelWindowScale" )
 @onready var nLabelGameScale: Label = nVBCFirstSetup.get_node(
 		"HBCGameScale/LabelGameScale" )
-@onready var nHBCNumberFontSize: HBoxContainer = nVBCFirstSetup.get_node(
-		"HBCFontSize/HBCNumberFontSize" )
+@onready var nSpinBoxFontSize: SpinBox = nVBCFirstSetup.get_node(
+		"HBCFontSize/SpinBoxFontSize" )
+@onready var nSpinBoxLineEditFontSize: LineEdit = \
+		nSpinBoxFontSize.get_line_edit()
+@onready var nButtonToggleFontSize: Button = nVBCFirstSetup.get_node(
+		"HBCFontSize/ButtonToggleFontSize" )
 
 @export var initial_fullscreen: bool = false
 @export var initial_window_scale: int = 1
@@ -36,7 +40,25 @@ func set_font_size( new_size: int ) -> void:
 	adjusted_size = GlobalTheme.get_adjusted_font_size(
 			nButtonCycleFont.text )
 	GlobalTheme.set_font_size( adjusted_size )
-	nHBCNumberFontSize.set_value_silent( new_size )
+	nSpinBoxFontSize.set_value_no_signal( new_size )
+
+
+func toggle_font_size( button_pressed: bool ) -> void:
+	nSpinBoxFontSize.editable = button_pressed
+	if( nSpinBoxFontSize.editable == true ):
+		nButtonToggleFontSize.focus_previous = \
+				nButtonToggleFontSize.get_path_to( nSpinBoxLineEditFontSize )
+		nButtonToggleFontSize.focus_neighbor_left = \
+				nButtonToggleFontSize.get_path_to( nSpinBoxLineEditFontSize )
+		nSpinBoxLineEditFontSize.grab_focus()
+		nButtonToggleFontSize.text = tr( "ui_button_confirm" )
+	else:
+		nButtonToggleFontSize.focus_previous = nSpinBoxFontSize.get_path_to(
+				nButtonCycleFont )
+		nButtonToggleFontSize.focus_neighbor_left = \
+				nButtonToggleFontSize.get_path_to( nButtonToggleFontSize )
+		nButtonToggleFontSize.text = tr( "ui_button_edit" )
+		set_font_size( nSpinBoxFontSize.value as int )
 
 
 func set_font( font_index: int ) -> void:
@@ -107,6 +129,7 @@ func initialize_video_settings() -> void:
 
 
 func _ready() -> void:
+	nSignals.connect_signals()
 	populate_languages()
 	populate_font_list()
 	GlobalUserSettings.get_display_info()
@@ -118,4 +141,5 @@ func destroy() -> void:
 	if( is_queued_for_deletion() ):
 		return
 	#	End defensive return
+	nSignals.disconnect_signals()
 	queue_free()

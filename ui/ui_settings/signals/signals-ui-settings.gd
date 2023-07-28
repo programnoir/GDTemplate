@@ -22,3 +22,22 @@ func _on_new_fontlist():
 	owner.nTabAccessibility.set_font(
 			owner.nTabAccessibility.DEFAULT_FONT_INDEX )
 	
+	
+	"""
+		Ready
+	"""
+
+func connect_signals() -> void:
+	GlobalTheme.new_fontlist.connect(
+			Callable( self, "_on_new_fontlist" ) )
+	owner.nTabAccessibility.nSpinBoxLineEditFontSize.focus_entered.connect(
+		Callable( owner.nTabAccessibility.nSignals,
+		"_on_spin_box_font_size_focus_entered" ) )
+
+
+func disconnect_signals() -> void:
+	GlobalTheme.new_fontlist.disconnect(
+			Callable( self, "_on_new_fontlist" ) )
+	owner.nTabAccessibility.nSpinBoxLineEditFontSize.focus_entered.disconnect(
+		Callable( owner.nTabAccessibility.nSignals,
+		"_on_spin_box_font_size_focus_entered" ) )

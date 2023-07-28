@@ -24,8 +24,7 @@ func menu_focus() -> void:
 
 
 func _ready() -> void:
-	GlobalTheme.new_fontlist.connect(
-			Callable( nSignals, "_on_new_fontlist" ) )
+	nSignals.connect_signals()
 	focus_button = nButtonControls
 	nTabAccessibility.update_from_load()
 	nTabControls.update_from_load()
@@ -34,8 +33,7 @@ func _ready() -> void:
 
 
 func destroy() -> void:
-	GlobalTheme.new_fontlist.disconnect(
-			Callable( nSignals, "_on_new_fontlist" ) )
+	nSignals.disconnect_signals()
 	nTabControls.destroy()
 	if( is_queued_for_deletion() == false ):
 		queue_free()

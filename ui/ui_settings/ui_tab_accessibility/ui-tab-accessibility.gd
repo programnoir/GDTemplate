@@ -5,8 +5,12 @@ extends VBoxContainer
 		"HBCLanguages/OptionButtonLanguage" )
 @onready var nButtonCycleFont: ButtonCycle = get_node(
 		"HBCFonts/ButtonCycleFont" )
-@onready var nHBCNumberFontSize: HBoxContainer = get_node(
-		"HBCFontSizes/HBCNumberFontSize" )
+@onready var nSpinBoxFontSize: SpinBox = get_node(
+		"HBCFontSizes/SpinBoxFontSize" )
+@onready var nSpinBoxLineEditFontSize: LineEdit = \
+		nSpinBoxFontSize.get_line_edit()
+@onready var nButtonToggleFontSize: Button = get_node(
+		"HBCFontSizes/ButtonToggleFontSize" )
 
 const MINIMUM_FONT_SIZE: int = 8
 const DEFAULT_FONT_INDEX: int = 0
@@ -22,7 +26,25 @@ func set_font_size( new_size: int ) -> void:
 	adjusted_size = GlobalTheme.get_adjusted_font_size(
 			nButtonCycleFont.text )
 	GlobalTheme.set_font_size( adjusted_size )
-	nHBCNumberFontSize.set_value_silent( new_size )
+	nSpinBoxFontSize.set_value_no_signal( new_size )
+
+
+func toggle_font_size( button_pressed: bool ) -> void:
+	nSpinBoxFontSize.editable = button_pressed
+	if( nSpinBoxFontSize.editable == true ):
+		nButtonToggleFontSize.focus_previous = \
+				nButtonToggleFontSize.get_path_to( nSpinBoxLineEditFontSize )
+		nButtonToggleFontSize.focus_neighbor_left = \
+				nButtonToggleFontSize.get_path_to( nSpinBoxLineEditFontSize )
+		nSpinBoxLineEditFontSize.grab_focus()
+		nButtonToggleFontSize.text = tr( "ui_button_confirm" )
+	else:
+		nButtonToggleFontSize.focus_previous = nSpinBoxFontSize.get_path_to(
+				nButtonCycleFont )
+		nButtonToggleFontSize.focus_neighbor_left = \
+				nButtonToggleFontSize.get_path_to( nButtonToggleFontSize )
+		nButtonToggleFontSize.text = tr( "ui_button_edit" )
+		set_font_size( nSpinBoxFontSize.value as int )
 
 
 func set_font( font_index: int ) -> void:
