@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7obd534gd8vi"]
+[gd_scene load_steps=19 format=3 uid="uid://c7obd534gd8vi"]
 
 [ext_resource type="Script" path="res://ui/ui_settings/ui-settings.gd" id="1_0ug5q"]
 [ext_resource type="Script" path="res://ui/ui_settings/signals/signals-ui-settings.gd" id="2_5oke5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_accessibility/signals/signals-ui-tab-accessibility.gd" id="5_jtwqt"]
 [ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_button_cycle/ui-button-cycle.gd" id="6_hp1i3"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/signals/signals-ui-tab-controls.gd" id="7_0kov7"]
+[ext_resource type="PackedScene" uid="uid://cm5k8icps2bpw" path="res://addons/gdtemplate/ui/ui_hbc_number/ui-hbc-number.tscn" id="7_t0pv3"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_popup_create_profile/ui-popup-create-profile.gd" id="8_u1l81"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_video/ui-tab-video.gd" id="9_e6u1s"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_tab_controls/ui_popup_create_profile/signals/signals-ui-popup-create-profile.gd" id="9_okpng"]
@@ -111,7 +112,6 @@ size_flags_vertical = 3
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.882353)
 
 [node name="VBCAccessibility" type="VBoxContainer" parent="VBCSettings/ColorRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,8 +169,8 @@ size_flags_horizontal = 3
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBCLanguages/OptionButtonLanguage")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../HBCFontSizes/ButtonFontSizeUp")
-focus_next = NodePath("../../HBCFontSizes/ButtonFontSizeDown")
+focus_neighbor_bottom = NodePath("../../HBCFontSizes/HBCNumberFontSize")
+focus_next = NodePath("../../HBCFontSizes/HBCNumberFontSize")
 focus_previous = NodePath("../../HBCLanguages/OptionButtonLanguage")
 script = ExtResource("6_hp1i3")
 
@@ -195,34 +195,15 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "ui_label_font_size"
 
-[node name="HSeparator5" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes"]
-modulate = Color(1, 1, 1, 0)
+[node name="HBCNumberFontSize" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes" instance=ExtResource("7_t0pv3")]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
-
-[node name="ButtonFontSizeDown" type="Button" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes"]
-layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBCFonts/ButtonCycleFont")
-focus_neighbor_right = NodePath("../ButtonFontSizeUp")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath("../ButtonFontSizeUp")
-focus_previous = NodePath("../../HBCFonts/ButtonCycleFont")
-text = "-"
-
-[node name="LabelFontSize" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes"]
-layout_mode = 2
-
-[node name="ButtonFontSizeUp" type="Button" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes"]
-layout_mode = 2
-focus_neighbor_left = NodePath("../ButtonFontSizeDown")
-focus_neighbor_top = NodePath("../../HBCFonts/ButtonCycleFont")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
+focus_neighbor_right = NodePath("..")
+focus_neighbor_bottom = NodePath("..")
 focus_next = NodePath("../../HBCLanguages/OptionButtonLanguage")
-focus_previous = NodePath("../ButtonFontSizeDown")
-text = "+"
+focus_previous = NodePath("../../HBCFonts/ButtonCycleFont")
 
 [node name="HSeparator4" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes"]
 modulate = Color(1, 1, 1, 0)
@@ -230,6 +211,7 @@ layout_mode = 2
 theme_override_constants/separation = 6
 
 [node name="VBCControls" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -591,8 +573,7 @@ layout_mode = 2
 [connection signal="pressed" from="VBCSettings/HBCTabs/ButtonCloseSettings" to="Signals" method="_on_button_close_settings_pressed"]
 [connection signal="item_selected" from="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages/OptionButtonLanguage" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_option_button_language_item_selected"]
 [connection signal="new_index" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonCycleFont" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_cycle_font_new_index"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes/ButtonFontSizeDown" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_font_size_down_pressed"]
-[connection signal="pressed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes/ButtonFontSizeUp" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_font_size_up_pressed"]
+[connection signal="value_changed" from="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes/HBCNumberFontSize" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_hbc_number_value_changed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonNewProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_new_profile_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonSaveProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_save_profile_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonResetProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_reset_profile_pressed"]

@@ -16,8 +16,8 @@ signal completed_first_setup
 		"HBCWindowScale/LabelWindowScale" )
 @onready var nLabelGameScale: Label = nVBCFirstSetup.get_node(
 		"HBCGameScale/LabelGameScale" )
-@onready var nLabelFontSize: Label = nVBCFirstSetup.get_node(
-		"HBCFontSize/LabelFontSize" )
+@onready var nHBCNumberFontSize: HBoxContainer = nVBCFirstSetup.get_node(
+		"HBCFontSize/HBCNumberFontSize" )
 
 @export var initial_fullscreen: bool = false
 @export var initial_window_scale: int = 1
@@ -27,18 +27,16 @@ const MINIMUM_FONT_SIZE: int = 8
 
 
 func set_font_size( new_size: int ) -> void:
-	var current_size: int = nLabelFontSize.text as int
-	var adjusted_size: int = current_size
+	var adjusted_size: int = new_size
 	var maximum_font_size: int = GlobalTheme.maximum_font_sizes[
 			GlobalUserSettings.get_game_scale() - 1 ]
-	current_size = clamp( current_size + new_size, MINIMUM_FONT_SIZE,
-			maximum_font_size )
-	GlobalUserSettings.set_current_font_size( current_size )
+	new_size = clamp( new_size, MINIMUM_FONT_SIZE, maximum_font_size )
+	GlobalUserSettings.set_current_font_size( new_size )
 	GlobalUserSettings.save_settings()
 	adjusted_size = GlobalTheme.get_adjusted_font_size(
 			nButtonCycleFont.text )
 	GlobalTheme.set_font_size( adjusted_size )
-	nLabelFontSize.text = str( current_size )
+	nHBCNumberFontSize.set_value_silent( new_size )
 
 
 func set_font( font_index: int ) -> void:
@@ -80,7 +78,7 @@ func set_game_scale( new_scale: int ) -> void:
 	GlobalUserSettings.set_game_scale( new_scale )
 	nLabelGameScale.text = String.num( GlobalUserSettings.get_game_scale() )
 	#	Game scale impacts font size.
-	set_font_size( 0 )
+	set_font_size( GlobalUserSettings.get_current_font_size() )
 
 
 func set_window_scale( new_scale: int ) -> void:
@@ -111,7 +109,6 @@ func initialize_video_settings() -> void:
 func _ready() -> void:
 	populate_languages()
 	populate_font_list()
-	nLabelFontSize.text = str( GlobalUserSettings.get_current_font_size() )
 	GlobalUserSettings.get_display_info()
 	initialize_video_settings()
 	nOptionButtonLanguages.grab_focus()

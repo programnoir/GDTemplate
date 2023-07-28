@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm5k8icps2bpw"]
+
+[ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_hbc_number/ui-hbc-number.gd" id="1_7ty42"]
+
+[node name="HBCNumber" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ty42")
+
+[node name="VSeparator" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelValue" type="Label" parent="."]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="SpinBoxValue" type="SpinBox" parent="."]
+visible = false
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../ButtonToggleEditValue")
+focus_previous = NodePath("../ButtonToggleEditValue")
+min_value = 8.0
+value = 8.0
+rounded = true
+
+[node name="ButtonToggleEditValue" type="Button" parent="."]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SpinBoxValue")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../SpinBoxValue")
+focus_previous = NodePath("../SpinBoxValue")
+toggle_mode = true
+text = "edit"
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="toggled" from="ButtonToggleEditValue" to="." method="_on_button_toggle_edit_value_toggled"]

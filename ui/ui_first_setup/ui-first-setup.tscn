@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7bq80rl31wbi"]
+[gd_scene load_steps=6 format=3 uid="uid://b7bq80rl31wbi"]
 
 [ext_resource type="Script" path="res://ui/ui_first_setup/ui-first-setup.gd" id="1_2ntop"]
 [ext_resource type="Script" path="res://ui/ui_first_setup/signals-ui-first-setup.gd" id="2_phqke"]
 [ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_button_cycle/ui-button-cycle.gd" id="3_8nsus"]
 [ext_resource type="Script" path="res://ui/ui_settings/ui_hslider_volume/ui-hslider-volume.gd" id="3_bftde"]
+[ext_resource type="PackedScene" uid="uid://cm5k8icps2bpw" path="res://addons/gdtemplate/ui/ui_hbc_number/ui-hbc-number.tscn" id="4_18rpn"]
 
 [node name="UIFirstSetup" type="Control"]
 layout_mode = 3
@@ -95,8 +96,6 @@ size_flags_horizontal = 3
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBCLanguages/OptionButtonLanguage")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../HBCFontSize/ButtonFontSizeUp")
-focus_next = NodePath("../../HBCFontSize/ButtonFontSizeDown")
 focus_previous = NodePath("../../HBCLanguages/OptionButtonLanguage")
 script = ExtResource("3_8nsus")
 
@@ -120,34 +119,9 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "ui_label_font_size"
 
-[node name="HSeparator5" type="HSeparator" parent="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize"]
-modulate = Color(1, 1, 1, 0)
+[node name="HBCNumberFontSize" parent="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize" instance=ExtResource("4_18rpn")]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
-
-[node name="ButtonFontSizeDown" type="Button" parent="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize"]
-layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../HBCFont/ButtonCycleFont")
-focus_neighbor_right = NodePath("../ButtonFontSizeUp")
-focus_neighbor_bottom = NodePath("../../CheckButtonMute")
-focus_next = NodePath("../ButtonFontSizeUp")
-focus_previous = NodePath("../../HBCFont/ButtonCycleFont")
-text = "-"
-
-[node name="LabelFontSize" type="Label" parent="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize"]
-layout_mode = 2
-
-[node name="ButtonFontSizeUp" type="Button" parent="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize"]
-layout_mode = 2
-focus_neighbor_left = NodePath("../ButtonFontSizeDown")
-focus_neighbor_top = NodePath("../../HBCFont/ButtonCycleFont")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../CheckButtonMute")
-focus_next = NodePath("../../CheckButtonMute")
-focus_previous = NodePath("../ButtonFontSizeDown")
-text = "+"
 
 [node name="HSeparator4" type="HSeparator" parent="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize"]
 modulate = Color(1, 1, 1, 0)
@@ -157,11 +131,9 @@ theme_override_constants/separation = 6
 [node name="CheckButtonMute" type="CheckButton" parent="Panel/SCFirstSetup/VBCFirstSetup"]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../HBCFontSize/ButtonFontSizeUp")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../HBCVolumeSFX/HSliderVolumeSFX")
 focus_next = NodePath("../HBCVolumeSFX/HSliderVolumeSFX")
-focus_previous = NodePath("../HBCFontSize/ButtonFontSizeUp")
 text = "ui_label_start_muted"
 
 [node name="HBCVolumeSFX" type="HBoxContainer" parent="Panel/SCFirstSetup/VBCFirstSetup"]
@@ -304,8 +276,7 @@ text = "Play"
 
 [connection signal="item_selected" from="Panel/SCFirstSetup/VBCFirstSetup/HBCLanguages/OptionButtonLanguage" to="Signals" method="_on_option_button_language_item_selected"]
 [connection signal="new_index" from="Panel/SCFirstSetup/VBCFirstSetup/HBCFont/ButtonCycleFont" to="Signals" method="_on_button_cycle_font_new_index"]
-[connection signal="pressed" from="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize/ButtonFontSizeDown" to="Signals" method="_on_button_font_size_down_pressed"]
-[connection signal="pressed" from="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize/ButtonFontSizeUp" to="Signals" method="_on_button_font_size_up_pressed"]
+[connection signal="value_changed" from="Panel/SCFirstSetup/VBCFirstSetup/HBCFontSize/HBCNumberFontSize" to="Signals" method="_on_hbc_number_font_size_value_changed"]
 [connection signal="toggled" from="Panel/SCFirstSetup/VBCFirstSetup/CheckButtonMute" to="Signals" method="_on_check_button_mute_toggled"]
 [connection signal="toggled" from="Panel/SCFirstSetup/VBCFirstSetup/CheckButtonFullscreen" to="Signals" method="_on_check_button_fullscreen_toggled"]
 [connection signal="pressed" from="Panel/SCFirstSetup/VBCFirstSetup/HBCWindowScale/ButtonWindowScaleDown" to="Signals" method="_on_button_window_scale_down_pressed"]

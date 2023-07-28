@@ -16,12 +16,8 @@ func _on_button_cycle_font_new_index( current_index: int ) -> void:
 	owner.set_font( current_index )
 
 
-func _on_button_font_size_up_pressed() -> void:
-	owner.set_font_size( 1 )
-
-
-func _on_button_font_size_down_pressed() -> void:
-	owner.set_font_size( -1 )
+func _on_hbc_number_font_size_value_changed( value: int ) -> void:
+	owner.set_font_size( value )
 
 
 """
@@ -76,5 +72,3 @@ func _on_button_complete_setup_pressed() -> void:
 	GlobalUserSettings.set_first_time_setup( true )
 	GlobalUserSettings.save_settings()
 	owner.emit_signal( "completed_first_setup" )
-
-
