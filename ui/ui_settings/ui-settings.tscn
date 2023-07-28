@@ -111,6 +111,7 @@ size_flags_vertical = 3
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.882353)
 
 [node name="VBCAccessibility" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -214,7 +215,7 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBCFonts/ButtonCycleFont")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath("../../HBCLanguages/OptionButtonLanguage")
+focus_next = NodePath("../../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility")
 focus_previous = NodePath("../../HBCFonts/ButtonCycleFont")
 toggle_mode = true
 text = "ui_button_edit"
@@ -438,6 +439,12 @@ theme_override_constants/separation = 6
 [node name="CheckButtonFullscreen" type="CheckButton" parent="VBCSettings/ColorRect/VBCVideo"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../HBCWindowScale/ButtonWindowScaleUp")
+focus_next = NodePath("../HBCWindowScale/ButtonWindowScaleDown")
+focus_previous = NodePath("../../../HBCTabs/ButtonCloseSettings")
 text = "ui_label_fullscreen"
 
 [node name="HBCWindowScale" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCVideo"]
@@ -454,6 +461,12 @@ text = "ui_label_window_scale"
 
 [node name="ButtonWindowScaleDown" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo")
+focus_neighbor_right = NodePath("../ButtonWindowScaleUp")
+focus_neighbor_bottom = NodePath("../../HBCGameScale/ButtonGameScaleDown")
+focus_next = NodePath("../ButtonWindowScaleUp")
+focus_previous = NodePath("../../CheckButtonFullscreen")
 text = " - "
 
 [node name="LabelWindowScale" type="Label" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
@@ -461,6 +474,12 @@ layout_mode = 2
 
 [node name="ButtonWindowScaleUp" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonWindowScaleDown")
+focus_neighbor_top = NodePath("../../CheckButtonFullscreen")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../HBCGameScale/ButtonGameScaleUp")
+focus_next = NodePath("../../HBCGameScale/ButtonGameScaleDown")
+focus_previous = NodePath("../ButtonWindowScaleDown")
 text = " + "
 
 [node name="VSeparator2" type="VSeparator" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
@@ -481,6 +500,12 @@ text = "ui_label_game_scale"
 
 [node name="ButtonGameScaleDown" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../HBCWindowScale/ButtonWindowScaleDown")
+focus_neighbor_right = NodePath("../ButtonGameScaleUp")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../ButtonGameScaleUp")
+focus_previous = NodePath("../../HBCWindowScale/ButtonWindowScaleUp")
 text = " - "
 
 [node name="LabelGameScale" type="Label" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
@@ -488,6 +513,12 @@ layout_mode = 2
 
 [node name="ButtonGameScaleUp" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonGameScaleDown")
+focus_neighbor_top = NodePath("../../HBCWindowScale/ButtonWindowScaleUp")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility")
+focus_previous = NodePath("../ButtonGameScaleDown")
 text = " + "
 
 [node name="VSeparator2" type="VSeparator" parent="VBCSettings/ColorRect/VBCVideo/HBCGameScale"]
@@ -531,6 +562,10 @@ text = "ui_label_vol_main"
 [node name="HSliderVolumeMain" type="HSlider" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio")
+focus_neighbor_bottom = NodePath("../HSliderVolumeMusic")
+focus_next = NodePath("../HSliderVolumeMusic")
+focus_previous = NodePath("../../../../../HBCTabs/ButtonCloseSettings")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -543,6 +578,10 @@ text = "ui_label_vol_music"
 [node name="HSliderVolumeMusic" type="HSlider" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../HSliderVolumeMain")
+focus_neighbor_bottom = NodePath("../HSliderVolumeSFX")
+focus_next = NodePath("../HSliderVolumeSFX")
+focus_previous = NodePath("../HSliderVolumeMain")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -556,6 +595,10 @@ text = "ui_label_vol_sfx"
 [node name="HSliderVolumeSFX" type="HSlider" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../HSliderVolumeMusic")
+focus_neighbor_bottom = NodePath("../HSliderVolumeVoice")
+focus_next = NodePath("../HSliderVolumeVoice")
+focus_previous = NodePath("../HSliderVolumeMusic")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -569,6 +612,10 @@ text = "ui_label_vol_vox"
 [node name="HSliderVolumeVoice" type="HSlider" parent="VBCSettings/ColorRect/VBCAudio/HBCAudio/GCVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../HSliderVolumeSFX")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../../../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility")
+focus_previous = NodePath("../HSliderVolumeSFX")
 max_value = 1.0
 step = 0.05
 value = 1.0
