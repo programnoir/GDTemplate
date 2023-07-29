@@ -111,6 +111,7 @@ size_flags_vertical = 3
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.882353)
 
 [node name="VBCAccessibility" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -319,8 +320,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -369,8 +370,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -418,7 +419,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBCVideo" type="VBoxContainer" parent="VBCSettings/ColorRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -435,16 +435,26 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 6
 
+[node name="CheckButtonBorderless" type="CheckButton" parent="VBCSettings/ColorRect/VBCVideo"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../CheckButtonFullscreen")
+focus_next = NodePath("../CheckButtonFullscreen")
+focus_previous = NodePath("../../../HBCTabs/ButtonCloseSettings")
+text = "ui_button_borderless"
+
 [node name="CheckButtonFullscreen" type="CheckButton" parent="VBCSettings/ColorRect/VBCVideo"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo")
+focus_neighbor_top = NodePath("../CheckButtonBorderless")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../HBCWindowScale/ButtonWindowScaleUp")
 focus_next = NodePath("../HBCWindowScale/ButtonWindowScaleDown")
-focus_previous = NodePath("../../../HBCTabs/ButtonCloseSettings")
-text = "ui_label_fullscreen"
+focus_previous = NodePath("../CheckButtonBorderless")
+text = "ui_button_fullscreen"
 
 [node name="HBCWindowScale" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCVideo"]
 layout_mode = 2
@@ -461,7 +471,7 @@ text = "ui_label_window_scale"
 [node name="ButtonWindowScaleDown" type="Button" parent="VBCSettings/ColorRect/VBCVideo/HBCWindowScale"]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo")
+focus_neighbor_top = NodePath("../../CheckButtonFullscreen")
 focus_neighbor_right = NodePath("../ButtonWindowScaleUp")
 focus_neighbor_bottom = NodePath("../../HBCGameScale/ButtonGameScaleDown")
 focus_next = NodePath("../ButtonWindowScaleUp")
@@ -647,6 +657,7 @@ layout_mode = 2
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions/ButtonSetBind" to="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/Signals" method="_on_button_set_bind_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions/ButtonRetryBind" to="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/Signals" method="_on_button_retry_bind_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions/ButtonCancelBind" to="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/Signals" method="_on_button_cancel_bind_pressed"]
+[connection signal="toggled" from="VBCSettings/ColorRect/VBCVideo/CheckButtonBorderless" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_check_button_borderless_toggled"]
 [connection signal="toggled" from="VBCSettings/ColorRect/VBCVideo/CheckButtonFullscreen" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_check_button_fullscreen_toggled"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCWindowScale/ButtonWindowScaleDown" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_button_window_scale_down_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCVideo/HBCWindowScale/ButtonWindowScaleUp" to="VBCSettings/ColorRect/VBCVideo/Signals" method="_on_button_window_scale_up_pressed"]

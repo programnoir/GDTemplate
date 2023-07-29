@@ -13,7 +13,8 @@ ui_create_profile,New Profile,プロフィール作成
 ui_save_to_profile,Save Changes,変更内容を保存 
 ui_revert_changes,Revert Changes,変更を元に戻す
 ui_delete_profile,Delete Profile,プロフィールの削除
-ui_label_fullscreen,Fullscreen,全画面表示
+ui_button_borderless,Borderless,境界のない
+ui_button_fullscreen,Fullscreen,全画面表示
 ui_label_window_scale,Window Scale,ウィンドウサイズ
 ui_label_game_scale,Game Scale,コンテンツのサイズ
 ui_label_vol_main,Main,本編
