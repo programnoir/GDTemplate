@@ -32,7 +32,6 @@ func set_window_scale( new_scale: int ) -> void:
 
 
 func toggle_fullscreen( fullscreen: bool ) -> void:
-	print( "toggling fullscreen: ", fullscreen )
 	GlobalUserSettings.toggle_fullscreen( fullscreen )
 	nCheckButtonFullScreen.button_pressed = fullscreen
 	nCheckButtonBorderless.disabled = fullscreen
