@@ -2,9 +2,9 @@ extends VBoxContainer
 
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nCheckButtonBorderless: CheckButton = get_node(
-		"CheckButtonBorderless")
+		"CheckButtonBorderless" )
 @onready var nCheckButtonFullScreen: CheckButton = get_node(
-		"CheckButtonFullscreen")
+		"CheckButtonFullscreen" )
 @onready var nLabelWindowScale: Label = get_node(
 		"HBCWindowScale/LabelWindowScale" )
 @onready var nLabelGameScale: Label = get_node(
