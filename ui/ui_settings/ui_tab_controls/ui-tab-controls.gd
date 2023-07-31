@@ -34,6 +34,15 @@ var default_profile: Dictionary = {}
 var selected_action: UIAction = null
 
 
+func _enter_tree() -> void:
+	var actions: Array = InputMap.get_actions()
+	#	Currently we're just loading actions by default.
+	for action in actions:
+		if( GlobalActionConfig.hide_list.has( action ) == false ):
+			default_profile[ action ] = InputMap.action_get_events(
+					action ).duplicate( true )
+
+
 func set_new_action_bind( action: UIAction, bind: InputEvent ) -> void:
 	var action_name: String = action.get_action_name()
 	var new_bind: Control = p_UIBind.instantiate()
@@ -79,11 +88,7 @@ func repopulate_action_list() -> void:
 		var new_action: Control = p_UIAction.instantiate()
 		nVBCActions.add_child( new_action )
 		new_action.set_action_name( action_name )
-		if( GlobalActionIgnoreList.rename_list.has( action_name ) ):
-			new_action.set_display_name(
-						GlobalActionIgnoreList.rename_list[ action_name ] )
-		else:
-			new_action.set_display_name( action_name )
+		new_action.set_display_name( tr( action_name ) )
 		new_action.adding_bind.connect(
 				Callable( nSignals, "_on_adding_bind" ) )
 		new_action.focus_entered.connect(
@@ -118,7 +123,7 @@ func select_input_profile( index: int ) -> void:
 
 func repopulate_profiles() -> void:
 	nOptionButtonProfile.clear()
-	nOptionButtonProfile.add_item( "default" )
+	nOptionButtonProfile.add_item( tr( "profile_default" ) )
 	for profile_name in GlobalUserSettings.get_input_profile_names():
 		nOptionButtonProfile.add_item( profile_name )
 
@@ -168,17 +173,6 @@ func update_from_load() -> void:
 	select_input_profile( profile_index )
 	nOptionButtonProfile.selected = profile_index
 	repopulate_action_list()
-
-
-func _ready() -> void:
-	var actions: Array = InputMap.get_actions()
-	#	Currently we're just loading actions by default.
-	for action in actions:
-		if( GlobalActionIgnoreList.hide_list.has( action ) ):
-			continue
-		else:
-			default_profile[ action ] = InputMap.action_get_events(
-					action ).duplicate( true )
 
 
 func destroy() -> void:

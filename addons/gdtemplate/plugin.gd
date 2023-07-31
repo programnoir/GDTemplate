@@ -3,7 +3,7 @@ extends EditorPlugin
 
 #	Array containing steps for loading assets into a game.
 const AUTOLOAD_ORDER: Array = [
-	'GlobalActionIgnoreList',
+	'GlobalActionConfig',
 	'GlobalTheme',
 	'GlobalUserSettings',
 	'GlobalUIScreenFade'
@@ -11,8 +11,8 @@ const AUTOLOAD_ORDER: Array = [
 
 const AUTOLOAD_LIST: Dictionary = {
 	'GlobalTheme': 'res://addons/gdtemplate/autoload/global-theme.gd',
-	'GlobalActionIgnoreList': 'res://addons/gdtemplate/autoload/' + 
-			'global-action-ignore-list.gd',
+	'GlobalActionConfig': 'res://addons/gdtemplate/autoload/' + 
+			'global-action-config.gd',
 	'GlobalUserSettings': 'res://addons/gdtemplate/autoload/' + 
 			'global-user-settings.gd',
 	'GlobalUIScreenFade': 'res://addons/gdtemplate/ui/' +

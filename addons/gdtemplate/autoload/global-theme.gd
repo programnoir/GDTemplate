@@ -16,7 +16,7 @@ var font_list: Dictionary = {
 			'res://assets/fonts/Atkinson-Hyperlegible-Regular-102.ttf', 1.0 ],
 		'OpenDyslexic': [ 'res://assets/fonts/OpenDyslexic-Regular.otf', 0.85 ]
 	},
-	'JP': {
+	'ja': {
 		'Noto Sans JP': [ 'res://assets/fonts/NotoSansJP-Regular.ttf', 0.95 ],
 		'モリサワのBIZ UDゴシックは': [
 			'res://assets/fonts/BIZUDGothic-Regular.ttf', 0.9 ]

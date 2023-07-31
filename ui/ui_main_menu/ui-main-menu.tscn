@@ -39,7 +39,7 @@ layout_mode = 2
 
 [node name="LabelGameName" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Game Name"
+text = "game_name"
 horizontal_alignment = 1
 vertical_alignment = 1
 

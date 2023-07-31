@@ -28,7 +28,7 @@ var audio: Dictionary = {}
 
 var languages: Dictionary = {
 	"English": "en",
-	"日本語 (Japanese)": "JP"
+	"日本語 (Japanese)": "ja"
 }
 #	Gets the current screen that the window is on.
 var main_window: Window = null

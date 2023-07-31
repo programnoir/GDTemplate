@@ -86,6 +86,7 @@ func set_language( index: int ) -> void:
 	GlobalUserSettings.set_new_language( 
 			GlobalUserSettings.languages[ full_name ] )
 	GlobalUserSettings.save_settings()
+	GlobalActionConfig.set_new_replaces( index + 1 )
 	populate_font_list()
 	set_font( 0 )
 	emit_signal( "new_language", GlobalUserSettings.languages[ full_name ] )

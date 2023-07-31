@@ -1,0 +1,27 @@
+symbols,en,ja
+replace_physical,Physical,物理
+replace_joypadbutton,Joypad Button,ジョイパッドのボタン
+replace_joypadmotion,Joypad Motion on Axis,ジョイパッドモーション 軸:
+replace_joystick,Joystick,ジョイスティック
+replace_joypad,Joypad,ジョイパッド
+replace_top,Top,上
+replace_up,Up,上
+replace_bottom,Bottom,下
+replace_down,Down,下
+replace_left,Left,左
+replace_right,Right,右
+replace_action,Action,アクション
+replace_circle,Circle,○
+replace_cross,Cross,✕
+replace_square,Square,□
+replace_triangle,Triangle,△
+replace_start,Start,開始
+replace_axis,-Axis,軸 
+replace_stick,Stick,スティック
+replace_withvalue,with Value,値:
+replace_enter,Enter,エンター
+replace_backspace,Backspace,バックスペース 
+replace_escape,Escape,エスケープ 
+replace_dpad,D-Pad,十字キー 
+replace_nintendo,Nintendo,任天堂 
+replace_sony,Sony,ソニー 

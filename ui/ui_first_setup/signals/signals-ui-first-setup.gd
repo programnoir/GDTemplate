@@ -91,5 +91,5 @@ func connect_signals() -> void:
 
 
 func disconnect_signals() -> void:
-	owner.nSpinBoxLineEditFontSize.focus_entered.connect( Callable(
+	owner.nSpinBoxLineEditFontSize.focus_entered.disconnect( Callable(
 		self, "_on_spin_box_font_size_focus_entered" ) )
