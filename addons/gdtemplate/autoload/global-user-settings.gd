@@ -17,7 +17,9 @@ var input_profiles: Dictionary = {
 	"current_profile": "default"
 }
 var gameplay_options: Dictionary = {}
-var video: Dictionary = {}
+var video: Dictionary = {
+	"borderless": false
+}
 var audio: Dictionary = {}
 
 """
@@ -214,6 +216,10 @@ func get_game_scale() -> int:
 	return video[ "game_scale" ]
 
 
+func is_borderless() -> bool:
+	return video[ "borderless" ]
+
+
 func is_fullscreen() -> bool:
 	return video[ "fullscreen" ]
 
@@ -241,6 +247,12 @@ func recenter_main_window() -> void:
 			DisplayServer.MAIN_WINDOW_ID )
 
 
+func toggle_borderless( borderless: bool ) -> void:
+	DisplayServer.window_set_flag( DisplayServer.WINDOW_FLAG_BORDERLESS,
+			borderless )
+	video[ "borderless" ] = borderless
+
+
 func toggle_fullscreen( fullscreen: bool ) -> void:
 	if( fullscreen == false ):
 		DisplayServer.window_set_mode(
@@ -254,7 +266,7 @@ func toggle_fullscreen( fullscreen: bool ) -> void:
 		DisplayServer.window_set_mode(
 				DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN, 0 )
 		DisplayServer.window_set_flag( DisplayServer.WINDOW_FLAG_BORDERLESS,
-				true )
+				video[ "borderless" ] )
 	video[ "fullscreen" ] = fullscreen
 
 
@@ -277,3 +289,8 @@ func set_window_scale( new_scale: int ) -> void:
 			video[ "window_scale" ], DisplayServer.MAIN_WINDOW_ID )
 	set_game_scale( video[ "game_scale" ] )
 	recenter_main_window()
+	#	Fix borderless configuration after window resizing.
+	#	Needs delay due to annoying bug in this version of the engine.
+	await get_tree().create_timer( 0.1 ).timeout
+	DisplayServer.window_set_flag( DisplayServer.WINDOW_FLAG_BORDERLESS,
+			is_borderless() )
