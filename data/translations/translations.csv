@@ -26,3 +26,18 @@ ui_label_font_size,Font Size,フォントサイズ
 ui_label_start_muted,Start audio at 0% volume,最初は音声をミュートします
 ui_button_edit,Edit,変更 
 ui_button_confirm,Confirm,確認 
+ui_up,Up,上
+ui_down,Down,下
+ui_left,Left,左
+ui_right,Right,右
+ui_accept,Confirm,確認 
+ui_cancel,Cancel,キャンセル
+in_pause,Pause,
+in_joystick_up,Joystick 1: Up,ジョイスティック 1: 上
+in_joystick_down,Joystick 1: Down,ジョイスティック 1: 下
+in_joystick_left,Joystick 1: Left,ジョイスティック 1: 左
+in_joystick_right,Joystick 1: Right,ジョイスティック 1: 右
+in_joystick_up_2,Joystick 2: Up,ジョイスティック 2: 上
+in_joystick_down_2,Joystick 2: Down,ジョイスティック 2: 下
+in_joystick_left_2,Joystick 2: Left,ジョイスティック 2: 左
+in_joystick_right_2,Joystick 2: Right,ジョイスティック 2: 右

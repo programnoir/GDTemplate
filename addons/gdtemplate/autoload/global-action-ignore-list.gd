@@ -1,15 +1,5 @@
 extends Node
 
-#	Rename unhidden built-in action names here.
-var rename_list: Dictionary = {
-	"ui_up": "Up",
-	"ui_down": "Down",
-	"ui_left": "Left",
-	"ui_right": "Right",
-	"ui_accept": "Confirm",
-	"ui_cancel": "Cancel"
-}
-
 #	Here you can specify which built-in controls you wish to hide.
 var hide_list: Array = [
 "ui_filedialog_show_hidden","ui_text_completion_accept","ui_text_newline_blank",

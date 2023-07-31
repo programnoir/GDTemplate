@@ -75,6 +75,7 @@ func set_language( index: int ) -> void:
 	populate_font_list()
 	set_font( DEFAULT_FONT_INDEX )
 	nButtonCycleFont.set_index_manual( DEFAULT_FONT_INDEX )
+	owner.nTabControls.update_from_load()
 	owner.emit_signal( "new_language",
 			GlobalUserSettings.languages[ full_name ] )
 
