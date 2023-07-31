@@ -1,5 +1,7 @@
 extends Node
 
+const BIND_TRANSLATIONS: String = "data/translations/binds.csv"
+
 #	Here you can specify which built-in controls you wish to hide.
 var hide_list: Array = [
 "ui_filedialog_show_hidden","ui_text_completion_accept","ui_text_newline_blank",
@@ -26,3 +28,39 @@ var hide_list: Array = [
 "ui_text_scroll_down.macos","ui_text_delete_word.macos","ui_text_dedent",
 "ui_redo","ui_home","ui_copy","ui_menu","ui_end"
 ]
+
+var bind_name_replaces: Dictionary = {}
+
+
+"""
+A lot borrowed from
+https://github.com/godotengine/godot/blob/master/editor/translations/editor/ja.po
+"""
+func get_replaces() -> Dictionary:
+	return bind_name_replaces
+
+
+func set_new_replaces( column_id: int ) -> void:
+	bind_name_replaces.clear()
+	if( column_id == 1 ):
+		return
+	#	End defensive return: English language selected, no replaces needed.
+	var file = FileAccess.open( BIND_TRANSLATIONS, FileAccess.READ )
+	#	Gets past the header column.
+	var row: PackedStringArray = file.get_csv_line()
+	while( file.get_position() < file.get_length() ):
+		row = file.get_csv_line()
+		var from: String = row[ 1 ]
+		var to: String = row[ column_id ]
+		bind_name_replaces[ from ] = to
+	file.close()
+
+
+func find_replaces( message: String ) -> String:
+	if( bind_name_replaces.size() == 0 ):
+		return message
+	#	End defensive return: English language selected.
+	var translated: String = message
+	for word in bind_name_replaces.keys():
+		translated = translated.replacen( word, bind_name_replaces[ word ] )
+	return translated

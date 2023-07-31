@@ -38,7 +38,7 @@ func _enter_tree() -> void:
 	var actions: Array = InputMap.get_actions()
 	#	Currently we're just loading actions by default.
 	for action in actions:
-		if( GlobalActionIgnoreList.hide_list.has( action ) == false ):
+		if( GlobalActionConfig.hide_list.has( action ) == false ):
 			default_profile[ action ] = InputMap.action_get_events(
 					action ).duplicate( true )
 
@@ -123,7 +123,7 @@ func select_input_profile( index: int ) -> void:
 
 func repopulate_profiles() -> void:
 	nOptionButtonProfile.clear()
-	nOptionButtonProfile.add_item( "default" )
+	nOptionButtonProfile.add_item( tr( "profile_default" ) )
 	for profile_name in GlobalUserSettings.get_input_profile_names():
 		nOptionButtonProfile.add_item( profile_name )
 

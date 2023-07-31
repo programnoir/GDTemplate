@@ -24,7 +24,7 @@ buses/default_bus_layout="res://data/resources/res-default-bus-layout.tres"
 
 [autoload]
 
-GlobalActionIgnoreList="*res://addons/gdtemplate/autoload/global-action-ignore-list.gd"
+GlobalActionConfig="*res://addons/gdtemplate/autoload/global-action-config.gd"
 GlobalTheme="*res://addons/gdtemplate/autoload/global-theme.gd"
 GlobalUserSettings="*res://addons/gdtemplate/autoload/global-user-settings.gd"
 GlobalUIScreenFade="*res://addons/gdtemplate/ui/global-ui-screenfade.tscn"
@@ -136,7 +136,11 @@ in_joystick_right_2={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://data/translations/translations.en.translation", "res://data/translations/translations.JP.translation")
+locale/translations=PackedStringArray("res://data/translations/translations.en.translation", "res://data/translations/translations.ja.translation")
+pseudolocalization/use_pseudolocalization=true
+pseudolocalization/replace_with_accents=false
+pseudolocalization/prefix=""
+pseudolocalization/suffix=""
 
 [rendering]
 
