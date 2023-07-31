@@ -18,16 +18,20 @@ var current_event: InputEvent
 func set_event( event: InputEvent ) -> void:
 	nButtonSetBind.disabled = false
 	current_event = event
-	nLineEditBindName.text = current_event.as_text()
+	nLineEditBindName.text = GlobalActionConfig.find_replaces(
+			current_event.as_text() )
+	nLineEditBindName.editable = false
 	nButtonSetBind.grab_focus()
 
 
 func read_new_bind_input( action: UIAction ) -> void:
 	nButtonSetBind.disabled = true
+	nLineEditBindName.editable = true
+	nLineEditBindName.placeholder_text = tr( "ui_lineedit_listening" )
 	current_action = action
 	nLabelActionName.text = current_action.get_action_name()
 	nLineEditBindName.grab_focus()
-	nLineEditBindName.text = "Listening for input..."
+	nLineEditBindName.text = tr( "ui_lineedit_listening" )
 	current_event = null
 	nSignals.set_process_input( true )
 	awaiting_input = true

@@ -43,3 +43,7 @@ ui_label_start_muted,Start audio at 0% volume,最初は音声をミュートし�
 ui_button_edit,Edit,変更 
 ui_button_confirm,Confirm,確認 
 profile_default,Default,既定
+ui_lineedit_profilename,Name...,名前 
+ui_label_add_bind,Add Bind,キーバインドを追加 
+ui_lineedit_listening,Listening for input...,入力を聞く
+ui_button_retry,Retry,リトライ 

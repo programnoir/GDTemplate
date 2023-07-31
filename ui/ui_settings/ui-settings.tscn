@@ -226,7 +226,6 @@ layout_mode = 2
 theme_override_constants/separation = 6
 
 [node name="VBCControls" type="VBoxContainer" parent="VBCSettings/ColorRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -320,15 +319,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 246.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile"]
 layout_mode = 2
-text = "Create Input Profile"
+text = "ui_create_profile
+"
 horizontal_alignment = 1
 
 [node name="LineEditProfileName" type="LineEdit" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile"]
@@ -339,7 +339,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../HBCCreateProfile/ButtonCreateProfile")
 focus_next = NodePath("../HBCCreateProfile/ButtonCreateProfile")
 focus_previous = NodePath("../HBCCreateProfile/ButtonCancelCreateProfile")
-placeholder_text = "Name..."
+placeholder_text = "ui_lineedit_profilename"
 
 [node name="HBCCreateProfile" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile"]
 layout_mode = 2
@@ -347,11 +347,12 @@ alignment = 1
 
 [node name="ButtonCreateProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile/HBCCreateProfile"]
 layout_mode = 2
-text = "Create Profile"
+text = "ui_button_confirm"
 
 [node name="ButtonCancelCreateProfile" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupCreateProfile/VBCCreateProfile/HBCCreateProfile"]
 layout_mode = 2
-text = "Cancel"
+text = "ui_cancel
+"
 
 [node name="UIPopupSetBind" type="PopupPanel" parent="VBCSettings/ColorRect/VBCControls"]
 initial_position = 1
@@ -370,15 +371,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 246.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind"]
 layout_mode = 2
-text = "Add Bind"
+text = "ui_label_add_bind"
 horizontal_alignment = 1
 
 [node name="LabelActionName" type="Label" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind"]
@@ -388,7 +389,6 @@ horizontal_alignment = 1
 
 [node name="LineEditBindName" type="LineEdit" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind"]
 layout_mode = 2
-placeholder_text = "Listening for input..."
 
 [node name="HBCBindOptions" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind"]
 layout_mode = 2
@@ -397,17 +397,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
-text = "Set"
+text = "ui_button_confirm"
 
 [node name="ButtonRetryBind" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Retry"
+text = "ui_button_retry"
 
 [node name="ButtonCancelBind" type="Button" parent="VBCSettings/ColorRect/VBCControls/UIPopupSetBind/VBCNewBind/HBCBindOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Cancel"
+text = "ui_cancel"
 
 [node name="VBCGameplay" type="VBoxContainer" parent="VBCSettings/ColorRect"]
 visible = false
@@ -419,6 +419,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBCVideo" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
