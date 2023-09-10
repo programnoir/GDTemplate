@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://upsss64eecxh"]
+
+[ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_6d0xb"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_var/ui_dialog_node_options_set_var/ui-dialog-node-options-set-var.gd" id="1_sc5i0"]
+
+[node name="UIDialogNodeOptionsSetVar" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_6d0xb")
+theme_override_constants/separation = 5
+script = ExtResource("1_sc5i0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Editing Set Variable Node"
+horizontal_alignment = 1
+
+[node name="HBCVarTypeOptions" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBCVarTypeOptions"]
+layout_mode = 2
+text = "Variable Type:"
+
+[node name="OptionButtonVarType" type="OptionButton" parent="HBCVarTypeOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 4
+selected = 0
+popup/item_0/text = "Flag"
+popup/item_0/id = 0
+popup/item_1/text = "String"
+popup/item_1/id = 1
+popup/item_2/text = "Float"
+popup/item_2/id = 2
+popup/item_3/text = "String Array"
+popup/item_3/id = 3
+
+[node name="HBCVarOptions" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBCVarOptions"]
+layout_mode = 2
+text = "Variable:"
+
+[node name="OptionButtonVariable" type="OptionButton" parent="HBCVarOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButtonFlag" type="OptionButton" parent="HBCVarOptions"]
+visible = false
+layout_mode = 2
+alignment = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "False"
+popup/item_0/id = 0
+popup/item_1/text = "True"
+popup/item_1/id = 1
+
+[node name="SpinBoxFloat" type="SpinBox" parent="HBCVarOptions"]
+visible = false
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+allow_greater = true
+allow_lesser = true
+
+[node name="LineEditString" type="LineEdit" parent="HBCVarOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonDecreaseArray" type="Button" parent="HBCVarOptions"]
+visible = false
+layout_mode = 2
+text = " - "
+
+[node name="ButtonIncreaseArray" type="Button" parent="HBCVarOptions"]
+visible = false
+layout_mode = 2
+text = " + "
+
+[connection signal="item_selected" from="HBCVarTypeOptions/OptionButtonVarType" to="." method="_on_option_button_var_type_item_selected"]
+[connection signal="pressed" from="HBCVarOptions/ButtonDecreaseArray" to="." method="_on_button_decrease_array_pressed"]
+[connection signal="pressed" from="HBCVarOptions/ButtonIncreaseArray" to="." method="_on_button_increase_array_pressed"]

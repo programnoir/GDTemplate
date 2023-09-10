@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgdkjkveb8uip"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/ui_slot_adjustable_node/ui_dialog_line_node/ui-dialog-line-node.gd" id="1_jnq2x"]
+
+[node name="UIDialogLineNode" type="GraphNode"]
+offset_right = 250.0
+offset_bottom = 183.0
+title = "NID Null "
+show_close = true
+resizable = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_jnq2x")
+type = "Line"
+
+[node name="VBCNodeEditor" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelSummary" type="Label" parent="VBCNodeEditor"]
+layout_mode = 2
+text = "Line"
+
+[node name="TextEditDialog" type="TextEdit" parent="VBCNodeEditor"]
+custom_minimum_size = Vector2(150, 64)
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Dialog text..."
+wrap_mode = 1
+
+[node name="HBCSlots" type="HBoxContainer" parent="VBCNodeEditor"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBCNodeEditor/HBCSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slots"
+horizontal_alignment = 2
+
+[node name="SpinBoxSlots" type="SpinBox" parent="VBCNodeEditor/HBCSlots"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+alignment = 2
+
+[connection signal="focus_exited" from="VBCNodeEditor/TextEditDialog" to="." method="_on_text_edit_focus_exited"]

@@ -1,0 +1,203 @@
+[gd_scene load_steps=6 format=3 uid="uid://plhmaorrk5f"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui-dialog-editor.gd" id="1_otm8p"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/signals/signals-ui-dialog-editor.gd" id="2_1ju2u"]
+[ext_resource type="Texture2D" uid="uid://cviryqe72fd0d" path="res://addons/gddialog/assets/images/back-button.png" id="2_yb26n"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui-popup-edit-dialog-node.gd" id="4_apnta"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/signals/signals-ui-popup-edit-dialog-node.gd" id="5_q6hjq"]
+
+[node name="UIDialogEditor" type="Control"]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_otm8p")
+
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_1ju2u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBCMenu" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/HBCMenu"]
+layout_mode = 2
+icon = ExtResource("2_yb26n")
+flat = true
+
+[node name="MenuButtonAddNode" type="MenuButton" parent="VBoxContainer/HBCMenu"]
+layout_mode = 2
+text = "➕ "
+item_count = 8
+popup/item_0/text = "Simple Dialog"
+popup/item_0/id = 0
+popup/item_1/text = "Advanced Dialog"
+popup/item_1/id = 1
+popup/item_2/text = ""
+popup/item_2/id = 6
+popup/item_2/separator = true
+popup/item_3/text = "If Variable"
+popup/item_3/id = 2
+popup/item_4/text = "Set Variable"
+popup/item_4/id = 3
+popup/item_5/text = "Set GUI"
+popup/item_5/id = 4
+popup/item_6/text = ""
+popup/item_6/id = 7
+popup/item_6/separator = true
+popup/item_7/text = "Run Script"
+popup/item_7/id = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/HBCMenu"]
+layout_mode = 2
+text = "ID"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelRecordID" type="Label" parent="VBoxContainer/HBCMenu"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/HBCMenu"]
+layout_mode = 2
+
+[node name="LabelSelected" type="Label" parent="VBoxContainer/HBCMenu"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+text = "Selected:"
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBCMenu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="LabelNodeSummary" type="Label" parent="VBoxContainer/HBCMenu"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Node text..."
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+
+[node name="ButtonEditNode" type="Button" parent="VBoxContainer/HBCMenu"]
+layout_mode = 2
+disabled = true
+text = " ✏️"
+flat = true
+
+[node name="GraphEditDialog" type="GraphEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+right_disconnects = true
+minimap_enabled = false
+arrange_nodes_button_hidden = true
+
+[node name="PopupEditDialogNode" type="Popup" parent="."]
+initial_position = 2
+title = "Edit Dialog Node"
+size = Vector2i(480, 500)
+extend_to_title = true
+min_size = Vector2i(480, 500)
+max_size = Vector2i(480, 500)
+script = ExtResource("4_apnta")
+
+[node name="Signals" type="Node" parent="PopupEditDialogNode"]
+script = ExtResource("5_q6hjq")
+
+[node name="Panel" type="Panel" parent="PopupEditDialogNode"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupEditDialogNode/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBCPopupTitle" type="HBoxContainer" parent="PopupEditDialogNode/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "         Editing Node"
+horizontal_alignment = 1
+
+[node name="ButtonClose" type="Button" parent="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupTitle"]
+layout_mode = 2
+text = " ❌ "
+
+[node name="SCNodeOptions" type="ScrollContainer" parent="PopupEditDialogNode/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="HBCPopupSaveQuit" type="HBoxContainer" parent="PopupEditDialogNode/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupSaveQuit"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="ButtonSaveToNode" type="Button" parent="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupSaveQuit"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save Changes"
+
+[node name="VSeparator2" type="VSeparator" parent="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupSaveQuit"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="ButtonCancelChanges" type="Button" parent="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupSaveQuit"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="VSeparator3" type="VSeparator" parent="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupSaveQuit"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="PopupEditDialogNode/Panel/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBCMenu/ButtonBack" to="Signals" method="_on_button_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBCMenu/ButtonEditNode" to="Signals" method="_on_button_edit_node_pressed"]
+[connection signal="connection_request" from="VBoxContainer/GraphEditDialog" to="Signals" method="_on_graph_edit_dialog_connection_request"]
+[connection signal="disconnection_request" from="VBoxContainer/GraphEditDialog" to="Signals" method="_on_graph_edit_dialog_disconnection_request"]
+[connection signal="node_deselected" from="VBoxContainer/GraphEditDialog" to="Signals" method="_on_graph_edit_dialog_node_deselected"]
+[connection signal="node_selected" from="VBoxContainer/GraphEditDialog" to="Signals" method="_on_graph_edit_dialog_node_selected"]
+[connection signal="about_to_popup" from="PopupEditDialogNode" to="PopupEditDialogNode/Signals" method="_on_popup_edit_dialog_node_about_to_popup"]
+[connection signal="popup_hide" from="PopupEditDialogNode" to="PopupEditDialogNode/Signals" method="_on_popup_edit_dialog_node_popup_hide"]
+[connection signal="pressed" from="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupTitle/ButtonClose" to="PopupEditDialogNode/Signals" method="_on_button_cancel_changes_pressed"]
+[connection signal="pressed" from="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupSaveQuit/ButtonSaveToNode" to="PopupEditDialogNode/Signals" method="_on_button_save_to_node_pressed"]
+[connection signal="pressed" from="PopupEditDialogNode/Panel/VBoxContainer/HBCPopupSaveQuit/ButtonCancelChanges" to="PopupEditDialogNode/Signals" method="_on_button_cancel_changes_pressed"]

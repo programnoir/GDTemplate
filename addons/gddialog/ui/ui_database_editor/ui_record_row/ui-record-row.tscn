@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg3ki8ok3m2f4"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_record_row/ui-record-row.gd" id="1_ps7ay"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_record_row/signals/signals-ui-record-row.gd" id="2_s3qty"]
+
+[node name="UIRecordRow" type="ColorRect"]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.156863)
+script = ExtResource("1_ps7ay")
+
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_s3qty")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="LabelID" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="LineEditRecordName" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+placeholder_text = "record-"
+
+[node name="MenuButtonTags" type="MenuButton" parent="HBoxContainer"]
+layout_mode = 2
+text = " 🏷 "
+
+[node name="LineEditDescription" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "add a description..."
+
+[node name="ButtonEditRecord" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = " ✏️ "
+flat = true
+
+[connection signal="toggled" from="HBoxContainer/CheckBox" to="Signals" method="_on_check_box_toggled"]
+[connection signal="focus_entered" from="HBoxContainer/LineEditRecordName" to="Signals" method="_on_line_edit_record_name_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/LineEditRecordName" to="Signals" method="_on_line_edit_record_name_focus_exited"]
+[connection signal="text_submitted" from="HBoxContainer/LineEditRecordName" to="Signals" method="_on_line_edit_record_name_text_submitted"]
+[connection signal="focus_entered" from="HBoxContainer/LineEditDescription" to="Signals" method="_on_line_edit_description_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/LineEditDescription" to="Signals" method="_on_line_edit_description_focus_exited"]
+[connection signal="text_submitted" from="HBoxContainer/LineEditDescription" to="Signals" method="_on_line_edit_description_text_submitted"]
+[connection signal="pressed" from="HBoxContainer/ButtonEditRecord" to="Signals" method="_on_button_edit_record_pressed"]

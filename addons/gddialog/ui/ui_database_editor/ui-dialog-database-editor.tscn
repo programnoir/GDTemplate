@@ -1,0 +1,422 @@
+[gd_scene load_steps=6 format=3 uid="uid://chrkqxwx12d0m"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui-dialog-database-editor.gd" id="1_a0xut"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/signals/signals-ui-dialog-database-editor.gd" id="2_hm0mw"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/file/file-dialog-database-editor.gd" id="3_rbst2"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/database/database-dialog-database-editor.gd" id="3_tc6c3"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/database/dialog_nodes/dialog-nodes-dialog-database-editor.gd" id="4_kb5uk"]
+
+[node name="UIDialogDatabaseEditor" type="Control"]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_a0xut")
+
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_hm0mw")
+
+[node name="File" type="Node" parent="."]
+script = ExtResource("3_rbst2")
+
+[node name="Database" type="Node" parent="."]
+script = ExtResource("3_tc6c3")
+
+[node name="DialogNodes" type="Node" parent="Database"]
+script = ExtResource("4_kb5uk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBCEditorMenu" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButtonFile" type="MenuButton" parent="VBoxContainer/HBCEditorMenu"]
+layout_mode = 2
+text = "File"
+item_count = 4
+popup/item_0/text = "New Dialog Database"
+popup/item_0/id = 0
+popup/item_1/text = "Load Database"
+popup/item_1/id = 1
+popup/item_2/text = "Save Database As..."
+popup/item_2/id = 2
+popup/item_3/text = "Export Baked Database"
+popup/item_3/id = 3
+
+[node name="MenuButtonEdit" type="MenuButton" parent="VBoxContainer/HBCEditorMenu"]
+layout_mode = 2
+text = "Records"
+item_count = 6
+popup/item_0/text = "New Record"
+popup/item_0/id = 0
+popup/item_1/text = ""
+popup/item_1/id = 4
+popup/item_1/disabled = true
+popup/item_1/separator = true
+popup/item_2/text = "Check All Visible Records"
+popup/item_2/id = 1
+popup/item_3/text = "Uncheck All Visible Records"
+popup/item_3/id = 2
+popup/item_4/text = "Record Actions"
+popup/item_4/id = 5
+popup/item_4/disabled = true
+popup/item_4/separator = true
+popup/item_5/text = "Delete Visible Checked Records"
+popup/item_5/id = 3
+
+[node name="MenuButtonView" type="MenuButton" parent="VBoxContainer/HBCEditorMenu"]
+layout_mode = 2
+text = "View"
+item_count = 9
+popup/item_0/text = "Manage Tags"
+popup/item_0/id = 0
+popup/item_1/text = ""
+popup/item_1/id = 1
+popup/item_1/disabled = true
+popup/item_1/separator = true
+popup/item_2/text = "Manage Flags"
+popup/item_2/id = 2
+popup/item_3/text = "Manage Floats"
+popup/item_3/id = 3
+popup/item_4/text = "Manage Strings"
+popup/item_4/id = 4
+popup/item_5/text = "Manage String Arrays"
+popup/item_5/id = 5
+popup/item_6/text = ""
+popup/item_6/id = 6
+popup/item_6/disabled = true
+popup/item_6/separator = true
+popup/item_7/text = "Manage Colors"
+popup/item_7/id = 7
+popup/item_8/text = "Manage Speakers"
+popup/item_8/id = 8
+
+[node name="LabelFileName" type="Label" parent="VBoxContainer/HBCEditorMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Database"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+
+[node name="HBCWorkspace" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelWorkspace" type="Panel" parent="VBoxContainer/HBCWorkspace"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SCRecords" type="ScrollContainer" parent="VBoxContainer/HBCWorkspace/PanelWorkspace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBCDialogRecords" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/PanelWorkspace/SCRecords"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBCManagers" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace"]
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="HBCManagerTitle" type="HBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers"]
+layout_mode = 2
+
+[node name="LabelManagerTitle" type="Label" parent="VBoxContainer/HBCWorkspace/VBCManagers/HBCManagerTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Title"
+vertical_alignment = 1
+
+[node name="ButtonCloseSidebar" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/HBCManagerTitle"]
+layout_mode = 2
+tooltip_text = "Close panel"
+text = " ❌ "
+flat = true
+
+[node name="VBCTagManager" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBCTagOptions" type="HBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager"]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+
+[node name="LineEditNewTag" type="LineEdit" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "new tag..."
+
+[node name="ButtonAddTag" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions"]
+layout_mode = 2
+tooltip_text = "Add tag to tag list"
+text = "🏷"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions"]
+layout_mode = 2
+
+[node name="ButtonAssignTag" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions"]
+layout_mode = 2
+tooltip_text = "Assign selected tag(s) to selected record(s)"
+text = "➕"
+
+[node name="ButtonUnassignTag" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions"]
+layout_mode = 2
+tooltip_text = "Unassign selected tag(s) from selected record(s)"
+text = "➖"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions"]
+layout_mode = 2
+
+[node name="ButtonDeleteTag" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions"]
+layout_mode = 2
+tooltip_text = "Delete selected tags"
+text = "🗑"
+
+[node name="ItemListTags" type="ItemList" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager"]
+layout_mode = 2
+size_flags_vertical = 3
+select_mode = 1
+
+[node name="VBCFlagManager" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBCFlagOptions" type="HBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFlagManager"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="LineEditFlagName" type="LineEdit" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFlagManager/HBCFlagOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Create flag..."
+
+[node name="ButtonAddFlag" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFlagManager/HBCFlagOptions"]
+layout_mode = 2
+text = " ➕ "
+
+[node name="ButtonDeleteFlags" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFlagManager/HBCFlagOptions"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+tooltip_text = "Delete Selected"
+text = " 🗑️ "
+
+[node name="ItemListFlags" type="ItemList" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFlagManager"]
+layout_mode = 2
+size_flags_vertical = 3
+select_mode = 1
+
+[node name="VBCStringManager" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBCStringOptions" type="HBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCStringManager"]
+layout_mode = 2
+
+[node name="LineEditNewString" type="LineEdit" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCStringManager/HBCStringOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Create string..."
+
+[node name="ButtonAddString" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCStringManager/HBCStringOptions"]
+layout_mode = 2
+text = " ➕ "
+
+[node name="SCStrings" type="ScrollContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCStringManager"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBCStrings" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCStringManager/SCStrings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBCFloatManager" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBCFloatOptions" type="HBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFloatManager"]
+layout_mode = 2
+
+[node name="LineEditNewFloat" type="LineEdit" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFloatManager/HBCFloatOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "new float name"
+
+[node name="ButtonAddFloat" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFloatManager/HBCFloatOptions"]
+layout_mode = 2
+text = "➕"
+
+[node name="SCFloats" type="ScrollContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFloatManager"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBCFloats" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCFloatManager/SCFloats"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBCArrayManager" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBCArrayOptions" type="HBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCArrayManager"]
+layout_mode = 2
+
+[node name="LineEditArrayName" type="LineEdit" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCArrayManager/HBCArrayOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "array name"
+
+[node name="ButtonAddArray" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCArrayManager/HBCArrayOptions"]
+layout_mode = 2
+text = "➕"
+
+[node name="ButtonDeleteArrays" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCArrayManager/HBCArrayOptions"]
+layout_mode = 2
+text = " 🗑️ "
+
+[node name="ItemListArrays" type="ItemList" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCArrayManager"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBCColorManager" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBCColorOptions" type="HBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCColorManager"]
+layout_mode = 2
+
+[node name="LineEditAddColor" type="LineEdit" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCColorManager/HBCColorOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Color name"
+
+[node name="ButtonAddColor" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCColorManager/HBCColorOptions"]
+layout_mode = 2
+text = "➕"
+
+[node name="SCColors" type="ScrollContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCColorManager"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBCColors" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCColorManager/SCColors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBCSpeakerManager" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBCSpeakerOptions" type="HBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager"]
+layout_mode = 2
+
+[node name="LineEditAddSpeaker" type="LineEdit" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager/HBCSpeakerOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Color name"
+
+[node name="ButtonAddSpeaker" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager/HBCSpeakerOptions"]
+layout_mode = 2
+text = "➕"
+
+[node name="SCSpeakers" type="ScrollContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBCSpeakers" type="VBoxContainer" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager/SCSpeakers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBCFilters" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBCFilters"]
+layout_mode = 2
+text = "🔎"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButtonSearchBy" type="OptionButton" parent="VBoxContainer/HBCFilters"]
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Name"
+popup/item_0/id = 0
+popup/item_1/text = "Desc"
+popup/item_1/id = 1
+popup/item_2/text = "ID"
+popup/item_2/id = 2
+
+[node name="LineEditSearch" type="LineEdit" parent="VBoxContainer/HBCFilters"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckBoxTagFilter" type="CheckBox" parent="VBoxContainer/HBCFilters"]
+layout_mode = 2
+alignment = 1
+
+[node name="MenuButtonFilterTags" type="MenuButton" parent="VBoxContainer/HBCFilters"]
+layout_mode = 2
+text = "🏷"
+item_count = 1
+popup/item_0/text = "Include Untagged"
+popup/item_0/checkable = 1
+popup/item_0/checked = true
+popup/item_0/id = 0
+
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/HBCManagerTitle/ButtonCloseSidebar" to="Signals" method="_on_button_close_sidebar_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions/LineEditNewTag" to="Signals" method="_on_line_edit_new_tag_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions/ButtonAddTag" to="Signals" method="_on_button_add_tag_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions/ButtonAssignTag" to="Signals" method="_on_button_assign_tag_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions/ButtonUnassignTag" to="Signals" method="_on_button_unassign_tag_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCTagManager/HBCTagOptions/ButtonDeleteTag" to="Signals" method="_on_button_delete_tag_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCFlagManager/HBCFlagOptions/LineEditFlagName" to="Signals" method="_on_line_edit_flag_name_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCFlagManager/HBCFlagOptions/ButtonAddFlag" to="Signals" method="_on_button_add_flag_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCFlagManager/HBCFlagOptions/ButtonDeleteFlags" to="Signals" method="_on_button_delete_flags_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCStringManager/HBCStringOptions/LineEditNewString" to="Signals" method="_on_line_edit_new_string_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCStringManager/HBCStringOptions/ButtonAddString" to="Signals" method="_on_button_add_string_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCFloatManager/HBCFloatOptions/LineEditNewFloat" to="Signals" method="_on_line_edit_new_float_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCFloatManager/HBCFloatOptions/ButtonAddFloat" to="Signals" method="_on_button_add_float_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCArrayManager/HBCArrayOptions/LineEditArrayName" to="Signals" method="_on_line_edit_array_name_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCArrayManager/HBCArrayOptions/ButtonAddArray" to="Signals" method="_on_button_add_array_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCArrayManager/HBCArrayOptions/ButtonDeleteArrays" to="Signals" method="_on_button_delete_arrays_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCColorManager/HBCColorOptions/LineEditAddColor" to="Signals" method="_on_line_edit_add_color_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCColorManager/HBCColorOptions/ButtonAddColor" to="Signals" method="_on_button_add_color_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager/HBCSpeakerOptions/LineEditAddSpeaker" to="Signals" method="_on_line_edit_add_speaker_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager/HBCSpeakerOptions/ButtonAddSpeaker" to="Signals" method="_on_button_add_speaker_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBCFilters/OptionButtonSearchBy" to="Signals" method="_on_option_button_search_by_item_selected"]
+[connection signal="text_changed" from="VBoxContainer/HBCFilters/LineEditSearch" to="Signals" method="_on_line_edit_search_text_changed"]
+[connection signal="toggled" from="VBoxContainer/HBCFilters/CheckBoxTagFilter" to="Signals" method="_on_check_box_tag_filter_toggled"]

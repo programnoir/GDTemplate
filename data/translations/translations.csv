@@ -47,3 +47,4 @@ ui_lineedit_profilename,Name...,名前
 ui_label_add_bind,Add Bind,キーバインドを追加 
 ui_lineedit_listening,Listening for input...,入力を聞く
 ui_button_retry,Retry,リトライ 
+ui_label_text_speed_scale,Text Speed,テキストの速度

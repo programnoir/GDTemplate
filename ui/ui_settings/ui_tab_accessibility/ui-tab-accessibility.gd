@@ -11,9 +11,20 @@ extends VBoxContainer
 		nSpinBoxFontSize.get_line_edit()
 @onready var nButtonToggleFontSize: Button = get_node(
 		"HBCFontSizes/ButtonToggleFontSize" )
+@onready var nHSliderTextSpeedScale: HSlider = get_node(
+		"HBCTextSpeed/HSliderTextSpeedScale" )
+@onready var nLabelTextSpeedScale: Label = get_node( 
+		"HBCTextSpeed/LabelTextSpeedScale" )
 
 const MINIMUM_FONT_SIZE: int = 8
 const DEFAULT_FONT_INDEX: int = 0
+
+
+func set_text_speed( new_speed: float ) -> void:
+	GlobalUserSettings.set_text_speed( new_speed )
+	nHSliderTextSpeedScale.value = new_speed
+	nLabelTextSpeedScale.text = str( "%.02f" % new_speed ) + 'x'
+	GlobalUserSettings.save_settings()
 
 
 func set_font_size( new_size: int ) -> void:
@@ -102,6 +113,7 @@ func update_from_load() -> void:
 	set_font( current_font_index )
 	nButtonCycleFont.set_index_manual( current_font_index )
 	set_font_size( GlobalUserSettings.get_current_font_size() )
+	set_text_speed( GlobalUserSettings.get_text_speed() )
 
 
 func _ready() -> void:

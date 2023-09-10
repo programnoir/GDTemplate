@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuklxf1n5t5rr"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/ui_set_gui_node/ui-set-gui-node.gd" id="1_ju7so"]
+
+[node name="UIDialogSetGUINode" type="GraphNode" node_paths=PackedStringArray("nLabelSummary")]
+title = "NID Null "
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_ju7so")
+nLabelSummary = NodePath("VBCNodeEditor/LabelSummary")
+type = "Set GUI"
+
+[node name="VBCNodeEditor" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelSummary" type="Label" parent="VBCNodeEditor"]
+layout_mode = 2
+text = "Set GUI"
