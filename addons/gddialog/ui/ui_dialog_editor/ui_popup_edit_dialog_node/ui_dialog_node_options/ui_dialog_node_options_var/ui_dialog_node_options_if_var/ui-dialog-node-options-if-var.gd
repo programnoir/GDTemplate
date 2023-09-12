@@ -116,15 +116,6 @@ func _on_button_inc_conditions_pressed() -> void:
 
 
 #	Complete
-func select_by_text( option_button: OptionButton, text: String ) -> void:
-	for item_id in range( 0, option_button.item_count ):
-		var item_text: String = option_button.get_item_text( item_id )
-		if( text == item_text ):
-			option_button.select( item_id )
-			return
-
-
-#	Complete
 func populate_ui() -> void:
 	type = node_data[ "if_value_type" ]
 	reset_ui()

@@ -57,6 +57,7 @@ func reset_ui() -> void:
 func populate_ui() -> void:
 	type = node_data[ "set_value_type" ]
 	reset_ui()
+	select_by_text( nOptionButtonVarType, type )
 	for variable_name_id in range( 0, nOptionButtonVariable.item_count ):
 		var current_name: String = nOptionButtonVariable.get_item_text(
 				variable_name_id )
@@ -75,7 +76,7 @@ func populate_ui() -> void:
 			nLineEditString.text = node_data[ "set_value" ]
 		"String Array":
 			max_elements = 0
-			for saved_string in string_arrays:
+			for saved_string in node_data[ "set_value" ]:
 				var new_line_edit: LineEdit = LineEdit.new()
 				add_child( new_line_edit )
 				new_line_edit.text = saved_string

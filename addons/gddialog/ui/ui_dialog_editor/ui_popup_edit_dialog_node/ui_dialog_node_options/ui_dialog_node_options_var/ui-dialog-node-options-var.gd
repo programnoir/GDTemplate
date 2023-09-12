@@ -36,6 +36,14 @@ func set_variable_arrays(
 	string_arrays = string_arrays_keys
 
 
+func select_by_text( option_button: OptionButton, text: String ) -> void:
+	for item_id in range( 0, option_button.item_count ):
+		var item_text: String = option_button.get_item_text( item_id )
+		if( text == item_text ):
+			option_button.select( item_id )
+			return
+
+
 func populate_options_list( options: OptionButton, new_list: Array ) -> void:
 	options.clear()
 	if( new_list.size() == 0 ):
