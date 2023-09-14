@@ -319,8 +319,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -371,8 +371,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -636,11 +636,21 @@ BUS_ID = 4
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
+[connection signal="clicked" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" to="Signals" method="_on_buttontab_clicked"]
 [connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" method="_on_focus_entered"]
+[connection signal="pressed" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" method="_on_pressed"]
+[connection signal="clicked" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" to="Signals" method="_on_buttontab_clicked"]
 [connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" method="_on_focus_entered"]
+[connection signal="pressed" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonControls" method="_on_pressed"]
+[connection signal="clicked" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonGameplay" to="Signals" method="_on_buttontab_clicked"]
 [connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonGameplay" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonGameplay" method="_on_focus_entered"]
+[connection signal="pressed" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonGameplay" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonGameplay" method="_on_pressed"]
+[connection signal="clicked" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo" to="Signals" method="_on_buttontab_clicked"]
 [connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo" method="_on_focus_entered"]
+[connection signal="pressed" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonVideo" method="_on_pressed"]
+[connection signal="clicked" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" to="Signals" method="_on_buttontab_clicked"]
 [connection signal="focus_entered" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" method="_on_focus_entered"]
+[connection signal="pressed" from="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" to="VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAudio" method="_on_pressed"]
 [connection signal="pressed" from="VBCSettings/HBCTabs/ButtonCloseSettings" to="Signals" method="_on_button_close_settings_pressed"]
 [connection signal="item_selected" from="VBCSettings/ColorRect/VBCAccessibility/HBCLanguages/OptionButtonLanguage" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_option_button_language_item_selected"]
 [connection signal="new_index" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonCycleFont" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_cycle_font_new_index"]

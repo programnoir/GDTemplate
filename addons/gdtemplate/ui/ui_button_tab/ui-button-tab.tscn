@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://dk5r287n3ijqv"]
 
 [ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_button_tab/ui-button-tab.gd" id="1_7ur2y"]
-
 
 [node name="ButtonTab" type="Button"]
 script = ExtResource("1_7ur2y")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

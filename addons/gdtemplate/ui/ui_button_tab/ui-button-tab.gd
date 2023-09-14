@@ -11,6 +11,7 @@ Notes:
 Debug Info:
 	No debug info.
 """
+signal clicked( button: ButtonTab )
 ## Reference to the content that is associated with this ButtonTab.
 @export var n_VBCTab: VBoxContainer = null
 
@@ -28,6 +29,10 @@ func _on_focus_entered() -> void:
 	for button in buttons:
 		button.n_VBCTab.visible = false
 	n_VBCTab.visible = true
+
+
+func _on_pressed() -> void:
+	emit_signal( "clicked", self )
 
 
 func _ready() -> void:
