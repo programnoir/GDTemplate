@@ -4,8 +4,10 @@ signal menu_settings_closed
 signal new_language
 
 @onready var nSignals: Node = get_node( "Signals" )
-@onready var nButtonAccessibility: Button = get_node(
-		"VBCSettings/HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility" )
+@onready var nSCTabsWrap: ScrollContainer = get_node(
+		"VBCSettings/HBCTabs/SCTabsWrap" )
+@onready var nButtonAccessibility: Button = nSCTabsWrap.get_node(
+		"HBCTabsClip/ButtonAccessibility" )
 @onready var nTabControls: VBoxContainer = get_node(
 		"VBCSettings/ColorRect/VBCControls" )
 @onready var nTabAccessibility: VBoxContainer = get_node(
