@@ -29,8 +29,8 @@ func set_text_speed( new_speed: float ) -> void:
 
 func set_font_size( new_size: int ) -> void:
 	var adjusted_size: int = new_size
-	var maximum_font_size: int = GlobalTheme.maximum_font_sizes[
-			GlobalUserSettings.get_game_scale() - 1 ]
+	var maximum_font_size: int = GlobalTheme.get_maximum_font_sizes(
+			GlobalUserSettings.get_game_scale() - 1 )
 	new_size = clamp( new_size, MINIMUM_FONT_SIZE, maximum_font_size )
 	GlobalUserSettings.set_current_font_size( new_size )
 	GlobalUserSettings.save_settings()

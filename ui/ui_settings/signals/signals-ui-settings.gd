@@ -21,11 +21,15 @@ func _on_new_fontlist() -> void:
 	owner.nTabAccessibility.populate_font_list()
 	owner.nTabAccessibility.set_font(
 			owner.nTabAccessibility.DEFAULT_FONT_INDEX )
-	
-	
-	"""
-		Ready
-	"""
+
+
+func _on_buttontab_clicked( button: ButtonTab ) -> void:
+	var mid_point: int = ( owner.nSCTabsWrap.size.x / 2.0 ) as int
+	var button_x: int = button.get_position().x + ( button.size.x / 2 )
+	var scroll_x: int = owner.nSCTabsWrap.scroll_horizontal
+	owner.nSCTabsWrap.scroll_horizontal = button_x - mid_point
+
+
 
 func connect_signals() -> void:
 	GlobalTheme.new_fontlist.connect(

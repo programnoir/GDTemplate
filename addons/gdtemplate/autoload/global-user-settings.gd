@@ -3,6 +3,8 @@ extends Node
 const CONFIG_DIR: String = "data/saves/"
 const CONFIG_FILE_NAME: String = "settings"
 const CONFIG_EXTENSION: String = ".tres"
+#	Godot has a bug that improperly sizes windows in borderless
+const WORKAROUND_ADJUSTMENT_SIZE: Vector2i = Vector2i( 6, 29 )
 
 #	Save file information
 var first_time_setup: bool = true
@@ -260,16 +262,19 @@ func toggle_borderless( borderless: bool ) -> void:
 	DisplayServer.window_set_flag( DisplayServer.WINDOW_FLAG_BORDERLESS,
 			borderless )
 	video[ "borderless" ] = borderless
+	set_window_scale( video[ "window_scale" ] )
 
 
 func toggle_fullscreen( fullscreen: bool ) -> void:
 	if( fullscreen == false ):
+		var correct_size: Vector2i = ( base_game_resolution * 
+				video[ "window_scale" ] )
 		DisplayServer.window_set_mode(
 				DisplayServer.WindowMode.WINDOW_MODE_WINDOWED, 0 )
 		DisplayServer.window_set_flag( DisplayServer.WINDOW_FLAG_BORDERLESS,
 				false )
-		DisplayServer.window_set_size( base_game_resolution * 
-					video[ "window_scale" ], DisplayServer.MAIN_WINDOW_ID )
+		DisplayServer.window_set_size( correct_size, DisplayServer.MAIN_WINDOW_ID )
+		borderless_error_workaround( correct_size )
 		recenter_main_window()
 	else:
 		DisplayServer.window_set_mode(
@@ -288,14 +293,27 @@ func set_game_scale( new_scale: int ) -> void:
 			base_game_resolution * video[ "game_scale" ] )
 
 
+func borderless_error_workaround( correct_size: Vector2i ) -> void:
+	if( is_borderless() == false ):
+		return
+	#	End defensive return: Not borderless.
+	if( is_fullscreen() == true ):
+		return
+	#	End defensive return: Fullscreen
+	var adjusted_size: Vector2i = correct_size - WORKAROUND_ADJUSTMENT_SIZE
+	get_window().size = adjusted_size
+
+
 func set_window_scale( new_scale: int ) -> void:
 	video[ "window_scale" ] = clamp( new_scale, 1, max_scale )
 	if( video[ "window_scale" ] == max_scale ):
 		toggle_fullscreen( true )
 		return
 	toggle_fullscreen( false )
-	DisplayServer.window_set_size( base_game_resolution * 
-			video[ "window_scale" ], DisplayServer.MAIN_WINDOW_ID )
+	var correct_size: Vector2i = ( base_game_resolution * 
+			video[ "window_scale" ] )
+	DisplayServer.window_set_size( correct_size )
+	borderless_error_workaround( correct_size )
 	set_game_scale( video[ "game_scale" ] )
 	recenter_main_window()
 	#	Fix borderless configuration after window resizing.

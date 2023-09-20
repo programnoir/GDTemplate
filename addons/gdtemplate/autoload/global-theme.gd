@@ -2,6 +2,12 @@ extends Node
 
 signal new_fontlist
 
+#	Fallback logarithmic formula for font scaling.
+#	f(x) = offset + ( scale * log( x ^ exponent ) )
+const MAX_FONT_OFFSET: int = 26
+const MAX_FONT_SCALE: int = 140
+const MAX_FONT_EXPONENT: float = 0.8
+
 var theme: Theme
 var thread_font: Thread
 var thread_font_size: Thread
@@ -26,6 +32,13 @@ var font_list: Dictionary = {
 
 func set_theme( new_theme: Theme ) -> void:
 	theme = new_theme
+
+
+func get_maximum_font_sizes( index: int ) -> int:
+	if( index < maximum_font_sizes.size() ):
+		return maximum_font_sizes[ index ]
+	return MAX_FONT_OFFSET + round( MAX_FONT_SCALE * \
+			log( pow( index, MAX_FONT_EXPONENT ) ) )
 
 
 func get_font( font_name: String ) -> Font:
