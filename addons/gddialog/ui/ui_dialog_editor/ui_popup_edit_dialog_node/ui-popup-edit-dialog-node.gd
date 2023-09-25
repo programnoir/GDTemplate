@@ -9,33 +9,31 @@ extends Popup
 @onready var nHBCPopupSaveQuit: HBoxContainer = get_node(
 			"Panel/VBoxContainer/HBCPopupSaveQuit" )
 
+const NODE_OPTIONS_DIRECTORY: String = "res://addons/gddialog/ui"\
+		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"
 
 var dialog_node: DialogNode = null
 var nVBCNodeOptions: DialogNodeOptions = null
 
-var p_advanced_node: PackedScene = preload( "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"\
-		+ "/ui_dialog_node_options_advanced/ui-dialog-node-options-advanced.tscn" )
-var p_if_node: PackedScene = preload( "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"\
+var p_advanced_node_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
+		+ "/ui_dialog_node_options_advanced"\
+		+ "/ui-dialog-node-options-advanced.tscn" )
+var p_if_node_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
 		+ "/ui_dialog_node_options_var/ui_dialog_node_options_if_var"\
 		+ "/ui-dialog-node-options-if-var.tscn" )
-var p_set_node: PackedScene = preload( "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"\
+var p_set_node_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
 		+ "/ui_dialog_node_options_var/ui_dialog_node_options_set_var"\
 		+ "/ui-dialog-node-options-set-var.tscn" )
-var p_set_gui_options: PackedScene = preload( "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"\
+var p_set_gui_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
 		+ "/ui_dialog_node_options_set_gui/ui-dialog-node-options-set-gui.tscn")
-var p_run_script_options: PackedScene = preload( "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"\
+var p_run_script_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
 		+ "/ui_dialog_node_options_run_script"\
 		+ "/ui-dialog-node-options-run-script.tscn")
-var node_types: Dictionary = {
+var node_option_types: Dictionary = {
 	#"Line": p_line_node,
-	"Advanced": p_advanced_node,
-	"If": p_if_node,
-	"Set": p_set_node,
+	"Advanced": p_advanced_node_options,
+	"If": p_if_node_options,
+	"Set": p_set_node_options,
 	"Set GUI": p_set_gui_options,
 	"Run Script": p_run_script_options
 }
@@ -46,8 +44,8 @@ func prepare_node_options() -> void:
 		hide()
 		return
 	#	End defensive return: No node selected?
-	#	I think I should send available info like flags/strings first
-	nVBCNodeOptions = node_types[ owner.selected_node.type ].instantiate()
+	nVBCNodeOptions = (
+			node_option_types[ owner.selected_node.type ].instantiate() )
 	nSCNodeOptions.add_child( nVBCNodeOptions )
 	var passed_node_data: Dictionary = owner.n_Database.nDialogNodes\
 			.get_node_data( owner.record_id, owner.selected_node.get_node_id() )
@@ -58,7 +56,6 @@ func prepare_node_options() -> void:
 				owner.n_Database.strings_list.keys(),
 				owner.n_Database.floats_list.keys(),
 				owner.n_Database.string_arrays_list.keys() )
-		#	TODO: Pass Conditions to IF node
 	match owner.selected_node.type:
 		"Advanced":
 			nVBCNodeOptions.pass_variable_data(
@@ -68,7 +65,6 @@ func prepare_node_options() -> void:
 					owner.n_Database.string_arrays_list.keys(),
 					owner.n_Database.speakers_list.keys(),
 					owner.n_Database.colors_list )
-	#	But for now sending data to the node.
 	nVBCNodeOptions.populate_ui()
 	
 

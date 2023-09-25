@@ -156,12 +156,6 @@ func connect_all_node_signals( node: GraphNode, type: String ) -> void:
 	if( node is DialogSlotAdjustableNode ):
 		node.connect( "changed_slot_amount", Callable( self,
 				"_on_node_changed_slot_amount" ) )
-	#elif( node is DialogVarNode ):
-	#	node.connect( "changed_variable_type", Callable( self,
-	#				"_on_node_changed_variable_type" ) )
-	#	node.connect( "changed_variable", Callable( self,
-	#				"_on_node_changed_variable" ) )
-	#	Type-Specific node connections
 	match type:
 		"Line":
 			node.connect( "changed_dialog_text", Callable( self,
@@ -178,15 +172,9 @@ func disconnect_all_node_signals( node: GraphNode, type: String ) -> void:
 	node.disconnect( "changed_offset", Callable( self,
 			"_on_node_changed_offset" ) )
 	#	Inheritance nodes:
-	#if( node is DialogSlotNode ):
-	#	node.connect( "changed_slot_amount", Callable( self,
-	#			"_on_node_changed_slot_amount" ) )
-	#elif( node is DialogVarNode ):
-	#	node.connect( "changed_variable_type", Callable( self,
-	#				"_on_node_changed_variable_type" ) )
-	#	node.connect( "changed_variable", Callable( self,
-	#				"_on_node_changed_variable" ) )
-	#	Type-Specific node connections
+	if( node is DialogSlotAdjustableNode ):
+		node.disconnect( "changed_slot_amount", Callable( self,
+				"_on_node_changed_slot_amount" ) )
 	match type:
 		"Line":
 			node.disconnect( "changed_dialog_text", Callable( self,
