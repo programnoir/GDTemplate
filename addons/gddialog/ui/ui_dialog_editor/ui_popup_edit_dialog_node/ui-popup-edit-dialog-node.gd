@@ -88,6 +88,9 @@ func save_node_data() -> void:
 				summary_string += keyframe[ "text" ]
 			if( summary_string.length() > 30 ):
 				summary_string = summary_string.substr( 0, 29 )
+			if( node_data.has( "responses" ) ):
+				summary_string += "\nResponses: " + str( 
+						node_data[ "responses" ].size() )
 			owner.selected_node.set_summary( summary_string )
 		"If":
 			owner.selected_node.populate_node_data( node_data )

@@ -5,28 +5,40 @@ class_name DialogNodeOptionsAdvanced
 
 @onready var nSignals: Node = get_node( "Signals" )
 #	Speaker/Keyframe
-@onready var nOptionButtonSpeaker: OptionButton = get_node(
+@onready var nTabDialog: VBoxContainer = get_node( "TabContainer/Dialog" )
+@onready var nTabResponses: VBoxContainer = get_node( "TabContainer/Responses" )
+@onready var nOptionButtonSpeaker: OptionButton = nTabDialog.get_node(
 		"HBCSpeaker/OptionButtonSpeaker" )
-@onready var nLabelCurrentKeyframe: Label = get_node(
+@onready var nLabelCurrentKeyframe: Label = nTabDialog.get_node(
 		"HBCSpeaker/LabelCurrentKeyframe" )
 #	Keyframe navigation and editing
-@onready var nButtonPreviousKeyframe: Button = get_node(
+@onready var nButtonPreviousKeyframe: Button = nTabDialog.get_node(
 		"HBCKeyframeNav/ButtonPreviousKeyframe")
-@onready var nButtonNextKeyframe: Button = get_node(
+@onready var nButtonNextKeyframe: Button = nTabDialog.get_node(
 		"HBCKeyframeNav/ButtonNextKeyframe")
-@onready var nRichTextLabel: RichTextLabel = get_node(
+@onready var nRichTextLabel: RichTextLabel = nTabDialog.get_node(
 		"HBCKeyframeNav/RichTextLabel" )
-@onready var nButtonAppendKeyframe: Button = get_node(
+@onready var nButtonAppendKeyframe: Button = nTabDialog.get_node(
 		"HBCKeyframeNav/VBCAddDelete/ButtonAppendKeyframe" )
-@onready var nButtonDeleteKeyframe: Button = get_node(
+@onready var nButtonDeleteKeyframe: Button = nTabDialog.get_node(
 		"HBCKeyframeNav/VBCAddDelete/ButtonDeleteKeyframe" )
-@onready var nTextEdit: TextEdit = get_node( "TextEdit" )
+@onready var nTextEdit: TextEdit = nTabDialog.get_node( "TextEdit" )
 #	Keyframe options
-@onready var nTabTypeColor: VBoxContainer = get_node( "TabContainer/Type & Color" )
-@onready var nTabTiming: VBoxContainer = get_node( "TabContainer/Timing" )
-@onready var nTabAnimations: VBoxContainer = get_node( "TabContainer/Animations" )
-@onready var nTabAudio: VBoxContainer = get_node( "TabContainer/Audio" )
-@onready var nTabData: VBoxContainer = get_node( "TabContainer/Data" )
+@onready var nTabTypeColor: VBoxContainer = nTabDialog.get_node(
+		"TabContainer/Type & Color" )
+@onready var nTabTiming: VBoxContainer = nTabDialog.get_node(
+		"TabContainer/Timing" )
+@onready var nTabAnimations: VBoxContainer = nTabDialog.get_node(
+		"TabContainer/Animations" )
+@onready var nTabAudio: VBoxContainer = nTabDialog.get_node(
+		"TabContainer/Audio" )
+@onready var nTabData: VBoxContainer = nTabDialog.get_node(
+		"TabContainer/Data" )
+#	Responses
+@onready var nCheckBoxResponses: CheckBox = nTabResponses.get_node(
+		"HBCResponseOptions/CheckBoxResponses" )
+@onready var nVBCResponses: VBoxContainer = nTabResponses.get_node(
+		"SCResponses/VBCResponses" )
 
 const SELECT_COLOR: Color = Color( 1.0, 1.0, 0 )
 
@@ -159,10 +171,34 @@ func create_advanced_node_keyframe() -> void:
 		update_current_keyframe( 1 )
 
 
+func add_responses( delta: int ) -> void:
+	print( "It's working" )
+	match delta:
+		-1:
+			var children: Array = nVBCResponses.get_children()
+			if( children.size() == 0 ):
+				return
+			#	End defensive return: No remaining children.
+			nVBCResponses.get_child( children.size() - 1 ).queue_free()
+		1:
+			var new_response: LineEdit = LineEdit.new()
+			nVBCResponses.add_child( new_response )
+
+
 func write_node_data() -> void:
-	node_data[ "speaker" ] = nOptionButtonSpeaker.get_item_text( 
-			nOptionButtonSpeaker.selected )
+	if( nOptionButtonSpeaker.item_count > 0 ):
+		node_data[ "speaker" ] = nOptionButtonSpeaker.get_item_text( 
+				nOptionButtonSpeaker.selected )
 	save_current_keyframe()
+	if( nCheckBoxResponses.button_pressed == true ):
+		var response_array: Array = []
+		for child in nVBCResponses.get_children():
+			response_array.append( child.text )
+		node_data[ "responses" ] = response_array.duplicate()
+	else:
+		if( node_data.has( "responses" ) ):
+			node_data.erase( "responses" )
+	#	Cleanup
 	nTabAnimations.clear_animations()
 
 
@@ -180,3 +216,9 @@ func populate_ui() -> void:
 	if( node_data[ "keyframes" ].size() == 0 ):
 		create_advanced_node_keyframe()
 	load_keyframe()
+	if( node_data.has( "responses" ) ):
+		nCheckBoxResponses.button_pressed = true
+		for response in node_data[ "responses" ]:
+			var new_response: LineEdit = LineEdit.new()
+			new_response.text = response
+			nVBCResponses.add_child( new_response )

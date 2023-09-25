@@ -22,3 +22,11 @@ func _on_button_append_keyframe_pressed() -> void:
 
 func _on_button_delete_keyframe_pressed() -> void:
 	owner.delete_current_keyframe()
+
+
+func _on_button_add_response_pressed() -> void:
+	owner.add_responses( 1 )
+
+
+func _on_button_remove_response_pressed() -> void:
+	owner.add_responses( -1 )

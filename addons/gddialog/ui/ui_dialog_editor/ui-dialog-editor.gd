@@ -83,13 +83,15 @@ func create_new_node( node_type: String ) -> void:
 			record_id, node_type )
 	var new_node: DialogNode = dialog_node_types[ node_type ].instantiate()
 	nGraphEditDialog.add_child( new_node )
-	nSignals.connect_all_node_signals( new_node, node_type )
 	new_node.set_node_id( new_node_id )
 	var start_position: Vector2 = ( nGraphEditDialog.scroll_offset +
 		Vector2( 40, 40 ) )
 	n_Database.nDialogNodes.set_node_property( record_id, new_node_id,
 			"graph_offset", start_position )
 	new_node.position_offset = start_position
+	if( node_type == "End" ):
+		new_node.show_close = true
+	nSignals.connect_all_node_signals( new_node, node_type )
 
 
 func connect_all_node_link_ui() -> void:
@@ -138,6 +140,9 @@ func populate_graph() -> void:
 		#	Adjustments specific to node type. Might convert this code into a
 		#	 function that accepts the node data.
 		match node_type:
+			"End":
+				if( node_id > 1 ):
+					new_node.show_close = true
 			"Line":
 				var new_text = n_Database.nDialogNodes.get_node_property(
 						record_id, node_id, "text" )
@@ -150,6 +155,9 @@ func populate_graph() -> void:
 					summary_string += keyframe[ "text" ]
 				if( summary_string.length() > 30 ):
 					summary_string = summary_string.substr( 0, 29 )
+				if( node_data.has( "responses" ) ):
+					summary_string += "\nResponses: " + str( 
+							node_data[ "responses" ].size() )
 				new_node.set_summary( summary_string )
 			"If":
 				new_node.populate_node_data(

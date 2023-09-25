@@ -29,6 +29,8 @@ func _on_menu_button_add_node_id_pressed( id: int ) -> void:
 			type = "Set GUI"
 		5:
 			type = "Run Script"
+		8:
+			type = "End"
 	owner.create_new_node( type )
 
 

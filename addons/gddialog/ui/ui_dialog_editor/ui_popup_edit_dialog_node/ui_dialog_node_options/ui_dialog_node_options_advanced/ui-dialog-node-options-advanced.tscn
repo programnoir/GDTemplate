@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ttkrbcer1rb8"]
+[gd_scene load_steps=11 format=3 uid="uid://baq5g0gyferaw"]
 
 [ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_rhut8"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui-dialog-node-options-advanced.gd" id="2_kh4ta"]
@@ -26,105 +26,108 @@ script = ExtResource("2_kh4ta")
 [node name="Signals" type="Node" parent="."]
 script = ExtResource("3_t7xyw")
 
-[node name="Label" type="Label" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Dialog" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Dialog"]
 layout_mode = 2
 text = "Configure Advanced Dialog Node"
 
-[node name="HBCSpeaker" type="HBoxContainer" parent="."]
+[node name="HBCSpeaker" type="HBoxContainer" parent="TabContainer/Dialog"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBCSpeaker"]
+[node name="Label" type="Label" parent="TabContainer/Dialog/HBCSpeaker"]
 layout_mode = 2
 text = "Speaker"
 
-[node name="OptionButtonSpeaker" type="OptionButton" parent="HBCSpeaker"]
+[node name="OptionButtonSpeaker" type="OptionButton" parent="TabContainer/Dialog/HBCSpeaker"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="HBCSpeaker"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Dialog/HBCSpeaker"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="HBCSpeaker"]
+[node name="Label2" type="Label" parent="TabContainer/Dialog/HBCSpeaker"]
 layout_mode = 2
 text = "Keyframe: "
 
-[node name="LabelCurrentKeyframe" type="Label" parent="HBCSpeaker"]
+[node name="LabelCurrentKeyframe" type="Label" parent="TabContainer/Dialog/HBCSpeaker"]
 layout_mode = 2
 text = "0"
 
-[node name="HBCKeyframeNav" type="HBoxContainer" parent="."]
+[node name="HBCKeyframeNav" type="HBoxContainer" parent="TabContainer/Dialog"]
 layout_mode = 2
 
-[node name="VSeparator2" type="VSeparator" parent="HBCKeyframeNav"]
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Dialog/HBCKeyframeNav"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ButtonPreviousKeyframe" type="Button" parent="HBCKeyframeNav"]
+[node name="ButtonPreviousKeyframe" type="Button" parent="TabContainer/Dialog/HBCKeyframeNav"]
 layout_mode = 2
 text = "◀️ "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBCKeyframeNav"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Dialog/HBCKeyframeNav"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 
-[node name="ButtonNextKeyframe" type="Button" parent="HBCKeyframeNav"]
+[node name="ButtonNextKeyframe" type="Button" parent="TabContainer/Dialog/HBCKeyframeNav"]
 layout_mode = 2
 text = " ▶️"
 
-[node name="VSeparator" type="VSeparator" parent="HBCKeyframeNav"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Dialog/HBCKeyframeNav"]
 layout_mode = 2
 
-[node name="VBCAddDelete" type="VBoxContainer" parent="HBCKeyframeNav"]
+[node name="VBCAddDelete" type="VBoxContainer" parent="TabContainer/Dialog/HBCKeyframeNav"]
 layout_mode = 2
 
-[node name="ButtonAppendKeyframe" type="Button" parent="HBCKeyframeNav/VBCAddDelete"]
+[node name="ButtonAppendKeyframe" type="Button" parent="TabContainer/Dialog/HBCKeyframeNav/VBCAddDelete"]
 layout_mode = 2
 size_flags_vertical = 3
 text = " ➕ "
 
-[node name="ButtonDeleteKeyframe" type="Button" parent="HBCKeyframeNav/VBCAddDelete"]
+[node name="ButtonDeleteKeyframe" type="Button" parent="TabContainer/Dialog/HBCKeyframeNav/VBCAddDelete"]
 layout_mode = 2
 size_flags_vertical = 3
 text = " 🗑️ "
 
-[node name="VSeparator3" type="VSeparator" parent="HBCKeyframeNav"]
+[node name="VSeparator3" type="VSeparator" parent="TabContainer/Dialog/HBCKeyframeNav"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="TextEdit" type="TextEdit" parent="TabContainer/Dialog"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_colors/background_color = Color(0, 0, 0, 0.392157)
 placeholder_text = "Dialog text..."
 wrap_mode = 1
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="TabContainer/Dialog"]
 layout_mode = 2
 size_flags_vertical = 3
-clip_tabs = false
 
-[node name="Type & Color" type="VBoxContainer" parent="TabContainer"]
+[node name="Type & Color" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("4_n17si")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Type & Color"]
+[node name="HBCTextType" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Type & Color"]
 layout_mode = 2
 
-[node name="HBCTextType" type="HBoxContainer" parent="TabContainer/Type & Color/VBoxContainer"]
+[node name="Label" type="Label" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCTextType"]
 layout_mode = 2
+text = " Text Type"
 
-[node name="Label" type="Label" parent="TabContainer/Type & Color/VBoxContainer/HBCTextType"]
-layout_mode = 2
-text = "Text Type"
-
-[node name="OptionButtonTextType" type="OptionButton" parent="TabContainer/Type & Color/VBoxContainer/HBCTextType"]
+[node name="OptionButtonTextType" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCTextType"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -135,20 +138,20 @@ popup/item_0/id = 0
 popup/item_1/text = "Data"
 popup/item_1/id = 1
 
-[node name="HBCColorOptions" type="HBoxContainer" parent="TabContainer/Type & Color/VBoxContainer"]
+[node name="HBCColorOptions" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Type & Color"]
 layout_mode = 2
 
-[node name="CheckBoxUseColor" type="CheckBox" parent="TabContainer/Type & Color/VBoxContainer/HBCColorOptions"]
+[node name="CheckBoxUseColor" type="CheckBox" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions"]
 layout_mode = 2
 tooltip_text = "Deselecting this indicates that the selected color should be ignored."
 button_pressed = true
 flat = true
 
-[node name="Label" type="Label" parent="TabContainer/Type & Color/VBoxContainer/HBCColorOptions"]
+[node name="Label" type="Label" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions"]
 layout_mode = 2
 text = "Text Color"
 
-[node name="OptionButtonColor" type="OptionButton" parent="TabContainer/Type & Color/VBoxContainer/HBCColorOptions"]
+[node name="OptionButtonColor" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -157,58 +160,58 @@ selected = 0
 popup/item_0/text = "Custom"
 popup/item_0/id = 0
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="TabContainer/Type & Color/VBoxContainer/HBCColorOptions"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 flat = true
 color = Color(1, 1, 1, 1)
 
-[node name="Timing" type="VBoxContainer" parent="TabContainer"]
+[node name="Timing" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 visible = false
 layout_mode = 2
 script = ExtResource("5_jw1uu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Timing"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Timing"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Timing/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/Timing/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Delay"
 
-[node name="SpinBoxDelay" type="SpinBox" parent="TabContainer/Timing/VBoxContainer/HBoxContainer"]
+[node name="SpinBoxDelay" type="SpinBox" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 min_value = 0.001
 step = 0.001
 value = 0.001
 allow_greater = true
 
-[node name="Label2" type="Label" parent="TabContainer/Timing/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "s"
 
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Timing/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CheckBoxFixedDelay" type="CheckBox" parent="TabContainer/Timing/VBoxContainer/HBoxContainer"]
+[node name="CheckBoxFixedDelay" type="CheckBox" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 tooltip_text = "If unchecked, your delay will be affected by the player's preferred write speed setting."
 text = "Ignore player settings"
 flat = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Timing/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/Timing/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Write Speed Scale"
 
-[node name="SpinBoxWriteSpeed" type="SpinBox" parent="TabContainer/Timing/VBoxContainer/HBoxContainer2"]
+[node name="SpinBoxWriteSpeed" type="SpinBox" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 min_value = 0.001
 step = 0.001
@@ -216,84 +219,84 @@ page = 0.001
 value = 1.0
 allow_greater = true
 
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Timing/VBoxContainer/HBoxContainer2"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer2"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CheckBoxFixedWriteSpeed" type="CheckBox" parent="TabContainer/Timing/VBoxContainer/HBoxContainer2"]
+[node name="CheckBoxFixedWriteSpeed" type="CheckBox" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 tooltip_text = "If unchecked, your delay will be affected by the player's preferred write speed setting."
 text = "Ignore player settings"
 flat = true
 
-[node name="Animations" type="VBoxContainer" parent="TabContainer"]
+[node name="Animations" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 visible = false
 layout_mode = 2
 script = ExtResource("6_hk3yq")
 
-[node name="Signals" type="Node" parent="TabContainer/Animations"]
+[node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Animations"]
 script = ExtResource("7_u7vvo")
 
-[node name="SCAnimations" type="ScrollContainer" parent="TabContainer/Animations"]
+[node name="SCAnimations" type="ScrollContainer" parent="TabContainer/Dialog/TabContainer/Animations"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="VBCAnimations" type="VBoxContainer" parent="TabContainer/Animations/SCAnimations"]
+[node name="VBCAnimations" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Animations/SCAnimations"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ButtonAddAnimation" type="Button" parent="TabContainer/Animations/SCAnimations/VBCAnimations"]
+[node name="ButtonAddAnimation" type="Button" parent="TabContainer/Dialog/TabContainer/Animations/SCAnimations/VBCAnimations"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 text = "+"
 
-[node name="Audio" type="VBoxContainer" parent="TabContainer"]
+[node name="Audio" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 visible = false
 layout_mode = 2
 script = ExtResource("6_8qqsp")
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/Audio"]
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Dialog/TabContainer/Audio"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="TabContainer/Audio/GridContainer"]
+[node name="Label" type="Label" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer"]
 layout_mode = 2
 text = " Sound:"
 horizontal_alignment = 2
 
-[node name="LineEditPathSFX" type="LineEdit" parent="TabContainer/Audio/GridContainer"]
+[node name="LineEditPathSFX" type="LineEdit" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "path/to/sound/effect.wav"
 
-[node name="Label3" type="Label" parent="TabContainer/Audio/GridContainer"]
+[node name="Label3" type="Label" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer"]
 layout_mode = 2
 text = " Typewriter:"
 
-[node name="LineEditPathTypewriter" type="LineEdit" parent="TabContainer/Audio/GridContainer"]
+[node name="LineEditPathTypewriter" type="LineEdit" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "path/to/typing_sound.ogg"
 
-[node name="Label2" type="Label" parent="TabContainer/Audio/GridContainer"]
+[node name="Label2" type="Label" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer"]
 layout_mode = 2
 text = "Song:"
 horizontal_alignment = 2
 
-[node name="HBCSong" type="HBoxContainer" parent="TabContainer/Audio/GridContainer"]
+[node name="HBCSong" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer"]
 layout_mode = 2
 
-[node name="LineEditPathSong" type="LineEdit" parent="TabContainer/Audio/GridContainer/HBCSong"]
+[node name="LineEditPathSong" type="LineEdit" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer/HBCSong"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "path/to/song.flac or \"Silence\""
 
-[node name="OptionButtonTransition" type="OptionButton" parent="TabContainer/Audio/GridContainer/HBCSong"]
+[node name="OptionButtonTransition" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer/HBCSong"]
 layout_mode = 2
 alignment = 2
 item_count = 3
@@ -305,27 +308,27 @@ popup/item_1/id = 1
 popup/item_2/text = "Crossfade"
 popup/item_2/id = 2
 
-[node name="Data" type="VBoxContainer" parent="TabContainer"]
+[node name="Data" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 visible = false
 layout_mode = 2
 script = ExtResource("9_wyic6")
 
-[node name="Signals" type="Node" parent="TabContainer/Data"]
+[node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Data"]
 script = ExtResource("10_lv4bb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Data"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Data"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 
-[node name="HBCAddDataOptions" type="HBoxContainer" parent="TabContainer/Data/VBoxContainer"]
+[node name="HBCAddDataOptions" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
+[node name="Label" type="Label" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 layout_mode = 2
 text = " Add: "
 vertical_alignment = 1
 
-[node name="OptionButtonType" type="OptionButton" parent="TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
+[node name="OptionButtonType" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 layout_mode = 2
 item_count = 2
 selected = 0
@@ -334,7 +337,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Add Variable"
 popup/item_1/id = 1
 
-[node name="OptionButtonCustomType" type="OptionButton" parent="TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
+[node name="OptionButtonCustomType" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 item_count = 2
@@ -344,16 +347,16 @@ popup/item_0/id = 0
 popup/item_1/text = "Float"
 popup/item_1/id = 1
 
-[node name="LineEditCustomString" type="LineEdit" parent="TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
+[node name="LineEditCustomString" type="LineEdit" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "data name"
 
-[node name="SpinBoxCustomFloat" type="SpinBox" parent="TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
+[node name="SpinBoxCustomFloat" type="SpinBox" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 visible = false
 layout_mode = 2
 
-[node name="OptionButtonBuiltInType" type="OptionButton" parent="TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
+[node name="OptionButtonBuiltInType" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -366,37 +369,78 @@ popup/item_1/id = 1
 popup/item_2/text = "String"
 popup/item_2/id = 2
 
-[node name="OptionButtonVariable" type="OptionButton" parent="TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
+[node name="OptionButtonVariable" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ButtonAddData" type="Button" parent="TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
+[node name="ButtonAddData" type="Button" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 layout_mode = 2
 text = " ➕ "
 
-[node name="SCData" type="ScrollContainer" parent="TabContainer/Data/VBoxContainer"]
+[node name="SCData" type="ScrollContainer" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBCData" type="HBoxContainer" parent="TabContainer/Data/VBoxContainer/SCData"]
+[node name="HBCData" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/SCData"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBCBuiltInData" type="VBoxContainer" parent="TabContainer/Data/VBoxContainer/SCData/HBCData"]
+[node name="VBCBuiltInData" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/SCData/HBCData"]
 layout_mode = 2
 
-[node name="VBCCustomData" type="VBoxContainer" parent="TabContainer/Data/VBoxContainer/SCData/HBCData"]
+[node name="VBCCustomData" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/SCData/HBCData"]
 layout_mode = 2
 
-[connection signal="pressed" from="HBCKeyframeNav/ButtonPreviousKeyframe" to="Signals" method="_on_button_previous_keyframe_pressed"]
-[connection signal="pressed" from="HBCKeyframeNav/ButtonNextKeyframe" to="Signals" method="_on_button_next_keyframe_pressed"]
-[connection signal="pressed" from="HBCKeyframeNav/VBCAddDelete/ButtonAppendKeyframe" to="Signals" method="_on_button_append_keyframe_pressed"]
-[connection signal="pressed" from="HBCKeyframeNav/VBCAddDelete/ButtonDeleteKeyframe" to="Signals" method="_on_button_delete_keyframe_pressed"]
-[connection signal="text_changed" from="TextEdit" to="Signals" method="_on_text_edit_text_changed"]
-[connection signal="pressed" from="TabContainer/Animations/SCAnimations/VBCAnimations/ButtonAddAnimation" to="TabContainer/Animations/Signals" method="_on_button_add_animation_pressed"]
-[connection signal="item_selected" from="TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonType" to="TabContainer/Data/Signals" method="_on_option_button_type_item_selected"]
-[connection signal="item_selected" from="TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonCustomType" to="TabContainer/Data/Signals" method="_on_option_button_custom_type_item_selected"]
-[connection signal="item_selected" from="TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonBuiltInType" to="TabContainer/Data/Signals" method="_on_option_button_built_in_type_item_selected"]
-[connection signal="pressed" from="TabContainer/Data/VBoxContainer/HBCAddDataOptions/ButtonAddData" to="TabContainer/Data/Signals" method="_on_button_add_data_pressed"]
+[node name="Responses" type="VBoxContainer" parent="TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBCResponseOptions" type="HBoxContainer" parent="TabContainer/Responses"]
+layout_mode = 2
+
+[node name="CheckBoxResponses" type="CheckBox" parent="TabContainer/Responses/HBCResponseOptions"]
+layout_mode = 2
+tooltip_text = "Include multiple responses. You must set the slots in the advanced dialog node manually."
+text = "Include Responses"
+flat = true
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Responses/HBCResponseOptions"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonRemoveResponse" type="Button" parent="TabContainer/Responses/HBCResponseOptions"]
+layout_mode = 2
+text = " ➖ "
+
+[node name="ButtonAddResponse" type="Button" parent="TabContainer/Responses/HBCResponseOptions"]
+layout_mode = 2
+text = " ➕ "
+
+[node name="SCResponses" type="ScrollContainer" parent="TabContainer/Responses"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBCResponses" type="VBoxContainer" parent="TabContainer/Responses/SCResponses"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/ButtonPreviousKeyframe" to="Signals" method="_on_button_previous_keyframe_pressed"]
+[connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/ButtonNextKeyframe" to="Signals" method="_on_button_next_keyframe_pressed"]
+[connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/VBCAddDelete/ButtonAppendKeyframe" to="Signals" method="_on_button_append_keyframe_pressed"]
+[connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/VBCAddDelete/ButtonDeleteKeyframe" to="Signals" method="_on_button_delete_keyframe_pressed"]
+[connection signal="text_changed" from="TabContainer/Dialog/TextEdit" to="Signals" method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="TabContainer/Dialog/TabContainer/Animations/SCAnimations/VBCAnimations/ButtonAddAnimation" to="TabContainer/Dialog/TabContainer/Animations/Signals" method="_on_button_add_animation_pressed"]
+[connection signal="item_selected" from="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonType" to="TabContainer/Dialog/TabContainer/Data/Signals" method="_on_option_button_type_item_selected"]
+[connection signal="item_selected" from="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonCustomType" to="TabContainer/Dialog/TabContainer/Data/Signals" method="_on_option_button_custom_type_item_selected"]
+[connection signal="item_selected" from="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonBuiltInType" to="TabContainer/Dialog/TabContainer/Data/Signals" method="_on_option_button_built_in_type_item_selected"]
+[connection signal="pressed" from="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions/ButtonAddData" to="TabContainer/Dialog/TabContainer/Data/Signals" method="_on_button_add_data_pressed"]
+[connection signal="pressed" from="TabContainer/Responses/HBCResponseOptions/ButtonRemoveResponse" to="Signals" method="_on_button_remove_response_pressed"]
+[connection signal="pressed" from="TabContainer/Responses/HBCResponseOptions/ButtonAddResponse" to="Signals" method="_on_button_add_response_pressed"]

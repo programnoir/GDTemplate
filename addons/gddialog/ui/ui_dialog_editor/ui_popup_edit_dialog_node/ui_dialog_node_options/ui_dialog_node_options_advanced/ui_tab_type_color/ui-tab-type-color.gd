@@ -2,13 +2,13 @@
 extends VBoxContainer
 
 @onready var nOptionButtonTextType: OptionButton = get_node(
-		"VBoxContainer/HBCTextType/OptionButtonTextType" )
+		"HBCTextType/OptionButtonTextType" )
 @onready var nCheckBoxUseColor: CheckBox = get_node(
-		"VBoxContainer/HBCColorOptions/CheckBoxUseColor")
+		"HBCColorOptions/CheckBoxUseColor")
 @onready var nOptionButtonColor: OptionButton = get_node(
-		"VBoxContainer/HBCColorOptions/OptionButtonColor" )
+		"HBCColorOptions/OptionButtonColor" )
 @onready var nColorPickerButton: ColorPickerButton = get_node(
-		"VBoxContainer/HBCColorOptions/ColorPickerButton" )
+		"HBCColorOptions/ColorPickerButton" )
 
 
 func save_current_keyframe( data: Dictionary ) -> void:
