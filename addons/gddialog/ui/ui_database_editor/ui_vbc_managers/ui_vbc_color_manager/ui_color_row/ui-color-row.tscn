@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq63iomiu73uh"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_color_row/ui-color-row.gd" id="1_nwtda"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_color_row/signals/signals-ui-color-row.gd" id="2_70aas"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_vbc_managers/ui_vbc_color_manager/ui_color_row/ui-color-row.gd" id="1_nwtda"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_vbc_managers/ui_vbc_color_manager/ui_color_row/signals/signals-ui-color-row.gd" id="2_70aas"]
+
 
 [node name="ColorRow" type="ColorRect"]
 custom_minimum_size = Vector2(0, 31)

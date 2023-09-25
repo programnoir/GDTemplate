@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://x1lrx3slqjam"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_string_row/signals/signals-ui-string-row.gd" id="1_7tu2k"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_string_row/ui-string-row.gd" id="1_kgbek"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_vbc_managers/ui_vbc_string_manager/ui_string_row/signals/signals-ui-string-row.gd" id="1_7tu2k"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_vbc_managers/ui_vbc_string_manager/ui_string_row/ui-string-row.gd" id="1_kgbek"]
+
 
 [node name="StringRow" type="ColorRect"]
 custom_minimum_size = Vector2(0, 31)

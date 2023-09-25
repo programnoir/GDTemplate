@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://6rynk64m4dp1"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_speaker_row/ui-speaker-row.gd" id="1_dpqme"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_speaker_row/signals/signals-ui-speaker-row.gd" id="2_v2fsc"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_vbc_managers/ui_vbc_speaker_manager/ui_speaker_row/ui-speaker-row.gd" id="1_dpqme"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_vbc_managers/ui_vbc_speaker_manager/ui_speaker_row/signals/signals-ui-speaker-row.gd" id="2_v2fsc"]
+
 
 [node name="SpeakerRow" type="ColorRect"]
 custom_minimum_size = Vector2(0, 31)
