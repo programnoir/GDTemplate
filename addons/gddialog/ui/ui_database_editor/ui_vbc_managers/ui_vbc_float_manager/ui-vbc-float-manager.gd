@@ -18,7 +18,7 @@ func create_float_variable(
 	if( load == false ):
 		if( owner.nDatabase.add_float_variable( float_name ) == false ):
 			return
-		#	End defensive return: String exists/invalid
+		#	End defensive return: Float exists/invalid
 	var new_row: DialogFloatRow = p_UIFloatRow.instantiate()
 	nVBCFloats.add_child( new_row )
 	new_row.set_name_ui( float_name )
@@ -29,7 +29,6 @@ func create_float_variable(
 
 
 func delete_float_variable( row: DialogFloatRow ) -> void:
-	#	Disconnect signals
 	nSignals.disconnect_float_signals( row )
 	owner.nDatabase.delete_float_variable( row.get_float_name() )
 	row.destroy()

@@ -55,8 +55,6 @@ var dialog_node_types: Dictionary = {
 	"Run Script": p_run_script_node
 }
 
-#	Check GraphEdit's signals.
-
 
 """ Functions """
 
@@ -102,7 +100,6 @@ func connect_all_node_link_ui() -> void:
 		for slot in slots:
 			var to_node_id: int = n_Database.nDialogNodes.get_node_link(
 					record_id, from_node_id, slot )
-			#	Temporary measure to make the link node connections.
 			var to = "NID " + str( to_node_id )
 			var from = "NID " + str( from_node_id )
 			nGraphEditDialog.connect_node( from, slot, to, 0 )
@@ -200,12 +197,10 @@ func _ready() -> void:
 func clear_editor_ui() -> void:
 	inactive = true
 	var children: Array = nGraphEditDialog.get_children()
-	#nGraphEditDialog.clear_connections()
 	#	End defensive return?
 	nGraphEditDialog.clear_connections()
 	for child in children:
 		if( child is DialogNode ):
-			#	Must disconnect the signals that we created.
 			var type: String = n_Database.nDialogNodes.get_node_property(
 					record_id, child.get_node_id(), "type" )
 			nSignals.disconnect_all_node_signals( child, type )

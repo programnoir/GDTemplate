@@ -22,7 +22,6 @@ func create_string_variable(
 	var new_row: DialogStringRow = p_UIStringRow.instantiate()
 	nVBCStrings.add_child( new_row )
 	new_row.set_name_ui( string_name )
-	#	Not sure about signals.
 	nSignals.connect_string_signals( new_row )
 	nLineEditNewString.clear()
 	owner.set_filename_label_modified( true )
@@ -30,13 +29,11 @@ func create_string_variable(
 
 
 func delete_string_variable( row: DialogStringRow ) -> void:
-	#	Disconnect signals
 	nSignals.disconnect_string_signals( row )
 	owner.nDatabase.delete_string_variable( row.get_string_name() )
 	row.destroy()
 
 
-#	Currently will fail because of the defensive return
 func populate_strings_in_manager() -> void:
 	for string_row in owner.nDatabase.strings_list.keys():
 		var new_row: DialogStringRow = create_string_variable(

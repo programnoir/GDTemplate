@@ -73,6 +73,7 @@ func erase_plugin_from_list( plugin_info: Array ) -> void:
 	Plugin translation handling
 """
 
+
 func add_translation( filepath: String ) -> void:
 	if( plugin_translations.has( filepath ) ):
 		return

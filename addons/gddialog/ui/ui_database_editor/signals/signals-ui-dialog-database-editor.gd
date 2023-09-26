@@ -2,9 +2,6 @@
 extends Node
 
 
-""" Main Interface """
-
-
 func _on_menu_button_file_id_pressed( id: int ) -> void:
 	match id:
 		0:

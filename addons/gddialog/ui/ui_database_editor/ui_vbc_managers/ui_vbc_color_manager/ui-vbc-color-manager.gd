@@ -18,7 +18,7 @@ func create_color_variable(
 	if( load == false ):
 		if( owner.nDatabase.add_color_variable( color_name ) == false ):
 			return
-		#	End defensive return: String exists/invalid
+		#	End defensive return: Color exists/invalid
 	var new_row: DialogColorRow = p_UIColorRow.instantiate()
 	nVBCColors.add_child( new_row )
 	new_row.set_name_ui( color_name )
@@ -29,7 +29,6 @@ func create_color_variable(
 
 
 func delete_color_variable( row: DialogColorRow ) -> void:
-	#	Disconnect signals
 	nSignals.disconnect_color_signals( row )
 	owner.nDatabase.delete_color_variable( row.get_color_name() )
 	row.destroy()

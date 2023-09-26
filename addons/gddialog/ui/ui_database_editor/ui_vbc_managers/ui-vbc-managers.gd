@@ -15,7 +15,6 @@ extends VBoxContainer
 func set_visible_manager( id: int ) -> void:
 	visible = true
 	nVBCTagManager.visible = ( id == 0 )
-	#	Now for the other managers
 	nVBCFlagManager.visible = ( id == 2 )
 	nVBCFloatManager.visible = ( id == 3 )
 	nVBCStringManager.visible = ( id == 4 )

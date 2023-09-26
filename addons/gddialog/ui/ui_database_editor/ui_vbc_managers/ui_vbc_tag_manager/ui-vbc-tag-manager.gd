@@ -28,7 +28,6 @@ func manage_tags_on_checked_records(
 		assigning: bool,
 		deleting: bool = false
 ) -> void:
-	#	This function only returns the indices of the items.
 	var selected_tag_ids: Array = nItemListTags.get_selected_items()
 	for i in range( selected_tag_ids.size() ):
 		var tag_id: int

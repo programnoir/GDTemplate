@@ -29,7 +29,6 @@ func create_speaker_variable(
 
 
 func delete_speaker_variable( row: DialogSpeakerRow ) -> void:
-	#	Disconnect signals
 	nSignals.disconnect_speaker_signals( row )
 	owner.nDatabase.delete_speaker_variable( row.get_speaker_name() )
 	row.destroy()

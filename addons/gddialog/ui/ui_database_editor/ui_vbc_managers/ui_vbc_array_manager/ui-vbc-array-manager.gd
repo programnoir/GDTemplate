@@ -21,7 +21,6 @@ func add_array_to_arrays_list(
 		owner.nDatabase.add_array_to_arrays_list( new_array )
 	nItemListArrays.add_item( new_array )
 	nItemListArrays.sort_items_by_text()
-	#	Clearing the lineedit for ease of use.
 	nLineEditArrayName.clear()
 	owner.set_filename_label_modified( true )
 

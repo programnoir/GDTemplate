@@ -20,7 +20,6 @@ func save_current_keyframe( data: Dictionary ) -> void:
 	if( data[ "text_color" ] == "Custom" ):
 		data[ "text_color_custom" ] = nColorPickerButton.color
 	else:
-		#	No sense wasting space when we can reference it in a reader later.
 		data[ "text_color_custom" ] = null
 
 

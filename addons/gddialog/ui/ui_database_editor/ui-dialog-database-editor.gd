@@ -101,9 +101,9 @@ func delete_dialog_record( record: DialogRecordRow ) -> void:
 
 func delete_checked_visible_dialogs() -> void:
 	var array_length = checked_records.size()
-	for i in range( array_length ):
+	for checked_record in range( array_length ):
 		#	Iterating instead of popping because it may be invisible.
-		var record = checked_records[ array_length - 1 - i ]
+		var record = checked_records[ array_length - 1 - checked_record ]
 		if( record.visible == true ):
 			toggle_record_checked( record, false )
 			delete_dialog_record( record )

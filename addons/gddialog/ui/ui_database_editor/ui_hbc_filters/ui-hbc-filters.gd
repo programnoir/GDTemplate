@@ -22,51 +22,41 @@ func set_all_records_visible( value: bool ) -> void:
 func update_filter() -> void:
 	var filter_text: String = nLineEditSearch.text
 	set_all_records_visible( true )
-	#	Fill an array with the tags we have selected to filter by.
 	var selected_tags: Array
 	var nFilterMenu: PopupMenu = nMenuButtonFilterTags.get_popup()
 	for tag in range( nFilterMenu.get_item_count() ):
 		if( nFilterMenu.is_item_checked( tag ) ):
 			var tag_name: String = nFilterMenu.get_item_text( tag )
 			selected_tags.push_back( tag_name )
-	#	Now we gather the records we will be filtering.
 	var records: Array = owner.nVBCDialogRecords.get_children()
-	#	Are we filtering by Name/Description/ID/etc?
 	var filter_option: int = nOptionButtonSearchBy.selected
-	#	Now to do the record filtering.
 	for record in records:
 		var id: int = record.get_record_id()
 		var matched: bool = true
 		if( filter_text.length() != 0 ):
 			matched = false
 			match filter_option:
-				0: #	Name
+				0:
 					if( owner.nDatabase.database[ id ].has( "name" ) ):
-						#	Search the name for the string.
 						var record_name = (
 								owner.nDatabase.database[ id ][ "name" ] )
 						if( record_name.find( filter_text ) > -1 ):
 							matched = true
-				1: #	Description
+				1:
 					var record_desc = (
 							owner.nDatabase.database[ id ][ "description" ] )
 					if( record_desc.find( filter_text ) > -1 ):
 							matched = true
-				2: #	ID
+				2:
 					if( str( id ) == filter_text ):
 						matched = true
-		#	Of the ones that match the above result, we want to filter out
-		#	 records that don't fit any of the selected tags.
+		#	Filtering out records that don't fit the selected tags.
 		if( matched == true
 			and nCheckBoxTagFilter.button_pressed == true
 			and nFilterMenu.get_item_count() > 1
 		):
 			matched = false
-			#	"Include Untagged" means show the ones with no tags at all.
-			#	Excludes records that don't have at least one checked tag.
-			#	First, let's get all of the tags in a record.
 			var record_tags: Array = owner.nDatabase.get_record_tags( id )
-			#	The only way untagged records get included.
 			if( record_tags.size() == 0
 				and selected_tags.has( "Include Untagged" )
 			):
@@ -76,7 +66,6 @@ func update_filter() -> void:
 				for tag_name in record_tags:
 					if( selected_tags.has( tag_name ) ):
 						matched = true
-		#	Set the record's visibility to the result.
 		record.visible = matched
 
 

@@ -1,13 +1,10 @@
 @tool
 extends Node
 
-#	File dialogs
 var file_dialog_load_database: EditorFileDialog
 var file_dialog_save_database: EditorFileDialog
 var file_dialog_bake_database: EditorFileDialog
 
-#	owner.p_UIRecordRow
-#	owner.p_UIStringRow
 
 """ Signals """
 
@@ -17,7 +14,6 @@ func _on_file_dialog_load_database_file_selected( filename: String ) -> void:
 	if not file_data.TYPE == "dialog_database":
 		print( "Loaded file %s is of wrong filetype." % filename )
 		return
-	#	Clear the editor completely.
 	owner.set_filename_label_modified( false )
 	owner.nDatabase.clear_database()
 	owner.clear_database_ui()
@@ -36,7 +32,6 @@ func _on_file_dialog_load_database_file_selected( filename: String ) -> void:
 	owner.nDatabase.record_names = file_data.record_names.duplicate( true )
 	owner.nDatabase.keyframe_flag_list = \
 			file_data.keyframe_flag_list.duplicate( true )
-	#	Set the current file label to the file name.
 	owner.nLabelFileName.text = str( filename.get_file() )
 	owner.populate_arrays_in_item_list()
 	owner.populate_colors_in_manager()
@@ -45,22 +40,15 @@ func _on_file_dialog_load_database_file_selected( filename: String ) -> void:
 	owner.populate_speakers_in_manager()
 	owner.populate_strings_in_manager()
 	owner.populate_tags_in_item_list()
-	#owner.dialog_editor.process_new_flag_list_ui(
-	#		owner.nDatabase.flags_list.keys() )
-	#	Here we start doing UI stuff for each record row.
 	for id in owner.nDatabase.database.keys():
-		#	Make a new record row
 		var new_record = owner.p_UIRecordRow.instantiate()
-		#	Add the record to the list of records.
 		owner.nVBCDialogRecords.add_child( new_record )
-		#	Set some properties to it.
 		new_record.set_record_id( id )
 		var description: String = owner.nDatabase.get_record_description( id )
 		new_record.set_record_description( description )
 		if( owner.nDatabase.database[ id ].has( "name" ) ):
 			var record_name = owner.nDatabase.database[ id ][ "name" ]
 			new_record.set_record_name_field( record_name )
-		#	Finally, add the tags to the tags UI.
 		for tag_name in owner.nDatabase.database[ id ][ "tags" ]:
 			new_record.add_tag_to_tag_list( tag_name )
 		owner.nSignals.connect_record_signals( new_record )
@@ -78,7 +66,6 @@ func _on_file_dialog_save_database_file_selected( filename: String ) -> void:
 			return
 	#	End defensive return: Gathering file data or overwriting wrong type.
 	owner.set_filename_label_modified( false )
-	#	Now we save the data.
 	file_data.database = owner.nDatabase.database.duplicate( true )
 	file_data.record_names = owner.nDatabase.record_names.duplicate( true )
 	file_data.colors_list = owner.nDatabase.colors_list.duplicate( true )
@@ -127,7 +114,6 @@ func menu_new_database() -> void:
 
 
 func menu_load_database() -> void:
-	#	The floating point number is for "where" in the screen, I guess?
 	file_dialog_load_database.popup_centered_ratio( 0.7 )
 
 
@@ -144,7 +130,6 @@ func menu_bake_database_file() -> void:
 
 """ Initializes the file operation """
 func init_file_operation_dialogs():
-	#	Load database file dialog box.
 	file_dialog_load_database = EditorFileDialog.new()
 	file_dialog_load_database.file_mode = EditorFileDialog.FILE_MODE_OPEN_FILE
 	file_dialog_load_database.add_filter( "*.tres ; Dialog databases" )
@@ -194,10 +179,7 @@ func connect_file_menu_signals() -> void:
 
 
 func _ready():
-	#	Next, we create the file dialogs associated with this button.
 	init_file_operation_dialogs()
-	#	Finally, adding children to the editor itself. We'll be adding it to
-	#	 the owner node. Seems easier that way.
 	owner.call_deferred( "add_child", file_dialog_load_database )
 	owner.call_deferred( "add_child", file_dialog_save_database )
 	owner.call_deferred( "add_child", file_dialog_bake_database )
@@ -205,16 +187,12 @@ func _ready():
 
 
 func destroy() -> void:
-	#	Disconnect all created signals.
-	print( "Destroying File Menu signals." )
-	#	These are the file dialog signals.
 	file_dialog_load_database.disconnect( "file_selected", Callable( self,
 			"_on_file_dialog_load_database_file_selected" ) )
 	file_dialog_save_database.disconnect( "file_selected", Callable( self,
 			"_on_file_dialog_save_database_file_selected" ) )
 	file_dialog_bake_database.disconnect( "file_selected", Callable( self,
 			"_on_file_dialog_bake_database_file_selected" ) )
-	#	Destroy all file dialogs.
 	file_dialog_load_database.queue_free()
 	file_dialog_save_database.queue_free()
 	file_dialog_bake_database.queue_free()

@@ -3,25 +3,15 @@ extends Node
 
 @onready var nDialogNodes: Node = get_node( "DialogNodes" )
 
-#	A dictionary for the database
 var database: Dictionary = {}
-#	This is a list of the tags being used in the database for tagging records.
-var tags_list: Array = []
-#	This is a list of flags that the database uses in If statement nodes.
-var flags_list: Dictionary = {}
-#	This is a list of strings used in the database for If String nodes and
-#	 text replacements.
-var strings_list: Dictionary = {}
-#	List of floats used in database for If/Set nodes
-var floats_list: Dictionary = {}
-#	List of string arrays used in database for If/Set nodes
-var string_arrays_list: Dictionary = {}
-#	A list of colors used for convenient use in the advanced dialog editor.
-var colors_list: Dictionary = {}
-#	A list of speakers and their associated colors
-var speakers_list: Dictionary = {}
-#	A list of strings containing the names of records
 var record_names: Dictionary
+var tags_list: Array = []
+var flags_list: Dictionary = {}
+var strings_list: Dictionary = {}
+var floats_list: Dictionary = {}
+var string_arrays_list: Dictionary = {}
+var colors_list: Dictionary = {}
+var speakers_list: Dictionary = {}
 #	A list of record ID #s made available when their matching records are
 #	 deleted from the database, thus keeping the # of IDs = to _database size.
 var available_record_ids : Array = []
@@ -38,21 +28,13 @@ func generate_record_id() -> int:
 
 func create_dialog_record() -> int:
 	var new_record_id: int = generate_record_id()
-	#	First, we want to add our record data to the database.
 	var new_record_data: Dictionary = {
-		#	A human readable description for easily finding your dialog record.
 		"description": "Description of new dialog",
-		#	Records in this database can have tags for search filtering
-		#	 purposes. There's no limit and you can name them what you want.
 		"tags": [],
-		#	These are likely the actual textboxes that will be assigned.
 		"nodes": {},
-		#	These are like available_record_ids but for the nodes contained
-		#	 within our dialog record. aka available_nid
 		"available_node_ids": []
 	}
 	database[ new_record_id ] = new_record_data
-	#	Create Start and End dialog nodes.
 	nDialogNodes.create_node( new_record_id, "Start" )
 	var end_node_id: int = nDialogNodes.create_node( new_record_id, "End" )
 	nDialogNodes.set_node_property( new_record_id, end_node_id, "graph_offset",
@@ -65,7 +47,6 @@ func create_dialog_record() -> int:
 
 
 func add_flag_to_flags_list( new_flag: String ) -> void:
-	#	Adding the new tag to the tag list.
 	flags_list[ new_flag ] = false
 
 
@@ -78,7 +59,6 @@ func remove_flag_from_flags_list( flag_name: String ) -> void:
 
 
 func add_array_to_arrays_list( new_array: String ) -> void:
-	#	Adding the new tag to the tag list.
 	string_arrays_list[ new_array ] = false
 
 
@@ -313,7 +293,6 @@ func set_record_name( id: int, old_name: String, new_name: String ) -> void:
 			database[ id ].erase( "name" )
 		return
 	#	End defensive return
-	#	Make sure the name isn't a duplicate.
 	if( record_names.has( new_name ) ):
 		var next_number: int = 1
 		var appended_name: String = new_name + "-" + str( next_number )
@@ -321,10 +300,8 @@ func set_record_name( id: int, old_name: String, new_name: String ) -> void:
 			next_number += 1
 			appended_name = new_name + "-" + str( next_number )
 		owner.current_modified_record.set_record_name_field( appended_name )
-	#	Finally set the actual record name.
 	record_names[ new_name ] = id
 	database[ id ][ "name" ] = new_name
-	#	Cleanup
 	owner.current_modified_record = null
 	owner.set_filename_label_modified()
 
@@ -346,14 +323,12 @@ func get_record_description( id: int ) -> String:
 
 func delete_dialog_record( record: DialogRecordRow ) -> void:
 	var record_id: int = record.get_record_id()
-	#	This record ID is about to become available.
 	available_record_ids.push_front( record_id )
 	available_record_ids.sort()
-	#	Erase the record from the names list.
+
 	if( database[ record_id ].has( "name" ) ):
 		if( record_names.has( database[ record_id ][ "name" ] ) ):
 			record_names.erase( database[ record_id ][ "name" ] )
-	#	Erase the record data from the database.
 	database.erase( record_id )
 
 

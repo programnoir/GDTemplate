@@ -30,7 +30,6 @@ func create_node( record_id: int, type: String ) -> int:
 			"links": {},
 			"slot_amount": 1
 	}
-	#	Begin specific type data modifications.
 	match( type ):
 		"Line":
 			node_data[ "text" ] = ""
@@ -42,10 +41,7 @@ func create_node( record_id: int, type: String ) -> int:
 			node_data[ "set_value_type" ] = "Flag"
 			node_data[ "set_value" ] = false
 		"If":
-			#	Slot amount keeps track of conditions, in ifs.
-			#	Name of the variable being checked
 			node_data[ "if_name" ] = "Not Set"
-			#	Types: Flag, String, Number
 			node_data[ "if_value_type" ] = "Flag"
 			#	Names of conditions to test (Number only)
 			node_data[ "if_conditions" ] = []
@@ -56,7 +52,6 @@ func create_node( record_id: int, type: String ) -> int:
 		"Run Script":
 			node_data[ "script_filepath" ] = ""
 			node_data[ "script_funcref" ] = ""
-	#	End specific type data modifications.
 	database[ record_id ][ "nodes" ][ new_node_id ] = node_data
 	owner.set_filename_label_modified( true )
 	return new_node_id
@@ -101,8 +96,11 @@ func set_node_property(
 	database[ record_id ][ "nodes" ][ node_id ][ property ] = data
 
 
-#	This one is Variant due to the different types of data possible.
-func get_node_property( record_id: int, node_id: int, property: String ):
+func get_node_property(
+	record_id: int,
+	node_id: int,
+	property: String
+) -> Variant:
 	return database[ record_id ][ "nodes" ][ node_id ][ property ]
 
 
@@ -190,14 +188,12 @@ func track_node_keyframe_flag_data(
 """ Node Links """
 
 
-#	Here because we can't use setget_node_property() to handle this.
 func set_node_link(
 	record_id: int,
 	from_id: int,
 	from_slot: int,
 	to_id: int
 ) -> void:
-	#	Assign the destination ID to the ID of the next connection.
 	database[ record_id ][ "nodes" ][ from_id ][ "links" ]\
 			[ from_slot ] = to_id
 	owner.set_filename_label_modified( true )
@@ -276,7 +272,7 @@ func erase_all_links_to_node( record_id: int, dest_node_id: int ) -> void:
 	owner.set_filename_label_modified( true )
 
 
-#	Nuke the links of this record's node!
+#	Erase all links of this record's node.
 func erase_all_links_in_node( record_id: int, node_id: int ):
 	database[ record_id ][ "nodes" ][ node_id ][ "links" ].clear()
 	owner.set_filename_label_modified( true )

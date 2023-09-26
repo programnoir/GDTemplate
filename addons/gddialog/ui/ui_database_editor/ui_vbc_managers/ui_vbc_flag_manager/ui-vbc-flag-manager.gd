@@ -17,9 +17,7 @@ func add_flag_to_flags_list( new_flag: String, load: bool = false ) -> void:
 		owner.nDatabase.add_flag_to_flags_list( new_flag )
 	nItemListFlags.add_item( new_flag )
 	nItemListFlags.sort_items_by_text()
-	#	Clearing the lineedit for ease of use.
 	nLineEditFlagName.clear()
-	#	Repopulating the search filter tags.
 	owner.set_filename_label_modified( true )
 
 

@@ -67,12 +67,9 @@ func _on_graph_edit_dialog_connection_request(
 	if( owner.inactive == true ):
 		return
 	#	End defensive return: Not exiting
-	#	Connect two GraphNodes together.
 	owner.nGraphEditDialog.connect_node( from, from_slot, to, to_slot )
-	#	Get the IDs of these GraphNodes
 	var from_node_id = owner.nGraphEditDialog.get_node( from ).get_node_id()
 	var to_node_id = owner.nGraphEditDialog.get_node( to ).get_node_id()
-	#	Connect them in the database. Save From, From Slot, and To under RecID.
 	owner.n_Database.nDialogNodes.set_node_link( owner.record_id, from_node_id,
 			from_slot, to_node_id )
 
@@ -88,7 +85,6 @@ func _on_graph_edit_dialog_disconnection_request(
 	#	End defensive return: Not exiting
 	owner.nGraphEditDialog.disconnect_node( from, from_slot, to, to_slot )
 	var from_node_id = owner.nGraphEditDialog.get_node( from ).get_node_id()
-	#	Erase the connection in the database.
 	owner.n_Database.nDialogNodes.erase_link_in_node( owner.record_id,
 			from_node_id, from_slot )
 
@@ -123,14 +119,12 @@ func _on_node_changed_slot_amount( node_id: int, new_slot_amount: int ) -> void:
 	var current_amount: int = owner.n_Database.nDialogNodes.get_node_property(
 			owner.record_id, node_id, "slot_amount" )
 	if( new_slot_amount < current_amount ):
-		#	Here we'll have to unlink things in the database.
 		var erased_slots: int = current_amount - new_slot_amount
 		for i in range( erased_slots ):
 			var slot: int = ( current_amount - 1 ) - i
 			owner.disconnect_node_slot( node_id, slot )
 			owner.n_Database.nDialogNodes.erase_link_in_node( owner.record_id,
 					node_id, slot )
-	#	Finally, set the slot amount in the database.
 	owner.n_Database.nDialogNodes.set_node_property( owner.record_id, node_id,
 			"slot_amount", new_slot_amount )
 
@@ -147,7 +141,7 @@ func _on_node_changed_dialog_text( node_id: int, new_text: String ) -> void:
 
 
 func connect_all_node_signals( node: GraphNode, type: String ) -> void:
-	#	Connect the node types that they all share.
+	#	Connect the signals that Dialog nodes share.
 	node.connect( "erased", Callable( self, "_on_node_erased" ) )
 	node.connect( "changed_size", Callable( self, "_on_node_changed_size" ) )
 	node.connect( "changed_offset", Callable( self,
@@ -166,7 +160,6 @@ func connect_all_node_signals( node: GraphNode, type: String ) -> void:
 
 
 func disconnect_all_node_signals( node: GraphNode, type: String ) -> void:
-	#	Connect the node types that they all share.
 	node.disconnect( "erased", Callable( self, "_on_node_erased" ) )
 	node.disconnect( "changed_size", Callable( self, "_on_node_changed_size" ) )
 	node.disconnect( "changed_offset", Callable( self,

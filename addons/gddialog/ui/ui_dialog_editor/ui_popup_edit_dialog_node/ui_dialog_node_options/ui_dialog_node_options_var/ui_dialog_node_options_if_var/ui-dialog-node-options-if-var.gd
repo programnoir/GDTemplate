@@ -41,7 +41,6 @@ func reset_ui() -> void:
 			populate_options_list( nOptionButtonVariable, string_arrays )
 
 
-#	Complete.
 func repopulate_lineedits( delta: int ) -> void:
 	if( delta == -1 and max_elements == 1 ):
 		return
@@ -54,7 +53,6 @@ func repopulate_lineedits( delta: int ) -> void:
 	max_elements += delta
 
 
-#	I *think* this is complete.
 func repopulate_float_conditions( delta: int ) -> void:
 	if( delta == -1 and max_elements == 1 ):
 		return
@@ -83,7 +81,6 @@ func repopulate_float_conditions( delta: int ) -> void:
 	max_elements += delta
 
 
-#	Complete.
 func _on_option_button_var_type_item_selected( index: int ) -> void:
 	clear_ui()
 	type = nOptionButtonVarType.get_item_text( index )
@@ -99,7 +96,6 @@ func _on_option_button_var_type_item_selected( index: int ) -> void:
 		max_elements = 2
 
 
-#	Complete.
 func _on_button_dec_conditions_pressed() -> void:
 	if( type == "Float" ):
 		repopulate_float_conditions( -1 )
@@ -107,7 +103,6 @@ func _on_button_dec_conditions_pressed() -> void:
 		repopulate_lineedits( -1 )
 
 
-#	Complete.
 func _on_button_inc_conditions_pressed() -> void:
 	if( type == "Float" ):
 		repopulate_float_conditions( 1 )
@@ -115,7 +110,6 @@ func _on_button_inc_conditions_pressed() -> void:
 		repopulate_lineedits( 1 )
 
 
-#	Complete
 func populate_ui() -> void:
 	type = node_data[ "if_value_type" ]
 	reset_ui()
@@ -149,13 +143,11 @@ func populate_ui() -> void:
 				new_hbc.add_child( new_option )
 				new_hbc.add_child( new_spinbox )
 				add_child( new_hbc )
-				#	Populate their values
 				select_by_text( new_option, node_data[ "if_conditions" ][ i ] )
 				new_spinbox.value = node_data[ "if_values" ][ i ]
 				max_elements += 1
 
 
-#	Complete
 func write_node_data() -> void:
 	var changed_type: bool = false
 	var previous_size: int = node_data[ "if_values" ].size()
@@ -178,11 +170,9 @@ func write_node_data() -> void:
 			var values_array: Array = []
 			for child in get_children():
 				if( child.name.contains( "Condition" ) ):
-					#	OptionButton (condition)
 					var condition: OptionButton = child.get_child( 1 )
 					conditions_array.append( condition.get_item_text(
 							condition.selected ) )
-					#	SpinBox (value)
 					values_array.append( child.get_child( 2 ).value )
 			node_data[ "if_conditions" ] = conditions_array.duplicate()
 			node_data[ "if_values" ] = values_array.duplicate()

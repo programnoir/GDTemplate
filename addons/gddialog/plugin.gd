@@ -1,22 +1,21 @@
 @tool
 extends EditorPlugin
 
-var n_UIDatabaseEditor: Control
-var n_UIDialogEditor: Control
-var n_ButtonDatabaseEditor: Button
-var n_ButtonDialogEditor: Button
-
 const TRANSLATION_PATHS: Array = [
 	"res://addons/gddialog/data/translations/gddialog-translations.en.translation",
 	"res://addons/gddialog/data/translations/gddialog-translations.ja.translation"
 ]
+var n_UIDatabaseEditor: Control
+var n_UIDialogEditor: Control
+var n_ButtonDatabaseEditor: Button
+var n_ButtonDialogEditor: Button
+var setting_text_speed: String = "res://addons/gddialog"\
+		+ "/ui/ui_settings_text_speed/ui-settings-text-speed.tscn"
 
 var p_UIDatabaseEditor: PackedScene = preload( "res://addons/gddialog"\
 		+ "/ui/ui_database_editor/ui-dialog-database-editor.tscn" )
 var p_UIDialogEditor: PackedScene = preload( "res://addons/gddialog"\
 		+ "/ui/ui_dialog_editor/ui-dialog-editor.tscn" )
-var setting_text_speed: String = "res://addons/gddialog"\
-		+ "/ui/ui_settings_text_speed/ui-settings-text-speed.tscn"
 
 
 func _enter_tree() -> void:
