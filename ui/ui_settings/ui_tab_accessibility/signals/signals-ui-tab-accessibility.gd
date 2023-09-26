@@ -16,7 +16,3 @@ func _on_button_toggle_font_size_toggled( button_pressed: bool ) -> void:
 func _on_spin_box_font_size_focus_entered() -> void:
 	if( owner.nTabAccessibility.nSpinBoxFontSize.editable == false ):
 		owner.nTabAccessibility.nButtonToggleFontSize.grab_focus()
-
-
-func _on_h_slider_text_speed_scale_value_changed( value: float ) -> void:
-	owner.nTabAccessibility.set_text_speed( value )

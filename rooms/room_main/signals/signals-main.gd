@@ -38,7 +38,7 @@ func _on_menu_settings_closed() -> void:
 	This allows you to emit a signal that other nodes can use to perform a
 	manual translation, as opposed to the automatic Control nodes.
 """
-func _on_new_language( language_code: String ) -> void:
+func _on_new_language( _language_code: String ) -> void:
 	pass
 
 

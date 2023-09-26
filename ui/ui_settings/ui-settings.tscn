@@ -213,8 +213,6 @@ layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBCFonts/ButtonCycleFont")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../HBCTextSpeed/HSliderTextSpeedScale")
-focus_next = NodePath("../../HBCTextSpeed/HSliderTextSpeedScale")
 focus_previous = NodePath("../../HBCFonts/ButtonCycleFont")
 toggle_mode = true
 text = "ui_button_edit"
@@ -223,41 +221,6 @@ text = "ui_button_edit"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 6
-
-[node name="HBCTextSpeed" type="HBoxContainer" parent="VBCSettings/ColorRect/VBCAccessibility"]
-layout_mode = 2
-
-[node name="HSeparator" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCTextSpeed"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCTextSpeed"]
-layout_mode = 2
-text = "ui_label_text_speed_scale"
-
-[node name="HSliderTextSpeedScale" type="HSlider" parent="VBCSettings/ColorRect/VBCAccessibility/HBCTextSpeed"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-focus_neighbor_top = NodePath("../../HBCFontSizes/ButtonToggleFontSize")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath("../../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility")
-focus_previous = NodePath("../../HBCFontSizes/ButtonToggleFontSize")
-min_value = 0.25
-max_value = 5.0
-step = 0.25
-page = 0.25
-value = 1.25
-
-[node name="LabelTextSpeedScale" type="Label" parent="VBCSettings/ColorRect/VBCAccessibility/HBCTextSpeed"]
-layout_mode = 2
-text = "1.00x"
-
-[node name="HSeparator2" type="HSeparator" parent="VBCSettings/ColorRect/VBCAccessibility/HBCTextSpeed"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_constants/separation = 10
 
 [node name="VBCControls" type="VBoxContainer" parent="VBCSettings/ColorRect"]
 visible = false
@@ -354,8 +317,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 246.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -406,8 +369,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 246.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -691,7 +654,6 @@ layout_mode = 2
 [connection signal="new_index" from="VBCSettings/ColorRect/VBCAccessibility/HBCFonts/ButtonCycleFont" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_cycle_font_new_index"]
 [connection signal="focus_entered" from="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes/SpinBoxFontSize" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_spin_box_font_size_focus_entered"]
 [connection signal="toggled" from="VBCSettings/ColorRect/VBCAccessibility/HBCFontSizes/ButtonToggleFontSize" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_button_toggle_font_size_toggled"]
-[connection signal="value_changed" from="VBCSettings/ColorRect/VBCAccessibility/HBCTextSpeed/HSliderTextSpeedScale" to="VBCSettings/ColorRect/VBCAccessibility/Signals" method="_on_h_slider_text_speed_scale_value_changed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonNewProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_new_profile_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonSaveProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_save_profile_pressed"]
 [connection signal="pressed" from="VBCSettings/ColorRect/VBCControls/GCProfiles/ButtonResetProfile" to="VBCSettings/ColorRect/VBCControls/Signals" method="_on_button_reset_profile_pressed"]

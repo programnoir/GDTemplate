@@ -34,6 +34,10 @@ var default_profile: Dictionary = {}
 var selected_action: UIAction = null
 
 
+func add_plugin_setting( new_setting: Control ) -> void:
+	add_child( new_setting )
+
+
 func _enter_tree() -> void:
 	var actions: Array = InputMap.get_actions()
 	#	Currently we're just loading actions by default.

@@ -6,7 +6,8 @@ const AUTOLOAD_ORDER: Array = [
 	'GlobalActionConfig',
 	'GlobalTheme',
 	'GlobalUserSettings',
-	'GlobalUIScreenFade'
+	'GlobalUIScreenFade',
+	'GlobalPlugins'
 ]
 
 const AUTOLOAD_LIST: Dictionary = {
@@ -16,7 +17,8 @@ const AUTOLOAD_LIST: Dictionary = {
 	'GlobalUserSettings': 'res://addons/gdtemplate/autoload/' + 
 			'global-user-settings.gd',
 	'GlobalUIScreenFade': 'res://addons/gdtemplate/ui/' +
-			'global-ui-screenfade.tscn'
+			'global-ui-screenfade.tscn',
+	'GlobalPlugins': "res://addons/gdtemplate/autoload/global-plugins.gd"
 }
 
 

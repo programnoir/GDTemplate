@@ -11,6 +11,10 @@ extends VBoxContainer
 		"HBCGameScale/LabelGameScale" )
 
 
+func add_plugin_setting( new_setting: Control ) -> void:
+	add_child( new_setting )
+
+
 func set_game_scale( new_scale: int ) -> void:
 	GlobalUserSettings.set_game_scale( new_scale )
 	nLabelGameScale.text = String.num( GlobalUserSettings.get_game_scale() )

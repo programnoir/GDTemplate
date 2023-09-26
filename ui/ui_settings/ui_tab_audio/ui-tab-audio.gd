@@ -12,6 +12,10 @@ extends VBoxContainer
 var audio_sliders: Array = []
 
 
+func add_plugin_setting( new_setting: Control ) -> void:
+	add_child( new_setting )
+
+
 func update_from_load() -> void:
 	for i in audio_sliders.size():
 		var bus_id: int = audio_sliders[ i ].BUS_ID

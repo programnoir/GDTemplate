@@ -11,8 +11,7 @@ var first_time_setup: bool = true
 var accessibility: Dictionary = {
 	"current_language": "en",
 	"current_font_index": 0,
-	"current_font_size": 20,
-	"text_speed": 1.0
+	"current_font_size": 20
 }
 var input_profiles: Dictionary = {
 	"profiles": [],
@@ -101,6 +100,8 @@ func load_settings() -> bool:
 """
 	First-Time Setup
 """
+
+
 func set_first_time_setup( new_value: bool ) -> void:
 	first_time_setup = new_value
 
@@ -140,14 +141,6 @@ func get_current_font_size() -> int:
 
 func set_current_font_size( new_size: int ) -> void:
 	accessibility[ "current_font_size" ] = new_size
-
-
-func get_text_speed() -> float:
-	return accessibility[ "text_speed" ]
-
-
-func set_text_speed( new_speed: float ) -> void:
-	accessibility[ "text_speed" ] = new_speed
 
 
 """

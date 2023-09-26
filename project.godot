@@ -28,6 +28,7 @@ GlobalActionConfig="*res://addons/gdtemplate/autoload/global-action-config.gd"
 GlobalTheme="*res://addons/gdtemplate/autoload/global-theme.gd"
 GlobalUserSettings="*res://addons/gdtemplate/autoload/global-user-settings.gd"
 GlobalUIScreenFade="*res://addons/gdtemplate/ui/global-ui-screenfade.tscn"
+GlobalPlugins="*res://addons/gdtemplate/autoload/global-plugins.gd"
 
 [display]
 
