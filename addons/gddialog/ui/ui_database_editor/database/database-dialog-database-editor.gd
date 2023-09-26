@@ -175,7 +175,6 @@ func rename_color(
 	#	End defensive return: String name already exists.
 	colors_list[ new_name ] = colors_list[ current_name ]
 	colors_list.erase( current_name )
-	#nDialogNodes.replace_variable( "Color", current_name, new_name )
 	return true
 
 
@@ -218,7 +217,6 @@ func rename_speaker(
 	#	End defensive return: String name already exists.
 	speakers_list[ new_name ] = speakers_list[ current_name ]
 	speakers_list.erase( current_name )
-	#nDialogNodes.replace_variable( "Color", current_name, new_name )
 	return true
 
 

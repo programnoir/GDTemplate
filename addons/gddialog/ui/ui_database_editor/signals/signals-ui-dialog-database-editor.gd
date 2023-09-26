@@ -38,9 +38,6 @@ func _on_button_close_sidebar_pressed() -> void:
 	owner.nHBCFilters.visible = true
 
 
-
-
-
 """ Record Operations """
 
 
