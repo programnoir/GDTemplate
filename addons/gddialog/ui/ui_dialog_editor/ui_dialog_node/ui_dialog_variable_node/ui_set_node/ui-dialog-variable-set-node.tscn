@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmdcluvkhjg5q"]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/ui_dialog_variable_node/ui_set_node/ui-dialog-variable-set-node.gd" id="1_s1q6f"]
 

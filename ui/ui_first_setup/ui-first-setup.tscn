@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgekixjfs0y7l"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://ui/ui_first_setup/ui-first-setup.gd" id="1_2ntop"]
 [ext_resource type="Script" path="res://ui/ui_first_setup/signals/signals-ui-first-setup.gd" id="2_phqke"]

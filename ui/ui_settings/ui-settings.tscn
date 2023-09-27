@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7obd534gd8vi"]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://ui/ui_settings/ui-settings.gd" id="1_0ug5q"]
 [ext_resource type="Script" path="res://ui/ui_settings/signals/signals-ui-settings.gd" id="2_5oke5"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://16ixv4iuai6p"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_settings_text_speed/ui-settings-text-speed.gd" id="1_ori0r"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_settings_text_speed/signals/signals-ui-settings-text-speed.gd" id="2_galjl"]

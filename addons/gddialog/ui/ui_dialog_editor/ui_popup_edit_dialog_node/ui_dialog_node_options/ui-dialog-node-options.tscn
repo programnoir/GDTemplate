@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://tkhdvyl5r1m3"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_2xj8d"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui-dialog-node-options.gd" id="1_llgsy"]
+
 
 [node name="UIDialogNodeOptions" type="VBoxContainer"]
 anchors_preset = 15

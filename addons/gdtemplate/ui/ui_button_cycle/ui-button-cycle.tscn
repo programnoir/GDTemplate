@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://i4awy35ykync"]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_button_cycle/ui-button-cycle.gd" id="1_sm75r"]
+
 
 [node name="ButtonCycle" type="Button"]
 anchors_preset = 15

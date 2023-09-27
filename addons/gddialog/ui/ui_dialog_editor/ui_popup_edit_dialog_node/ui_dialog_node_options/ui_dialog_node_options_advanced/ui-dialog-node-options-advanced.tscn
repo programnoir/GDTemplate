@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://baq5g0gyferaw"]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_rhut8"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui-dialog-node-options-advanced.gd" id="2_kh4ta"]

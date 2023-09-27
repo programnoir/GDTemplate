@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgdkjkveb8uip"]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/ui_slot_adjustable_node/ui_dialog_line_node/ui-dialog-line-node.gd" id="1_jnq2x"]
+
 
 [node name="UIDialogLineNode" type="GraphNode"]
 offset_right = 250.0
