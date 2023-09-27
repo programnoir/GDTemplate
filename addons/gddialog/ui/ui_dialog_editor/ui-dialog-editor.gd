@@ -147,6 +147,8 @@ func populate_graph() -> void:
 				var summary_string = ""
 				var node_data = n_Database.nDialogNodes.get_node_data(
 						record_id, node_id )
+				if( node_data[ "speaker" ] != "" ):
+					summary_string = node_data[ "speaker" ] + "\n"
 				for keyframe in node_data[ "keyframes" ]:
 					summary_string += keyframe[ "text" ]
 				if( summary_string.length() > 30 ):

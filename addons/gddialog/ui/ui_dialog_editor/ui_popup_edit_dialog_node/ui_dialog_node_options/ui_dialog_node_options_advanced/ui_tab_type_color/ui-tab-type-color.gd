@@ -34,7 +34,7 @@ func load_current_keyframe() -> void:
 		nColorPickerButton.color = owner.get_keyframe_property(
 				"text_color_custom" )
 	else:
-		nColorPickerButton.color = owner.colors_list[ selected_color ]
+		nColorPickerButton.color = owner.colors_array[ selected_color ]
 
 
 func populate_ui() -> void:

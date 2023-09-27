@@ -30,8 +30,6 @@ func _on_file_dialog_load_database_file_selected( filename: String ) -> void:
 			.duplicate( true )
 	owner.nDatabase.tags_list = file_data.tags_list.duplicate( true )
 	owner.nDatabase.record_names = file_data.record_names.duplicate( true )
-	owner.nDatabase.keyframe_flag_list = \
-			file_data.keyframe_flag_list.duplicate( true )
 	owner.nLabelFileName.text = str( filename.get_file() )
 	owner.populate_arrays_in_item_list()
 	owner.populate_colors_in_manager()
@@ -78,8 +76,6 @@ func _on_file_dialog_save_database_file_selected( filename: String ) -> void:
 	file_data.tags_list = owner.nDatabase.tags_list.duplicate( true )
 	file_data.available_record_ids = owner.nDatabase.available_record_ids\
 			.duplicate( true )
-	file_data.keyframe_flag_list = \
-			owner.nDatabase.keyframe_flag_list.duplicate( true )
 	ResourceSaver.save( file_data, filename )
 	owner.nLabelFileName.text = filename.get_file()
 

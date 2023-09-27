@@ -72,15 +72,18 @@ func save_current_keyframe( data: Dictionary ) -> void:
 		customs.append( child.get_data() )
 	data[ "custom_data" ] = customs.duplicate( true )
 	data[ "variable_data" ] = builtins.duplicate( true )
+	print( data[ "variable_data" ] )
 
 
 func load_current_keyframe() -> void:
 	clear_ui()
 	var builtins: Array = owner.get_keyframe_property( "variable_data" )
 	var customs: Array = owner.get_keyframe_property( "custom_data" )
+	print( builtins )
 	for builtin in builtins:
 		var new_builtin_row: HBoxContainer = \
 				p_builtin_variable_row.instantiate()
+		nVBCBuiltInData.add_child( new_builtin_row )
 		new_builtin_row.set_data( builtin[ "type" ], builtin[ "variable" ] )
 	for custom in customs:
 		var new_custom_row: HBoxContainer = p_custom_data_row.instantiate()

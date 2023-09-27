@@ -12,6 +12,5 @@ class_name DialogDatabase
 @export var string_arrays_list: Dictionary
 @export var colors_list: Dictionary
 @export var speakers_list: Dictionary
-@export var keyframe_flag_list: Dictionary
 @export var tags_list: Array
 @export var available_record_ids: Array

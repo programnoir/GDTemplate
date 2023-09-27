@@ -116,6 +116,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Type & Color" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("4_n17si")
@@ -309,7 +310,6 @@ popup/item_2/text = "Crossfade"
 popup/item_2/id = 2
 
 [node name="Data" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("9_wyic6")
 
@@ -389,9 +389,11 @@ size_flags_vertical = 3
 
 [node name="VBCBuiltInData" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/SCData/HBCData"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VBCCustomData" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/SCData/HBCData"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Responses" type="VBoxContainer" parent="TabContainer"]
 visible = false

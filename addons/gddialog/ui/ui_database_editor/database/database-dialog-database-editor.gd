@@ -15,9 +15,6 @@ var speakers_list: Dictionary = {}
 #	A list of record ID #s made available when their matching records are
 #	 deleted from the database, thus keeping the # of IDs = to _database size.
 var available_record_ids : Array = []
-#	To minimize the impact of going through keyframes when flags are deleted,
-#	 we track all of the advanced node keyframes with flags.
-var keyframe_flag_list: Dictionary = {}
 
 
 func generate_record_id() -> int:
@@ -52,7 +49,7 @@ func add_flag_to_flags_list( new_flag: String ) -> void:
 
 func remove_flag_from_flags_list( flag_name: String ) -> void:
 	flags_list.erase( flag_name )
-	nDialogNodes.reset_flag_in_all_nodes( flag_name )
+	nDialogNodes.modify_variable_in_nodes( "Flag", flag_name )
 
 
 """ String Array Operations """
@@ -64,6 +61,7 @@ func add_array_to_arrays_list( new_array: String ) -> void:
 
 func remove_array_from_arrays_list( array_name: String ) -> void:
 	string_arrays_list.erase( array_name )
+	nDialogNodes.modify_variable_in_nodes( "String Array", array_name )
 
 
 """ String Operations """
@@ -88,7 +86,7 @@ func rename_string(
 	#	End defensive return: String name already exists.
 	strings_list[ new_name ] = strings_list[ current_name ]
 	strings_list.erase( current_name )
-	nDialogNodes.replace_variable( "String", current_name, new_name )
+	nDialogNodes.modify_variable_in_nodes( "String", current_name, new_name )
 	return true
 
 
@@ -107,6 +105,7 @@ func delete_string_variable( string_name: String ) -> void:
 		return
 	#	End defensive return: Not found
 	strings_list.erase( string_name )
+	nDialogNodes.modify_variable_in_nodes( "String", string_name )
 
 
 
@@ -132,7 +131,7 @@ func rename_float(
 	#	End defensive return: String name already exists.
 	floats_list[ new_name ] = floats_list[ current_name ]
 	floats_list.erase( current_name )
-	nDialogNodes.replace_variable( "Float", current_name, new_name )
+	nDialogNodes.modify_variable_in_nodes( "Float", current_name, new_name )
 	return true
 
 
@@ -151,6 +150,7 @@ func delete_float_variable( float_name: String ) -> void:
 		return
 	#	End defensive return: Not found
 	floats_list.erase( float_name )
+	nDialogNodes.modify_variable_in_nodes( "Float", float_name )
 
 
 """ Color Operations """
@@ -175,6 +175,7 @@ func rename_color(
 	#	End defensive return: String name already exists.
 	colors_list[ new_name ] = colors_list[ current_name ]
 	colors_list.erase( current_name )
+	nDialogNodes.modify_variable_in_nodes( "Color", current_name, new_name )
 	return true
 
 
@@ -193,6 +194,7 @@ func delete_color_variable( color_name: String ) -> void:
 		return
 	#	End defensive return: Not found
 	colors_list.erase( color_name )
+	nDialogNodes.modify_variable_in_nodes( "Color", color_name )
 
 
 """ Speaker Operations """
@@ -217,6 +219,7 @@ func rename_speaker(
 	#	End defensive return: String name already exists.
 	speakers_list[ new_name ] = speakers_list[ current_name ]
 	speakers_list.erase( current_name )
+	nDialogNodes.modify_variable_in_nodes( "Speaker", current_name, new_name )
 	return true
 
 
@@ -235,6 +238,7 @@ func delete_speaker_variable( speaker_name: String ) -> void:
 		return
 	#	End defensive return: Not found
 	speakers_list.erase( speaker_name )
+	nDialogNodes.modify_variable_in_nodes( "Speaker", speaker_name )
 
 
 """ Tag Operations """

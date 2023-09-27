@@ -148,41 +148,77 @@ func delete_node_property_slot(
 		database[ record_id ][ "nodes" ][ node_id ][ property ].erase( slot )
 
 
-""" Node Flag Information """
+""" Node Data Information """
 
 
-func track_node_keyframe_flag_data(
-	record_id: int,
-	node_id: int,
-	slot: int,
-	data
+func modify_variable_in_keyframes(
+		node: Dictionary,
+		type: String,
+		var_name: String,
+		replacement: String = ""
 ) -> void:
-	#	First, let's locate the keyframe in our records.
-	if( n_Database.keyframe_flag_list.has( record_id ) == false ):
-		if( data[ "text_type" ] != 2 ):
-			return
-		#	It's not in the database and this isn't interactive text. Ignore
-		n_Database.keyframe_flag_list[ record_id ] = { node_id: [] }
-		n_Database.keyframe_flag_list[ record_id ][ node_id ].push_back( slot )
-		return
-	#	Check if it's in our record id
-	if( n_Database.keyframe_flag_list[ record_id ].has( node_id ) == false ):
-		if( data[ "text_type" ] != 2 ):
-			return
-		n_Database.keyframe_flag_list[ record_id ] = { node_id: [] }
-		n_Database.keyframe_flag_list[ record_id ][ node_id ].push_back( slot )
-	#	Check if it's in our record -> node
-	if( n_Database.keyframe_flag_list[ record_id ][ node_id ]\
-			.has( slot ) == false
-	):
-		if( data[ "text_type" ] != 2 ):
-			return
-		n_Database.keyframe_flag_list[ record_id ] = { node_id: [] }
-		n_Database.keyframe_flag_list[ record_id ][ node_id ].push_back( slot )
-	#	Okay, it's there, but it's no longer an interactive text type.
-	if( data[ "text_type" ] != 2 ):
-		n_Database.keyframe_flag_list[ record_id ][ node_id ].erase( slot )
-	#	Otherwise, make no changes.
+	for keyframe in node[ "keyframes" ]:
+		if( type == "Color" ):
+			if( keyframe[ "text_color" ] == var_name ):
+				if( replacement != "" ):
+					keyframe[ "text_color" ] = replacement
+					continue
+				#	End defensive continue
+				keyframe[ "text_color" ] = "Custom"
+				keyframe[ "text_color_custom" ] = Color( 0.0, 0.0, 0.0, 1.0 )
+		else:
+			var erasure_data: Array = []
+			for data in keyframe[ "variable_data" ]:
+				if( data[ "type" ] != type ):
+					continue
+				if( data[ "variable" ] != var_name ):
+					continue
+				#	End defensive continues
+				if( replacement == "" ):
+					erasure_data.append( data.duplicate( true ) )
+				else:
+					data[ "variable" ] = replacement
+			for data in erasure_data:
+				keyframe[ "variable_data" ].erase( data )
+
+
+func modify_variable_in_nodes(
+	type: String,
+	var_name: String,
+	replacement: String = ""
+) -> void:
+	for record in database:
+		for node in database[ record ][ "nodes" ]:
+			var node_data: Dictionary = database[ record ][ "nodes" ][ node ]
+			if( node_data[ "type" ] == "If" ):
+				if( node_data[ "if_value_type" ] != type ):
+					continue
+				if( node_data[ "if_name" ] != var_name ):
+					continue
+				#	End defensive continues
+				var new_name: String = replacement
+				if( new_name == "" ):
+					new_name = "Not Set"
+				set_node_property( record, node, "if_name", new_name )
+			elif( node_data[ "type" ] == "Set" ):
+				if( node_data[ "set_value_type" ] != type ):
+					continue
+				if( node_data[ "set_name" ] != var_name ):
+					continue
+				#	End defensive continues
+				var new_name: String = replacement
+				if( new_name == "" ):
+					new_name = "Not Set"
+				set_node_property( record, node, "set_name", new_name )
+			elif( node_data[ "type" ] == "Advanced" ):
+				if( type == "Speaker" ):
+					if( node_data[ "speaker" ] == var_name ):
+						node_data[ "speaker" ] = replacement
+				else:
+					match type:
+						"Float", "String", "Flag", "Color":
+							modify_variable_in_keyframes( node_data, type,
+									var_name, replacement )
 
 
 """ Node Links """
@@ -205,48 +241,6 @@ func get_node_link( record_id: int, node_id: int, slot: int ) -> int:
 		return -1
 	#	End defensive return
 	return database[ record_id ][ "nodes" ][ node_id ][ "links" ][ slot ]
-
-
-""" Resetting Properties """
-
-
-func replace_variable( type: String, current: String, new: String ) -> void:
-	for record_id in range( 0, database.size() ):
-		for node_id in range( 1,
-			database[ record_id ][ "nodes" ].size()
-		):
-			var node: Dictionary
-			node = database[ record_id ][ "nodes" ][ node_id ]
-			var check_text = node[ "type" ].to_lower()
-			if( check_text != "if" and check_text != "set"  ):
-				continue
-			#	End defensive continue: Wrong node type
-			if( node[ check_text + "_value_type" ] ) != type:
-				continue
-			#	End defensive type: Wrong flag type
-			if( node[ check_text + "_name" ] == current ):
-				node[ check_text + "_name" ] = new
-
-
-func reset_flag_in_all_nodes( flag: String ) -> void:
-	for record_id in range( 0, database.size() ):
-		for node_id in range( 1,
-			database[ record_id ][ "nodes" ].size()
-		):
-			var node: Dictionary
-			node = database[ record_id ][ "nodes" ][ node_id ]
-			if( node[ "type" ] == "If" ):
-				if( node[ "flag" ] == flag ):
-					node[ "flag" ] = "No Flag"
-	#	Advanced nodes contain keyframes that contain flags. We search these.
-	for record_id in n_Database.keyframe_flag_list:
-		for node_id in n_Database.keyframe_flag_list[ record_id ]:
-			for slot in n_Database.keyframe_flag_list[ record_id ][ node_id ]:
-				var node: Dictionary
-				node = database[ record_id ][ "nodes" ][ node_id ]\
-						[ "keyframes" ][ slot ]
-				if( node[ "data_flag" ] == flag ):
-					node[ "data_flag" ] = "No Flag"
 
 
 """ Erasing Links """

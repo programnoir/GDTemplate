@@ -172,7 +172,6 @@ func create_advanced_node_keyframe() -> void:
 
 
 func add_responses( delta: int ) -> void:
-	print( "It's working" )
 	match delta:
 		-1:
 			var children: Array = nVBCResponses.get_children()
@@ -202,15 +201,15 @@ func write_node_data() -> void:
 	nTabAnimations.clear_animations()
 
 
-	#	node_data[ "speaker" ] = ""
 func populate_ui() -> void:
 	if( node_data.size() == 0 ):
 		return
 	#	End defensive return: No data yet.
 	for speaker in speakers_array:
 		nOptionButtonSpeaker.add_item( speaker )
-	if( node_data[ "speaker" ] != "" ):
-		select_by_text( nOptionButtonSpeaker, node_data[ "speaker" ] )
+	if( node_data.has( "speaker" ) ):
+		if( node_data[ "speaker" ] != "" ):
+			select_by_text( nOptionButtonSpeaker, node_data[ "speaker" ] )
 	nTabTypeColor.populate_ui()
 	nTabData.populate_ui()
 	if( node_data[ "keyframes" ].size() == 0 ):
