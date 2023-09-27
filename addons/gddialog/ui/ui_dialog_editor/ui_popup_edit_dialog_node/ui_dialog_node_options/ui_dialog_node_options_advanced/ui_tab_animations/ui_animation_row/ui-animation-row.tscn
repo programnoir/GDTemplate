@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_animations/ui_animation_row/ui-animation-row.gd" id="1_5441b"]
 
-
 [sub_resource type="ImageTexture" id="ImageTexture_fi0tx"]
 
 [node name="UIAnimationRow" type="HBoxContainer"]

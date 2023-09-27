@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://plhmaorrk5f"]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui-dialog-editor.gd" id="1_otm8p"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/signals/signals-ui-dialog-editor.gd" id="2_1ju2u"]

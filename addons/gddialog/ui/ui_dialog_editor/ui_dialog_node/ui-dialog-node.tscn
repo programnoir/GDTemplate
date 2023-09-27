@@ -1,7 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://lweh0j3b5p0w"]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/ui-dialog-node.gd" id="1_edowi"]
-
 
 [node name="UIDialogNode" type="GraphNode"]
 title = "NID Null "

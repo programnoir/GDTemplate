@@ -1,7 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c2ii0jo71o1wr"]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/ui_slot_adjustable_node/ui-slot-adjustable-node.gd" id="1_nelfk"]
-
 
 [node name="UIDialogSlotAdjustableNode" type="GraphNode" node_paths=PackedStringArray("nLabelSummary")]
 title = "NID Null "

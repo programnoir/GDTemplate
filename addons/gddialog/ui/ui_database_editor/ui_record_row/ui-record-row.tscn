@@ -1,8 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bg3ki8ok3m2f4"]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_record_row/ui-record-row.gd" id="1_ps7ay"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_record_row/signals/signals-ui-record-row.gd" id="2_s3qty"]
-
 
 [node name="UIRecordRow" type="ColorRect"]
 custom_minimum_size = Vector2(0, 32)

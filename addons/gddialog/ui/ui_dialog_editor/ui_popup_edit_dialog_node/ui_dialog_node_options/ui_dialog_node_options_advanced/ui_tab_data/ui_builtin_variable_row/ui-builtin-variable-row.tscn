@@ -1,8 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://c0o444c1vnt2"]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_data/ui_builtin_variable_row/ui-builtin-variable-row.gd" id="1_xp8cq"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_data/ui_builtin_variable_row/signals/signals-ui-builtin-variable-row.gd" id="2_mcvcm"]
-
 
 [node name="UIBuiltinVariableRow" type="HBoxContainer"]
 anchors_preset = 10
