@@ -24,18 +24,6 @@ func clear_animations() -> void:
 			animation.destroy()
 
 
-func load_current_keyframe() -> void:
-	clear_animations()
-	var animations: Array = owner.get_keyframe_property( "animations" )
-	for animation in animations:
-		var new_animation: AnimationRow = add_animation_row()
-		nVBCAnimations.add_child( new_animation )
-		new_animation.set_portrait_id( animation[ "id" ] )
-		new_animation.set_animation( animation[ "animation" ] )
-		nVBCAnimations.move_child( new_animation, max( 0,
-				nVBCAnimations.get_children().size() - 2 ) )
-
-
 func add_animation_row() -> AnimationRow:
 	var nAnimationRow: AnimationRow = p_animation_row.instantiate()
 	nVBCAnimations.add_child( nAnimationRow )
@@ -43,3 +31,12 @@ func add_animation_row() -> AnimationRow:
 	nVBCAnimations.move_child( nAnimationRow, max( 0,
 				nVBCAnimations.get_children().size() - 2 ) )
 	return nAnimationRow
+
+
+func load_current_keyframe() -> void:
+	clear_animations()
+	var animations: Array = owner.get_keyframe_property( "animations" )
+	for animation in animations:
+		var new_animation: AnimationRow = add_animation_row()
+		new_animation.set_portrait_id( animation[ "id" ] )
+		new_animation.set_animation( animation[ "animation" ] )
