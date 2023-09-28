@@ -52,6 +52,7 @@ func manage_tags_on_checked_records(
 		if( deleting == true ):
 			owner.nDatabase.remove_tag_from_tags_list( tag_name )
 			nItemListTags.remove_item( tag_id )
+			owner.nHBCFilters.populate_filter_menu()
 
 
 func populate_tags_in_item_list() -> void:
