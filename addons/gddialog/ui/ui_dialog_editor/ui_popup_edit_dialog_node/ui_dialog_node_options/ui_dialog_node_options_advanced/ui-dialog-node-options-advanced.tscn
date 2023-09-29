@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://baq5g0gyferaw"]
+[gd_scene load_steps=12 format=3 uid="uid://baq5g0gyferaw"]
 
 [ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_rhut8"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui-dialog-node-options-advanced.gd" id="2_kh4ta"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/signals/signals-ui-dialog-node-options-advanced.gd" id="3_t7xyw"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_type_color/ui-tab-type-color.gd" id="4_n17si"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_timing/ui-tab-timing.gd" id="5_jw1uu"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_type_color/signals/signals-ui-tab-type-color.gd" id="5_rggb5"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_audio/ui-tab-audio.gd" id="6_8qqsp"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_animations/ui-tab-animations.gd" id="6_hk3yq"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_advanced/ui_tab_animations/signals/signals-ui-tab-animations.gd" id="7_u7vvo"]
@@ -119,6 +120,9 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("4_n17si")
+
+[node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Type & Color"]
+script = ExtResource("5_rggb5")
 
 [node name="HBCTextType" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Type & Color"]
 layout_mode = 2
@@ -444,6 +448,7 @@ size_flags_vertical = 3
 [connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/VBCAddDelete/ButtonAppendKeyframe" to="Signals" method="_on_button_append_keyframe_pressed"]
 [connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/VBCAddDelete/ButtonDeleteKeyframe" to="Signals" method="_on_button_delete_keyframe_pressed"]
 [connection signal="text_changed" from="TabContainer/Dialog/TextEdit" to="Signals" method="_on_text_edit_text_changed"]
+[connection signal="item_selected" from="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions/OptionButtonColor" to="TabContainer/Dialog/TabContainer/Type & Color/Signals" method="_on_option_button_color_item_selected"]
 [connection signal="pressed" from="TabContainer/Dialog/TabContainer/Animations/SCAnimations/VBCAnimations/ButtonAddAnimation" to="TabContainer/Dialog/TabContainer/Animations/Signals" method="_on_button_add_animation_pressed"]
 [connection signal="item_selected" from="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonType" to="TabContainer/Dialog/TabContainer/Data/Signals" method="_on_option_button_type_item_selected"]
 [connection signal="item_selected" from="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonCustomType" to="TabContainer/Dialog/TabContainer/Data/Signals" method="_on_option_button_custom_type_item_selected"]

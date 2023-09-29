@@ -33,8 +33,20 @@ func load_current_keyframe() -> void:
 	if( selected_color == "Custom" ):
 		nColorPickerButton.color = owner.get_keyframe_property(
 				"text_color_custom" )
+		nColorPickerButton.disabled = false
 	else:
 		nColorPickerButton.color = owner.colors_array[ selected_color ]
+		nColorPickerButton.disabled = true
+
+
+func select_color( color_index: int ) -> void:
+	var selected_color: String = nOptionButtonColor.get_item_text( color_index )
+	if( selected_color == "Custom" ):
+		nColorPickerButton.color = Color( 0.0, 0.0, 0.0, 1.0 )
+		nColorPickerButton.disabled = false
+	else:
+		nColorPickerButton.color = owner.colors_array[ selected_color ]
+		nColorPickerButton.disabled = true
 
 
 func populate_ui() -> void:
