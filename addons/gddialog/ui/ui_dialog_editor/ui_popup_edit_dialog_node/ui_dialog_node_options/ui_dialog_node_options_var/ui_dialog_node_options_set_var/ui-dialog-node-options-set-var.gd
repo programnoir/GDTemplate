@@ -84,6 +84,9 @@ func populate_ui() -> void:
 
 
 func write_node_data() -> void:
+	if( nOptionButtonVariable.selected == -1 ):
+		return
+	#	End defensive return: No variable selected
 	node_data[ "set_value_type" ] = type
 	node_data[ "set_name" ] = nOptionButtonVariable.get_item_text(
 				nOptionButtonVariable.selected )

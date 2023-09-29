@@ -47,6 +47,9 @@ func add_data_ui() -> void:
 				1:
 					new_custom_row.set_data( nSpinBoxCustomFloat.value )
 		1:
+			if( nOptionButtonVariable.selected == -1 ):
+				return
+			#	End defensive return: No variable selected.
 			var new_builtin_row: HBoxContainer = \
 					p_builtin_variable_row.instantiate()
 			nVBCBuiltInData.add_child( new_builtin_row )

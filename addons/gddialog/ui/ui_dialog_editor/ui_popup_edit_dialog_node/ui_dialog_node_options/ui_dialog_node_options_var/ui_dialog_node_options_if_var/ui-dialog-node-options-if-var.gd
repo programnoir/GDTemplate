@@ -149,6 +149,9 @@ func populate_ui() -> void:
 
 
 func write_node_data() -> void:
+	if( nOptionButtonVariable.selected == -1 ):
+		return
+	#	End defensive return: No variable selected
 	var changed_type: bool = false
 	var previous_size: int = node_data[ "if_values" ].size()
 	var preserved_link: int = -1
