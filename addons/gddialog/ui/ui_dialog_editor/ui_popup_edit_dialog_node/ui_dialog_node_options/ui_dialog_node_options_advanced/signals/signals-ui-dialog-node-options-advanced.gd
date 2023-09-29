@@ -18,6 +18,7 @@ func _on_button_next_keyframe_pressed() -> void:
 
 func _on_button_append_keyframe_pressed() -> void:
 	owner.create_advanced_node_keyframe()
+	owner.nTextEdit.grab_focus()
 
 
 func _on_button_delete_keyframe_pressed() -> void:

@@ -38,11 +38,21 @@ func set_visible_manager( id: int ) -> void:
 			nLabelManagerTitle.text = "Speaker Manager"
 
 
+func populate_all_ui() -> void:
+	nVBCArrayManager.populate_arrays_in_item_list()
+	nVBCColorManager.populate_colors_in_manager()
+	nVBCFlagManager.populate_flags_in_item_list()
+	nVBCFloatManager.populate_floats_in_manager()
+	nVBCSpeakerManager.populate_speakers_in_manager()
+	nVBCStringManager.populate_strings_in_manager()
+	nVBCTagManager.populate_tags_in_item_list()
+
+
 func clear_ui() -> void:
 	nVBCArrayManager.nItemListArrays.clear()
 	nVBCColorManager.clear_ui()
 	nVBCFlagManager.nItemListFlags.clear()
 	nVBCFloatManager.clear_ui()
-	nVBCStringManager.clear_ui()
 	nVBCSpeakerManager.clear_ui()
+	nVBCStringManager.clear_ui()
 	nVBCTagManager.nItemListTags.clear()

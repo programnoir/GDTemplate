@@ -16,6 +16,7 @@ script = ExtResource("2_ooqm0")
 [node name="LineEditString" type="LineEdit" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 2
 
 [node name="SpinBoxFloat" type="SpinBox" parent="."]
 layout_mode = 2

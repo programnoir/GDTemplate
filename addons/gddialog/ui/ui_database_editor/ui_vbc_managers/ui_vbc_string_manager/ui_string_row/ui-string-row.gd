@@ -12,7 +12,7 @@ signal destroyed( row )
 		"HBoxContainer/LineEditDefaultValue" )
 
 var last_saved_name: String = ""
-
+var last_saved_value: String = ""
 
 func get_string_name() -> String:
 	return nLineEditStringName.text
