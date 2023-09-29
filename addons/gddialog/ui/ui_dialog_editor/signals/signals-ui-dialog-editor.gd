@@ -39,7 +39,7 @@ func _on_menu_button_add_node_id_pressed( id: int ) -> void:
 
 func _on_graph_edit_dialog_node_selected( node: DialogNode ) -> void:
 	var type = node.get_type()
-	if( type == "Start" or type == "End" ):
+	if( type == "Start" or type == "End" or type == "Line" ):
 		return
 	#	End defensive return: No node selected.
 	owner.nButtonEditNode.disabled = false
@@ -137,6 +137,11 @@ func _on_node_changed_dialog_text( node_id: int, new_text: String ) -> void:
 			"text", new_text )
 
 
+func _on_node_changed_speaker( node_id: int, new_speaker: String ) -> void:
+	owner.n_Database.nDialogNodes.set_node_property( owner.record_id, node_id,
+			"speaker", new_speaker )
+
+
 """ Signal Management """
 
 
@@ -154,6 +159,8 @@ func connect_all_node_signals( node: GraphNode, type: String ) -> void:
 		"Line":
 			node.connect( "changed_dialog_text", Callable( self,
 					"_on_node_changed_dialog_text" ) )
+			node.connect( "changed_speaker", Callable( self,
+					"_on_node_changed_speaker" ) )
 
 
 """ Disconnecting Nodes (GUI) """
@@ -170,6 +177,8 @@ func disconnect_all_node_signals( node: GraphNode, type: String ) -> void:
 				"_on_node_changed_slot_amount" ) )
 	match type:
 		"Line":
+			node.disconnect( "changed_speaker", Callable( self,
+					"_on_node_changed_speaker" ) )
 			node.disconnect( "changed_dialog_text", Callable( self,
 					"_on_node_changed_dialog_text" ) )
 

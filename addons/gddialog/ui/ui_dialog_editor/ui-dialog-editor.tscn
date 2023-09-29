@@ -109,8 +109,8 @@ minimap_enabled = false
 arrange_nodes_button_hidden = true
 
 [node name="PopupEditDialogNode" type="Popup" parent="."]
-initial_position = 2
 title = "Edit Dialog Node"
+initial_position = 2
 size = Vector2i(480, 500)
 extend_to_title = true
 min_size = Vector2i(480, 500)

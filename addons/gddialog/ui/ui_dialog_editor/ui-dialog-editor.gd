@@ -86,8 +86,11 @@ func create_new_node( node_type: String ) -> void:
 	n_Database.nDialogNodes.set_node_property( record_id, new_node_id,
 			"graph_offset", start_position )
 	new_node.position_offset = start_position
-	if( node_type == "End" ):
-		new_node.show_close = true
+	match node_type:
+		"End":
+			new_node.show_close = true
+		"Line":
+			new_node.set_speaker_ui( n_Database.speakers_list.keys(), "" )
 	nSignals.connect_all_node_signals( new_node, node_type )
 
 
@@ -140,9 +143,13 @@ func populate_graph() -> void:
 				if( node_id > 1 ):
 					new_node.show_close = true
 			"Line":
-				var new_text = n_Database.nDialogNodes.get_node_property(
+				var pop_text = n_Database.nDialogNodes.get_node_property(
 						record_id, node_id, "text" )
-				new_node.set_text_ui( new_text )
+				var new_speaker = n_Database.nDialogNodes.get_node_property(
+						record_id, node_id, "speaker" )
+				new_node.set_text_ui( pop_text )
+				new_node.set_speaker_ui( n_Database.speakers_list.keys(),
+						new_speaker )
 			"Advanced":
 				var summary_string = ""
 				var node_data = n_Database.nDialogNodes.get_node_data(

@@ -33,6 +33,7 @@ func create_node( record_id: int, type: String ) -> int:
 	match( type ):
 		"Line":
 			node_data[ "text" ] = ""
+			node_data[ "speaker" ] = ""
 		"Advanced":
 			node_data[ "speaker" ] = ""
 			node_data[ "keyframes" ] = []
@@ -210,15 +211,16 @@ func modify_variable_in_nodes(
 				if( new_name == "" ):
 					new_name = "Not Set"
 				set_node_property( record, node, "set_name", new_name )
-			elif( node_data[ "type" ] == "Advanced" ):
-				if( type == "Speaker" ):
+			elif( type == "Speaker" ):
+				if( node_data[ "type" ] == "Advanced"
+						|| node_data[ "type" ] == "Line"
+				):
 					if( node_data[ "speaker" ] == var_name ):
 						node_data[ "speaker" ] = replacement
-				else:
-					match type:
-						"Float", "String", "Flag", "Color":
-							modify_variable_in_keyframes( node_data, type,
-									var_name, replacement )
+			elif( node_data[ "type" ] == "Advanced" ):
+				if( [ "Float", "String", "Flag", "Color" ].has( type ) ):
+					modify_variable_in_keyframes( node_data, type,
+							var_name, replacement )
 
 
 """ Node Links """

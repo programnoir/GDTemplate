@@ -27,6 +27,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Line"
 
+[node name="OptionButtonSpeaker" type="OptionButton" parent="VBCNodeEditor"]
+layout_mode = 2
+clip_text = true
+
 [node name="TextEditDialog" type="TextEdit" parent="VBCNodeEditor"]
 custom_minimum_size = Vector2(150, 64)
 layout_mode = 2
@@ -49,4 +53,5 @@ min_value = 1.0
 value = 1.0
 alignment = 2
 
+[connection signal="item_selected" from="VBCNodeEditor/OptionButtonSpeaker" to="." method="_on_option_button_speaker_item_selected"]
 [connection signal="focus_exited" from="VBCNodeEditor/TextEditDialog" to="." method="_on_text_edit_focus_exited"]
