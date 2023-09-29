@@ -30,9 +30,29 @@ signal completed_first_setup
 const MINIMUM_FONT_SIZE: int = 8
 
 
+func process_plugins() -> void:
+	var plugins: Array = GlobalPlugins.request_plugins()
+	for plugin in plugins:
+		if( plugin.size() < 3 ):
+			continue
+		if( ( plugin[ 0 ] is String ) == false ):
+			continue
+		if( plugin[ 0 ] != "first_setup" ):
+			continue
+		if( ( plugin[ 1 ] is String ) == false ):
+			continue
+		if( ( plugin[ 2 ] is String ) == false ):
+			continue
+		#	End defensive continues
+		var new_plugin: Control = load( plugin[ 2 ] ).instantiate()
+		nVBCFirstSetup.add_child( new_plugin )
+		nVBCFirstSetup.move_child( new_plugin,
+				nVBCFirstSetup.get_children().size() - 3 )
+
+
 func set_font_size( new_size: int ) -> void:
 	var adjusted_size: int = new_size
-	var maximum_font_size: int = GlobalTheme.get_maximum_font_size(
+	var maximum_font_size: int = GlobalTheme.get_maximum_font_sizes(
 			GlobalUserSettings.get_game_scale() - 1 )
 	new_size = clamp( new_size, MINIMUM_FONT_SIZE, maximum_font_size )
 	GlobalUserSettings.set_current_font_size( new_size )
@@ -137,6 +157,8 @@ func _ready() -> void:
 	GlobalUserSettings.get_display_info()
 	initialize_video_settings()
 	nOptionButtonLanguages.grab_focus()
+	if( Engine.is_editor_hint() == false ):
+		process_plugins()
 
 
 func destroy() -> void:

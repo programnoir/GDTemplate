@@ -100,6 +100,8 @@ func load_settings() -> bool:
 """
 	First-Time Setup
 """
+
+
 func set_first_time_setup( new_value: bool ) -> void:
 	first_time_setup = new_value
 

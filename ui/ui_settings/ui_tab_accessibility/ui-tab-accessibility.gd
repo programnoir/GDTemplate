@@ -12,8 +12,13 @@ extends VBoxContainer
 @onready var nButtonToggleFontSize: Button = get_node(
 		"HBCFontSizes/ButtonToggleFontSize" )
 
+
 const MINIMUM_FONT_SIZE: int = 8
 const DEFAULT_FONT_INDEX: int = 0
+
+
+func add_plugin_setting( new_setting: Control ) -> void:
+	add_child( new_setting )
 
 
 func set_font_size( new_size: int ) -> void:

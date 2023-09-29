@@ -111,7 +111,6 @@ size_flags_vertical = 3
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.882353)
 
 [node name="VBCAccessibility" type="VBoxContainer" parent="VBCSettings/ColorRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -214,8 +213,6 @@ layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBCFonts/ButtonCycleFont")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath("../../../../HBCTabs/SCTabsWrap/HBCTabsClip/ButtonAccessibility")
 focus_previous = NodePath("../../HBCFonts/ButtonCycleFont")
 toggle_mode = true
 text = "ui_button_edit"
@@ -226,6 +223,7 @@ layout_mode = 2
 theme_override_constants/separation = 6
 
 [node name="VBCControls" type="VBoxContainer" parent="VBCSettings/ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -319,8 +317,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 246.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -371,8 +369,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.0
-offset_bottom = 246.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1

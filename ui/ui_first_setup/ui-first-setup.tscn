@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bgekixjfs0y7l"]
 
 [ext_resource type="Script" path="res://ui/ui_first_setup/ui-first-setup.gd" id="1_2ntop"]
 [ext_resource type="Script" path="res://ui/ui_first_setup/signals/signals-ui-first-setup.gd" id="2_phqke"]
@@ -256,7 +256,6 @@ layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HBCWindowScale/ButtonWindowScaleDown")
 focus_neighbor_right = NodePath("../ButtonGameScaleUp")
-focus_neighbor_bottom = NodePath("../../ButtonCompleteSetup")
 focus_next = NodePath("../ButtonGameScaleUp")
 focus_previous = NodePath("../../HBCWindowScale/ButtonWindowScaleUp")
 text = " - "
@@ -269,8 +268,6 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonGameScaleDown")
 focus_neighbor_top = NodePath("../../HBCWindowScale/ButtonWindowScaleUp")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../ButtonCompleteSetup")
-focus_next = NodePath("../../ButtonCompleteSetup")
 focus_previous = NodePath("../ButtonGameScaleDown")
 text = " + "
 
@@ -286,11 +283,9 @@ size_flags_vertical = 3
 [node name="ButtonCompleteSetup" type="Button" parent="Panel/SCFirstSetup/VBCFirstSetup"]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../HBCGameScale/ButtonGameScaleUp")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../HBCLanguages/OptionButtonLanguage")
-focus_previous = NodePath("../HBCGameScale/ButtonGameScaleUp")
 text = "Play"
 
 [connection signal="item_selected" from="Panel/SCFirstSetup/VBCFirstSetup/HBCLanguages/OptionButtonLanguage" to="Signals" method="_on_option_button_language_item_selected"]

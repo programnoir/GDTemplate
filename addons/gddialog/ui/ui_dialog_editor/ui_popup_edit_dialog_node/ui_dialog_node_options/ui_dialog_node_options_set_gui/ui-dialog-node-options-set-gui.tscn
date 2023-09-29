@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://72vccqms878b"]
+
+[ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_lribk"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options/ui_dialog_node_options_set_gui/ui-dialog-node-options-set-gui.gd" id="1_lsirp"]
+
+[node name="UIDialogNodeOptionsSetGUI" type="VBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 61.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_lribk")
+theme_override_constants/separation = 5
+script = ExtResource("1_lsirp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Configure Set GUI Node"
+
+[node name="LineEditGUIType" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Specify GUI Type..."

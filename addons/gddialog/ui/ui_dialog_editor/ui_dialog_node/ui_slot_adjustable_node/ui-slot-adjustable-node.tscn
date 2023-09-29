@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2ii0jo71o1wr"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/ui_slot_adjustable_node/ui-slot-adjustable-node.gd" id="1_nelfk"]
+
+[node name="UIDialogSlotAdjustableNode" type="GraphNode" node_paths=PackedStringArray("nLabelSummary")]
+title = "NID Null "
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_nelfk")
+nLabelSummary = NodePath("VBCNodeEditor/LabelSummary")
+
+[node name="VBCNodeEditor" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelSummary" type="Label" parent="VBCNodeEditor"]
+layout_mode = 2
+text = "DialogNode"
+
+[node name="HBCSlots" type="HBoxContainer" parent="VBCNodeEditor"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBCNodeEditor/HBCSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slots"
+horizontal_alignment = 2
+
+[node name="SpinBoxSlots" type="SpinBox" parent="VBCNodeEditor/HBCSlots"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+alignment = 2

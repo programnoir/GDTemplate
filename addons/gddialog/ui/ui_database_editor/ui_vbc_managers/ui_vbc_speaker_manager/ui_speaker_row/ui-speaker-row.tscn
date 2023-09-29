@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_vbc_managers/ui_vbc_speaker_manager/ui_speaker_row/ui-speaker-row.gd" id="1_dpqme"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui_vbc_managers/ui_vbc_speaker_manager/ui_speaker_row/signals/signals-ui-speaker-row.gd" id="2_v2fsc"]
+
+
+[node name="SpeakerRow" type="ColorRect"]
+custom_minimum_size = Vector2(0, 31)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.156863)
+script = ExtResource("1_dpqme")
+
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_v2fsc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+color = Color(1, 1, 1, 1)
+
+[node name="LineEditSpeakerName" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Speaker name"
+
+[node name="ButtonDeleteSpeaker" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = " 🗑️ "
+
+[connection signal="color_changed" from="HBoxContainer/ColorPickerButton" to="Signals" method="_on_color_picker_button_color_changed"]
+[connection signal="focus_entered" from="HBoxContainer/LineEditSpeakerName" to="Signals" method="_on_line_edit_speaker_name_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/LineEditSpeakerName" to="Signals" method="_on_line_edit_speaker_name_focus_exited"]
+[connection signal="text_submitted" from="HBoxContainer/LineEditSpeakerName" to="Signals" method="_on_line_edit_speaker_name_text_submitted"]
+[connection signal="pressed" from="HBoxContainer/ButtonDeleteSpeaker" to="Signals" method="_on_button_delete_speaker_pressed"]

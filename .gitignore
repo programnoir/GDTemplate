@@ -1,5 +1,10 @@
 # Godot 4+ specific ignores
-.godot/
+.godot/editor
+.godot/shader_cache
+.godot/imported/*.csv*.md5
+.godot/.gdignore
+.godot/uid_cache.bin
+
 
 # Godot-specific ignores
 .import/
