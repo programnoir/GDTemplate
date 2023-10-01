@@ -159,7 +159,6 @@ func create_advanced_node_keyframe() -> void:
 		"music": "",
 		"music_transition": "Cut",
 		#	Custom data specifically for *association* with the text.
-		#	Not 100% sure how this will be implemented yet.
 		"custom_data": [],
 		#	Variable data set prior to the node, for injection/association.
 		"variable_data": []

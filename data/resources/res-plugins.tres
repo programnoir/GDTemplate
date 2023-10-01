@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="PluginsList" load_steps=2 format=3 uid="uid://bmx0kn3k3jlkf"]
 
-[ext_resource type="Script" path="res://data/resources/res-plugins.gd" id="1_4c1im"]
+[ext_resource type="Script" path="res://data/resources/res-plugins.gd" id="1_02a8i"]
 
 [resource]
-script = ExtResource("1_4c1im")
+script = ExtResource("1_02a8i")
 plugins = [["settings", "accessibility", "res://addons/gddialog/ui/ui_settings_text_speed/ui-settings-text-speed.tscn"], ["first_setup", "accessibility", "res://addons/gddialog/ui/ui_settings_text_speed/ui-settings-text-speed.tscn"]]
 plugin_translations = ["res://addons/gddialog/data/translations/gddialog-translations.en.translation", "res://addons/gddialog/data/translations/gddialog-translations.ja.translation"]

@@ -1,0 +1,267 @@
+[gd_scene load_steps=2 format=3 uid="uid://csfwtyslc7qyi"]
+
+[ext_resource type="PackedScene" uid="uid://draf0k7uxm6k" path="res://addons/gddialog/ui/ui_example/ui_portrait/ui-portrait.tscn" id="1_nwln6"]
+
+[node name="UIExample" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="TimerDelay" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="TimerTypewriter" type="Timer" parent="Timers"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="ASPTypewriter" type="AudioStreamPlayer" parent="Audio"]
+bus = &"SFX"
+
+[node name="ASPSoundEffect" type="AudioStreamPlayer" parent="Audio"]
+bus = &"SFX"
+
+[node name="ASPMusic" type="AudioStreamPlayer" parent="Audio"]
+bus = &"Music"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.156863)
+
+[node name="VBCDialog" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Portraits" type="Control" parent="VBCDialog"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="ProfilePointBG" type="Control" parent="VBCDialog/Portraits"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitBG" parent="VBCDialog/Portraits/ProfilePointBG" instance=ExtResource("1_nwln6")]
+z_index = 1000
+z_as_relative = false
+position = Vector2(-240, -189)
+
+[node name="HBCProfiles" type="HBoxContainer" parent="VBCDialog/Portraits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProfileColumnLL" type="Control" parent="VBCDialog/Portraits/HBCProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnLL"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitLL" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnLL/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1002
+z_as_relative = false
+
+[node name="ProfileColumnL" type="Control" parent="VBCDialog/Portraits/HBCProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnL"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitL" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnL/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1001
+z_as_relative = false
+
+[node name="ProfileColumnR" type="Control" parent="VBCDialog/Portraits/HBCProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnR"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitR" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnR/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1001
+z_as_relative = false
+
+[node name="ProfileColumnRR" type="Control" parent="VBCDialog/Portraits/HBCProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnRR"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitRR" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnRR/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1002
+z_as_relative = false
+
+[node name="HBCFG" type="HBoxContainer" parent="VBCDialog/Portraits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProfileColumnL" type="Control" parent="VBCDialog/Portraits/HBCFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCFG/ProfileColumnL"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitFGL" parent="VBCDialog/Portraits/HBCFG/ProfileColumnL/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1004
+z_as_relative = false
+
+[node name="ProfileColumnC" type="Control" parent="VBCDialog/Portraits/HBCFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCFG/ProfileColumnC"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitFGC" parent="VBCDialog/Portraits/HBCFG/ProfileColumnC/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1003
+z_as_relative = false
+
+[node name="ProfileColumnR" type="Control" parent="VBCDialog/Portraits/HBCFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCFG/ProfileColumnR"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitFGR" parent="VBCDialog/Portraits/HBCFG/ProfileColumnR/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1004
+z_as_relative = false
+
+[node name="MCDialog" type="MarginContainer" parent="VBCDialog"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="PanelDialog" type="Panel" parent="VBCDialog/MCDialog"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBCDialog/MCDialog/PanelDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabelDialog" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer"]
+
+[node name="VBCButtons" type="VBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer/VBCButtons"]
+layout_mode = 2
+text = "ui_button_next"
+
+[node name="PanelResponses" type="Panel" parent="VBCDialog/MCDialog/PanelDialog"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -30.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabelResponse" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
+root_node = NodePath("../..")
