@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="DialogDatabase" load_steps=2 format=3 uid="uid://2h70fdr4ww2t"]
+
+[ext_resource type="Script" path="res://addons/gddialog/resources/res-dialog-database.gd" id="1_s3xdx"]
+
+[resource]
+script = ExtResource("1_s3xdx")
+TYPE = "dialog_database"
+database = {
+0: {
+"available_node_ids": [],
+"description": "Description of new dialog",
+"name": "example",
+"nodes": {
+0: {
+"graph_offset": Vector2(80, 80),
+"links": {
+0: 2
+},
+"rect_size": Vector2(0, 0),
+"slot_amount": 1,
+"type": "Start",
+"vbc_size": Vector2(0, 0)
+},
+1: {
+"graph_offset": Vector2(600, 80),
+"links": {},
+"rect_size": Vector2(0, 0),
+"slot_amount": 1,
+"type": "End",
+"vbc_size": Vector2(0, 0)
+},
+2: {
+"graph_offset": Vector2(240, 40),
+"links": {
+0: 1
+},
+"rect_size": Vector2(0, 0),
+"slot_amount": 1,
+"speaker": "",
+"text": "Hello there!",
+"type": "Line",
+"vbc_size": Vector2(0, 0)
+}
+},
+"tags": []
+}
+}
+record_names = {
+"example": 0
+}
+flags_list = {}
+strings_list = {}
+floats_list = {}
+string_arrays_list = {}
+colors_list = {}
+speakers_list = {
+"Tony": Color(1, 0.811765, 0.0666667, 1)
+}
+tags_list = []
+available_record_ids = []

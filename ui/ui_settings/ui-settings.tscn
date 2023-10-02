@@ -301,8 +301,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="UIPopupCreateProfile" type="PopupPanel" parent="VBCSettings/ColorRect/VBCControls"]
-initial_position = 1
 title = "Create Profile"
+initial_position = 1
 size = Vector2i(400, 250)
 always_on_top = true
 max_size = Vector2i(400, 250)
@@ -317,8 +317,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -353,8 +353,8 @@ text = "ui_cancel
 "
 
 [node name="UIPopupSetBind" type="PopupPanel" parent="VBCSettings/ColorRect/VBCControls"]
-initial_position = 1
 title = "Add Bind"
+initial_position = 1
 size = Vector2i(400, 250)
 always_on_top = true
 max_size = Vector2i(400, 250)
@@ -369,8 +369,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 396.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1

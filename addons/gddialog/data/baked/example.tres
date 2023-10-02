@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="DialogDatabaseBaked" load_steps=2 format=3 uid="uid://c8qs263s54al"]
+
+[ext_resource type="Script" path="res://addons/gddialog/resources/res-baked-dialog-database.gd" id="1_ny1hl"]
+
+[resource]
+script = ExtResource("1_ny1hl")
+TYPE = "baked_dialog_database"
+database = {
+0: {
+"nodes": {
+0: {
+"links": {
+0: 2
+},
+"type": "Start",
+"vbc_size": Vector2(0, 0)
+},
+1: {
+"links": {},
+"type": "End",
+"vbc_size": Vector2(0, 0)
+},
+2: {
+"links": {
+0: 1
+},
+"speaker": "",
+"text": "Hello there!",
+"type": "Line",
+"vbc_size": Vector2(0, 0)
+}
+}
+}
+}
+record_names = {
+"example": 0
+}
+flags_list = {}
+strings_list = {}
+floats_list = {}
+string_arrays_list = {}
+colors_list = {}
+speakers_list = {
+"Tony": Color(1, 0.811765, 0.0666667, 1)
+}

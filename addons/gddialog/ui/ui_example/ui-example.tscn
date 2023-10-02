@@ -1,14 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://csfwtyslc7qyi"]
+[gd_scene load_steps=5 format=3 uid="uid://csfwtyslc7qyi"]
 
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/ui-example.gd" id="1_mb3dp"]
 [ext_resource type="PackedScene" uid="uid://draf0k7uxm6k" path="res://addons/gddialog/ui/ui_example/ui_portrait/ui-portrait.tscn" id="1_nwln6"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/signals/signals-ui-example.gd" id="2_n5xxl"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/dialog_nodes/dialog-nodes.gd" id="2_ncaja"]
 
 [node name="UIExample" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mb3dp")
+
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_n5xxl")
+
+[node name="DialogNodes" type="Node" parent="."]
+script = ExtResource("2_ncaja")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -238,7 +249,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 alignment = 2
 
-[node name="Button" type="Button" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer/VBCButtons"]
+[node name="ButtonNext" type="Button" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer/VBCButtons"]
 layout_mode = 2
 text = "ui_button_next"
 
