@@ -10,7 +10,7 @@ database = {
 "nodes": {
 0: {
 "links": {
-0: 2
+0: 3
 },
 "type": "Start",
 "vbc_size": Vector2(0, 0)
@@ -24,10 +24,41 @@ database = {
 "links": {
 0: 1
 },
-"speaker": "",
+"speaker": "Tony",
 "text": "Hello there!",
 "type": "Line",
 "vbc_size": Vector2(0, 0)
+},
+3: {
+"links": {
+0: 4
+},
+"set_name": "example float",
+"set_value": 0.0,
+"set_value_type": "Float",
+"type": "Set",
+"vbc_size": Vector2(119, 71)
+},
+4: {
+"if_conditions": ["Equal to"],
+"if_name": "example float",
+"if_value_type": "Float",
+"if_values": [0.0],
+"links": {
+0: 2,
+1: 5
+},
+"type": "If",
+"vbc_size": Vector2(9, 50)
+},
+5: {
+"links": {
+0: 1
+},
+"speaker": "Clem",
+"text": "Huh, interesting.",
+"type": "Line",
+"vbc_size": Vector2(150, 162)
 }
 }
 }
@@ -37,9 +68,12 @@ record_names = {
 }
 flags_list = {}
 strings_list = {}
-floats_list = {}
+floats_list = {
+"example float": 0.0
+}
 string_arrays_list = {}
 colors_list = {}
 speakers_list = {
+"Clem": Color(0.921569, 0, 1, 1),
 "Tony": Color(1, 0.811765, 0.0666667, 1)
 }

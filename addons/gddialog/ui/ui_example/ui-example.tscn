@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://csfwtyslc7qyi"]
+[gd_scene load_steps=6 format=3 uid="uid://csfwtyslc7qyi"]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/ui-example.gd" id="1_mb3dp"]
 [ext_resource type="PackedScene" uid="uid://draf0k7uxm6k" path="res://addons/gddialog/ui/ui_example/ui_portrait/ui-portrait.tscn" id="1_nwln6"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/signals/signals-ui-example.gd" id="2_n5xxl"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/dialog_nodes/dialog-nodes.gd" id="2_ncaja"]
+[ext_resource type="AudioStream" uid="uid://crolootndvhul" path="res://addons/gddialog/assets/sounds/blip.ogg" id="4_w5xyp"]
 
 [node name="UIExample" type="Control"]
 visible = false
@@ -33,6 +34,7 @@ one_shot = true
 [node name="Audio" type="Node" parent="."]
 
 [node name="ASPTypewriter" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_w5xyp")
 bus = &"SFX"
 
 [node name="ASPSoundEffect" type="AudioStreamPlayer" parent="Audio"]
@@ -48,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.156863)
+color = Color(0, 0, 0, 0.784314)
 
 [node name="VBCDialog" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -231,7 +233,7 @@ theme_override_constants/margin_right = 20
 [node name="PanelDialog" type="Panel" parent="VBCDialog/MCDialog"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBCDialog/MCDialog/PanelDialog"]
+[node name="HBCDialog" type="HBoxContainer" parent="VBCDialog/MCDialog/PanelDialog"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,21 +241,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabelDialog" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer"]
+[node name="VBCDialogText" type="VBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer"]
+[node name="RichTextLabelSpeaker" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCDialogText"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Speaker"
+fit_content = true
+scroll_active = false
 
-[node name="VBCButtons" type="VBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer"]
+[node name="RichTextLabelDialog" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCDialogText"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCDialogText"]
+root_node = NodePath("../..")
+
+[node name="VBCButtons" type="VBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog"]
 layout_mode = 2
 alignment = 2
 
-[node name="ButtonNext" type="Button" parent="VBCDialog/MCDialog/PanelDialog/HBoxContainer/VBCButtons"]
+[node name="ButtonNext" type="Button" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCButtons"]
 layout_mode = 2
 text = "ui_button_next"
 
 [node name="PanelResponses" type="Panel" parent="VBCDialog/MCDialog/PanelDialog"]
+visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 10
@@ -276,3 +294,6 @@ scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
 root_node = NodePath("../..")
+
+[connection signal="timeout" from="Timers/TimerTypewriter" to="Signals" method="_on_timer_typewriter_timeout"]
+[connection signal="pressed" from="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCButtons/ButtonNext" to="Signals" method="_on_button_next_pressed"]

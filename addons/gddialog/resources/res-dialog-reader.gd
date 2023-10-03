@@ -100,11 +100,11 @@ func get_node_link( record_id: int, node_id: int, slot: int ) -> int:
 """ Getting and Setting Values """
 
 
-func get_color( variable_name: String ) -> String:
+func get_color( variable_name: String ) -> Color:
 	return colors[ variable_name ]
 
 
-func get_speaker_color( variable_name: String ) -> String:
+func get_speaker_color( variable_name: String ) -> Color:
 	return speakers[ variable_name ]
 
 
@@ -176,7 +176,7 @@ func get_script_path( record_id: int, node_id: int ) -> String:
 	return db[ record_id ][ "nodes" ][ node_id ][ "script_filepath" ]
 
 ## Only found in Run Script.
-func get_funcref_name( record_id: int, node_id: int ) -> String:
+func get_script_name( record_id: int, node_id: int ) -> String:
 	check_node_id( record_id, node_id )
 	return db[ record_id ][ "nodes" ][ node_id ][ "script_funcref" ]
 
@@ -193,7 +193,7 @@ func get_ifset_variable_name( record_id: int, node_id: int ) -> String:
 
 ## Found in If and Set.
 func get_ifset_values( record_id: int, node_id: int ) -> Variant:
-	var type: String = get_ifset_value_type( record_id, node_id )
+	var type: String = get_node_type( record_id, node_id ).to_lower()
 	var values: String = type + "_value"
 	if( type == "if" ):
 		values += "s"
@@ -214,3 +214,63 @@ func get_keyframe_property(
 	check_keyframe_id( record_id, node_id, keyframe_id )
 	return db[ record_id ][ "nodes" ][ node_id ]\
 			[ "keyframes" ][ keyframe_id ][ property ]
+
+
+""" Common Processes """
+
+
+## A built-in function to process a set variable node.
+func set_variable_common( record_id: int, node_id: int ) -> void:
+	var var_name: String = get_ifset_variable_name( record_id, node_id )
+	match get_ifset_value_type( record_id, node_id ):
+		"Flag":
+			set_flag_value( var_name, get_ifset_values( record_id, node_id ) )
+		"Float":
+			set_float_value( var_name, get_ifset_values( record_id, node_id ) )
+		"String":
+			set_string_value( var_name, get_ifset_values( record_id, node_id ) )
+		"String Array":
+			set_string_array( var_name, get_ifset_values( record_id, node_id ) )
+
+
+func get_if_node_slot_common( record_id, node_id: int ) -> int:
+	var var_name: String = get_ifset_variable_name( record_id, node_id )
+	var var_type: String = get_ifset_value_type( record_id, node_id )
+	var next_slot: int = 0
+	match var_type:
+		"Flag":
+			if( get_flag_value( var_name ) == true ):
+				return 0
+			return 1
+		"String":
+			var var_value: String = get_string_value( var_name )
+			for value in get_ifset_values( record_id, node_id ):
+				if( var_value == value ):
+					return next_slot
+				next_slot += 1
+			#	No matches
+			return next_slot
+		"String Array":
+			var array: Array = get_string_array( var_name )
+			if( array == get_ifset_values( record_id, node_id ) ):
+				return 0
+			return 1
+	#	Float
+	var var_value: float = get_float_value( var_name )
+	var values: Array = get_ifset_values( record_id, node_id )
+	var conditions: Array = get_if_conditions( record_id, node_id )
+	for value in values:
+		print( str( var_name ), " ", str( var_value ), " compared to ", str( value ) )
+		match conditions[ next_slot ]:
+			"Equal to":
+				if( var_value == value ):
+					return next_slot
+			"Greater Than":
+				if( var_value > value ):
+					return next_slot
+			"Less Than":
+				if( var_value < value ):
+					return next_slot
+		next_slot += 1
+	#	No matches
+	return next_slot

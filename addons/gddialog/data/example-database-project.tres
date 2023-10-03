@@ -14,7 +14,7 @@ database = {
 0: {
 "graph_offset": Vector2(80, 80),
 "links": {
-0: 2
+0: 3
 },
 "rect_size": Vector2(0, 0),
 "slot_amount": 1,
@@ -22,7 +22,7 @@ database = {
 "vbc_size": Vector2(0, 0)
 },
 1: {
-"graph_offset": Vector2(600, 80),
+"graph_offset": Vector2(800, 60),
 "links": {},
 "rect_size": Vector2(0, 0),
 "slot_amount": 1,
@@ -30,16 +30,56 @@ database = {
 "vbc_size": Vector2(0, 0)
 },
 2: {
-"graph_offset": Vector2(240, 40),
+"graph_offset": Vector2(580, 0),
 "links": {
 0: 1
 },
 "rect_size": Vector2(0, 0),
 "slot_amount": 1,
-"speaker": "",
+"speaker": "Tony",
 "text": "Hello there!",
 "type": "Line",
 "vbc_size": Vector2(0, 0)
+},
+3: {
+"graph_offset": Vector2(200, 80),
+"links": {
+0: 4
+},
+"rect_size": Vector2(147, 97),
+"set_name": "example float",
+"set_value": 0.0,
+"set_value_type": "Float",
+"slot_amount": 1,
+"type": "Set",
+"vbc_size": Vector2(119, 71)
+},
+4: {
+"graph_offset": Vector2(400, 40),
+"if_conditions": ["Equal to"],
+"if_name": "example float",
+"if_value_type": "Float",
+"if_values": [0.0],
+"links": {
+0: 2,
+1: 5
+},
+"rect_size": Vector2(115, 127),
+"slot_amount": 1,
+"type": "If",
+"vbc_size": Vector2(9, 50)
+},
+5: {
+"graph_offset": Vector2(580, 200),
+"links": {
+0: 1
+},
+"rect_size": Vector2(178, 188),
+"slot_amount": 1,
+"speaker": "Clem",
+"text": "Huh, interesting.",
+"type": "Line",
+"vbc_size": Vector2(150, 162)
 }
 },
 "tags": []
@@ -50,10 +90,13 @@ record_names = {
 }
 flags_list = {}
 strings_list = {}
-floats_list = {}
+floats_list = {
+"example float": 0.0
+}
 string_arrays_list = {}
 colors_list = {}
 speakers_list = {
+"Clem": Color(0.921569, 0, 1, 1),
 "Tony": Color(1, 0.811765, 0.0666667, 1)
 }
 tags_list = []
