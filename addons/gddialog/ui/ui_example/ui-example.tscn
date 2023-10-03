@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://csfwtyslc7qyi"]
+[gd_scene load_steps=10 format=3 uid="uid://csfwtyslc7qyi"]
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/ui-example.gd" id="1_mb3dp"]
 [ext_resource type="PackedScene" uid="uid://draf0k7uxm6k" path="res://addons/gddialog/ui/ui_example/ui_portrait/ui-portrait.tscn" id="1_nwln6"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/signals/signals-ui-example.gd" id="2_n5xxl"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/dialog_nodes/dialog-nodes.gd" id="2_ncaja"]
 [ext_resource type="AudioStream" uid="uid://crolootndvhul" path="res://addons/gddialog/assets/sounds/blip.ogg" id="4_w5xyp"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/responses/ui-panel-responses.gd" id="6_rrvse"]
+[ext_resource type="Texture2D" uid="uid://cviryqe72fd0d" path="res://addons/gddialog/assets/images/back-button.png" id="7_233gg"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/responses/signals/signals-ui-panel-responses.gd" id="7_i6c5i"]
+[ext_resource type="Texture2D" uid="uid://dqtrlflknh8p2" path="res://addons/gddialog/assets/images/forward-button.png" id="8_5qhoe"]
 
 [node name="UIExample" type="Control"]
 visible = false
@@ -268,6 +272,10 @@ alignment = 2
 
 [node name="ButtonNext" type="Button" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCButtons"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 text = "ui_button_next"
 
 [node name="PanelResponses" type="Panel" parent="VBCDialog/MCDialog/PanelDialog"]
@@ -278,6 +286,10 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_top = -30.0
 grow_horizontal = 2
+script = ExtResource("6_rrvse")
+
+[node name="Signals" type="Node" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses"]
+script = ExtResource("7_i6c5i")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses"]
 layout_mode = 1
@@ -287,13 +299,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ButtonPreviousResponse" type="Button" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../ButtonNextResponse")
+focus_neighbor_bottom = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+focus_next = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+focus_previous = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+icon = ExtResource("7_233gg")
+
 [node name="RichTextLabelResponse" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 scroll_active = false
 
+[node name="ButtonNextResponse" type="Button" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonPreviousResponse")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+focus_next = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+focus_previous = NodePath("../ButtonPreviousResponse")
+icon = ExtResource("8_5qhoe")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
 root_node = NodePath("../..")
 
+[connection signal="timeout" from="Timers/TimerDelay" to="Signals" method="_on_timer_delay_timeout"]
 [connection signal="timeout" from="Timers/TimerTypewriter" to="Signals" method="_on_timer_typewriter_timeout"]
 [connection signal="pressed" from="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCButtons/ButtonNext" to="Signals" method="_on_button_next_pressed"]
+[connection signal="pressed" from="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer/ButtonPreviousResponse" to="VBCDialog/MCDialog/PanelDialog/PanelResponses/Signals" method="_on_button_previous_response_pressed"]
+[connection signal="pressed" from="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer/ButtonNextResponse" to="VBCDialog/MCDialog/PanelDialog/PanelResponses/Signals" method="_on_button_next_response_pressed"]

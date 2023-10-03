@@ -4,6 +4,7 @@ signal toggle_visible( visibility: bool )
 
 @onready var nSignals: Node = get_node( "Signals" )
 @onready var nDialogNodes: Node = get_node( "DialogNodes" )
+@onready var nTimerDelay: Timer = get_node( "Timers/TimerDelay" )
 @onready var nTimerTypewriter: Timer = get_node( "Timers/TimerTypewriter" )
 @onready var nASPTypewriter: AudioStreamPlayer = get_node(
 		"Audio/ASPTypewriter" )
@@ -14,8 +15,30 @@ signal toggle_visible( visibility: bool )
 		"VBCDialogText/RichTextLabelSpeaker" )
 @onready var nRichTextLabelDialog: RichTextLabel = nHBCDialog.get_node( 
 		"VBCDialogText/RichTextLabelDialog" )
+@onready var nPanelResponses: Panel = get_node(
+		"VBCDialog/MCDialog/PanelDialog/PanelResponses" )
 @onready var nButtonNext: Button = nHBCDialog.get_node(
 		"VBCButtons/ButtonNext" )
+
+#	Portraits
+@onready var nPortraits: Control = get_node( "VBCDialog/Portraits" )
+@onready var nHBCProfiles: Control = nPortraits.get_node( "HBCProfiles" )
+@onready var portraits_array: Array = [
+	nPortraits.get_node( "ProfilePointBG/UIPortraitBG" ),
+	nHBCProfiles.get_node( "ProfileColumnLL/ProfilePoint/UIPortraitLL" ),
+	nHBCProfiles.get_node( "ProfileColumnL/ProfilePoint/UIPortraitL" ),
+	nHBCProfiles.get_node( "ProfileColumnR/ProfilePoint/UIPortraitR" ),
+	nHBCProfiles.get_node( "ProfileColumnRR/ProfilePoint/UIPortraitRR" ),
+	nPortraits.get_node( "HBCFG/ProfileColumnL/ProfilePoint/UIPortraitFGL" ),
+	nPortraits.get_node( "HBCFG/ProfileColumnC/ProfilePoint/UIPortraitFGC" ),
+	nPortraits.get_node( "HBCFG/ProfileColumnR/ProfilePoint/UIPortraitFGR" )
+]
+
+const DEFAULT_COLOR: Color = Color( 255, 255, 255, 1.0 )
+const DEFAULT_WRITE_SPEED: float = 0.05
+const FASTEST_WRITE_SPEED: float = 1.0 / 60.0
+const DEFAULT_TYPEWRITER: String = "res://addons/gddialog/"\
+		+ "assets/sounds/blip.ogg"
 
 var reader: RefCounted = preload(
 		"res://addons/gddialog/resources/res-dialog-reader.gd" )
@@ -24,9 +47,13 @@ var record_id: int
 var node_id: int
 var node_type: String = "Start"
 var slot: int
+#	Keyframes
+var current_keyframe: Dictionary
+var keyframes_array: Array
 #	UI Properties
 var write_speed: float = 0.05
 var is_playing: bool = false
+var is_using_default_typewriter: bool = true
 
 #	Plugin related, not needed for example dialog to function.
 var trigger_button: Button

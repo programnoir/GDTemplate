@@ -148,12 +148,8 @@ layout_mode = 2
 [node name="CheckBoxUseColor" type="CheckBox" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions"]
 layout_mode = 2
 tooltip_text = "Deselecting this indicates that the selected color should be ignored."
-button_pressed = true
+text = " Text Color"
 flat = true
-
-[node name="Label" type="Label" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions"]
-layout_mode = 2
-text = "Text Color"
 
 [node name="OptionButtonColor" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions"]
 layout_mode = 2

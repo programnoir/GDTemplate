@@ -22,7 +22,7 @@ database = {
 },
 2: {
 "links": {
-0: 1
+0: 6
 },
 "speaker": "Tony",
 "text": "Hello there!",
@@ -53,12 +53,100 @@ database = {
 },
 5: {
 "links": {
-0: 1
+0: 6
 },
 "speaker": "Clem",
 "text": "Huh, interesting.",
 "type": "Line",
 "vbc_size": Vector2(150, 162)
+},
+6: {
+"keyframes": [{
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": "...",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}, {
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": " Okay, so this is the advanced dialog node.",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 3.0,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.2
+}, {
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": " You can make any changes that you want.",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}],
+"links": {
+0: 7
+},
+"speaker": "Clem",
+"type": "Advanced",
+"vbc_size": Vector2(0, 0)
+},
+7: {
+"keyframes": [{
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": "Do you want to go back to the beginning?",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}],
+"links": {
+0: 3,
+1: 1
+},
+"responses": ["Yes", "No"],
+"speaker": "Tony",
+"type": "Advanced",
+"vbc_size": Vector2(172, 125)
 }
 }
 }

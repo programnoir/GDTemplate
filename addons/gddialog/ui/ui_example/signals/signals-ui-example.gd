@@ -16,11 +16,21 @@ func _on_timer_typewriter_timeout() -> void:
 		"Line":
 			owner.nDialogNodes.process_simple_text()
 		"Advanced":
-			pass
+			owner.nDialogNodes.process_current_keyframe()
+
+
+func _on_timer_delay_timeout() -> void:
+	match owner.node_type:
+		"Advanced":
+			owner.nDialogNodes.process_current_keyframe()
 
 
 func _on_button_next_pressed() -> void:
 	if( owner.is_playing == true ):
 		return
 	#	End defensive return: Prevent accidental skip
+	if( owner.nPanelResponses.visible == true ):
+		owner.slot = owner.nPanelResponses.get_slot()
+		owner.nPanelResponses.disable()
 	owner.process_next_node()
+

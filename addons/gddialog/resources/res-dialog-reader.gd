@@ -260,7 +260,6 @@ func get_if_node_slot_common( record_id, node_id: int ) -> int:
 	var values: Array = get_ifset_values( record_id, node_id )
 	var conditions: Array = get_if_conditions( record_id, node_id )
 	for value in values:
-		print( str( var_name ), " ", str( var_value ), " compared to ", str( value ) )
 		match conditions[ next_slot ]:
 			"Equal to":
 				if( var_value == value ):

@@ -22,7 +22,7 @@ database = {
 "vbc_size": Vector2(0, 0)
 },
 1: {
-"graph_offset": Vector2(800, 60),
+"graph_offset": Vector2(1280, 100),
 "links": {},
 "rect_size": Vector2(0, 0),
 "slot_amount": 1,
@@ -32,7 +32,7 @@ database = {
 2: {
 "graph_offset": Vector2(580, 0),
 "links": {
-0: 1
+0: 6
 },
 "rect_size": Vector2(0, 0),
 "slot_amount": 1,
@@ -72,7 +72,7 @@ database = {
 5: {
 "graph_offset": Vector2(580, 200),
 "links": {
-0: 1
+0: 6
 },
 "rect_size": Vector2(178, 188),
 "slot_amount": 1,
@@ -80,6 +80,100 @@ database = {
 "text": "Huh, interesting.",
 "type": "Line",
 "vbc_size": Vector2(150, 162)
+},
+6: {
+"graph_offset": Vector2(800, 40),
+"keyframes": [{
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": "...",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}, {
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": " Okay, so this is the advanced dialog node.",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 3.0,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.2
+}, {
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": " You can make any changes that you want.",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}],
+"links": {
+0: 7
+},
+"rect_size": Vector2(0, 0),
+"slot_amount": 1,
+"speaker": "Clem",
+"type": "Advanced",
+"vbc_size": Vector2(0, 0)
+},
+7: {
+"graph_offset": Vector2(1020, 60),
+"keyframes": [{
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": "Do you want to go back to the beginning?",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}],
+"links": {
+0: 3,
+1: 1
+},
+"rect_size": Vector2(200, 211),
+"responses": ["Yes", "No"],
+"slot_amount": 2,
+"speaker": "Tony",
+"type": "Advanced",
+"vbc_size": Vector2(172, 125)
 }
 },
 "tags": []

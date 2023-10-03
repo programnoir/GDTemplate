@@ -128,12 +128,12 @@ func update_current_keyframe( delta: int ) -> void:
 
 
 func delete_current_keyframe() -> void:
-	if( node_data[ "keyframes" ].size == 1 ):
+	if( node_data[ "keyframes" ].size() == 1 ):
 		return
 	#	End defensive return: No keyframes left to delete.
 	node_data[ "keyframes" ].remove_at( current_keyframe )
 	current_keyframe = clamp( current_keyframe, 0,
-			node_data[ "keyframes" ].size() )
+			node_data[ "keyframes" ].size() - 1 )
 	load_keyframe()
 
 
@@ -143,7 +143,7 @@ func create_advanced_node_keyframe() -> void:
 		"text_type": "Default",
 		"text": "",
 		#	Customization: Type/Color
-		"using_text_color": true,
+		"using_text_color": false,
 		"text_color": "Custom",
 		"text_color_custom": Color( 0.0, 0.0, 0.0, 1.0 ),
 		#	Timing/Speed
