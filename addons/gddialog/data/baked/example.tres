@@ -1,0 +1,167 @@
+[gd_resource type="Resource" script_class="DialogDatabaseBaked" load_steps=2 format=3 uid="uid://c8qs263s54al"]
+
+[ext_resource type="Script" path="res://addons/gddialog/resources/res-baked-dialog-database.gd" id="1_ny1hl"]
+
+[resource]
+script = ExtResource("1_ny1hl")
+TYPE = "baked_dialog_database"
+database = {
+0: {
+"nodes": {
+0: {
+"links": {
+0: 3
+},
+"type": "Start",
+"vbc_size": Vector2(0, 0)
+},
+1: {
+"links": {},
+"type": "End",
+"vbc_size": Vector2(0, 0)
+},
+2: {
+"links": {
+0: 6
+},
+"speaker": "Tony",
+"text": "Hello there!",
+"type": "Line",
+"vbc_size": Vector2(0, 0)
+},
+3: {
+"links": {
+0: 4
+},
+"set_name": "example float",
+"set_value": 0.0,
+"set_value_type": "Float",
+"type": "Set",
+"vbc_size": Vector2(119, 71)
+},
+4: {
+"if_conditions": ["Equal to"],
+"if_name": "example float",
+"if_value_type": "Float",
+"if_values": [0.0],
+"links": {
+0: 2,
+1: 5
+},
+"type": "If",
+"vbc_size": Vector2(9, 50)
+},
+5: {
+"links": {
+0: 6
+},
+"speaker": "Clem",
+"text": "Huh, interesting.",
+"type": "Line",
+"vbc_size": Vector2(150, 162)
+},
+6: {
+"keyframes": [{
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": "...",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}, {
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": " Okay, so this is the advanced dialog node.",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 3.0,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.2
+}, {
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": " You can make any changes that you want.",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}],
+"links": {
+0: 7
+},
+"speaker": "Clem",
+"type": "Advanced",
+"vbc_size": Vector2(0, 0)
+},
+7: {
+"keyframes": [{
+"animations": [],
+"custom_data": [],
+"ignore_player_speed_delay": false,
+"ignore_player_speed_write": false,
+"music": "",
+"music_transition": "Cut",
+"sound_effect": "",
+"sound_typewriter": "",
+"text": "Do you want to go back to the beginning?",
+"text_color": "Custom",
+"text_color_custom": Color(0, 0, 0, 1),
+"text_type": "Default",
+"timer_delay": 0.001,
+"using_text_color": false,
+"variable_data": [],
+"write_speed": 1.0
+}],
+"links": {
+0: 3,
+1: 1
+},
+"responses": ["Yes", "No"],
+"speaker": "Tony",
+"type": "Advanced",
+"vbc_size": Vector2(172, 125)
+}
+}
+}
+}
+record_names = {
+"example": 0
+}
+flags_list = {}
+strings_list = {}
+floats_list = {
+"example float": 0.0
+}
+string_arrays_list = {}
+colors_list = {}
+speakers_list = {
+"Clem": Color(0.921569, 0, 1, 1),
+"Tony": Color(1, 0.811765, 0.0666667, 1)
+}

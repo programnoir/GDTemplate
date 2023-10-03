@@ -3,7 +3,7 @@ extends Node
 
 
 func _on_button_add_float_pressed() -> void:
-	var float_name: String = ( get_parent().nLineEditFloatName.text )
+	var float_name: String = ( get_parent().nLineEditNewFloat.text )
 	get_parent().create_float_variable( float_name )
 
 

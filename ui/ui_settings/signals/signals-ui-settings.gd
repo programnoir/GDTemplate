@@ -25,7 +25,8 @@ func _on_new_fontlist() -> void:
 
 func _on_buttontab_clicked( button: ButtonTab ) -> void:
 	var mid_point: int = ( owner.nSCTabsWrap.size.x / 2.0 ) as int
-	var button_x: int = button.get_position().x + ( button.size.x / 2 as int )
+	@warning_ignore( "narrowing_conversion" )
+	var button_x: int = button.get_position().x + ( button.size.x / 2.0 as int )
 	owner.nSCTabsWrap.scroll_horizontal = button_x - mid_point
 
 

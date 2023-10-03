@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bluq3cr75e1cv"]
+[gd_scene load_steps=3 format=3 uid="uid://bluq3cr75e1cv"]
 
+[ext_resource type="Script" path="res://rooms/room_debug/room-debug.gd" id="1_ayq60"]
 [ext_resource type="Script" path="res://rooms/room_debug/signals_debug/signals-debug.gd" id="1_bjpc5"]
 
 [node name="RoomDebug" type="Control"]
@@ -9,9 +10,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ayq60")
 
 [node name="Signals" type="Node" parent="."]
 script = ExtResource("1_bjpc5")
+
+[node name="Plugins" type="Node" parent="."]
 
 [node name="ButtonDebug" type="Button" parent="."]
 layout_mode = 0

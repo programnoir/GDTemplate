@@ -9,8 +9,10 @@ var n_UIDatabaseEditor: Control
 var n_UIDialogEditor: Control
 var n_ButtonDatabaseEditor: Button
 var n_ButtonDialogEditor: Button
+
 var setting_text_speed: String = "res://addons/gddialog"\
 		+ "/ui/ui_settings_text_speed/ui-settings-text-speed.tscn"
+var example_ui: String = "res://addons/gddialog/ui/ui_example/ui-example.tscn"
 
 var p_UIDatabaseEditor: PackedScene = preload( "res://addons/gddialog"\
 		+ "/ui/ui_database_editor/ui-dialog-database-editor.tscn" )
@@ -40,6 +42,7 @@ func _ready() -> void:
 			setting_text_speed ] )
 	GlobalPlugins.add_plugin_to_list( [ "first_setup", "accessibility", 
 			setting_text_speed ] )
+	GlobalPlugins.add_plugin_to_list( [ "debug", example_ui ] )
 	for translation in TRANSLATION_PATHS:
 		GlobalPlugins.add_translation( translation )
 
@@ -57,6 +60,7 @@ func switch_bottom_panel_control() -> void:
 
 
 func _exit_tree() -> void:
+	GlobalPlugins.erase_plugin_from_list( [ "debug", example_ui ] )
 	GlobalPlugins.erase_plugin_from_list( [ "settings", "accessibility", 
 			setting_text_speed ] )
 	GlobalPlugins.erase_plugin_from_list( [ "first_setup", "accessibility", 

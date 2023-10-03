@@ -1,0 +1,334 @@
+[gd_scene load_steps=10 format=3 uid="uid://csfwtyslc7qyi"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/ui-example.gd" id="1_mb3dp"]
+[ext_resource type="PackedScene" uid="uid://draf0k7uxm6k" path="res://addons/gddialog/ui/ui_example/ui_portrait/ui-portrait.tscn" id="1_nwln6"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/signals/signals-ui-example.gd" id="2_n5xxl"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/dialog_nodes/dialog-nodes.gd" id="2_ncaja"]
+[ext_resource type="AudioStream" uid="uid://crolootndvhul" path="res://addons/gddialog/assets/sounds/blip.ogg" id="4_w5xyp"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/responses/ui-panel-responses.gd" id="6_rrvse"]
+[ext_resource type="Texture2D" uid="uid://cviryqe72fd0d" path="res://addons/gddialog/assets/images/back-button.png" id="7_233gg"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/responses/signals/signals-ui-panel-responses.gd" id="7_i6c5i"]
+[ext_resource type="Texture2D" uid="uid://dqtrlflknh8p2" path="res://addons/gddialog/assets/images/forward-button.png" id="8_5qhoe"]
+
+[node name="UIExample" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mb3dp")
+
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_n5xxl")
+
+[node name="DialogNodes" type="Node" parent="."]
+script = ExtResource("2_ncaja")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="TimerDelay" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="TimerTypewriter" type="Timer" parent="Timers"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="ASPTypewriter" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_w5xyp")
+bus = &"SFX"
+
+[node name="ASPSoundEffect" type="AudioStreamPlayer" parent="Audio"]
+bus = &"SFX"
+
+[node name="ASPMusic" type="AudioStreamPlayer" parent="Audio"]
+bus = &"Music"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="VBCDialog" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Portraits" type="Control" parent="VBCDialog"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="ProfilePointBG" type="Control" parent="VBCDialog/Portraits"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitBG" parent="VBCDialog/Portraits/ProfilePointBG" instance=ExtResource("1_nwln6")]
+z_index = 1000
+z_as_relative = false
+position = Vector2(-240, -189)
+
+[node name="HBCProfiles" type="HBoxContainer" parent="VBCDialog/Portraits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProfileColumnLL" type="Control" parent="VBCDialog/Portraits/HBCProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnLL"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitLL" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnLL/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1002
+z_as_relative = false
+
+[node name="ProfileColumnL" type="Control" parent="VBCDialog/Portraits/HBCProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnL"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitL" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnL/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1001
+z_as_relative = false
+
+[node name="ProfileColumnR" type="Control" parent="VBCDialog/Portraits/HBCProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnR"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitR" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnR/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1001
+z_as_relative = false
+
+[node name="ProfileColumnRR" type="Control" parent="VBCDialog/Portraits/HBCProfiles"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnRR"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitRR" parent="VBCDialog/Portraits/HBCProfiles/ProfileColumnRR/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1002
+z_as_relative = false
+
+[node name="HBCFG" type="HBoxContainer" parent="VBCDialog/Portraits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProfileColumnL" type="Control" parent="VBCDialog/Portraits/HBCFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCFG/ProfileColumnL"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitFGL" parent="VBCDialog/Portraits/HBCFG/ProfileColumnL/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1004
+z_as_relative = false
+
+[node name="ProfileColumnC" type="Control" parent="VBCDialog/Portraits/HBCFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCFG/ProfileColumnC"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitFGC" parent="VBCDialog/Portraits/HBCFG/ProfileColumnC/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1003
+z_as_relative = false
+
+[node name="ProfileColumnR" type="Control" parent="VBCDialog/Portraits/HBCFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfilePoint" type="Control" parent="VBCDialog/Portraits/HBCFG/ProfileColumnR"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIPortraitFGR" parent="VBCDialog/Portraits/HBCFG/ProfileColumnR/ProfilePoint" instance=ExtResource("1_nwln6")]
+z_index = 1004
+z_as_relative = false
+
+[node name="MCDialog" type="MarginContainer" parent="VBCDialog"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="PanelDialog" type="Panel" parent="VBCDialog/MCDialog"]
+layout_mode = 2
+
+[node name="HBCDialog" type="HBoxContainer" parent="VBCDialog/MCDialog/PanelDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBCDialogText" type="VBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabelSpeaker" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCDialogText"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Speaker"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabelDialog" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCDialogText"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCDialogText"]
+root_node = NodePath("../..")
+
+[node name="VBCButtons" type="VBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog"]
+layout_mode = 2
+alignment = 2
+
+[node name="ButtonNext" type="Button" parent="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCButtons"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+text = "ui_button_next"
+
+[node name="PanelResponses" type="Panel" parent="VBCDialog/MCDialog/PanelDialog"]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -30.0
+grow_horizontal = 2
+script = ExtResource("6_rrvse")
+
+[node name="Signals" type="Node" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses"]
+script = ExtResource("7_i6c5i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonPreviousResponse" type="Button" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../ButtonNextResponse")
+focus_neighbor_bottom = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+focus_next = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+focus_previous = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+icon = ExtResource("7_233gg")
+
+[node name="RichTextLabelResponse" type="RichTextLabel" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+scroll_active = false
+
+[node name="ButtonNextResponse" type="Button" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonPreviousResponse")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+focus_next = NodePath("../../../HBCDialog/VBCButtons/ButtonNext")
+focus_previous = NodePath("../ButtonPreviousResponse")
+icon = ExtResource("8_5qhoe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer"]
+root_node = NodePath("../..")
+
+[connection signal="timeout" from="Timers/TimerDelay" to="Signals" method="_on_timer_delay_timeout"]
+[connection signal="timeout" from="Timers/TimerTypewriter" to="Signals" method="_on_timer_typewriter_timeout"]
+[connection signal="pressed" from="VBCDialog/MCDialog/PanelDialog/HBCDialog/VBCButtons/ButtonNext" to="Signals" method="_on_button_next_pressed"]
+[connection signal="pressed" from="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer/ButtonPreviousResponse" to="VBCDialog/MCDialog/PanelDialog/PanelResponses/Signals" method="_on_button_previous_response_pressed"]
+[connection signal="pressed" from="VBCDialog/MCDialog/PanelDialog/PanelResponses/HBoxContainer/ButtonNextResponse" to="VBCDialog/MCDialog/PanelDialog/PanelResponses/Signals" method="_on_button_next_response_pressed"]
