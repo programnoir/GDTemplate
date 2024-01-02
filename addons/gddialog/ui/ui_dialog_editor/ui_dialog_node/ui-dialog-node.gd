@@ -10,6 +10,7 @@ signal changed_offset( node_id: int, new_offset )
 @onready var nLabelSummary: Label = nVBCNodeEditor.get_node( "LabelSummary" )
 
 @export var type: String = "DialogNode"
+@export var can_delete: bool = true
 var node_id: int = 0
 var vbc_size: Vector2
 var resize_offset: Vector2 = Vector2( 0, 30 )
@@ -34,7 +35,7 @@ func _on_ui_dialog_node_resize_request( new_minsize: Vector2 ) -> void:
 
 
 func connect_all_signals() -> void:
-	connect( "close_request", Callable( self,
+	connect( "delete_request", Callable( self,
 			"_on_ui_dialog_node_close_request" ) )
 	connect( "position_offset_changed", Callable( self,
 			"_on_ui_dialog_node_position_offset_changed" ) )
@@ -43,7 +44,7 @@ func connect_all_signals() -> void:
 
 
 func disconnect_all_signals() -> void:
-	disconnect( "close_request", Callable( self,
+	disconnect( "delete_request", Callable( self,
 			"_on_ui_dialog_node_close_request" ) )
 	disconnect( "position_offset_changed", Callable( self,
 			"_on_ui_dialog_node_position_offset_changed" ) )

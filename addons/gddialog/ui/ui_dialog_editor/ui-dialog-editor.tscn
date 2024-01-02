@@ -100,13 +100,22 @@ disabled = true
 text = " ✏️"
 flat = true
 
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer/HBCMenu"]
+layout_mode = 2
+
+[node name="ButtonDeleteNode" type="Button" parent="VBoxContainer/HBCMenu"]
+layout_mode = 2
+disabled = true
+text = " 🗑️ "
+flat = true
+
 [node name="GraphEditDialog" type="GraphEdit" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+scroll_offset = Vector2(0, -16)
 right_disconnects = true
 minimap_enabled = false
-arrange_nodes_button_hidden = true
 
 [node name="PopupEditDialogNode" type="Popup" parent="."]
 title = "Edit Dialog Node"
@@ -194,6 +203,7 @@ layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/HBCMenu/ButtonBack" to="Signals" method="_on_button_back_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBCMenu/ButtonEditNode" to="Signals" method="_on_button_edit_node_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBCMenu/ButtonDeleteNode" to="Signals" method="_on_button_delete_node_pressed"]
 [connection signal="connection_request" from="VBoxContainer/GraphEditDialog" to="Signals" method="_on_graph_edit_dialog_connection_request"]
 [connection signal="disconnection_request" from="VBoxContainer/GraphEditDialog" to="Signals" method="_on_graph_edit_dialog_disconnection_request"]
 [connection signal="node_deselected" from="VBoxContainer/GraphEditDialog" to="Signals" method="_on_graph_edit_dialog_node_deselected"]

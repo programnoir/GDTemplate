@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/ui_start_node/ui-start-node.gd" id="1_oqnaa"]
 
-[node name="UIDialogNode" type="GraphNode" node_paths=PackedStringArray("nLabelSummary")]
+[node name="UIDialogNode" type="GraphNode"]
 title = "NID Null "
 slot/0/left_enabled = false
 slot/0/left_type = 0
@@ -14,8 +14,8 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_oqnaa")
-nLabelSummary = NodePath("VBCNodeEditor/LabelSummary")
 type = "Start"
+can_delete = false
 
 [node name="VBCNodeEditor" type="VBoxContainer" parent="."]
 layout_mode = 2
