@@ -16,6 +16,7 @@ signal switch_control
 @onready var nLabelSelected: Label = nHBCMenu.get_node( "LabelSelected" )
 @onready var nLabelNodeSummary: Label = nHBCMenu.get_node( "LabelNodeSummary" )
 @onready var nButtonEditNode: Button = nHBCMenu.get_node( "ButtonEditNode" )
+@onready var nButtonDeleteNode: Button = nHBCMenu.get_node( "ButtonDeleteNode" )
 
 const DIALOG_NODE_DIRECTORY: String = "res://addons/gddialog/ui"\
 		+ "/ui_dialog_editor/ui_dialog_node"
@@ -87,8 +88,6 @@ func create_new_node( node_type: String ) -> void:
 			"graph_offset", start_position )
 	new_node.position_offset = start_position
 	match node_type:
-		"End":
-			new_node.show_close = true
 		"Line":
 			new_node.set_speaker_ui( n_Database.speakers_list.keys(), "" )
 	nSignals.connect_all_node_signals( new_node, node_type )

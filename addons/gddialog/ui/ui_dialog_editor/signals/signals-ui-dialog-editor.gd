@@ -14,6 +14,16 @@ func _on_button_edit_node_pressed() -> void:
 	owner.nPopupEditDialogNode.popup_centered()
 
 
+func _on_button_delete_node_pressed() -> void:
+	if( owner.selected_node == null ):
+		return
+	#	End defensive return: No node selected.
+	if( owner.selected_node.can_delete == false ):
+		return
+	#	End defensive return: Node cannot be deleted.
+	owner.selected_node.emit_signal( "delete_request" )
+
+
 func _on_menu_button_add_node_id_pressed( id: int ) -> void:
 	var type: String = ""
 	match id:
@@ -40,9 +50,10 @@ func _on_menu_button_add_node_id_pressed( id: int ) -> void:
 func _on_graph_edit_dialog_node_selected( node: DialogNode ) -> void:
 	var type = node.get_type()
 	if( type == "Start" or type == "End" or type == "Line" ):
-		return
-	#	End defensive return: No node selected.
-	owner.nButtonEditNode.disabled = false
+		owner.nButtonEditNode.disabled = true
+	else:
+		owner.nButtonEditNode.disabled = false
+	owner.nButtonDeleteNode.disabled = not node.can_delete
 	owner.nLabelNodeSummary.modulate.a = 1.0
 	owner.nLabelSelected.modulate.a = 1.0
 	var summary_text = node.get_summary()
@@ -194,13 +205,17 @@ func disconnect_node_slot( node_id: int, slot: int ) -> void:
 	owner.nGraphEditDialog.disconnect_node( from, slot, to, 0 )
 
 
-func disconnect_all_ui_links_to( node ):
+func disconnect_all_ui_links_to( node: DialogNode ) -> void:
 	var node_name = node.name
 	var connection_list = owner.nGraphEditDialog.get_connection_list()
+	print( connection_list )
 	for connection in connection_list:
-		if connection[ "from" ] == node.name or connection[ "to" ] == node.name:
-			owner.nGraphEditDialog.disconnect_node( connection[ "from" ],
-					connection[ "from_port" ], connection[ "to" ],
+		if(
+				connection[ "from_node" ] == node_name
+				or connection[ "to_node" ] == node_name
+		):
+			owner.nGraphEditDialog.disconnect_node( connection[ "from_node" ],
+					connection[ "from_port" ], connection[ "to_node" ],
 					connection[ "to_port" ] )
 
 
