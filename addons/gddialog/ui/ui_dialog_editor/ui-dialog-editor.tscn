@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui-dialog-editor.gd" id="1_otm8p"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/signals/signals-ui-dialog-editor.gd" id="2_1ju2u"]
 [ext_resource type="Texture2D" uid="uid://cviryqe72fd0d" path="res://addons/gddialog/assets/images/back-button.png" id="2_yb26n"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui-popup-edit-dialog-node.gd" id="4_apnta"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/signals/signals-ui-popup-edit-dialog-node.gd" id="5_q6hjq"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/ui-popup-edit-dialog-node.gd" id="4_apnta"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/signals/signals-ui-popup-edit-dialog-node.gd" id="5_q6hjq"]
+
 
 [node name="UIDialogEditor" type="Control"]
 custom_minimum_size = Vector2(0, 270)
