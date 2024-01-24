@@ -28,22 +28,21 @@ var inactive: bool = true
 var selected_node: DialogNode = null
 
 var p_start_node: PackedScene = preload( DIALOG_NODE_DIRECTORY
-	+ "/ui_start_node/ui-start-node.tscn" )
+	+ "/start/ui-start-node.tscn" )
 var p_end_node: PackedScene = preload( DIALOG_NODE_DIRECTORY
-	+ "/ui_end_node/ui-end-node.tscn" )
+	+ "/end/ui-end-node.tscn" )
 var p_line_node: PackedScene = preload( DIALOG_NODE_DIRECTORY
-	+ "/ui_slot_adjustable_node/ui_dialog_line_node/ui-dialog-line-node.tscn" )
+	+ "/slot_adjustable/line/ui-dialog-line-node.tscn" )
 var p_advanced_node: PackedScene = preload( DIALOG_NODE_DIRECTORY
-	+ "/ui_slot_adjustable_node/ui_dialog_advanced_node"\
-	+ "/ui-dialog-advanced-node.tscn" )
+	+ "/slot_adjustable/advanced/ui-dialog-advanced-node.tscn" )
 var p_set_node: PackedScene = preload( DIALOG_NODE_DIRECTORY
-	+ "/ui_dialog_variable_node/ui_set_node/ui-dialog-variable-set-node.tscn" )
+	+ "/var/set_var/ui-dialog-variable-set-node.tscn" )
 var p_if_node: PackedScene = preload( DIALOG_NODE_DIRECTORY
-	+ "/ui_dialog_variable_node/ui_if_node/ui-dialog-variable-if-node.tscn" )
+	+ "/var/if_var/ui-dialog-variable-if-node.tscn" )
 var p_set_gui_node: PackedScene = preload( DIALOG_NODE_DIRECTORY
-	+ "/ui_set_gui_node/ui-set-gui-node.tscn" )
+	+ "/set_gui/ui-set-gui-node.tscn" )
 var p_run_script_node: PackedScene = preload( DIALOG_NODE_DIRECTORY
-	+ "/ui_run_script_node/ui-run-script-node.tscn" )
+	+ "/run_script/ui-run-script-node.tscn" )
 
 var dialog_node_types: Dictionary = {
 	"Start": p_start_node,

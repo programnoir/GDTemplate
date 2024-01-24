@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm4kaxfkcrgv0"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/slot_adjustable/advanced/ui-dialog-advanced-node.gd" id="1_7ho12"]
+
+
+[node name="UIDialogAdvancedNode" type="GraphNode"]
+title = "NID Null "
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_7ho12")
+type = "Advanced"
+
+[node name="VBCNodeEditor" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelSummary" type="Label" parent="VBCNodeEditor"]
+layout_mode = 2
+text = "Advanced"
+
+[node name="HBCSlots" type="HBoxContainer" parent="VBCNodeEditor"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBCNodeEditor/HBCSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slots"
+horizontal_alignment = 2
+
+[node name="SpinBoxSlots" type="SpinBox" parent="VBCNodeEditor/HBCSlots"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+alignment = 2

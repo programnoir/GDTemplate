@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmtir1fj5brp0"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/run_script/ui-dialog-node-options-run-script.gd" id="1_2bb1x"]
+[ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_88sm2"]
+
+
+[node name="UIDialogNodeOptionsRunScript" type="VBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 61.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_88sm2")
+theme_override_constants/separation = 5
+script = ExtResource("1_2bb1x")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Configure Run Script Node"
+
+[node name="LineEditFilePath" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "res://path/to/file..."
+
+[node name="LineEditScriptName" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "script_name"

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0o444c1vnt2"]
+
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui_builtin_variable_row/ui-builtin-variable-row.gd" id="1_xp8cq"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui_builtin_variable_row/signals/signals-ui-builtin-variable-row.gd" id="2_mcvcm"]
+
+
+[node name="UIBuiltinVariableRow" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("1_xp8cq")
+
+[node name="Signals" type="Node" parent="."]
+script = ExtResource("2_mcvcm")
+
+[node name="LabelVariableType" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelVariable" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="ButtonDeleteRow" type="Button" parent="."]
+layout_mode = 2
+text = " 🗑️ "
+
+[connection signal="pressed" from="ButtonDeleteRow" to="Signals" method="_on_button_delete_row_pressed"]

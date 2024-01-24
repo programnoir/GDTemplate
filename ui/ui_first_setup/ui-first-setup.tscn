@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://ui/ui_first_setup/ui-first-setup.gd" id="1_2ntop"]
 [ext_resource type="Script" path="res://ui/ui_first_setup/signals/signals-ui-first-setup.gd" id="2_phqke"]
 [ext_resource type="Script" path="res://addons/gdtemplate/ui/ui_button_cycle/ui-button-cycle.gd" id="3_8nsus"]
-[ext_resource type="Script" path="res://ui/ui_settings/ui_hslider_volume/ui-hslider-volume.gd" id="3_bftde"]
+[ext_resource type="Script" path="res://ui/ui_settings/volume/ui-hslider-volume.gd" id="3_bftde"]
+
 
 [node name="UIFirstSetup" type="Control"]
 layout_mode = 3

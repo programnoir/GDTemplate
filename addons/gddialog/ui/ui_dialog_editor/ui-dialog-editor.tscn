@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui-dialog-editor.gd" id="1_otm8p"]
 [ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/signals/signals-ui-dialog-editor.gd" id="2_1ju2u"]
 [ext_resource type="Texture2D" uid="uid://cviryqe72fd0d" path="res://addons/gddialog/assets/images/back-button.png" id="2_yb26n"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/ui-popup-edit-dialog-node.gd" id="4_apnta"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_popup_edit_dialog_node/signals/signals-ui-popup-edit-dialog-node.gd" id="5_q6hjq"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/ui-popup-edit-dialog-node.gd" id="4_8622c"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/signals/signals-ui-popup-edit-dialog-node.gd" id="5_cmhth"]
 
 [node name="UIDialogEditor" type="Control"]
 custom_minimum_size = Vector2(0, 270)
@@ -113,7 +113,6 @@ flat = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-scroll_offset = Vector2(0, -16)
 right_disconnects = true
 minimap_enabled = false
 
@@ -124,10 +123,10 @@ size = Vector2i(480, 500)
 extend_to_title = true
 min_size = Vector2i(480, 500)
 max_size = Vector2i(480, 500)
-script = ExtResource("4_apnta")
+script = ExtResource("4_8622c")
 
 [node name="Signals" type="Node" parent="PopupEditDialogNode"]
-script = ExtResource("5_q6hjq")
+script = ExtResource("5_cmhth")
 
 [node name="Panel" type="Panel" parent="PopupEditDialogNode"]
 anchors_preset = 15
