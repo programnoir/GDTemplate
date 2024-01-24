@@ -1,17 +1,16 @@
 [gd_scene load_steps=12 format=3 uid="uid://baq5g0gyferaw"]
 
-[ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_rhut8"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/ui-dialog-node-options-advanced.gd" id="2_kh4ta"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/signals/signals-ui-dialog-node-options-advanced.gd" id="3_t7xyw"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/type_color/ui-tab-type-color.gd" id="4_n17si"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/timing/ui-tab-timing.gd" id="5_jw1uu"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/type_color/signals/signals-ui-tab-type-color.gd" id="5_rggb5"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/audio/ui-tab-audio.gd" id="6_8qqsp"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/ui-tab-animations.gd" id="6_hk3yq"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/signals/signals-ui-tab-animations.gd" id="7_u7vvo"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui-tab-data.gd" id="9_wyic6"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/signals/signals-ui-tab-data.gd" id="10_lv4bb"]
-
+[ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_1i1w2"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/ui-dialog-node-options-advanced.gd" id="2_c61k4"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/signals/signals-ui-dialog-node-options-advanced.gd" id="3_3lsdx"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/type_color/ui-tab-type-color.gd" id="4_6p4la"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/type_color/signals/signals-ui-tab-type-color.gd" id="5_r2ckp"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/timing/ui-tab-timing.gd" id="6_uukin"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/ui-tab-animations.gd" id="7_6kg6b"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/signals/signals-ui-tab-animations.gd" id="8_vrtmh"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/audio/ui-tab-audio.gd" id="9_2tt10"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui-tab-data.gd" id="10_6qjb0"]
+[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/signals/signals-ui-tab-data.gd" id="11_1hltt"]
 
 [node name="UIDialogNodeOptionsAdvanced" type="VBoxContainer"]
 anchors_preset = -1
@@ -21,12 +20,12 @@ offset_bottom = 0.0799866
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme = ExtResource("1_rhut8")
+theme = ExtResource("1_1i1w2")
 theme_override_constants/separation = 5
-script = ExtResource("2_kh4ta")
+script = ExtResource("2_c61k4")
 
 [node name="Signals" type="Node" parent="."]
-script = ExtResource("3_t7xyw")
+script = ExtResource("3_3lsdx")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 2
@@ -120,10 +119,10 @@ size_flags_vertical = 3
 [node name="Type & Color" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
-script = ExtResource("4_n17si")
+script = ExtResource("4_6p4la")
 
 [node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Type & Color"]
-script = ExtResource("5_rggb5")
+script = ExtResource("5_r2ckp")
 
 [node name="HBCTextType" type="HBoxContainer" parent="TabContainer/Dialog/TabContainer/Type & Color"]
 layout_mode = 2
@@ -170,7 +169,7 @@ color = Color(1, 1, 1, 1)
 [node name="Timing" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 visible = false
 layout_mode = 2
-script = ExtResource("5_jw1uu")
+script = ExtResource("6_uukin")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Timing"]
 custom_minimum_size = Vector2(0, 128)
@@ -234,10 +233,10 @@ flat = true
 [node name="Animations" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 visible = false
 layout_mode = 2
-script = ExtResource("6_hk3yq")
+script = ExtResource("7_6kg6b")
 
 [node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Animations"]
-script = ExtResource("7_u7vvo")
+script = ExtResource("8_vrtmh")
 
 [node name="SCAnimations" type="ScrollContainer" parent="TabContainer/Dialog/TabContainer/Animations"]
 custom_minimum_size = Vector2(0, 128)
@@ -258,7 +257,7 @@ text = "+"
 [node name="Audio" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 visible = false
 layout_mode = 2
-script = ExtResource("6_8qqsp")
+script = ExtResource("9_2tt10")
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Dialog/TabContainer/Audio"]
 custom_minimum_size = Vector2(0, 128)
@@ -312,10 +311,10 @@ popup/item_2/id = 2
 [node name="Data" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
 visible = false
 layout_mode = 2
-script = ExtResource("9_wyic6")
+script = ExtResource("10_6qjb0")
 
 [node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Data"]
-script = ExtResource("10_lv4bb")
+script = ExtResource("11_1hltt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Data"]
 custom_minimum_size = Vector2(0, 128)

@@ -7,7 +7,7 @@ extends VBoxContainer
 @onready var nVBCStrings: VBoxContainer = get_node( "SCStrings/VBCStrings" )
 
 var p_UIStringRow: PackedScene = preload( "res://addons/gddialog"\
-		+ "/ui/ui_database_editor/ui_vbc_managers/ui_vbc_string_manager"\
+		+ "/ui/ui_database_editor/managers/ui_vbc_string_manager"\
 		+ "/ui_string_row/ui-string-row.tscn" )
 
 

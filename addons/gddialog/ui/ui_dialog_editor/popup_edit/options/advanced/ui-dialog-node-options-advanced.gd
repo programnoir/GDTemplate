@@ -196,8 +196,6 @@ func write_node_data() -> void:
 	else:
 		if( node_data.has( "responses" ) ):
 			node_data.erase( "responses" )
-	#	Cleanup
-	nTabAnimations.clear_animations()
 
 
 func populate_ui() -> void:
@@ -220,3 +218,9 @@ func populate_ui() -> void:
 			var new_response: LineEdit = LineEdit.new()
 			new_response.text = response
 			nVBCResponses.add_child( new_response )
+
+
+func destroy() -> void:
+	nTabAnimations.clear_animations()
+	nTabData.clear_ui()
+	self.queue_free()

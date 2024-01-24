@@ -10,25 +10,21 @@ extends Popup
 			"Panel/VBoxContainer/HBCPopupSaveQuit" )
 
 const NODE_OPTIONS_DIRECTORY: String = "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"
+		+ "/ui_dialog_editor/popup_edit/options"
 
 var dialog_node: DialogNode = null
 var nVBCNodeOptions: DialogNodeOptions = null
 
 var p_advanced_node_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
-		+ "/ui_dialog_node_options_advanced"\
-		+ "/ui-dialog-node-options-advanced.tscn" )
+		+ "/advanced/ui-dialog-node-options-advanced.tscn" )
 var p_if_node_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
-		+ "/ui_dialog_node_options_var/ui_dialog_node_options_if_var"\
-		+ "/ui-dialog-node-options-if-var.tscn" )
+		+ "/var/if_var/ui-dialog-node-options-if-var.tscn" )
 var p_set_node_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
-		+ "/ui_dialog_node_options_var/ui_dialog_node_options_set_var"\
-		+ "/ui-dialog-node-options-set-var.tscn" )
+		+ "/var/set_var/ui-dialog-node-options-set-var.tscn" )
 var p_set_gui_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
-		+ "/ui_dialog_node_options_set_gui/ui-dialog-node-options-set-gui.tscn")
+		+ "/set_gui/ui-dialog-node-options-set-gui.tscn")
 var p_run_script_options: PackedScene = preload( NODE_OPTIONS_DIRECTORY
-		+ "/ui_dialog_node_options_run_script"\
-		+ "/ui-dialog-node-options-run-script.tscn")
+		+ "/run_script/ui-dialog-node-options-run-script.tscn")
 var node_option_types: Dictionary = {
 	#"Line": p_line_node,
 	"Advanced": p_advanced_node_options,

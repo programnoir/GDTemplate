@@ -5,9 +5,8 @@ extends VBoxContainer
 		"SCAnimations/VBCAnimations" )
 
 var p_animation_row: PackedScene = preload( "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"\
-		+ "/ui_dialog_node_options_advanced/ui_tab_animations/ui_animation_row"\
-		+ "/ui-animation-row.tscn" )
+		+ "/ui_dialog_editor/popup_edit/options/advanced/animations"
+		+ "/ui_animation_row/ui-animation-row.tscn" )
 
 
 func save_current_keyframe( data: Dictionary ) -> void:

@@ -7,7 +7,7 @@ extends VBoxContainer
 @onready var nVBCFloats: VBoxContainer = get_node( "SCFloats/VBCFloats" )
 
 var p_UIFloatRow: PackedScene = preload( "res://addons/gddialog"\
-		+ "/ui/ui_database_editor/ui_vbc_managers/ui_vbc_float_manager"\
+		+ "/ui/ui_database_editor/managers/ui_vbc_float_manager"\
 		+ "/ui_float_row/ui-float-row.tscn" )
 
 

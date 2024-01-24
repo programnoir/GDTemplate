@@ -20,13 +20,11 @@ extends VBoxContainer
 
 
 var p_custom_data_row: PackedScene = preload( "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"\
-		+ "/ui_dialog_node_options_advanced/ui_tab_data/ui_custom_data_row"\
-		+ "/ui-custom-data-row.tscn" )
+		+ "/ui_dialog_editor/popup_edit/options/advanced/data"\
+		+ "/ui_custom_data_row/ui-custom-data-row.tscn" )
 var p_builtin_variable_row: PackedScene = preload( "res://addons/gddialog/ui"\
-		+ "/ui_dialog_editor/ui_popup_edit_dialog_node/ui_dialog_node_options"\
-		+ "/ui_dialog_node_options_advanced/ui_tab_data/ui_builtin_variable_row"\
-		+ "/ui-builtin-variable-row.tscn" )
+		+ "/ui_dialog_editor/popup_edit/options/advanced/data"
+		+ "/ui_builtin_variable_row/ui-builtin-variable-row.tscn" )
 
 
 func clear_ui() -> void:

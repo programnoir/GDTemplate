@@ -7,7 +7,7 @@ extends VBoxContainer
 @onready var nVBCSpeakers: VBoxContainer = get_node( "SCSpeakers/VBCSpeakers" )
 
 var p_UISpeakerRow: PackedScene = preload( "res://addons/gddialog"\
-		+ "/ui/ui_database_editor/ui_vbc_managers/ui_vbc_speaker_manager"\
+		+ "/ui/ui_database_editor/managers/ui_vbc_speaker_manager"\
 		+ "/ui_speaker_row/ui-speaker-row.tscn" )
 
 

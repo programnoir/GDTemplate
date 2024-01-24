@@ -7,7 +7,7 @@ extends VBoxContainer
 @onready var nVBCColors: VBoxContainer = get_node( "SCColors/VBCColors" )
 
 var p_UIColorRow: PackedScene = preload( "res://addons/gddialog"\
-		+ "/ui/ui_database_editor/ui_vbc_managers/ui_vbc_color_manager"\
+		+ "/ui/ui_database_editor/managers/ui_vbc_color_manager"\
 		+ "/ui_color_row/ui-color-row.tscn" )
 
 

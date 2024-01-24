@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PluginsList" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="PluginsList" load_steps=2 format=3 uid="uid://cfxbuavxej0r7"]
 
 [ext_resource type="Script" path="res://data/resources/res-plugins.gd" id="1_ac11t"]
 
