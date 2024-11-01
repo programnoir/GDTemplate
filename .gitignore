@@ -1,7 +1,11 @@
 # Godot 4+ specific ignores
 .godot/editor
 .godot/shader_cache
-.godot/imported/*.csv*.md5
+.godot/imported/*.csv
+.godot/imported/*.md5
+.godot/imported/*.ctex
+.godot/imported/*.fontdata
+.godot/imported/*.oggvorbisstr
 .godot/.gdignore
 .godot/uid_cache.bin
 
