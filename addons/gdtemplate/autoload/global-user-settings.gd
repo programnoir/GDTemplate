@@ -204,7 +204,8 @@ func delete_input_profile( array_index: int ) -> void:
 
 
 func set_bus_volume( bus_id: int, new_value: float ) -> void:
-	AudioServer.set_bus_volume_db( bus_id, -80.0 * ( 1.0 - new_value ) )
+	AudioServer.set_bus_volume_db( bus_id,
+			-80.0 * ( 1.0 - clamp( log( new_value ) / 3.0 + 1, 0.0, 1.0 ) ) )
 	audio[ bus_id ] = new_value
 
 
