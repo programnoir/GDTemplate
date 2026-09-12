@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv2ki3joriy00"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/ui_animation_row/ui-animation-row.gd" id="1_sydrr"]
+[ext_resource type="Script" uid="uid://bl3lvb4hw5tjc" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/ui_animation_row/ui-animation-row.gd" id="1_sydrr"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_fi0tx"]
 

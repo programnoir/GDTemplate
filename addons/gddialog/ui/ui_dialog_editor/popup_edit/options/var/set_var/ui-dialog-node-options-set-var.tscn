@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://upsss64eecxh"]
 
 [ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_6d0xb"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/var/set_var/ui-dialog-node-options-set-var.gd" id="1_sc5i0"]
-
+[ext_resource type="Script" uid="uid://be0hsf04r62is" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/var/set_var/ui-dialog-node-options-set-var.gd" id="1_sc5i0"]
 
 [node name="UIDialogNodeOptionsSetVar" type="VBoxContainer"]
 anchors_preset = 15
@@ -30,8 +29,8 @@ text = "Variable Type:"
 [node name="OptionButtonVarType" type="OptionButton" parent="HBCVarTypeOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 4
 selected = 0
+item_count = 4
 popup/item_0/text = "Flag"
 popup/item_0/id = 0
 popup/item_1/text = "String"
@@ -56,8 +55,8 @@ size_flags_horizontal = 3
 visible = false
 layout_mode = 2
 alignment = 2
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "False"
 popup/item_0/id = 0
 popup/item_1/text = "True"

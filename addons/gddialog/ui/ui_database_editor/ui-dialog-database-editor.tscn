@@ -1,28 +1,27 @@
 [gd_scene load_steps=23 format=3 uid="uid://ca2jhre7xl0to"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/ui-dialog-database-editor.gd" id="1_a0xut"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/signals/signals-ui-dialog-database-editor.gd" id="2_hm0mw"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/file/file-dialog-database-editor.gd" id="3_rbst2"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/database/database-dialog-database-editor.gd" id="3_tc6c3"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/database/dialog_nodes/dialog-nodes-dialog-database-editor.gd" id="4_kb5uk"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui-vbc-managers.gd" id="6_aws1g"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_tag_manager/ui-vbc-tag-manager.gd" id="7_p603t"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_array_manager/ui-vbc-array-manager.gd" id="7_qmj1q"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_array_manager/signals/signals-ui-vbc-array-manager.gd" id="8_c4mcp"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_color_manager/ui-vbc-color-manager.gd" id="8_k822b"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_flag_manager/ui-vbc-flag-manager.gd" id="9_vvmsa"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_flag_manager/signals/signals-ui-vbc-flag-manager.gd" id="10_4j8wy"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_color_manager/signals/signals-ui-vbc-color-manager.gd" id="10_4jo2e"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_float_manager/ui-vbc-float-manager.gd" id="10_tn2ay"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_float_manager/signals/signals-ui-vbc-float-manager.gd" id="11_qaog6"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_speaker_manager/ui-vbc-speaker-manager.gd" id="11_rjyqp"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_string_manager/ui-vbc-string-manager.gd" id="12_e82jd"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_speaker_manager/signals/signals-ui-vbc-speaker-manager.gd" id="16_bp43u"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_string_manager/signals/signals-ui-vbc-string-manager.gd" id="16_gqq2x"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_tag_manager/signals/signals-ui-vbc-tag-manager.gd" id="20_wtry0"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/filters/ui-hbc-filters.gd" id="21_s0bnm"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/filters/signals/signals-ui-hbc-filters.gd" id="22_n8kp4"]
-
+[ext_resource type="Script" uid="uid://dm4x0hl03r2q5" path="res://addons/gddialog/ui/ui_database_editor/ui-dialog-database-editor.gd" id="1_a0xut"]
+[ext_resource type="Script" uid="uid://buohnt7m1mnnu" path="res://addons/gddialog/ui/ui_database_editor/signals/signals-ui-dialog-database-editor.gd" id="2_hm0mw"]
+[ext_resource type="Script" uid="uid://sbqlsuvl4nvo" path="res://addons/gddialog/ui/ui_database_editor/file/file-dialog-database-editor.gd" id="3_rbst2"]
+[ext_resource type="Script" uid="uid://drtd2hr2snd5c" path="res://addons/gddialog/ui/ui_database_editor/database/database-dialog-database-editor.gd" id="3_tc6c3"]
+[ext_resource type="Script" uid="uid://ge5x4cpt5aeh" path="res://addons/gddialog/ui/ui_database_editor/database/dialog_nodes/dialog-nodes-dialog-database-editor.gd" id="4_kb5uk"]
+[ext_resource type="Script" uid="uid://cvrl53ymxn68o" path="res://addons/gddialog/ui/ui_database_editor/managers/ui-vbc-managers.gd" id="6_aws1g"]
+[ext_resource type="Script" uid="uid://5hytx32hbo4j" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_tag_manager/ui-vbc-tag-manager.gd" id="7_p603t"]
+[ext_resource type="Script" uid="uid://n7iuwir067ct" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_array_manager/ui-vbc-array-manager.gd" id="7_qmj1q"]
+[ext_resource type="Script" uid="uid://jy8qvq6pwl5r" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_array_manager/signals/signals-ui-vbc-array-manager.gd" id="8_c4mcp"]
+[ext_resource type="Script" uid="uid://bvllj3yq8hxar" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_color_manager/ui-vbc-color-manager.gd" id="8_k822b"]
+[ext_resource type="Script" uid="uid://tdl2ysdhpdvp" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_flag_manager/ui-vbc-flag-manager.gd" id="9_vvmsa"]
+[ext_resource type="Script" uid="uid://cdb8fb2larnxt" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_flag_manager/signals/signals-ui-vbc-flag-manager.gd" id="10_4j8wy"]
+[ext_resource type="Script" uid="uid://xskywst7bydr" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_color_manager/signals/signals-ui-vbc-color-manager.gd" id="10_4jo2e"]
+[ext_resource type="Script" uid="uid://bem1axc6sumgq" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_float_manager/ui-vbc-float-manager.gd" id="10_tn2ay"]
+[ext_resource type="Script" uid="uid://dsigwacla3tbr" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_float_manager/signals/signals-ui-vbc-float-manager.gd" id="11_qaog6"]
+[ext_resource type="Script" uid="uid://dmmg07jwff0kx" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_speaker_manager/ui-vbc-speaker-manager.gd" id="11_rjyqp"]
+[ext_resource type="Script" uid="uid://coosvqqp034yr" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_string_manager/ui-vbc-string-manager.gd" id="12_e82jd"]
+[ext_resource type="Script" uid="uid://bbscwf7t00lbs" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_speaker_manager/signals/signals-ui-vbc-speaker-manager.gd" id="16_bp43u"]
+[ext_resource type="Script" uid="uid://sksdqc1uwtt2" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_string_manager/signals/signals-ui-vbc-string-manager.gd" id="16_gqq2x"]
+[ext_resource type="Script" uid="uid://cbw77632ajyy4" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_tag_manager/signals/signals-ui-vbc-tag-manager.gd" id="20_wtry0"]
+[ext_resource type="Script" uid="uid://dpf0idtt4ybnk" path="res://addons/gddialog/ui/ui_database_editor/filters/ui-hbc-filters.gd" id="21_s0bnm"]
+[ext_resource type="Script" uid="uid://bk17hmnijov35" path="res://addons/gddialog/ui/ui_database_editor/filters/signals/signals-ui-hbc-filters.gd" id="22_n8kp4"]
 
 [node name="UIDialogDatabaseEditor" type="Control"]
 custom_minimum_size = Vector2(0, 270)
@@ -74,7 +73,6 @@ text = "Records"
 item_count = 6
 popup/item_0/text = "New Record"
 popup/item_0/id = 0
-popup/item_1/text = ""
 popup/item_1/id = 4
 popup/item_1/disabled = true
 popup/item_1/separator = true
@@ -95,7 +93,6 @@ text = "View"
 item_count = 9
 popup/item_0/text = "Manage Tags"
 popup/item_0/id = 0
-popup/item_1/text = ""
 popup/item_1/id = 1
 popup/item_1/disabled = true
 popup/item_1/separator = true
@@ -107,7 +104,6 @@ popup/item_4/text = "Manage Strings"
 popup/item_4/id = 4
 popup/item_5/text = "Manage String Arrays"
 popup/item_5/id = 5
-popup/item_6/text = ""
 popup/item_6/id = 6
 popup/item_6/disabled = true
 popup/item_6/separator = true
@@ -311,7 +307,7 @@ layout_mode = 2
 [node name="LineEditAddSpeaker" type="LineEdit" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager/HBCSpeakerOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Color name"
+placeholder_text = "Speaker name"
 
 [node name="ButtonAddSpeaker" type="Button" parent="VBoxContainer/HBCWorkspace/VBCManagers/VBCSpeakerManager/HBCSpeakerOptions"]
 layout_mode = 2
@@ -424,8 +420,8 @@ vertical_alignment = 1
 
 [node name="OptionButtonSearchBy" type="OptionButton" parent="VBoxContainer/HBCFilters"]
 layout_mode = 2
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Name"
 popup/item_0/id = 0
 popup/item_1/text = "Desc"

@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://tjmp7xr1lmmx"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui_custom_data_row/ui-custom-data-row.gd" id="1_3oipy"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui_custom_data_row/signals/signals-ui-custom-data-row.gd" id="2_ooqm0"]
-
+[ext_resource type="Script" uid="uid://cwv224kgtss4d" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui_custom_data_row/ui-custom-data-row.gd" id="1_3oipy"]
+[ext_resource type="Script" uid="uid://ojejdp03ab0o" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui_custom_data_row/signals/signals-ui-custom-data-row.gd" id="2_ooqm0"]
 
 [node name="UICustomDataRow" type="HBoxContainer"]
 anchors_preset = 10

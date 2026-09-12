@@ -1,13 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://ck0fj7607pn63"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/run_script/ui-run-script-node.gd" id="1_w8uxx"]
-
+[ext_resource type="Script" uid="uid://5eb8jj10nggu" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/run_script/ui-run-script-node.gd" id="1_w8uxx"]
 
 [node name="UIDialogRunScriptNode" type="GraphNode"]
 custom_minimum_size = Vector2(130, 0)
-title = "NID Null "
-show_close = true
 resizable = true
+title = "NID Null "
 slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)

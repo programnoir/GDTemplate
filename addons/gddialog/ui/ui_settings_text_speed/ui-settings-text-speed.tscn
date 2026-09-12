@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://16ixv4iuai6p"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_settings_text_speed/ui-settings-text-speed.gd" id="1_ori0r"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_settings_text_speed/signals/signals-ui-settings-text-speed.gd" id="2_galjl"]
+[ext_resource type="Script" uid="uid://bovlj6rxt7pji" path="res://addons/gddialog/ui/ui_settings_text_speed/ui-settings-text-speed.gd" id="1_ori0r"]
+[ext_resource type="Script" uid="uid://bg0sqshjrhvjk" path="res://addons/gddialog/ui/ui_settings_text_speed/signals/signals-ui-settings-text-speed.gd" id="2_galjl"]
 
 [node name="HBCTextSpeed" type="HBoxContainer"]
 anchors_preset = 10
@@ -32,6 +32,8 @@ max_value = 3.0
 step = 0.25
 page = 0.25
 value = 1.25
+tick_count = 12
+ticks_on_borders = true
 
 [node name="LabelTextSpeedScale" type="Label" parent="."]
 layout_mode = 2

@@ -38,7 +38,7 @@ var current_modified_record: DialogRecordRow = null
 
 #	These are the rows that appear in nVBCDialogRecords.
 var p_UIRecordRow: PackedScene = preload( "res://addons/gddialog"\
-		+ "/ui/ui_database_editor/ui_record_row/ui-record-row.tscn")
+		+ "/ui/ui_database_editor/ui_record_row/ui-record-row.tscn" )
 
 
 func set_dialog_editor( editor: Control ) -> void:

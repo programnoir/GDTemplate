@@ -1,5 +1,5 @@
 # GDTemplate
-Program://Noir's Godot template for game projects (Godot 4.2+). Please check the wiki for detailed information about contributing to the project.
+Program://Noir's Godot template for game projects (Godot 4.5+). Please check the wiki for detailed information about contributing to the project.
 
 ## Features - Main
 * The basics of a game project - main menu, settings menu, and scene switching with fade transitions.
@@ -15,7 +15,7 @@ Program://Noir's Godot template for game projects (Godot 4.2+). Please check the
 * Records searchable by ID, name, and description. Filter by tags.
 * Custom variable creation (tags, boolean flags, strings, floats, colors)
 * Speakers and colors associated with them.
-* Edit dialogs dynamically by connecting nodes (output to input)
+* Edit dialogs dynamically by connecting nodes (output to input) and preview the text.
 * Branch dialog by changing variables with if and set nodes.
 * Change GUI layouts with the simple set GUI node.
 * Advanced keyframe-based dialog node with custom colors, timing/text speed, audio, animations, and data associations (use variables you created or new custom data).

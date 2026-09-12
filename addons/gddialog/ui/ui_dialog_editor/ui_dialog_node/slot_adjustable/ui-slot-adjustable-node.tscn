@@ -1,11 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2ii0jo71o1wr"]
+[gd_scene load_steps=4 format=3 uid="uid://c2ii0jo71o1wr"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/slot_adjustable/ui-slot-adjustable-node.gd" id="1_nelfk"]
+[ext_resource type="Script" uid="uid://ba5f7qv4rtxgu" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/slot_adjustable/ui-slot-adjustable-node.gd" id="1_nelfk"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgmtx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.36862746, 0.36862746, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
-[node name="UIDialogSlotAdjustableNode" type="GraphNode" node_paths=PackedStringArray("nLabelSummary")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1f80"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.43725553, 0.42530724, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="UIDialogSlotAdjustableNode" type="GraphNode"]
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_rgmtx")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_s1f80")
 title = "NID Null "
-show_close = true
 slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
@@ -16,7 +40,6 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_nelfk")
-nLabelSummary = NodePath("VBCNodeEditor/LabelSummary")
 
 [node name="VBCNodeEditor" type="VBoxContainer" parent="."]
 layout_mode = 2

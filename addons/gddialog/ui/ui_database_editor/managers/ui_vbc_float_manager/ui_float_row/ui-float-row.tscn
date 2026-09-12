@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://bgxvsiro03p5k"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_float_manager/ui_float_row/ui-float-row.gd" id="1_6knrp"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_float_manager/ui_float_row/signals/signals-ui-float-row.gd" id="2_pgagl"]
-
-
+[ext_resource type="Script" uid="uid://c2bbietfc2kqr" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_float_manager/ui_float_row/ui-float-row.gd" id="1_6knrp"]
+[ext_resource type="Script" uid="uid://clnwjqx4qocnw" path="res://addons/gddialog/ui/ui_database_editor/managers/ui_vbc_float_manager/ui_float_row/signals/signals-ui-float-row.gd" id="2_pgagl"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_nec8l"]
 

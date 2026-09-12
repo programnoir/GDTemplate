@@ -5,6 +5,7 @@ extends HBoxContainer
 @onready var nLabelTextSpeedScale: Label = get_node( 
 		"LabelTextSpeedScale" )
 
+var first_play_muted: bool = false
 
 func set_text_speed( new_speed: float ) -> void:
 	GlobalUserSettings.accessibility[ "text_speed" ] = new_speed

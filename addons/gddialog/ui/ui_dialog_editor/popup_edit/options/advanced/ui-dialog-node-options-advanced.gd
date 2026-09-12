@@ -23,7 +23,12 @@ class_name DialogNodeOptionsAdvanced
 @onready var nButtonDeleteKeyframe: Button = nTabDialog.get_node(
 		"HBCKeyframeNav/VBCAddDelete/ButtonDeleteKeyframe" )
 @onready var nTextEdit: TextEdit = nTabDialog.get_node( "TextEdit" )
+@onready var nHBCKeyframeNav: HBoxContainer = nTabDialog.get_node( "HBCKeyframeNav" )
+@onready var nHBCPreview: HBoxContainer = nTabDialog.get_node( "HBCPreview" )
+@onready var nPreview: RichTextLabel = nTabDialog.get_node( "HBCPreview/Preview" )
 #	Keyframe options
+@onready var nTabTypeContext: VBoxContainer = nTabDialog.get_node(
+		"TabContainer/Context" )
 @onready var nTabTypeColor: VBoxContainer = nTabDialog.get_node(
 		"TabContainer/Type & Color" )
 @onready var nTabTiming: VBoxContainer = nTabDialog.get_node(
@@ -54,6 +59,16 @@ var current_keyframe: int = 0
 
 func get_keyframe_property( property: String ) -> Variant:
 	return node_data[ "keyframes" ][ current_keyframe ][ property ]
+
+
+func preview_dialog() -> void:
+	if( node_data[ "keyframes" ].size() == 0 ):
+		return
+	#	End defensive return: Obviously.
+	nHBCKeyframeNav.visible = false
+	nTextEdit.visible = false
+	nHBCPreview.visible = true
+	nPreview.preview_dialog()
 
 
 #	Complete
@@ -99,6 +114,7 @@ func load_keyframe() -> void:
 	update_rich_text()
 	nTextEdit.text = node_data[ "keyframes" ][ current_keyframe ][ "text" ]
 	nLabelCurrentKeyframe.text = str( current_keyframe )
+	nTabTypeContext.load_current_keyframe()
 	nTabTypeColor.load_current_keyframe()
 	nTabAudio.load_current_keyframe()
 	nTabTiming.load_current_keyframe()
@@ -111,6 +127,7 @@ func save_current_keyframe() -> void:
 	var data: Dictionary = {}
 	data[ "text" ] = nTextEdit.text
 	#	Populate data with data from tabs
+	nTabTypeContext.save_current_keyframe( data )
 	nTabTypeColor.save_current_keyframe( data )
 	nTabAudio.save_current_keyframe( data )
 	nTabTiming.save_current_keyframe( data )
@@ -142,6 +159,8 @@ func create_advanced_node_keyframe() -> void:
 		#	Required information
 		"text_type": "Default",
 		"text": "",
+		#	Notes: Context
+		"context": "",
 		#	Customization: Type/Color
 		"using_text_color": false,
 		"text_color": "Custom",

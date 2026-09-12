@@ -33,4 +33,3 @@ func _on_button_next_pressed() -> void:
 		owner.slot = owner.nPanelResponses.get_slot()
 		owner.nPanelResponses.disable()
 	owner.process_next_node()
-

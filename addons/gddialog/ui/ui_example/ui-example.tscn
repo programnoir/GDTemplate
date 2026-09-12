@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://csfwtyslc7qyi"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/ui-example.gd" id="1_mb3dp"]
+[ext_resource type="Script" uid="uid://bgvhwkwjiqwnh" path="res://addons/gddialog/ui/ui_example/ui-example.gd" id="1_mb3dp"]
 [ext_resource type="PackedScene" uid="uid://draf0k7uxm6k" path="res://addons/gddialog/ui/ui_example/ui_portrait/ui-portrait.tscn" id="1_nwln6"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/signals/signals-ui-example.gd" id="2_n5xxl"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/dialog_nodes/dialog-nodes.gd" id="2_ncaja"]
-[ext_resource type="AudioStream" uid="uid://crolootndvhul" path="res://addons/gddialog/assets/sounds/blip.ogg" id="4_w5xyp"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/responses/ui-panel-responses.gd" id="6_rrvse"]
-[ext_resource type="Texture2D" uid="uid://cviryqe72fd0d" path="res://addons/gddialog/assets/images/back-button.png" id="7_233gg"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_example/responses/signals/signals-ui-panel-responses.gd" id="7_i6c5i"]
-[ext_resource type="Texture2D" uid="uid://dqtrlflknh8p2" path="res://addons/gddialog/assets/images/forward-button.png" id="8_5qhoe"]
+[ext_resource type="Script" uid="uid://udeb6bxglqsl" path="res://addons/gddialog/ui/ui_example/signals/signals-ui-example.gd" id="2_n5xxl"]
+[ext_resource type="Script" uid="uid://bj12dworpaqc" path="res://addons/gddialog/ui/ui_example/dialog_nodes/dialog-nodes.gd" id="2_ncaja"]
+[ext_resource type="AudioStream" uid="uid://nb2njoy84471" path="res://addons/gddialog/assets/sounds/blip.ogg" id="4_w5xyp"]
+[ext_resource type="Script" uid="uid://pfknouo5fxkq" path="res://addons/gddialog/ui/ui_example/responses/ui-panel-responses.gd" id="6_rrvse"]
+[ext_resource type="Texture2D" uid="uid://bdq1ubylxcfxt" path="res://addons/gddialog/assets/images/back-button.png" id="7_233gg"]
+[ext_resource type="Script" uid="uid://cg2sltcipgkll" path="res://addons/gddialog/ui/ui_example/responses/signals/signals-ui-panel-responses.gd" id="7_i6c5i"]
+[ext_resource type="Texture2D" uid="uid://cxjy827kstvsy" path="res://addons/gddialog/assets/images/forward-button.png" id="8_5qhoe"]
 
 [node name="UIExample" type="Control"]
 visible = false

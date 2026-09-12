@@ -1,12 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://brpdqnui4hlp4"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/var/if_var/ui-dialog-variable-if-node.gd" id="1_f01g6"]
-
+[ext_resource type="Script" uid="uid://bugm8brmptshy" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/var/if_var/ui-dialog-variable-if-node.gd" id="1_f01g6"]
 
 [node name="UIDialogVariableIfNode" type="GraphNode"]
-title = "NID Null "
-show_close = true
 resizable = true
+title = "NID Null "
 slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)

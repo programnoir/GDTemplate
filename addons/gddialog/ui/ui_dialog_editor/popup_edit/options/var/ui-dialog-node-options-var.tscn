@@ -1,7 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dihcexxkg28k8"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/var/ui-dialog-node-options-var.gd" id="1_l3345"]
-
+[ext_resource type="Script" uid="uid://drldmet7svujf" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/var/ui-dialog-node-options-var.gd" id="1_l3345"]
 
 [node name="UIDialogNodeOptionsVar" type="VBoxContainer"]
 anchors_preset = 15

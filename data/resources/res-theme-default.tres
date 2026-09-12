@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://c802x7na8wfbw"]
 
-[ext_resource type="FontFile" uid="uid://dewwc2li5whus" path="res://assets/fonts/Atkinson-Hyperlegible-Regular-102.ttf" id="1_fdd60"]
+[ext_resource type="FontFile" uid="uid://c2p5uf8d4p0mb" path="res://assets/fonts/Atkinson-Hyperlegible-Regular-102.ttf" id="1_fdd60"]
 
 [resource]
 default_font = ExtResource("1_fdd60")

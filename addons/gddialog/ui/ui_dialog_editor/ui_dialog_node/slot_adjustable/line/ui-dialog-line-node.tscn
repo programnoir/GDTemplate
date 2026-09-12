@@ -1,14 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgdkjkveb8uip"]
+[gd_scene load_steps=4 format=3 uid="uid://cgdkjkveb8uip"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/slot_adjustable/line/ui-dialog-line-node.gd" id="1_jnq2x"]
+[ext_resource type="Script" uid="uid://n0s58l7bohu2" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/slot_adjustable/line/ui-dialog-line-node.gd" id="1_jnq2x"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k42p"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.36862746, 0.36862746, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chntq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.43725553, 0.42530724, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="UIDialogLineNode" type="GraphNode"]
 offset_right = 250.0
 offset_bottom = 183.0
-title = "NID Null "
-show_close = true
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_5k42p")
+theme_override_styles/titlebar_selected = SubResource("StyleBoxFlat_chntq")
 resizable = true
+title = "NID Null "
 slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)

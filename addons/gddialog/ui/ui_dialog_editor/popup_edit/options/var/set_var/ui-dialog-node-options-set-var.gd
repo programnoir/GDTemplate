@@ -122,4 +122,3 @@ func clear_string_array_lineedits() -> void:
 		if( child is LineEdit ):
 			child.queue_free()
 	max_elements = 1
-

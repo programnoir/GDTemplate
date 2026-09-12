@@ -27,6 +27,8 @@ func set_typewriter_delays() -> void:
 
 
 func process_current_keyframe() -> void:
+	owner.nTimerDelay.stop()
+	owner.nTimerTypewriter.stop()
 	#	Process the keyframe's text.
 	if( owner.nRichTextLabelDialog.visible_characters == 
 			owner.nRichTextLabelDialog.get_total_character_count()
@@ -56,10 +58,10 @@ func process_current_keyframe() -> void:
 
 
 func setup_current_keyframe() -> void:
+	owner.nTimerTypewriter.stop()
+	owner.nTimerDelay.stop()
 	if( owner.keyframes_array.size() == 0 ):
 		owner.nASPTypewriter.stop()
-		owner.nTimerTypewriter.stop()
-		owner.nTimerDelay.stop()
 		owner.is_playing = false
 		return
 	#	End defensive return.

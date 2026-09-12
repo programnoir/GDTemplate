@@ -1,7 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddnwwppxoi71l"]
 
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/end/ui-end-node.gd" id="1_vfibk"]
-
+[ext_resource type="Script" uid="uid://bpflnq4yvbl2j" path="res://addons/gddialog/ui/ui_dialog_editor/ui_dialog_node/end/ui-end-node.gd" id="1_vfibk"]
 
 [node name="UIDialogEndNode" type="GraphNode"]
 title = "NID Null "

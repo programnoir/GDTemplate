@@ -1,22 +1,47 @@
-[gd_scene load_steps=12 format=3 uid="uid://baq5g0gyferaw"]
+[gd_scene load_steps=16 format=3 uid="uid://baq5g0gyferaw"]
 
 [ext_resource type="Theme" uid="uid://bo2twnfsdq0mu" path="res://addons/gddialog/resources/res-ui-dialog-node-options-theme.tres" id="1_1i1w2"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/ui-dialog-node-options-advanced.gd" id="2_c61k4"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/signals/signals-ui-dialog-node-options-advanced.gd" id="3_3lsdx"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/type_color/ui-tab-type-color.gd" id="4_6p4la"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/type_color/signals/signals-ui-tab-type-color.gd" id="5_r2ckp"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/timing/ui-tab-timing.gd" id="6_uukin"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/ui-tab-animations.gd" id="7_6kg6b"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/signals/signals-ui-tab-animations.gd" id="8_vrtmh"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/audio/ui-tab-audio.gd" id="9_2tt10"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui-tab-data.gd" id="10_6qjb0"]
-[ext_resource type="Script" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/signals/signals-ui-tab-data.gd" id="11_1hltt"]
+[ext_resource type="Script" uid="uid://cm5r7mmhwjh2c" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/ui-dialog-node-options-advanced.gd" id="2_c61k4"]
+[ext_resource type="Script" uid="uid://c4bq7oq1wom" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/signals/signals-ui-dialog-node-options-advanced.gd" id="3_3lsdx"]
+[ext_resource type="Script" uid="uid://dte65fka16gyg" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/type_color/ui-tab-type-color.gd" id="4_6p4la"]
+[ext_resource type="Script" uid="uid://d3juuar5ob0wa" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/ui-dialog-preview.gd" id="4_pd6gb"]
+[ext_resource type="Script" uid="uid://tt8a724lch7m" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/type_color/signals/signals-ui-tab-type-color.gd" id="5_r2ckp"]
+[ext_resource type="Script" uid="uid://b4chkesb41fdm" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/context/ui-tab-context.gd" id="5_tqo4m"]
+[ext_resource type="Script" uid="uid://do3mmqvl017hh" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/timing/ui-tab-timing.gd" id="6_uukin"]
+[ext_resource type="Script" uid="uid://c0qqjs0qphkpo" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/ui-tab-animations.gd" id="7_6kg6b"]
+[ext_resource type="Script" uid="uid://c8kccujm8orwf" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/animations/signals/signals-ui-tab-animations.gd" id="8_vrtmh"]
+[ext_resource type="Script" uid="uid://56y22xslk676" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/audio/ui-tab-audio.gd" id="9_2tt10"]
+[ext_resource type="Script" uid="uid://bbpt8y32evdow" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/ui-tab-data.gd" id="10_6qjb0"]
+[ext_resource type="Script" uid="uid://dd8kfh8t15i0b" path="res://addons/gddialog/ui/ui_dialog_editor/popup_edit/options/advanced/data/signals/signals-ui-tab-data.gd" id="11_1hltt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqo4m"]
+bg_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fygc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="UIDialogNodeOptionsAdvanced" type="VBoxContainer"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 1.596
-offset_bottom = 0.0799866
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -30,9 +55,11 @@ script = ExtResource("3_3lsdx")
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 
 [node name="Dialog" type="VBoxContainer" parent="TabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="Label" type="Label" parent="TabContainer/Dialog"]
 layout_mode = 2
@@ -40,6 +67,11 @@ text = "Configure Advanced Dialog Node"
 
 [node name="HBCSpeaker" type="HBoxContainer" parent="TabContainer/Dialog"]
 layout_mode = 2
+
+[node name="VSeparator5" type="VSeparator" parent="TabContainer/Dialog/HBCSpeaker"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="TabContainer/Dialog/HBCSpeaker"]
 layout_mode = 2
@@ -54,6 +86,10 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="ButtonPreviewText" type="Button" parent="TabContainer/Dialog/HBCSpeaker"]
+layout_mode = 2
+text = " 🎥 "
+
 [node name="Label2" type="Label" parent="TabContainer/Dialog/HBCSpeaker"]
 layout_mode = 2
 text = "Keyframe: "
@@ -61,6 +97,36 @@ text = "Keyframe: "
 [node name="LabelCurrentKeyframe" type="Label" parent="TabContainer/Dialog/HBCSpeaker"]
 layout_mode = 2
 text = "0"
+
+[node name="VSeparator4" type="VSeparator" parent="TabContainer/Dialog/HBCSpeaker"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBCPreview" type="HBoxContainer" parent="TabContainer/Dialog"]
+visible = false
+layout_mode = 2
+
+[node name="Preview" type="RichTextLabel" parent="TabContainer/Dialog/HBCPreview"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_tqo4m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1fygc")
+bbcode_enabled = true
+script = ExtResource("4_pd6gb")
+
+[node name="TimerWrite" type="Timer" parent="TabContainer/Dialog/HBCPreview/Preview"]
+
+[node name="TimerDelay" type="Timer" parent="TabContainer/Dialog/HBCPreview/Preview"]
+
+[node name="ASPTypewriter" type="AudioStreamPlayer" parent="TabContainer/Dialog/HBCPreview/Preview"]
+
+[node name="ASPSoundEffect" type="AudioStreamPlayer" parent="TabContainer/Dialog/HBCPreview/Preview"]
+
+[node name="ButtonEndPreview" type="Button" parent="TabContainer/Dialog/HBCPreview"]
+layout_mode = 2
+text = "✏️"
 
 [node name="HBCKeyframeNav" type="HBoxContainer" parent="TabContainer/Dialog"]
 layout_mode = 2
@@ -108,6 +174,7 @@ theme_override_constants/separation = 10
 [node name="TextEdit" type="TextEdit" parent="TabContainer/Dialog"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/background_color = Color(0, 0, 0, 0.392157)
 placeholder_text = "Dialog text..."
 wrap_mode = 1
@@ -115,11 +182,27 @@ wrap_mode = 1
 [node name="TabContainer" type="TabContainer" parent="TabContainer/Dialog"]
 layout_mode = 2
 size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 2
+
+[node name="Context" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+script = ExtResource("5_tqo4m")
+metadata/_tab_index = 0
+
+[node name="TextEditContext" type="TextEdit" parent="TabContainer/Dialog/TabContainer/Context"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "Explain the context of this part of the dialogue, add notes, etc."
 
 [node name="Type & Color" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 script = ExtResource("4_6p4la")
+metadata/_tab_index = 1
 
 [node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Type & Color"]
 script = ExtResource("5_r2ckp")
@@ -135,8 +218,8 @@ text = " Text Type"
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Default"
 popup/item_0/id = 0
 popup/item_1/text = "Data"
@@ -155,8 +238,8 @@ flat = true
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
-item_count = 1
 selected = 0
+item_count = 1
 popup/item_0/text = "Custom"
 popup/item_0/id = 0
 
@@ -167,9 +250,9 @@ flat = true
 color = Color(1, 1, 1, 1)
 
 [node name="Timing" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("6_uukin")
+metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Dialog/TabContainer/Timing"]
 custom_minimum_size = Vector2(0, 128)
@@ -184,9 +267,9 @@ text = "Delay"
 
 [node name="SpinBoxDelay" type="SpinBox" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-min_value = 0.001
-step = 0.001
-value = 0.001
+min_value = 0.02
+step = 0.01
+value = 0.02
 allow_greater = true
 
 [node name="Label2" type="Label" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer"]
@@ -213,9 +296,9 @@ text = "Write Speed Scale"
 
 [node name="SpinBoxWriteSpeed" type="SpinBox" parent="TabContainer/Dialog/TabContainer/Timing/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-min_value = 0.001
-step = 0.001
-page = 0.001
+min_value = 0.05
+step = 0.01
+page = 0.01
 value = 1.0
 allow_greater = true
 
@@ -234,6 +317,7 @@ flat = true
 visible = false
 layout_mode = 2
 script = ExtResource("7_6kg6b")
+metadata/_tab_index = 3
 
 [node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Animations"]
 script = ExtResource("8_vrtmh")
@@ -258,6 +342,7 @@ text = "+"
 visible = false
 layout_mode = 2
 script = ExtResource("9_2tt10")
+metadata/_tab_index = 4
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Dialog/TabContainer/Audio"]
 custom_minimum_size = Vector2(0, 128)
@@ -299,8 +384,8 @@ placeholder_text = "path/to/song.flac or \"Silence\""
 [node name="OptionButtonTransition" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Audio/GridContainer/HBCSong"]
 layout_mode = 2
 alignment = 2
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Cut"
 popup/item_0/id = 0
 popup/item_1/text = "Simple Fade"
@@ -312,6 +397,7 @@ popup/item_2/id = 2
 visible = false
 layout_mode = 2
 script = ExtResource("10_6qjb0")
+metadata/_tab_index = 5
 
 [node name="Signals" type="Node" parent="TabContainer/Dialog/TabContainer/Data"]
 script = ExtResource("11_1hltt")
@@ -330,8 +416,8 @@ vertical_alignment = 1
 
 [node name="OptionButtonType" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 layout_mode = 2
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Custom Data"
 popup/item_0/id = 0
 popup/item_1/text = "Add Variable"
@@ -340,8 +426,8 @@ popup/item_1/id = 1
 [node name="OptionButtonCustomType" type="OptionButton" parent="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "String"
 popup/item_0/id = 0
 popup/item_1/text = "Float"
@@ -365,8 +451,8 @@ alignment = 2
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Flag"
 popup/item_0/id = 0
 popup/item_1/text = "Float"
@@ -405,6 +491,7 @@ visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
+metadata/_tab_index = 1
 
 [node name="HBCResponseOptions" type="HBoxContainer" parent="TabContainer/Responses"]
 layout_mode = 2
@@ -439,11 +526,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[connection signal="pressed" from="TabContainer/Dialog/HBCSpeaker/ButtonPreviewText" to="Signals" method="_on_button_preview_text_pressed"]
+[connection signal="timeout" from="TabContainer/Dialog/HBCPreview/Preview/TimerWrite" to="TabContainer/Dialog/HBCPreview/Preview" method="_on_timer_write_timeout"]
+[connection signal="timeout" from="TabContainer/Dialog/HBCPreview/Preview/TimerDelay" to="TabContainer/Dialog/HBCPreview/Preview" method="_on_timer_delay_timeout"]
+[connection signal="pressed" from="TabContainer/Dialog/HBCPreview/ButtonEndPreview" to="Signals" method="_on_button_end_preview_pressed"]
 [connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/ButtonPreviousKeyframe" to="Signals" method="_on_button_previous_keyframe_pressed"]
 [connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/ButtonNextKeyframe" to="Signals" method="_on_button_next_keyframe_pressed"]
 [connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/VBCAddDelete/ButtonAppendKeyframe" to="Signals" method="_on_button_append_keyframe_pressed"]
 [connection signal="pressed" from="TabContainer/Dialog/HBCKeyframeNav/VBCAddDelete/ButtonDeleteKeyframe" to="Signals" method="_on_button_delete_keyframe_pressed"]
 [connection signal="text_changed" from="TabContainer/Dialog/TextEdit" to="Signals" method="_on_text_edit_text_changed"]
+[connection signal="text_changed" from="TabContainer/Dialog/TabContainer/Context/TextEditContext" to="Signals" method="_on_text_edit_context_text_changed"]
 [connection signal="item_selected" from="TabContainer/Dialog/TabContainer/Type & Color/HBCColorOptions/OptionButtonColor" to="TabContainer/Dialog/TabContainer/Type & Color/Signals" method="_on_option_button_color_item_selected"]
 [connection signal="pressed" from="TabContainer/Dialog/TabContainer/Animations/SCAnimations/VBCAnimations/ButtonAddAnimation" to="TabContainer/Dialog/TabContainer/Animations/Signals" method="_on_button_add_animation_pressed"]
 [connection signal="item_selected" from="TabContainer/Dialog/TabContainer/Data/VBoxContainer/HBCAddDataOptions/OptionButtonType" to="TabContainer/Dialog/TabContainer/Data/Signals" method="_on_option_button_type_item_selected"]
