@@ -86,10 +86,11 @@ func create_new_node( node_type: String ) -> void:
 	n_Database.nDialogNodes.set_node_property( record_id, new_node_id,
 			"graph_offset", start_position )
 	new_node.position_offset = start_position
+	nSignals.connect_all_node_signals( new_node, node_type )
 	match node_type:
 		"Line":
 			new_node.set_speaker_ui( n_Database.speakers_list.keys(), "" )
-	nSignals.connect_all_node_signals( new_node, node_type )
+			new_node.select_default_speaker()
 
 
 func connect_all_node_link_ui() -> void:
